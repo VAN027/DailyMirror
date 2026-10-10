@@ -117,12 +117,12 @@
           mat-icon-button
         >
           <mat-icon
-            aria-label="Mark as undone"
+            [attr.aria-label]="T.LOCAL_UI.MARK_AS_UNDONE | translate"
             class="undo"
             >undo
           </mat-icon>
           <mat-icon
-            aria-label="Mark as done"
+            [attr.aria-label]="T.LOCAL_UI.MARK_AS_DONE | translate"
             class="check"
             >check
           </mat-icon>

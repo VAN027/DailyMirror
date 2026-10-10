@@ -1,3 +1,4 @@
+import { automationLabel } from '../labels';
 import { For } from 'solid-js';
 import { AutomationRule } from '../../types';
 
@@ -30,11 +31,11 @@ export function RuleList(props: RuleListProps) {
     <div class="rule-list-container">
       <div class="grid">
         <div>
-          <h2>Automation Rules</h2>
+          <h2>自动化规则</h2>
         </div>
         <div class="warning-box">
-          <strong>Warning:</strong> The plugin is very powerful and using it can destroy your data.
-          Use at your own risk!
+          <strong>警告：</strong>{' '}
+          此插件权限较大，使用不当可能破坏数据。请谨慎配置，使用风险需自行承担。
         </div>
 
         <div style={{ 'text-align': 'right' }}>
@@ -50,13 +51,13 @@ export function RuleList(props: RuleListProps) {
             onClick={handleImportClick}
             style={{ 'margin-right': '0.5rem' }}
           >
-            Import
+            导入
           </button>
           <button class="btn-outline" onClick={props.onExport} style={{ 'margin-right': '0.5rem' }}>
-            Export
+            导出
           </button>
           <button class="btn-primary" onClick={props.onCreate}>
-            + New Rule
+            + 新建规则
           </button>
         </div>
       </div>
@@ -65,11 +66,11 @@ export function RuleList(props: RuleListProps) {
         <table role="grid">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Trigger</th>
-              <th scope="col">Status</th>
+              <th scope="col">名称</th>
+              <th scope="col">触发条件</th>
+              <th scope="col">状态</th>
               <th scope="col" style={{ 'text-align': 'right' }}>
-                Actions
+                操作
               </th>
             </tr>
           </thead>
@@ -78,7 +79,7 @@ export function RuleList(props: RuleListProps) {
               each={props.rules}
               fallback={
                 <tr>
-                  <td colspan={4}>No rules found. Create one to get started!</td>
+                  <td colspan={4}>暂无规则，创建一个规则开始使用。</td>
                 </tr>
               }
             >
@@ -86,7 +87,7 @@ export function RuleList(props: RuleListProps) {
                 <tr>
                   <td>{rule.name}</td>
                   <td>
-                    {rule.trigger.type}
+                    {automationLabel(rule.trigger.type)}
                     {rule.trigger.value ? ` (${rule.trigger.value})` : ''}
                   </td>
                   <td style={{ 'text-align': 'right', 'white-space': 'nowrap' }}>
@@ -96,7 +97,7 @@ export function RuleList(props: RuleListProps) {
                         checked={rule.isEnabled}
                         onChange={() => props.onToggleStatus(rule)}
                       />
-                      {rule.isEnabled ? ' Enabled' : ' Disabled'}
+                      {rule.isEnabled ? ' 已启用' : ' 已停用'}
                     </label>
                   </td>
                   <td style={{ 'text-align': 'right', 'white-space': 'nowrap' }}>
@@ -105,9 +106,9 @@ export function RuleList(props: RuleListProps) {
                       onClick={() => props.onEdit(rule)}
                       style={{ 'margin-right': '0.5rem' }}
                     >
-                      Edit
+                      编辑
                     </button>
-                    <button onClick={() => props.onDelete(rule)}>Delete</button>
+                    <button onClick={() => props.onDelete(rule)}>删除</button>
                   </td>
                 </tr>
               )}

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { combineLatest, interval, Observable, of, timer } from 'rxjs';
+import { combineLatest, defer, interval, Observable, of, timer } from 'rxjs';
 import {
   WorkContext,
   WorkContextAdvancedCfg,
@@ -41,13 +41,8 @@ import {
   flattenTasks,
   selectAllTasks,
   selectAllTasksWithSubTasks,
-  selectCurrentTaskId,
   selectTasksWithSubTasksByIdsFactory,
 } from '../tasks/store/task.selectors';
-import {
-  getEndOfTodayTime,
-  isInLaterTodayWindow,
-} from '../tasks/util/later-today-window';
 import { ofType } from '@ngrx/effects';
 import { WorklogExportSettings } from '../worklog/worklog.model';
 import { updateProjectAdvancedCfg } from '../project/store/project.actions';
@@ -466,23 +461,9 @@ export class WorkContextService {
     distinctUntilChanged(), // Only emit when count actually changes
   );
 
-  // "Later Today" membership changes when the clock passes a start time or when
-  // tracking starts/stops, and neither shows up as a change of the task list —
-  // so re-run the filter on the shared minute tick and on the tracked task as
-  // well, or an appointment that already began stays hidden from the main list.
-  undoneTasks$: Observable<TaskWithSubTasks[]> = combineLatest([
-    this.mainListTasks$,
-    this.isTodayList$,
-    this._globalTrackingIntervalService.minuteTick$,
-    this._store$.select(selectCurrentTaskId),
-  ]).pipe(
-    map(([tasks, isTodayList, , currentTaskId]) =>
-      (isTodayList
-        ? this._filterFutureScheduledTasksForToday(tasks, currentTaskId)
-        : tasks
-      ).filter((task) => task && !task.isDone),
-    ),
-    // the tick above re-emits every minute; only pass on real changes
+  // Today's single list includes timed tasks even before their start time.
+  undoneTasks$: Observable<TaskWithSubTasks[]> = defer(() => this.mainListTasks$).pipe(
+    map((tasks) => tasks.filter((task) => task && !task.isDone)),
     distinctUntilChanged(fastArrayCompare),
   );
 
@@ -797,40 +778,6 @@ export class WorkContextService {
     // switchMap at each call site) so each subscription owns its own memo and
     // its per-task referential-stability cache.
     return this._store$.select(selectTasksWithSubTasksByIdsFactory(ids));
-  }
-
-  /**
-   * Hides what the "Later Today" panel shows, so an upcoming appointment is not
-   * listed twice. The tracked task is never hidden: working on it makes it
-   * current, so it belongs in the main list even if it starts later. The same
-   * goes for the parent of a tracked subtask, as the panel drops it as well.
-   */
-  private _filterFutureScheduledTasksForToday(
-    tasks: TaskWithSubTasks[],
-    currentTaskId: string | null,
-  ): TaskWithSubTasks[] {
-    if (!tasks) {
-      return [];
-    }
-    if (this.activeWorkContextId !== TODAY_TAG.id) {
-      return tasks;
-    }
-
-    const now = Date.now();
-    const endOfTodayTime = getEndOfTodayTime(
-      this._dateService.todayStr(),
-      this._dateService.getStartOfNextDayDiffMs(),
-    );
-
-    const isTracked = (task: TaskWithSubTasks): boolean =>
-      !!currentTaskId &&
-      (task.id === currentTaskId || task.subTaskIds.includes(currentTaskId));
-
-    return tasks.filter(
-      (task) =>
-        !!task &&
-        (isTracked(task) || !isInLaterTodayWindow(task.dueWithTime, now, endOfTodayTime)),
-    );
   }
 
   // we don't want a circular dependency that's why we do it here...

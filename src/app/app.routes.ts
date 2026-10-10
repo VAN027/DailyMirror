@@ -36,6 +36,20 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('./routes/context.routes').then((m) => m.PROJECT_CHILD_ROUTES),
   },
+  {
+    path: 'quadrants',
+    loadComponent: () =>
+      import('./features/dailymirror/quadrants.component').then(
+        (m) => m.QuadrantsComponent,
+      ),
+    data: { page: 'quadrants' },
+    canActivate: [FocusOverlayOpenGuard],
+  },
+  {
+    path: 'calendar',
+    redirectTo: 'schedule',
+    pathMatch: 'full',
+  },
   // Standalone pages — all import from same barrel so they share one chunk
   {
     path: 'config',

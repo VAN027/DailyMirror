@@ -1,3 +1,4 @@
+import { automationLabel } from '../labels';
 import { Action, ActionType } from '../../types';
 
 interface ActionInputProps {
@@ -27,7 +28,7 @@ export function ActionInput(props: ActionInputProps) {
           }
         >
           {types.map((t) => (
-            <option value={t}>{t}</option>
+            <option value={t}>{automationLabel(t)}</option>
           ))}
         </select>
       </div>
@@ -36,7 +37,7 @@ export function ActionInput(props: ActionInputProps) {
           type="text"
           value={props.action.value}
           onInput={(e) => props.onChange({ ...props.action, value: e.currentTarget.value })}
-          placeholder="Value"
+          placeholder="内容"
         />
       </div>
       <div style={{ width: 'auto', flex: '0' }}>
@@ -44,7 +45,7 @@ export function ActionInput(props: ActionInputProps) {
           class="secondary outline"
           onClick={props.onRemove}
           style={{ width: 'auto' }}
-          title="Remove Action"
+          title="移除操作"
         >
           ✕
         </button>

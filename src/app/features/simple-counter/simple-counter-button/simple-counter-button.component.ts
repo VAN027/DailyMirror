@@ -134,9 +134,9 @@ export class SimpleCounterButtonComponent implements OnDestroy, OnInit {
             this._bannerService.open({
               id: BannerId.SimpleCounterCountdownComplete,
               isHideDismissBtn: true,
-              msg: `<i>${this.simpleCounter()?.title || 'Simple Counter Countdown'}</i> is finished!`,
+              msg: `<i>${this.simpleCounter()?.title || '计数器倒计时'}</i>已结束！`,
               action: {
-                label: 'Count up and restart!',
+                label: '增加计数并重新开始！',
                 fn: () => {
                   this.countUpAndNextRepeatCountdownSession();
                 },

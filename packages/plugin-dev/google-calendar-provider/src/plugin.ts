@@ -166,7 +166,7 @@ const mapEventToSearchResult = (
         : 0;
   return {
     id: toCompoundId(calendarId, event.id),
-    title: event.summary || '(No title)',
+    title: event.summary || '（无标题）',
     status: event.status,
     start: startDateTimeMs ?? startDateMs,
     dueWithTime: startDateTimeMs,
@@ -328,7 +328,7 @@ const loadCalendarList = async (
     items?: { id: string; summary: string; primary?: boolean }[];
   }>(`${GOOGLE_CALENDAR_API}/users/me/calendarList`, params ? { params } : undefined);
   return (res.items || []).map((cal) => ({
-    label: cal.summary + (cal.primary ? ' (Primary)' : ''),
+    label: cal.summary + (cal.primary ? '（主日历）' : ''),
     value: cal.id,
   }));
 };
@@ -351,7 +351,7 @@ PluginAPI.registerIssueProvider({
     {
       key: 'oauth',
       type: 'oauthButton' as const,
-      label: 'Connect Google Account',
+      label: '连接 Google 账户',
       oauthConfig: {
         authUrl: GOOGLE_AUTH_URL,
         tokenUrl: GOOGLE_TOKEN_URL,
@@ -368,50 +368,50 @@ PluginAPI.registerIssueProvider({
     {
       key: 'readCalendarIds',
       type: 'multiSelect' as const,
-      label: 'Calendars to display',
-      description: 'Select which calendars to show in planner and schedule views.',
+      label: '要显示的日历',
+      description: '选择在规划和日程视图中显示的日历。',
       required: true,
-      options: [{ label: 'Primary', value: 'primary' }],
+      options: [{ label: '主日历', value: 'primary' }],
       loadOptions: loadAllCalendars,
     },
     {
       key: 'writeCalendarId',
       type: 'select' as const,
-      label: 'Default calendar for new events',
-      description: 'Used when creating or rescheduling events directly from the planner.',
+      label: '新建日程的默认日历',
+      description: '直接从规划视图创建或调整日程时使用。',
       required: true,
-      options: [{ label: 'Primary', value: 'primary' }],
+      options: [{ label: '主日历', value: 'primary' }],
       loadOptions: loadWritableCalendars,
     },
     {
       key: 'syncRangeWeeks',
       type: 'input' as const,
-      label: 'Sync range (weeks)',
-      description: 'How many weeks ahead to sync events. Defaults to 2.',
+      label: '同步范围（周）',
+      description: '向前同步多少周的日程，默认为 2 周。',
       required: false,
     },
     {
       key: 'showDeclinedEvents',
       type: 'checkbox' as const,
-      label: 'Show declined events',
-      description: 'Display events you have declined in your calendar views.',
+      label: '显示已拒绝的日程',
+      description: '在日历视图中显示您已拒绝的日程。',
       advanced: true,
     },
     {
       key: 'isAutoTimeBlock',
       type: 'checkbox' as const,
-      label: 'Auto time blocking',
+      label: '自动创建日历时间段',
       description:
-        'When you schedule a task to a specific time, automatically create a matching event in Google Calendar. Rescheduling, completing, or deleting the task updates the event.',
+        '将任务安排到具体时间时，自动在 Google 日历中创建对应日程。调整时间、完成或删除任务时，也会更新日程。',
     },
     {
       key: 'timeBlockCalendarId',
       type: 'select' as const,
-      label: 'Time block calendar',
-      description: 'Which calendar to create time block events in.',
+      label: '时间段所属日历',
+      description: '选择在哪个日历中创建任务时间段。',
       required: false,
       showIf: 'isAutoTimeBlock',
-      options: [{ label: 'Primary', value: 'primary' }],
+      options: [{ label: '主日历', value: 'primary' }],
       loadOptions: loadWritableCalendars,
     },
   ],
@@ -446,11 +446,11 @@ PluginAPI.registerIssueProvider({
 
     return {
       id: issueId,
-      title: event.summary || '(No title)',
+      title: event.summary || '（无标题）',
       body: event.description || '',
       state: event.status || 'confirmed',
       lastUpdated: event.updated ? new Date(event.updated).getTime() : undefined,
-      summary: event.summary || '(No title)',
+      summary: event.summary || '（无标题）',
       start: event.start,
       end: event.end,
       startFormatted: formatEventTime(event.start),
@@ -493,11 +493,11 @@ PluginAPI.registerIssueProvider({
   },
 
   issueDisplay: [
-    { field: 'summary', label: 'Title', type: 'text' },
-    { field: 'startFormatted', label: 'Start', type: 'text' },
-    { field: 'endFormatted', label: 'End', type: 'text' },
-    { field: 'status', label: 'Status', type: 'text' },
-    { field: 'description', label: 'Description', type: 'markdown' },
+    { field: 'summary', label: '标题', type: 'text' },
+    { field: 'startFormatted', label: '开始', type: 'text' },
+    { field: 'endFormatted', label: '结束', type: 'text' },
+    { field: 'status', label: '状态', type: 'text' },
+    { field: 'description', label: '描述', type: 'markdown' },
   ],
 
   fieldMappings: [
@@ -521,7 +521,7 @@ PluginAPI.registerIssueProvider({
         if (val && val.startsWith('[DONE] ')) {
           return val.slice(7);
         }
-        return val || '(No title)';
+        return val || '（无标题）';
       },
     },
     {

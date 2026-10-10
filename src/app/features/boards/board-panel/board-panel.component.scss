@@ -19,14 +19,8 @@
   }
 
   planner-task {
-    // Same row rhythm and hairlines as the planner and the main task list.
     margin-bottom: var(--task-list-row-gap);
-    // planner-task draws its own box border, so use the row edge token.
-    border-top: var(--task-row-edge);
-
-    &:last-child {
-      border-bottom: var(--task-row-edge);
-    }
+    margin-right: var(--s-half);
   }
 
   add-task-inline {

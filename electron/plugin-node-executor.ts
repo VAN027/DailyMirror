@@ -81,7 +81,7 @@ const NODE_CONSENT_DIALOG_BASE: Pick<
   'type' | 'buttons' | 'defaultId' | 'cancelId'
 > = {
   type: 'warning',
-  buttons: ['Allow', 'Deny'],
+  buttons: ['允许', '拒绝'],
   defaultId: 1,
   cancelId: 1,
 };
@@ -412,13 +412,13 @@ class PluginNodeExecutor {
   ): Electron.MessageBoxOptions {
     return {
       ...NODE_CONSENT_DIALOG_BASE,
-      title: 'Allow plugin Node.js execution?',
-      message: `Allow "${manifest.name}" to run Node.js scripts?`,
+      title: '是否允许插件运行 Node.js？',
+      message: `是否允许“${manifest.name}”运行 Node.js 脚本？`,
       detail: [
-        `Plugin ID: ${pluginId}`,
-        `Version: ${manifest.version}`,
+        `插件 ID：${pluginId}`,
+        `版本：${manifest.version}`,
         '',
-        'This permission is valid for the current app session. Node.js execution can access local files and desktop APIs. Only allow plugins you trust.',
+        '此权限在本次应用会话期间有效。Node.js 执行可以访问本地文件和桌面接口。请仅允许您信任的插件。',
       ].join('\n'),
     };
   }
@@ -450,18 +450,18 @@ class PluginNodeExecutor {
     const { name, version } = this.sanitizedUploadedDisplay(displayInfo);
     return {
       ...NODE_CONSENT_DIALOG_BASE,
-      title: 'Allow this plugin to run code on your machine?',
-      message: `Plugin "${pluginId}" wants to run Node.js code`,
+      title: '是否允许此插件在您的设备上运行代码？',
+      message: `插件“${pluginId}”请求运行 Node.js 代码`,
       detail: [
-        `Plugin ID: ${pluginId}`,
-        `Name (self-declared, unverified): ${name}`,
-        `Version (self-declared): ${version}`,
+        `插件 ID：${pluginId}`,
+        `名称（插件自行声明，未经验证）：${name}`,
+        `版本（插件自行声明）：${version}`,
         '',
-        'This is a third-party plugin. Super Productivity cannot verify its identity and cannot sandbox it.',
-        'If you allow it, the plugin can run any program with full access to your files and system.',
-        'Your choice is remembered on this device until you disable, remove, or re-upload this plugin.',
+        '这是第三方插件。Super Productivity 无法验证其身份，也无法将其限制在沙盒中。',
+        '允许后，插件可以运行任何程序，并完全访问您的文件和系统。',
+        '本设备会记住您的选择，直到您禁用、删除或重新上传此插件。',
         '',
-        'Only allow this if you trust the source of this plugin.',
+        '请仅在信任此插件来源时允许。',
       ].join('\n'),
     };
   }

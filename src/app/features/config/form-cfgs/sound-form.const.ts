@@ -4,16 +4,16 @@ import { playDoneSound } from '../../tasks/util/play-done-sound';
 import { playSound } from '../../../util/play-sound';
 
 export const SOUND_OPTS = [
-  { label: 'NONE', value: null },
-  { label: 'Small Ding', value: 'ding-small-bell.mp3' },
-  { label: 'Ding', value: 'copper-bell-ding.mp3' },
-  { label: 'Sound 1', value: 'done1.mp3' },
-  { label: 'Sound 2', value: 'done2.mp3' },
-  { label: 'Sound 3', value: 'done3.mp3' },
-  { label: 'Sound 4', value: 'done4.mp3' },
-  { label: 'Sound 5', value: 'done5.mp3' },
-  { label: 'Sound 6', value: 'done6.mp3' },
-  { label: 'Sound 7', value: 'done7.mp3' },
+  { label: '无', value: null },
+  { label: '轻铃声', value: 'ding-small-bell.mp3' },
+  { label: '铃声', value: 'copper-bell-ding.mp3' },
+  { label: '提示音 1', value: 'done1.mp3' },
+  { label: '提示音 2', value: 'done2.mp3' },
+  { label: '提示音 3', value: 'done3.mp3' },
+  { label: '提示音 4', value: 'done4.mp3' },
+  { label: '提示音 5', value: 'done5.mp3' },
+  { label: '提示音 6', value: 'done6.mp3' },
+  { label: '提示音 7', value: 'done7.mp3' },
 ];
 export const SOUND_FORM_CFG: ConfigFormSection<SoundConfig> = {
   title: T.GCF.SOUND.TITLE,

@@ -4,7 +4,6 @@ import {
   concatMap,
   debounceTime,
   distinctUntilChanged,
-  filter,
   first,
   switchMap,
   withLatestFrom,
@@ -13,12 +12,7 @@ import { combineLatest, EMPTY, of } from 'rxjs';
 import { GlobalTrackingIntervalService } from '../../../core/global-tracking-interval/global-tracking-interval.service';
 import { TaskSharedActions } from '../../../root-store/meta/task-shared.actions';
 import { Action, Store } from '@ngrx/store';
-import {
-  selectAllTasks,
-  selectOverdueTasksOnToday,
-  selectTasksDueForDay,
-  selectTasksWithDueTimeForRange,
-} from './task.selectors';
+import { selectTasksDueForDay, selectTasksWithDueTimeForRange } from './task.selectors';
 import { SyncWrapperService } from '../../../imex/sync/sync-wrapper.service';
 import { selectTodayTaskIds } from '../../work-context/store/work-context.selectors';
 import { AddTasksForTomorrowService } from '../../add-tasks-for-tomorrow/add-tasks-for-tomorrow.service';
@@ -33,7 +27,6 @@ import { environment } from '../../../../environments/environment';
 import { HydrationStateService } from '../../../op-log/apply/hydration-state.service';
 import { waitForSyncWindow } from '../../../util/wait-for-sync-window.operator';
 import { selectTodayTagTaskIds } from '../../tag/store/tag.reducer';
-import { getDeadlineAutoPlanDecision } from '../util/get-deadline-auto-plan-fields';
 
 export const getOverdueIdsInTodayOrder = (
   overdue: ReadonlyArray<{ id: string }>,
@@ -106,54 +99,8 @@ export class TaskDueEffects {
   );
 
   // NOTE: this gets a lot of interference from tagEffect.preventParentAndSubTaskInTodayList$:
-  removeOverdueFormToday$ = createEffect(() => {
-    return this._syncTriggerService.afterInitialSyncDoneAndDataLoadedInitially$.pipe(
-      first(),
-      switchMap(() =>
-        // Keep listening for date changes throughout the app lifecycle
-        this._globalTrackingIntervalService.todayDateStr$.pipe(
-          distinctUntilChanged(),
-          // Wait for sync window to end instead of dropping the emission (#6192)
-          waitForSyncWindow(
-            this._hydrationState,
-            'TaskDueEffects:removeOverdueFormToday$',
-          ),
-          switchMap((dateStr) => {
-            // eslint-disable-next-line local-rules/no-user-content-in-logs -- grandfathered log baseline (2026-09), not yet triaged
-            TaskLog.log('[TaskDueEffects] Date changed, removing overdue for:', dateStr);
-            return this._syncWrapperService.afterCurrentSyncDoneOrSyncDisabled$;
-          }),
-          // Add debounce to ensure sync has fully completed and status is updated
-          debounceTime(1000),
-          // Ensure we're not in the middle of another sync
-          switchMap(() => this._syncWrapperService.afterCurrentSyncDoneOrSyncDisabled$),
-          switchMap(() => this._store$.select(selectOverdueTasksOnToday).pipe(first())),
-          filter((overdue) => !!overdue.length),
-          // Intentional raw TODAY_TAG order read. The computed selectTodayTaskIds
-          // excludes overdue tasks by design, so it cannot remove stale raw IDs.
-          withLatestFrom(this._store$.select(selectTodayTagTaskIds)),
-          // we do this to maintain the order of tasks
-          switchMap(([overdue, todayTagTaskIds]) => {
-            const overdueIds = getOverdueIdsInTodayOrder(overdue, todayTagTaskIds);
-            if (overdueIds.length === 0) {
-              return EMPTY;
-            }
-            TaskLog.log('[TaskDueEffects] Removing overdue tasks from today', {
-              overdueCount: overdueIds.length,
-            });
-            // Use non-persistent action to avoid LWW conflicts with user
-            // actions on other devices (#6992). Every device runs this effect
-            // independently, so syncing the removal is redundant.
-            return of(
-              TaskSharedActions.localRemoveOverdueFromToday({
-                taskIds: overdueIds,
-              }),
-            );
-          }),
-        ),
-      ),
-    );
-  });
+  // DailyMirror keeps unfinished tasks and their order across logical days.
+  removeOverdueFormToday$ = createEffect(() => EMPTY, { dispatch: false });
 
   // Defensive effect to ensure tasks due today are in TODAY tag
   ensureTasksDueTodayInTodayTag$ = createEffect(() => {
@@ -189,7 +136,6 @@ export class TaskDueEffects {
             return combineLatest([
               this._store$.select(selectTasksDueForDay, { day: todayStr }),
               this._store$.select(selectTasksWithDueTimeForRange, todayRange),
-              this._store$.select(selectAllTasks),
             ]).pipe(
               first(),
               withLatestFrom(
@@ -197,16 +143,7 @@ export class TaskDueEffects {
                 this._store$.select(selectTodayTagTaskIds),
               ),
               concatMap(
-                ([
-                  [tasksDueByDay, tasksDueByTime, allTasks],
-                  todayTaskIds,
-                  todayTagTaskIds,
-                ]) => {
-                  const context = { today: todayStr, startOfNextDayDiffMs };
-                  const taskById = new Map(
-                    allTasks.map((task) => [task.id, task] as const),
-                  );
-
+                ([[tasksDueByDay, tasksDueByTime], todayTaskIds, todayTagTaskIds]) => {
                   // Tasks with dueWithTime set have dueDay cleared (mutual exclusivity),
                   // so we must check both due selectors to catch all scheduled tasks.
                   const seenIds = new Set<string>();
@@ -229,31 +166,6 @@ export class TaskDueEffects {
                     )
                     .map((task) => task.id);
 
-                  const plannedTodayIds = new Set([
-                    ...todayTagTaskIds,
-                    ...missingDueTaskIds,
-                  ]);
-                  const missingDeadlineTaskIds: string[] = [];
-
-                  for (const task of [...allTasks].sort(
-                    (a, b) => Number(!!a.parentId) - Number(!!b.parentId),
-                  )) {
-                    const parentTask = task.parentId
-                      ? taskById.get(task.parentId)
-                      : undefined;
-                    const decision = getDeadlineAutoPlanDecision(
-                      task,
-                      context,
-                      plannedTodayIds,
-                      parentTask,
-                    );
-
-                    if (decision.shouldAutoPlan) {
-                      missingDeadlineTaskIds.push(task.id);
-                      plannedTodayIds.add(task.id);
-                    }
-                  }
-
                   // Debug log to investigate repeated operations
                   TaskLog.log('[TaskDueEffects] ensureTasksDueTodayInTodayTag check:', {
                     tasksDueByDayCount: tasksDueByDay.length,
@@ -262,20 +174,14 @@ export class TaskDueEffects {
                     todayTaskIdsCount: todayTaskIds.length,
                     todayTagTaskIdsCount: todayTagTaskIds.length,
                     missingDueTaskIds,
-                    missingDeadlineTaskIds,
-                    willDispatch:
-                      missingDueTaskIds.length > 0 || missingDeadlineTaskIds.length > 0,
+                    willDispatch: missingDueTaskIds.length > 0,
                   });
 
-                  if (
-                    !environment.production &&
-                    (missingDueTaskIds.length > 0 || missingDeadlineTaskIds.length > 0)
-                  ) {
+                  if (!environment.production && missingDueTaskIds.length > 0) {
                     TaskLog.err('[TaskDueEffects] Found tasks missing from TODAY tag:', {
                       tasksDueToday: allTasksDueToday.length,
                       todayTaskIds: todayTaskIds.length,
                       missingDueTaskIds,
-                      missingDeadlineTaskIds,
                     });
                   }
 
@@ -284,19 +190,10 @@ export class TaskDueEffects {
                     actions.push(
                       TaskSharedActions.planTasksForToday({
                         taskIds: missingDueTaskIds,
+                        isAddToBottom: true,
                         today: todayStr,
                         startOfNextDayDiffMs,
                         isSkipRemoveReminder: true,
-                      }),
-                    );
-                  }
-
-                  if (missingDeadlineTaskIds.length > 0) {
-                    actions.push(
-                      TaskSharedActions.planDeadlineTasksForToday({
-                        taskIds: missingDeadlineTaskIds,
-                        today: todayStr,
-                        startOfNextDayDiffMs,
                       }),
                     );
                   }

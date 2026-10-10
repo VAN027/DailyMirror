@@ -3,6 +3,29 @@
   [class.isGlobalBarVariant]="isGlobalBarVariant()"
   @blendInOut
 >
+  @if (!isSearchMode()) {
+    <div class="dm-arrangement">
+      <label
+        >{{ T.DM.ARRANGE | translate }}
+        <select
+          [ngModel]="arrangement()"
+          (ngModelChange)="chooseArrangement($event)"
+        >
+          <option value="today">{{ T.DM.TODAY | translate }}</option>
+          <option value="date">{{ T.DM.DATE | translate }}</option>
+          <option value="none">{{ T.DM.UNPLANNED | translate }}</option>
+        </select>
+      </label>
+      @if (arrangement() === 'date') {
+        <input
+          type="date"
+          [attr.aria-label]="T.DM.DATE | translate"
+          [ngModel]="stateService.state().date"
+          (ngModelChange)="chooseDate($event)"
+        />
+      }
+    </div>
+  }
   <div class="input-section">
     <!-- Wrapper carries the vertical padding: cdkTextareaAutosize sizes the
          textarea to rows*line-height and ignores its own padding, so the

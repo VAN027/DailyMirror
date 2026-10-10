@@ -74,7 +74,7 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.super-productivity.app.quick-action.add-task</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>New Task</string>
+			<string>新建任务</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>plus.circle</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
@@ -87,7 +87,7 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.super-productivity.app.quick-action.today</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Today</string>
+			<string>今天</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>sun.max</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
@@ -100,7 +100,7 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.super-productivity.app.quick-action.inbox</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Inbox</string>
+			<string>收件箱</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>tray</string>
 			<key>UIApplicationShortcutItemUserInfo</key>

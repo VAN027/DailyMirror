@@ -2,48 +2,46 @@ import { IAutomationTrigger } from './definitions';
 
 export const TriggerTaskCompleted: IAutomationTrigger = {
   id: 'taskCompleted',
-  name: 'Task Completed',
+  name: '任务完成时',
   matches: (event) => event.type === 'taskCompleted',
 };
 
 export const TriggerTaskCreated: IAutomationTrigger = {
   id: 'taskCreated',
-  name: 'Task Created',
+  name: '任务创建时',
   matches: (event) => event.type === 'taskCreated',
 };
 
 export const TriggerTaskUpdated: IAutomationTrigger = {
   id: 'taskUpdated',
-  name: 'Task Updated',
+  name: '任务更新时',
   matches: (event) => event.type === 'taskUpdated',
 };
 
 export const TriggerTaskStarted: IAutomationTrigger = {
   id: 'taskStarted',
-  name: 'Task Started',
-  description:
-    'Fires when the timer starts for a task. Switching to a different task also fires this for the new task (and Task Stopped for the previous one).',
+  name: '任务开始时',
+  description: '任务开始计时时触发。切换任务时，新任务触发开始事件，原任务触发停止事件。',
   matches: (event) => event.type === 'taskStarted',
 };
 
 export const TriggerTaskStopped: IAutomationTrigger = {
   id: 'taskStopped',
-  name: 'Task Stopped',
-  description:
-    'Fires when the timer is paused/stopped for a task (without completing it). Switching to a different task also fires this for the previous task.',
+  name: '任务停止时',
+  description: '任务暂停或停止计时但未完成时触发。切换任务时，也会为原任务触发此事件。',
   matches: (event) => event.type === 'taskStopped',
 };
 
 export const TriggerTimeBased: IAutomationTrigger = {
   id: 'timeBased',
-  name: 'Time Based',
+  name: '指定时间',
   matches: (event) => event.type === 'timeBased',
 };
 
 export const TriggerShortcut: IAutomationTrigger = {
   id: 'shortcut',
-  name: 'Keyboard Shortcut',
+  name: '键盘快捷键',
   description:
-    'Fires when the keyboard shortcut assigned to this rule is pressed. Assign the key in Settings > Keyboard Shortcuts. Actions apply to the task row currently focused in the app.',
+    '按此规则的快捷键时触发。可在“设置 → 键盘快捷键”中指定按键。操作作用于当前选中的任务。',
   matches: (event) => event.type === 'shortcut',
 };

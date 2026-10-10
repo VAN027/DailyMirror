@@ -43,7 +43,7 @@ export const isTaskForToday = (task: any, todayStr: string): boolean => {
  * Truncates text to specified length with ellipsis
  */
 export const truncateText = (text: string, maxLength: number = 80): string => {
-  if (!text) return 'No preview available';
+  if (!text) return '暂无预览';
   const firstLine = text.split('\n')[0]?.trim() || '';
   return firstLine.length > maxLength
     ? firstLine.substring(0, maxLength) + '...'

@@ -393,7 +393,7 @@ export class MagicSideNavComponent implements OnDestroy, AfterViewInit {
     // Single dispatcher for everything but tree items
     this._sideNavConfigService.onNavItemClick(item);
 
-    if (this.isMobile()) {
+    if (this.isMobile() && item.id !== 'dm-more') {
       this.showMobileMenuOverlay.set(false);
     }
   }

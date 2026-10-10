@@ -21,6 +21,20 @@
     >
     <span class="spacer"></span>
     <button
+      mat-button
+      (click)="bulk.reschedule()"
+      [disabled]="!count()"
+    >
+      {{ T.DM.RESCHEDULE | translate }}
+    </button>
+    <button
+      mat-button
+      (click)="bulk.unschedule()"
+      [disabled]="!count()"
+    >
+      {{ T.DM.UNSCHEDULE | translate }}
+    </button>
+    <button
       #actionsTrigger="matMenuTrigger"
       [matMenuTriggerFor]="bulkMenu"
       (menuOpened)="onMenuOpened()"

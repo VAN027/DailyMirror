@@ -28,7 +28,7 @@ window.taskWidgetAPI.onUpdateContent((data) => {
   if (data.mode) {
     container.classList.add(`mode-${data.mode}`);
   }
-  taskTitle.textContent = data.title || 'No active task';
+  taskTitle.textContent = data.title || '暂无进行中的任务';
   timeDisplay.textContent = data.time || '--:--';
 });
 

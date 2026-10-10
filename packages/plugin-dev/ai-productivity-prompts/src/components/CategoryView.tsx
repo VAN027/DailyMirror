@@ -14,7 +14,7 @@ const CategoryView: Component<CategoryViewProps> = (props) => {
         <h2 class="text-primary">{props.category.title}</h2>
       </div>
 
-      <h3>Available Prompts:</h3>
+      <h3>可用提示词：</h3>
 
       <div class="prompt-list">
         <For each={props.category.prompts}>

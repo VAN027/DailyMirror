@@ -317,6 +317,22 @@ describe('BoardPanelComponent - Hidden Project Backlog', () => {
     fixture.detectChanges();
   });
 
+  it('hides completed tasks without changing completion or panel configuration', () => {
+    const done = { ...mockTasks[0], isDone: true };
+    component.allTasks = signal([done]);
+    fixture.componentRef.setInput('panelCfg', {
+      ...DEFAULT_PANEL_CFG,
+      id: 'visibility',
+      isParentTasksOnly: false,
+    });
+    expect(component.tasks().map((task) => task.id)).toEqual([done.id]);
+    fixture.componentRef.setInput('hideCompleted', true);
+    expect(component.tasks()).toEqual([]);
+    expect(done.isDone).toBeTrue();
+    fixture.componentRef.setInput('hideCompleted', false);
+    expect(component.tasks().map((task) => task.id)).toEqual([done.id]);
+  });
+
   it('should include regular tasks from hidden projects when backlogState is NoBacklog', () => {
     fixture.componentRef.setInput('panelCfg', {
       ...mockPanelCfg,

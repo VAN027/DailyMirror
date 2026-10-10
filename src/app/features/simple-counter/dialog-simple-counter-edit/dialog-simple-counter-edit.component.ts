@@ -137,7 +137,7 @@ export class DialogSimpleCounterEditComponent {
     const datasets: LineChartData['datasets'] = [
       {
         data: values,
-        label: counter.type === SimpleCounterType.StopWatch ? 'Duration' : 'Count',
+        label: counter.type === SimpleCounterType.StopWatch ? '时长' : '次数',
         fill: false,
         borderColor: CHART_COLOR,
       },
@@ -146,7 +146,7 @@ export class DialogSimpleCounterEditComponent {
     if (goalValue != null) {
       datasets.push({
         data: dates.map(() => goalValue),
-        label: 'Daily goal',
+        label: '每日目标',
         fill: false,
         borderColor: GOAL_LINE_COLOR,
         borderDash: [6, 6],

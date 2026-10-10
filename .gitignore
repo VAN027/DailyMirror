@@ -131,3 +131,7 @@ data/
 
 # Generated App Store Connect "What's New" notes (see tools/prepare-appstore-release-notes.js)
 /fastlane/appstore_metadata
+
+# Private local Android release identity
+/android/dailymirror-signing.properties
+/android/dailymirror-release.p12

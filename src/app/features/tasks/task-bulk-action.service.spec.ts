@@ -18,9 +18,11 @@ import { T } from '../../t.const';
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
 import { LocaleDatePipe } from '../../ui/pipes/locale-date.pipe';
 import { PlannerActions } from '../planner/store/planner.actions';
+import { PlanningActionsService } from '../dailymirror/planning-actions.service';
 
 describe('TaskBulkActionService', () => {
   let service: TaskBulkActionService;
+  let planning: jasmine.SpyObj<PlanningActionsService>;
   let taskService: jasmine.SpyObj<TaskService>;
   let currentTaskId: ReturnType<typeof signal<string | null>>;
   let store: { dispatch: jasmine.Spy; selectSignal: jasmine.Spy; select: jasmine.Spy };
@@ -69,6 +71,12 @@ describe('TaskBulkActionService', () => {
     store.dispatch.calls.allArgs().map(([action]) => (action as { type: string }).type);
 
   beforeEach(() => {
+    planning = jasmine.createSpyObj<PlanningActionsService>('PlanningActionsService', [
+      'open',
+      'apply',
+    ]);
+    planning.apply.and.callFake(() => new Promise((resolve) => setTimeout(resolve, 0)));
+    planning.open.and.resolveTo(false);
     entities = signal<Record<string, Task>>({});
     selectedIds = signal<ReadonlySet<string>>(new Set());
     dialogResult = true;
@@ -132,6 +140,7 @@ describe('TaskBulkActionService', () => {
     TestBed.configureTestingModule({
       providers: [
         TaskBulkActionService,
+        { provide: PlanningActionsService, useValue: planning },
         { provide: Store, useValue: store },
         { provide: TaskService, useValue: taskService },
         { provide: TaskMultiSelectService, useValue: multiSelect },
@@ -511,17 +520,12 @@ describe('TaskBulkActionService', () => {
       expect(service.isFeedbackSuppressed()).toBeFalse();
     });
 
-    it('dispatches per task with the toast skipped and shows one summary', async () => {
+    it('delegates scheduled tasks in visual order to the undoable planner', async () => {
       select([t('a', { dueDay: '2026-09-10' }), t('b'), t('c', { dueWithTime: 123 })]);
       await service.unschedule();
-      const actions = store.dispatch.calls.allArgs().map(([a]) => a);
-      expect(actions.length).toBe(2);
-      actions.forEach((a) => {
-        expect(a.type).toBe(TaskSharedActions.unscheduleTask.type);
-        expect(a.isSkipToast).toBeTrue();
-      });
-      expect(snackService.open).toHaveBeenCalledWith(
-        jasmine.objectContaining({ translateParams: { count: 2 } }),
+      expect(planning.apply).toHaveBeenCalledWith(
+        [jasmine.objectContaining({ id: 'a' }), jasmine.objectContaining({ id: 'c' })],
+        null,
       );
     });
   });

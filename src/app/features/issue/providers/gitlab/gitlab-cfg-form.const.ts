@@ -86,7 +86,7 @@ export const GITLAB_CONFIG_FORM: LimitedFormlyFieldConfig<IssueProviderGitlab>[]
   {
     type: 'collapsible',
     // todo translate
-    props: { label: 'Advanced Config' },
+    props: { label: '高级设置' },
     fieldGroup: [
       {
         key: 'scope',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DateAdapter } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { HeatmapComponent, HeatmapData } from './heatmap.component';
 
@@ -46,8 +47,16 @@ describe('HeatmapComponent', () => {
     document.body.style.setProperty('--c-primary', 'rgb(90, 150, 255)');
 
     await TestBed.configureTestingModule({
-      imports: [TestHostComponent],
-      providers: [{ provide: DateAdapter, useValue: { getFirstDayOfWeek: () => 0 } }],
+      imports: [TestHostComponent, TranslateModule.forRoot()],
+      providers: [
+        {
+          provide: DateAdapter,
+          useValue: {
+            getFirstDayOfWeek: () => 0,
+            getDayOfWeekNames: () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);

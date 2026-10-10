@@ -376,8 +376,8 @@ let remoteBannerEl: HTMLDivElement | null = null;
 
 const updateDocStatusBanner = (): void => {
   const message = isDocCorrupt
-    ? 'This document could not be loaded, so a blank one is shown. Your ' +
-      'saved data is untouched; editing is disabled here to protect it.'
+    ? '无法加载此文档，当前显示为空白。' +
+      '已保存的数据保持不变。为保护数据，此处已禁用编辑。'
     : null;
   if (!message) {
     bannerEl?.remove();
@@ -412,12 +412,12 @@ const showRemoteUpdateBanner = (): void => {
   remoteBannerEl.setAttribute('role', 'status');
 
   const text = document.createElement('span');
-  text.textContent = 'This document was updated on another device. ';
+  text.textContent = '此文档已在另一台设备上更新。';
   remoteBannerEl.appendChild(text);
 
   const button = document.createElement('button');
   button.type = 'button';
-  button.textContent = 'Reload';
+  button.textContent = '重新加载';
   button.addEventListener('click', () => {
     if (!currentCtx) return;
     // setActiveContext re-reads the blob, refreshes lastSeenDocBytes via
@@ -865,60 +865,60 @@ const insertItems = (): MenuItem[] => {
   const ed = editor;
   return [
     {
-      label: 'Paragraph',
+      label: '段落',
       icon: 'segment',
       action: () => ed.chain().focus().setParagraph().run(),
     },
     {
-      label: 'Heading 1',
+      label: '一级标题',
       icon: 'title',
       hint: '#',
       action: () => ed.chain().focus().setHeading({ level: 1 }).run(),
     },
     {
-      label: 'Heading 2',
+      label: '二级标题',
       icon: 'text_fields',
       hint: '##',
       action: () => ed.chain().focus().setHeading({ level: 2 }).run(),
     },
     {
-      label: 'Heading 3',
+      label: '三级标题',
       icon: 'short_text',
       hint: '###',
       action: () => ed.chain().focus().setHeading({ level: 3 }).run(),
     },
     {
-      label: 'Bullet list',
+      label: '无序列表',
       icon: 'format_list_bulleted',
       hint: '-',
       action: () => ed.chain().focus().toggleBulletList().run(),
     },
     {
-      label: 'Numbered list',
+      label: '有序列表',
       icon: 'format_list_numbered',
       hint: '1.',
       action: () => ed.chain().focus().toggleOrderedList().run(),
     },
     {
-      label: 'Quote',
+      label: '引用',
       icon: 'format_quote',
       hint: '>',
       action: () => ed.chain().focus().setBlockquote().run(),
     },
     {
-      label: 'Code block',
+      label: '代码块',
       icon: 'code',
       hint: '```',
       action: () => ed.chain().focus().toggleCodeBlock().run(),
     },
     {
-      label: 'Divider',
+      label: '分隔线',
       icon: 'horizontal_rule',
       hint: '---',
       action: () => ed.chain().focus().setHorizontalRule().run(),
     },
     {
-      label: 'New task',
+      label: '新建任务',
       icon: 'check_circle_outline',
       action: async () => {
         if (slashActionInFlight) return;
@@ -956,7 +956,7 @@ const insertItems = (): MenuItem[] => {
   ];
 };
 
-// Re-entrance guard for awaited slash-menu actions (e.g. "New task").
+// Re-entrance guard for awaited slash-menu actions (e.g. "新建任务").
 // The menu closes before the action awaits its host round-trip; without
 // this, a second fast trigger could double-create a task or insert into
 // a stale context.
@@ -985,7 +985,7 @@ const closeMenu = (): void => {
 /**
  * Run a chosen menu item. For a slash-triggered menu, first delete the
  * literal `/query` text the user typed — the `/` and every filter character
- * land in the doc as ordinary input, so picking "Heading 1" would otherwise
+ * land in the doc as ordinary input, so picking "一级标题" would otherwise
  * leave "/head" behind inside the new heading.
  */
 const runMenuItem = (action: () => void): void => {
@@ -1033,7 +1033,7 @@ const renderMenu = (rect: DOMRect, items: MenuItem[]): void => {
     menuEl.className = 'slash-menu';
     const empty = document.createElement('div');
     empty.className = 'slash-menu-empty';
-    empty.textContent = 'No matches';
+    empty.textContent = '无匹配结果';
     menuEl.appendChild(empty);
     positionPopover(menuEl, rect);
     return;
@@ -1406,22 +1406,22 @@ const createGutter = (): HTMLDivElement => {
   g.setAttribute('aria-label', 'Block actions');
   g.innerHTML = `
     <button type="button" class="block-gutter-btn" data-action="add"
-      title="Insert below" aria-label="Insert below">
+      title="在下方插入" aria-label="在下方插入">
       ${iconSvg('add')}
     </button>
     <button type="button" class="block-gutter-btn" data-action="grip"
-      title="Drag to move; click for menu" aria-label="Move block or open menu">
+      title="拖动以移动，点击打开菜单" aria-label="移动内容块或打开菜单">
       ${iconSvg('drag_indicator')}
     </button>
     <button type="button" class="block-gutter-btn" data-action="details"
-      title="Open task details" aria-label="Open task details">
+      title="打开任务详情" aria-label="打开任务详情">
       ${iconSvg('open_in_new')}
     </button>
   `;
   g.style.display = 'none';
   document.body.appendChild(g);
 
-  // "Open task details" — only shown for task chips (see positionGutter).
+  // "打开任务详情" — only shown for task chips (see positionGutter).
   // Opens the host's task-detail panel via the PluginAPI bridge.
   g.querySelector('[data-action="details"]')?.addEventListener('mousedown', (ev) => {
     ev.preventDefault();
@@ -1807,24 +1807,24 @@ const openBlockMenu = (anchorRect: DOMRect): void => {
   if (!isTask) {
     items.push(
       {
-        label: 'Turn into paragraph',
+        label: '转换为段落',
         icon: 'segment',
         action: () => ed.chain().focus().setNodeSelection(nodePos).setParagraph().run(),
       },
       {
-        label: 'Turn into H1',
+        label: '转换为一级标题',
         icon: 'title',
         action: () =>
           ed.chain().focus().setNodeSelection(nodePos).setHeading({ level: 1 }).run(),
       },
       {
-        label: 'Turn into H2',
+        label: '转换为二级标题',
         icon: 'text_fields',
         action: () =>
           ed.chain().focus().setNodeSelection(nodePos).setHeading({ level: 2 }).run(),
       },
       {
-        label: 'Turn into H3',
+        label: '转换为三级标题',
         icon: 'short_text',
         action: () =>
           ed.chain().focus().setNodeSelection(nodePos).setHeading({ level: 3 }).run(),
@@ -1833,7 +1833,7 @@ const openBlockMenu = (anchorRect: DOMRect): void => {
     // Promote a paragraph / heading into a task — its text becomes the title.
     if (nodeName === 'paragraph' || nodeName === 'heading') {
       items.push({
-        label: 'Turn into task',
+        label: '转换为任务',
         icon: 'check_circle_outline',
         action: () => void turnBlockIntoTask(nodePos),
       });
@@ -1842,14 +1842,14 @@ const openBlockMenu = (anchorRect: DOMRect): void => {
 
   if (canMoveUp) {
     items.push({
-      label: 'Move up',
+      label: '上移',
       icon: 'arrow_upward',
       action: () => moveBlock(nodePos, 'up'),
     });
   }
   if (canMoveDown) {
     items.push({
-      label: 'Move down',
+      label: '下移',
       icon: 'arrow_downward',
       action: () => moveBlock(nodePos, 'down'),
     });
@@ -1859,7 +1859,7 @@ const openBlockMenu = (anchorRect: DOMRect): void => {
   // with the same taskId in the doc and break every taskId-keyed invariant.
   if (!isTask) {
     items.push({
-      label: 'Duplicate',
+      label: '创建副本',
       icon: 'content_copy',
       action: () => {
         const n = ed.state.doc.nodeAt(nodePos);
@@ -1873,7 +1873,7 @@ const openBlockMenu = (anchorRect: DOMRect): void => {
   }
 
   items.push({
-    label: isTask ? 'Delete task' : 'Delete',
+    label: isTask ? '删除任务' : '删除',
     icon: 'delete',
     action: () => {
       if (isTask) {
@@ -1927,10 +1927,10 @@ const mount = async (): Promise<void> => {
   bubbleEl.setAttribute('role', 'toolbar');
   bubbleEl.setAttribute('aria-label', 'Text formatting');
   bubbleEl.innerHTML = `
-    <button type="button" data-action="bold" title="Bold" aria-label="Bold"><b>B</b></button>
-    <button type="button" data-action="italic" title="Italic" aria-label="Italic"><i>I</i></button>
-    <button type="button" data-action="strike" title="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
-    <button type="button" data-action="code" title="Inline code" aria-label="Inline code"><code>{}</code></button>
+    <button type="button" data-action="bold" title="加粗" aria-label="加粗"><b>B</b></button>
+    <button type="button" data-action="italic" title="斜体" aria-label="斜体"><i>I</i></button>
+    <button type="button" data-action="strike" title="删除线" aria-label="删除线"><s>S</s></button>
+    <button type="button" data-action="code" title="行内代码" aria-label="行内代码"><code>{}</code></button>
   `;
   document.body.appendChild(bubbleEl);
 
@@ -1951,7 +1951,7 @@ const mount = async (): Promise<void> => {
     extensions: [
       StarterKit,
       Placeholder.configure({
-        placeholder: "Press '/' to add tasks, headings and more…",
+        placeholder: '按“/”添加任务、标题等内容…',
       }),
       createTaskRefNode('taskRef', taskRefDeps),
       createTaskRefNode('subTaskRef', taskRefDeps),
@@ -2057,7 +2057,7 @@ const mount = async (): Promise<void> => {
       if (ev.key === 'Enter') {
         if (menuCurrentItems.length === 0) {
           // Empty result set — let Enter through to the editor instead of
-          // eating it. Previously the menu stayed open with "No matches"
+          // eating it. Previously the menu stayed open with "无匹配结果"
           // and Enter did nothing.
           closeMenu();
           return;
@@ -2173,8 +2173,7 @@ void waitForPluginAPI()
       const msg = document.createElement('div');
       msg.className = 'doc-error-state';
       msg.textContent =
-        'Doc Mode could not connect to Super Productivity. ' +
-        'Try closing and reopening this panel.';
+        '文档模式无法连接 Super Productivity。' + '请关闭此面板后重新打开。';
       root.appendChild(msg);
     }
   });

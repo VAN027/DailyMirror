@@ -1,0 +1,18 @@
+{
+  "SETTINGS": {
+    "TITLE": "语音提醒设置",
+    "ENABLE": "启用语音提醒",
+    "TEXT_LABEL": "提醒内容（用 ${currentTaskTitle} 代表任务名称）",
+    "INTERVAL_LABEL": "间隔（秒）",
+    "VOLUME_LABEL": "音量",
+    "VOICE_LABEL": "声音",
+    "VOICE_DEFAULT": "默认声音",
+    "TEST": "试听",
+    "SAVE": "保存",
+    "CANCEL": "取消",
+    "SAVED_MSG": "语音提醒设置已保存",
+    "TEST_NO_TEXT": "尚未设置语音提醒内容",
+    "TEST_PLACEHOLDER": "当前任务名称",
+    "DESCRIPTION": "为任务计时时，按设定间隔重复播报提醒内容。"
+  }
+}

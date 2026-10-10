@@ -11,7 +11,7 @@ const resolveTagId = async (ctx: AutomationContext, value: string): Promise<stri
 
 export const ActionCreateTask: IAutomationAction = {
   id: 'createTask',
-  name: 'Create Task',
+  name: '创建任务',
   execute: async (ctx, event, value) => {
     if (!value) return;
     await ctx.plugin.addTask({
@@ -24,7 +24,7 @@ export const ActionCreateTask: IAutomationAction = {
 
 export const ActionDeleteTask: IAutomationAction = {
   id: 'deleteTask',
-  name: 'Delete Task',
+  name: '删除任务',
   execute: async (ctx, event) => {
     if (!event.task?.id) {
       ctx.plugin.log.warn('[Automation] Cannot delete task without task context.');
@@ -38,7 +38,7 @@ export const ActionDeleteTask: IAutomationAction = {
 
 export const ActionAddTag: IAutomationAction = {
   id: 'addTag',
-  name: 'Add Tag',
+  name: '添加标签',
   execute: async (ctx, event, value) => {
     if (!event.task || !value) {
       ctx.plugin.log.warn(`[Automation] Cannot add tag "${value}" without task context.`);
@@ -57,7 +57,7 @@ export const ActionAddTag: IAutomationAction = {
 
 export const ActionRemoveTag: IAutomationAction = {
   id: 'removeTag',
-  name: 'Remove Tag',
+  name: '移除标签',
   execute: async (ctx, event, value) => {
     if (!event.task || !value) {
       ctx.plugin.log.warn(`[Automation] Cannot remove tag "${value}" without task context.`);
@@ -76,7 +76,7 @@ export const ActionRemoveTag: IAutomationAction = {
 
 export const ActionMoveToProject: IAutomationAction = {
   id: 'moveToProject',
-  name: 'Move to Project',
+  name: '移动到项目',
   execute: async (ctx, event, value) => {
     if (!event.task || !value) {
       ctx.plugin.log.warn(
@@ -106,7 +106,7 @@ export const ActionMoveToProject: IAutomationAction = {
 
 export const ActionDisplaySnack: IAutomationAction = {
   id: 'displaySnack',
-  name: 'Display Snack',
+  name: '显示提示',
   execute: async (ctx, event, value) => {
     if (!value) return;
     ctx.plugin.showSnack({ msg: value, type: 'SUCCESS' });
@@ -116,7 +116,7 @@ export const ActionDisplaySnack: IAutomationAction = {
 
 export const ActionDisplayDialog: IAutomationAction = {
   id: 'displayDialog',
-  name: 'Display Dialog',
+  name: '显示弹窗',
   execute: async (ctx, event, value) => {
     if (!value) return;
     const escapedValue = value
@@ -128,7 +128,7 @@ export const ActionDisplayDialog: IAutomationAction = {
 
     await ctx.plugin.openDialog({
       htmlContent: `<p>${escapedValue}</p>`,
-      buttons: [{ label: 'OK', onClick: () => {} }],
+      buttons: [{ label: '确定', onClick: () => {} }],
     });
     ctx.plugin.log.info(`[Automation] Action: Displayed dialog "${value}"`);
   },

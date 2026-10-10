@@ -556,8 +556,8 @@ function createContextMenu(msg?: string): Menu {
     template.push({ type: 'separator' });
   }
 
-  template.push({ label: 'Show App', click: _showApp });
-  template.push({ label: 'Quit', click: _quitApp });
+  template.push({ label: '显示应用', click: _showApp });
+  template.push({ label: '退出', click: _quitApp });
 
   return Menu.buildFromTemplate(template);
 }

@@ -2,10 +2,10 @@ import { PromptCategory } from './types';
 
 export const PROMPT_CATEGORIES: PromptCategory[] = [
   {
-    title: 'What to do now?',
+    title: '现在做什么？',
     prompts: [
       {
-        title: 'Next Best Action',
+        title: '最佳下一步',
         template: `I need to decide what to work on right now. Analyze my tasks and recommend the SINGLE best thing to do next.
 
 Consider:
@@ -22,7 +22,7 @@ Give me:
 - Expected time to complete`,
       },
       {
-        title: '90-Minute Power Block',
+        title: '90 分钟专注安排',
         template: `Help me structure the next 90 minutes for maximum productivity.
 
 Review my tasks and create:
@@ -43,7 +43,7 @@ What might stop me? How do I prevent/handle it?
 Format as a flat markdown checklist I can follow without thinking.`,
       },
       {
-        title: 'Quick Win Hunter',
+        title: '快速成果',
         template: `Find me 1-2 tasks I can complete in the next 30 minutes that will give me momentum.
 
 Criteria:
@@ -63,10 +63,10 @@ Give as a markdown checklist.`,
     ],
   },
   {
-    title: 'Plan my day',
+    title: '规划今天',
     prompts: [
       {
-        title: 'Daily Blueprint',
+        title: '每日计划',
         template: `Create my daily plan. Be specific and realistic.
 
 **Non-Negotiables** (max 3)
@@ -93,7 +93,7 @@ If I only have 2 hours today, which ONE task gets done?
 Output as a flat markdown checklist (- [ ] Task name) that I can paste into my task manager.`,
       },
       {
-        title: 'Reality-Based Schedule',
+        title: '切合实际的日程',
         template: `Build a schedule that actually works with my real life.
 
 First, identify:
@@ -118,7 +118,7 @@ Give me exact times and specific tasks, not categories.
 Output as a flat markdown checklist (- [ ] Task name) I can paste into my task manager.`,
       },
       {
-        title: 'Minimum Viable Day',
+        title: '最小可行的一天',
         template: `I'm overwhelmed. Help me plan the absolute minimum for a successful day.
 
 **The ONE Thing**
@@ -145,10 +145,10 @@ Output as a simple markdown checklist.`,
     ],
   },
   {
-    title: 'Plan my week',
+    title: '规划本周',
     prompts: [
       {
-        title: 'Weekly Big Rocks',
+        title: '本周关键任务',
         template: `Define my week's priorities using the Big Rocks principle.
 
 **Three Big Rocks** (major outcomes)
@@ -176,7 +176,7 @@ What gets cut if I lose a day this week?
 Provide as a flat markdown checklist for my task manager.`,
       },
       {
-        title: 'Realistic Week Planner',
+        title: '务实的周计划',
         template: `Plan a week that accounts for how weeks actually go.
 
 **Reality Check**
@@ -207,10 +207,10 @@ Give me a flat markdown checklist for the week.`,
     ],
   },
   {
-    title: "Help, I'm procrastinating",
+    title: '帮帮我，我在拖延',
     prompts: [
       {
-        title: 'Procrastination Buster',
+        title: '克服拖延',
         template: `I'm stuck. Get me unstuck with ONE specific action.
 
 Looking at my tasks, identify:
@@ -237,7 +237,7 @@ If this works, what's the next 10-minute task?
 Output as a simple markdown checklist.`,
       },
       {
-        title: '2-Minute Momentum',
+        title: '两分钟启动',
         template: `Pick ONE task I'm avoiding. Break it down to start NOW.
 
 **The Task:** [Identify the specific task I'm avoiding most]
@@ -264,7 +264,7 @@ Next 2-minute task ready: [Specific action]
 Give me ultra-specific 2-minute actions as a markdown checklist.`,
       },
       {
-        title: 'Pattern Interrupt',
+        title: '打破拖延循环',
         template: `I'm in a procrastination spiral. Break the pattern.
 
 **Physical Reset** (pick one, do now)
@@ -295,10 +295,10 @@ What will you do immediately after those 10 minutes?
     ],
   },
   {
-    title: 'Better Habits',
+    title: '更好的习惯',
     prompts: [
       {
-        title: 'Micro Habit Designer',
+        title: '微习惯设计',
         template: `Design a habit so small it's impossible to fail.
 
 **The Habit I Want:** [End goal habit]
@@ -326,7 +326,7 @@ Week 2: [Slightly expanded - 3-5 minutes]
 "Never miss twice. Do 30-second version to maintain chain."`,
       },
       {
-        title: 'Keystone Habit Finder',
+        title: '找到关键习惯',
         template: `Identify the ONE habit that will trigger positive chain reactions.
 
 **Potential Keystone Habits**
@@ -354,7 +354,7 @@ Success metric: [What changes am I tracking?]
 Focus ONLY on this one habit for 30 days.`,
       },
       {
-        title: 'Bad Habit Replacer',
+        title: '替换不良习惯',
         template: `Replace a bad habit with a better one using the same trigger.
 
 **The Habit to Change:** [Specific bad habit]
@@ -392,10 +392,10 @@ Make good habit easier: [Specific action]`,
     ],
   },
   {
-    title: 'Various',
+    title: '其他',
     prompts: [
       {
-        title: 'Quick Decision Maker',
+        title: '快速决策',
         template: `I need to make a decision. Help me choose in the next 5 minutes.
 
 **The Decision:** [State it in one sentence]
@@ -426,7 +426,7 @@ Which option:
 **First action:** [What do I do in next hour?]`,
       },
       {
-        title: 'Problem Solver Express',
+        title: '快速解决问题',
         template: `Solve my problem in 5 steps or less.
 
 **Problem in one sentence:** [What's wrong?]
@@ -452,7 +452,7 @@ First step: [Specific action today]
 Success looks like: [Measurable outcome]`,
       },
       {
-        title: 'Stuck → Unstuck',
+        title: '从卡住到行动',
         template: `I'm stuck on something. Get me moving in any direction.
 
 **Where I'm Stuck:** [Describe in 1-2 sentences]
@@ -482,7 +482,7 @@ Who can help: [Specific person]
 What to ask: [Specific question]`,
       },
       {
-        title: 'Weekly Review Template',
+        title: '每周复盘模板',
         template: `Quick weekly review. Keep it under 15 minutes.
 
 **Last Week's Wins** (3 max)

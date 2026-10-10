@@ -1,3 +1,8 @@
+import {
+  DisplayPreferences,
+  DM_DISPLAY_KEY,
+} from '../../dailymirror/display-preferences.service';
+import { lsGetJSON } from '../../../util/ls-util';
 /* eslint-disable */
 import {
   ChangeDetectionStrategy,
@@ -426,10 +431,13 @@ export class ScheduleComponent {
   }
 
   private getTimeView(): 'week' | 'month' | 'day' {
-    const preservedView = localStorage.getItem(LS.SELECTED_TIME_VIEW);
+    const preservedView =
+      localStorage.getItem(LS.SELECTED_TIME_VIEW) ??
+      lsGetJSON<DisplayPreferences>(DM_DISPLAY_KEY, {}).calendarView;
     if (preservedView === 'month') return 'month';
     if (preservedView === 'day') return 'day';
-    return 'week';
+    if (preservedView === 'week') return 'week';
+    return 'month';
   }
 
   constructor() {

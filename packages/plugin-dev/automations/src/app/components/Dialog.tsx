@@ -33,7 +33,7 @@ export function Dialog(props: DialogProps) {
       <article>
         <header>
           <h3 style={{ margin: 0 }}>{props.title}</h3>
-          <button aria-label="Close" class="close-btn" onClick={props.onClose}>
+          <button aria-label="关闭" class="close-btn" onClick={props.onClose}>
             ✕
           </button>
         </header>

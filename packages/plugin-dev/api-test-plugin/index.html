@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>API Test Plugin Dashboard</title>
+    <title>API 测试控制台</title>
     <style>
       /* Theme vars + UI Kit are injected automatically.
          Only layout rules that the UI Kit can't provide. */
@@ -46,9 +46,9 @@
     </style>
   </head>
   <body>
-    <h1>API Test Plugin</h1>
+    <h1>API 测试插件</h1>
 
-    <h3>Available API Methods</h3>
+    <h3>可用 API 方法</h3>
     <p class="api-list">
       <code>getTasks()</code>
       <code>getArchivedTasks()</code>
@@ -79,157 +79,156 @@
     </p>
     <hr />
 
-    <button onclick="runAllTests()">Run All API Tests</button>
+    <button onclick="runAllTests()">运行全部 API 测试</button>
 
     <hr />
 
-    <h2>Data Persistence Tests</h2>
+    <h2>数据保存测试</h2>
     <div class="button-grid">
-      <button onclick="testPersistData()">Test Save Data</button>
-      <button onclick="testLoadData()">Test Load Data</button>
+      <button onclick="testPersistData()">测试保存数据</button>
+      <button onclick="testLoadData()">测试加载数据</button>
     </div>
 
-    <h2>Task Operations</h2>
+    <h2>任务操作</h2>
     <div class="button-grid">
-      <button onclick="testGetTasks()">Get All Tasks</button>
-      <button onclick="testGetArchivedTasks()">Get Archived Tasks</button>
-      <button onclick="testGetContextTasks()">Get Context Tasks</button>
-      <button onclick="testCreateTask()">Create Test Task</button>
-      <button onclick="testUpdateTask()">Update Last Task</button>
+      <button onclick="testGetTasks()">获取全部任务</button>
+      <button onclick="testGetArchivedTasks()">获取已归档任务</button>
+      <button onclick="testGetContextTasks()">获取当前工作区任务</button>
+      <button onclick="testCreateTask()">创建测试任务</button>
+      <button onclick="testUpdateTask()">更新最后一个任务</button>
     </div>
 
-    <h2>Project &amp; Tag Operations</h2>
+    <h2>项目与标签操作</h2>
     <div class="button-grid">
-      <button onclick="testGetProjects()">Get All Projects</button>
-      <button onclick="testCreateProject()">Create Test Project</button>
-      <button onclick="testGetTags()">Get All Tags</button>
-      <button onclick="testCreateTag()">Create Test Tag</button>
+      <button onclick="testGetProjects()">获取全部项目</button>
+      <button onclick="testCreateProject()">创建测试项目</button>
+      <button onclick="testGetTags()">获取全部标签</button>
+      <button onclick="testCreateTag()">创建测试标签</button>
     </div>
 
-    <h2>UI Operations</h2>
+    <h2>界面操作</h2>
     <div class="button-grid">
-      <button onclick="testSnackSuccess()">Success Snack</button>
-      <button onclick="testSnackError()">Error Snack</button>
-      <button onclick="testSnackCustom()">Info Snack</button>
-      <button onclick="testNotification()">Show Notification</button>
-      <button onclick="testDialog()">Open Dialog</button>
+      <button onclick="testSnackSuccess()">成功提示</button>
+      <button onclick="testSnackError()">错误提示</button>
+      <button onclick="testSnackCustom()">信息提示</button>
+      <button onclick="testNotification()">显示通知</button>
+      <button onclick="testDialog()">打开弹窗</button>
     </div>
 
-    <h2>Advanced Dialog Examples</h2>
+    <h2>高级弹窗示例</h2>
     <div class="button-grid">
-      <button onclick="showTaskPlannerDialog()">Task Planner</button>
-      <button onclick="showAnalyticsDialog()">Analytics Dashboard</button>
+      <button onclick="showTaskPlannerDialog()">任务规划</button>
+      <button onclick="showAnalyticsDialog()">统计面板</button>
     </div>
 
     <pre
       class="console"
       id="console"
-    ><span class="console-entry info">Console output will appear here...</span></pre>
+    ><span class="console-entry info">控制台输出将显示在此处…</span></pre>
 
     <hr />
 
-    <h2>UI Kit Component Showcase</h2>
+    <h2>界面组件展示</h2>
 
-    <h3>Headings</h3>
-    <h1>Heading 1</h1>
-    <h2>Heading 2</h2>
-    <h3>Heading 3</h3>
-    <h4>Heading 4</h4>
-    <h5>Heading 5</h5>
-    <h6>Heading 6</h6>
+    <h3>标题</h3>
+    <h1>1 级标题</h1>
+    <h2>2 级标题</h2>
+    <h3>3 级标题</h3>
+    <h4>4 级标题</h4>
+    <h5>5 级标题</h5>
+    <h6>6 级标题</h6>
 
-    <h3>Text</h3>
+    <h3>文字</h3>
     <p>
-      This is a paragraph with <strong>bold</strong>, <em>italic</em>, and
-      <a href="#">link</a> styles.
+      这个段落包含 <strong>加粗</strong>, <em>斜体</em>，以及 <a href="#">链接</a>等样式。
     </p>
-    <p>Inline <code>code</code> is styled automatically.</p>
+    <p>行内<code>代码</code>会自动应用样式。</p>
 
-    <h3>Buttons</h3>
+    <h3>按钮</h3>
     <div class="button-grid">
-      <button>Default</button>
-      <button class="btn-primary">Primary</button>
-      <button class="btn-outline">Outline</button>
-      <button disabled>Disabled</button>
+      <button>默认</button>
+      <button class="btn-primary">主要</button>
+      <button class="btn-outline">描边</button>
+      <button disabled>禁用</button>
       <button
         class="btn-primary"
         disabled
       >
-        Primary Disabled
+        主要按钮（禁用）
       </button>
       <button
         class="btn-outline"
         disabled
       >
-        Outline Disabled
+        描边按钮（禁用）
       </button>
     </div>
 
-    <h3>Inputs</h3>
+    <h3>输入框</h3>
     <input
       type="text"
-      placeholder="Text input"
+      placeholder="文字输入框"
     />
-    <textarea placeholder="Textarea"></textarea>
+    <textarea placeholder="多行文字"></textarea>
     <select>
-      <option>Select option 1</option>
-      <option>Select option 2</option>
-      <option>Select option 3</option>
+      <option>选项 1</option>
+      <option>选项 2</option>
+      <option>选项 3</option>
     </select>
-    <label><input type="checkbox" /> Checkbox label</label>
+    <label><input type="checkbox" /> 复选框标签</label>
 
-    <h3>Code Block</h3>
+    <h3>代码块</h3>
     <pre><code>const tasks = await PluginAPI.getTasks();
 console.log(tasks.length);</code></pre>
 
-    <h3>Table</h3>
+    <h3>表格</h3>
     <table>
       <thead>
         <tr>
-          <th>Method</th>
-          <th>Description</th>
+          <th>方法</th>
+          <th>说明</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>getTasks()</code></td>
-          <td>Get all active tasks</td>
+          <td>获取全部进行中的任务</td>
         </tr>
         <tr>
           <td><code>addTask(data)</code></td>
-          <td>Create a new task</td>
+          <td>创建新任务</td>
         </tr>
         <tr>
           <td><code>showSnack(cfg)</code></td>
-          <td>Show a notification</td>
+          <td>显示通知</td>
         </tr>
       </tbody>
     </table>
 
-    <h3>Lists</h3>
+    <h3>列表</h3>
     <ul>
-      <li>Unordered list item 1</li>
-      <li>Unordered list item 2</li>
-      <li>Unordered list item 3</li>
+      <li>无序列表项 1</li>
+      <li>无序列表项 2</li>
+      <li>无序列表项 3</li>
     </ul>
     <ol>
-      <li>Ordered list item 1</li>
-      <li>Ordered list item 2</li>
-      <li>Ordered list item 3</li>
+      <li>有序列表项 1</li>
+      <li>有序列表项 2</li>
+      <li>有序列表项 3</li>
     </ol>
 
-    <h3>Cards</h3>
+    <h3>卡片</h3>
     <div class="card">
-      <h4>Default Card</h4>
-      <p>A static card with background, shadow, and border.</p>
+      <h4>默认卡片</h4>
+      <p>包含背景、阴影和边框的静态卡片。</p>
     </div>
     <br />
     <div class="card card-clickable">
-      <h4>Clickable Card</h4>
-      <p>Hover to see the lift effect and primary border highlight.</p>
+      <h4>可点击卡片</h4>
+      <p>悬停查看抬升效果和边框高亮。</p>
     </div>
 
-    <h3>Horizontal Rule</h3>
+    <h3>分隔线</h3>
     <hr />
 
     <script>
@@ -321,7 +320,7 @@ console.log(tasks.length);</code></pre>
       async function testCreateTask() {
         try {
           const taskData = {
-            title: 'Test Task from iFrame - ' + new Date().toLocaleTimeString(),
+            title: '来自插件页面的测试任务 - ' + new Date().toLocaleTimeString(),
             notes: 'Created from the API Test Plugin dashboard',
             timeEstimate: 1800000, // 30 minutes
           };
@@ -363,7 +362,7 @@ console.log(tasks.length);</code></pre>
       async function testCreateProject() {
         try {
           const project = await PluginAPI.addProject({
-            title: 'Test Project - ' + new Date().toLocaleDateString(),
+            title: '测试项目 - ' + new Date().toLocaleDateString(),
             themeColor: '#' + Math.floor(Math.random() * 16777215).toString(16),
           });
           lastProjectId = project.id;
@@ -460,7 +459,7 @@ console.log(tasks.length);</code></pre>
       async function testCreateTag() {
         try {
           const tag = await PluginAPI.addTag({
-            title: 'Test Tag - ' + Date.now(),
+            title: '测试标签 - ' + Date.now(),
             color: '#' + Math.floor(Math.random() * 16777215).toString(16),
           });
           lastTagId = tag.id;
@@ -499,7 +498,7 @@ console.log(tasks.length);</code></pre>
 
       function testNotification() {
         PluginAPI.notify({
-          title: 'API Test Notification',
+          title: 'API 测试通知',
           body: 'This notification was triggered from the plugin dashboard!',
         });
         log('Notification sent', 'success');
@@ -507,17 +506,17 @@ console.log(tasks.length);</code></pre>
 
       async function testDialog() {
         const result = await PluginAPI.openDialog({
-          title: 'Test Dialog from iFrame',
+          title: '来自插件页面的测试弹窗',
           htmlContent: `
                     <div style="padding: 20px; color: #ccc; font-family: monospace;">
-                        <h3 style="margin: 0 0 10px 0; font-size: 14px;">Test Dialog</h3>
-                        <p style="margin: 5px 0; font-size: 12px;">Dialog opened from plugin dashboard</p>
+                        <h3 style="margin: 0 0 10px 0; font-size: 14px;">测试弹窗</h3>
+                        <p style="margin: 5px 0; font-size: 12px;">从插件控制台打开的弹窗</p>
                         <p style="margin: 5px 0; font-size: 12px; color: #999;">${new Date().toLocaleString()}</p>
                     </div>
                 `,
           buttons: [
             {
-              label: 'Awesome',
+              label: '好的',
               icon: 'thumb_up',
               color: 'primary',
               onClick: () => {
@@ -542,45 +541,45 @@ console.log(tasks.length);</code></pre>
 
           // Also show in a dialog
           PluginAPI.openDialog({
-            title: 'Current Theme Information',
+            title: '当前主题信息',
             htmlContent: `
               <div style="padding: 20px; font-family: monospace;">
-                <h3 style="margin: 0 0 15px 0;">Theme Variables</h3>
+                <h3 style="margin: 0 0 15px 0;">主题变量</h3>
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr style="border-bottom: 1px solid var(--divider-color, #333);">
-                    <td style="padding: 8px;">Dark Theme</td>
+                    <td style="padding: 8px;">深色主题</td>
                     <td style="padding: 8px; text-align: right;">${themeInfo.isDarkTheme ? 'Yes' : 'No'}</td>
                   </tr>
                   <tr style="border-bottom: 1px solid var(--divider-color, #333);">
-                    <td style="padding: 8px;">Primary Color</td>
+                    <td style="padding: 8px;">主色</td>
                     <td style="padding: 8px; text-align: right;">
                       <span style="display: inline-block; width: 20px; height: 20px; background: ${themeInfo.primaryColor}; vertical-align: middle; margin-right: 8px; border: 1px solid var(--divider-color, #333);"></span>
                       ${themeInfo.primaryColor}
                     </td>
                   </tr>
                   <tr style="border-bottom: 1px solid var(--divider-color, #333);">
-                    <td style="padding: 8px;">Accent Color</td>
+                    <td style="padding: 8px;">强调色</td>
                     <td style="padding: 8px; text-align: right;">
                       <span style="display: inline-block; width: 20px; height: 20px; background: ${themeInfo.accentColor}; vertical-align: middle; margin-right: 8px; border: 1px solid var(--divider-color, #333);"></span>
                       ${themeInfo.accentColor}
                     </td>
                   </tr>
                   <tr style="border-bottom: 1px solid var(--divider-color, #333);">
-                    <td style="padding: 8px;">Warn Color</td>
+                    <td style="padding: 8px;">警告色</td>
                     <td style="padding: 8px; text-align: right;">
                       <span style="display: inline-block; width: 20px; height: 20px; background: ${themeInfo.warnColor}; vertical-align: middle; margin-right: 8px; border: 1px solid var(--divider-color, #333);"></span>
                       ${themeInfo.warnColor}
                     </td>
                   </tr>
                   <tr style="border-bottom: 1px solid var(--divider-color, #333);">
-                    <td style="padding: 8px;">Background</td>
+                    <td style="padding: 8px;">背景</td>
                     <td style="padding: 8px; text-align: right;">
                       <span style="display: inline-block; width: 20px; height: 20px; background: ${themeInfo.backgroundColor}; vertical-align: middle; margin-right: 8px; border: 1px solid var(--divider-color, #333);"></span>
                       ${themeInfo.backgroundColor}
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 8px;">Text Color</td>
+                    <td style="padding: 8px;">文字颜色</td>
                     <td style="padding: 8px; text-align: right;">
                       <span style="display: inline-block; width: 20px; height: 20px; background: ${themeInfo.textColor}; vertical-align: middle; margin-right: 8px; border: 1px solid var(--divider-color, #333);"></span>
                       ${themeInfo.textColor}
@@ -594,7 +593,7 @@ console.log(tasks.length);</code></pre>
             `,
             buttons: [
               {
-                label: 'Close',
+                label: '关闭',
                 color: 'primary',
               },
             ],
@@ -680,83 +679,83 @@ console.log(tasks.length);</code></pre>
       // Advanced Dialog Examples
       function showTaskPlannerDialog() {
         PluginAPI.openDialog({
-          title: 'AI Task Planner (Demo)',
+          title: 'AI 任务规划（演示）',
           htmlContent: `
             <div style="padding: 20px; max-width: 700px;">
               <div style="display: flex; gap: 20px;">
                 <div style="flex: 1;">
-                  <h4 style="margin-top: 0;">Describe Your Goal</h4>
-                  <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;" placeholder="E.g., 'Launch a new mobile app by Q3 2024'">Build a comprehensive plugin system for Super Productivity that allows users to extend functionality</textarea>
+                  <h4 style="margin-top: 0;">描述您的目标</h4>
+                  <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;" placeholder="例如：在第三季度发布一款手机应用">为 Super Productivity 构建插件系统，让用户能够扩展功能</textarea>
 
-                  <h4 style="margin-top: 20px;">Constraints & Preferences</h4>
+                  <h4 style="margin-top: 20px;">限制与偏好</h4>
                   <div style="margin-bottom: 10px;">
                     <label>
-                      <input type="checkbox" checked> Break down into weekly milestones
+                      <input type="checkbox" checked> 拆分为每周里程碑
                     </label>
                   </div>
                   <div style="margin-bottom: 10px;">
                     <label>
-                      <input type="checkbox" checked> Include time estimates
+                      <input type="checkbox" checked> 包含预计用时
                     </label>
                   </div>
                   <div style="margin-bottom: 10px;">
                     <label>
-                      <input type="checkbox"> Add dependencies between tasks
+                      <input type="checkbox"> 添加任务依赖
                     </label>
                   </div>
                   <div style="margin-bottom: 10px;">
                     <label>
-                      <input type="checkbox" checked> Prioritize by impact
+                      <input type="checkbox" checked> 按影响排序
                     </label>
                   </div>
                 </div>
 
                 <div style="flex: 1; background: #f9f9f9; padding: 15px; border-radius: 8px;">
-                  <h4 style="margin-top: 0;">Generated Task Breakdown</h4>
+                  <h4 style="margin-top: 0;">生成的任务拆分</h4>
                   <div style="max-height: 300px; overflow-y: auto;">
                     <div style="margin-bottom: 15px; padding: 10px; background: white; border-radius: 4px; border-left: 4px solid #4caf50;">
-                      <div style="font-weight: bold;">📋 Design Plugin Architecture</div>
-                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Est: 8h | Priority: High</div>
-                      <div style="font-size: 0.85em; margin-top: 5px;">Define API surface, security model, and manifest structure</div>
+                      <div style="font-weight: bold;">📋 设计插件架构</div>
+                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">预计： 8h | 优先级：高</div>
+                      <div style="font-size: 0.85em; margin-top: 5px;">定义 API 接口、安全模型和插件配置结构</div>
                     </div>
                     <div style="margin-bottom: 15px; padding: 10px; background: white; border-radius: 4px; border-left: 4px solid #ff9800;">
-                      <div style="font-weight: bold;">🔧 Implement Core Plugin Loader</div>
-                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Est: 16h | Priority: High</div>
-                      <div style="font-size: 0.85em; margin-top: 5px;">Build sandboxed execution environment and API bridge</div>
+                      <div style="font-weight: bold;">🔧 实现核心插件加载器</div>
+                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">预计： 16h | 优先级：高</div>
+                      <div style="font-size: 0.85em; margin-top: 5px;">构建沙盒执行环境和 API 通信桥接</div>
                     </div>
                     <div style="margin-bottom: 15px; padding: 10px; background: white; border-radius: 4px; border-left: 4px solid #2196f3;">
-                      <div style="font-weight: bold;">🎨 Create Plugin UI Components</div>
-                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Est: 12h | Priority: Medium</div>
-                      <div style="font-size: 0.85em; margin-top: 5px;">Design settings UI, permission dialogs, and plugin store</div>
+                      <div style="font-weight: bold;">🎨 创建插件界面组件</div>
+                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">预计： 12h | 优先级：中</div>
+                      <div style="font-size: 0.85em; margin-top: 5px;">设计设置界面、权限弹窗和插件商店</div>
                     </div>
                     <div style="margin-bottom: 15px; padding: 10px; background: white; border-radius: 4px; border-left: 4px solid #9c27b0;">
-                      <div style="font-weight: bold;">📚 Write Documentation</div>
-                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Est: 6h | Priority: Medium</div>
-                      <div style="font-size: 0.85em; margin-top: 5px;">Create plugin development guide and API reference</div>
+                      <div style="font-weight: bold;">📚 编写文档</div>
+                      <div style="font-size: 0.9em; color: #666; margin-top: 5px;">预计： 6h | 优先级：中</div>
+                      <div style="font-size: 0.85em; margin-top: 5px;">编写插件开发指南和 API 参考文档</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px;">
-                <strong>🤖 AI Analysis:</strong> This project would take approximately 42 hours (5-6 days) with the current breakdown. Consider adding a testing phase and security audit.
+                <strong>🤖 AI 分析：</strong> 按当前拆分，此项目大约需要 42 小时（5–6 天）。建议增加测试阶段和安全审查。
               </div>
             </div>
           `,
           buttons: [
             {
-              label: 'Regenerate',
+              label: '重新生成',
               icon: 'refresh',
               onClick: async () => {
                 await PluginAPI.showSnack({
-                  msg: 'Regenerating task breakdown...',
+                  msg: '正在重新拆分任务…',
                   type: 'INFO',
                   ico: 'refresh',
                 });
               },
             },
             {
-              label: 'Create All Tasks',
+              label: '创建全部任务',
               icon: 'add_task',
               color: 'primary',
               onClick: async () => {
@@ -773,57 +772,57 @@ console.log(tasks.length);</code></pre>
 
       function showAnalyticsDialog() {
         PluginAPI.openDialog({
-          title: 'Productivity Analytics',
+          title: '效率统计',
           htmlContent: `
             <div style="padding: 20px; max-width: 800px;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
                 <div>
-                  <h3 style="margin: 0;">Weekly Performance</h3>
+                  <h3 style="margin: 0;">每周表现</h3>
                   <p style="margin: 5px 0; color: #666;">Dec 11 - Dec 17, 2023</p>
                 </div>
                 <div style="display: flex; gap: 10px; align-items: center;">
-                  <button style="padding: 8px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">Week</button>
-                  <button style="padding: 8px 16px; border: 1px solid #4caf50; background: #4caf50; color: white; border-radius: 4px; cursor: pointer;">Month</button>
-                  <button style="padding: 8px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">Year</button>
+                  <button style="padding: 8px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">周</button>
+                  <button style="padding: 8px 16px; border: 1px solid #4caf50; background: #4caf50; color: white; border-radius: 4px; cursor: pointer;">月</button>
+                  <button style="padding: 8px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">年</button>
                 </div>
               </div>
 
               <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px;">
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px;">
                   <div style="font-size: 2em; font-weight: bold;">147</div>
-                  <div style="opacity: 0.9;">Tasks Completed</div>
+                  <div style="opacity: 0.9;">已完成任务</div>
                   <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.8;">↑ 23% from last week</div>
                 </div>
                 <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 8px;">
                   <div style="font-size: 2em; font-weight: bold;">42.5h</div>
-                  <div style="opacity: 0.9;">Time Tracked</div>
+                  <div style="opacity: 0.9;">记录用时</div>
                   <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.8;">↑ 5% from last week</div>
                 </div>
                 <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 20px; border-radius: 8px;">
                   <div style="font-size: 2em; font-weight: bold;">89%</div>
-                  <div style="opacity: 0.9;">Focus Score</div>
+                  <div style="opacity: 0.9;">专注得分</div>
                   <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.8;">↓ 2% from last week</div>
                 </div>
                 <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 20px; border-radius: 8px;">
                   <div style="font-size: 2em; font-weight: bold;">12</div>
-                  <div style="opacity: 0.9;">Streaks Active</div>
+                  <div style="opacity: 0.9;">连续活跃天数</div>
                   <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.8;">Keep it up! 🔥</div>
                 </div>
               </div>
 
               <div style="background: #f9f9f9; padding: 20px; border-radius: 8px;">
-                <h4 style="margin-top: 0;">Daily Activity Heatmap</h4>
+                <h4 style="margin-top: 0;">每日活动热力图</h4>
                 <div style="display: grid; grid-template-columns: auto repeat(7, 1fr); gap: 10px; font-size: 0.9em;">
                   <div></div>
-                  <div style="text-align: center;">Mon</div>
-                  <div style="text-align: center;">Tue</div>
-                  <div style="text-align: center;">Wed</div>
-                  <div style="text-align: center;">Thu</div>
-                  <div style="text-align: center;">Fri</div>
-                  <div style="text-align: center;">Sat</div>
-                  <div style="text-align: center;">Sun</div>
+                  <div style="text-align: center;">周一</div>
+                  <div style="text-align: center;">周二</div>
+                  <div style="text-align: center;">周三</div>
+                  <div style="text-align: center;">周四</div>
+                  <div style="text-align: center;">周五</div>
+                  <div style="text-align: center;">周六</div>
+                  <div style="text-align: center;">周日</div>
 
-                  <div>Morning</div>
+                  <div>上午</div>
                   <div style="background: #c8e6c9; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #4caf50; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #81c784; height: 40px; border-radius: 4px;"></div>
@@ -832,7 +831,7 @@ console.log(tasks.length);</code></pre>
                   <div style="background: #e8f5e9; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #e8f5e9; height: 40px; border-radius: 4px;"></div>
 
-                  <div>Afternoon</div>
+                  <div>下午</div>
                   <div style="background: #4caf50; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #2e7d32; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #4caf50; height: 40px; border-radius: 4px;"></div>
@@ -841,7 +840,7 @@ console.log(tasks.length);</code></pre>
                   <div style="background: #a5d6a7; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #c8e6c9; height: 40px; border-radius: 4px;"></div>
 
-                  <div>Evening</div>
+                  <div>晚上</div>
                   <div style="background: #81c784; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #a5d6a7; height: 40px; border-radius: 4px;"></div>
                   <div style="background: #c8e6c9; height: 40px; border-radius: 4px;"></div>
@@ -861,7 +860,7 @@ console.log(tasks.length);</code></pre>
           `,
           buttons: [
             {
-              label: 'Export Report',
+              label: '导出报告',
               icon: 'download',
               onClick: async () => {
                 await PluginAPI.showSnack({
@@ -872,7 +871,7 @@ console.log(tasks.length);</code></pre>
               },
             },
             {
-              label: 'Share',
+              label: '分享',
               icon: 'share',
               onClick: async () => {
                 await PluginAPI.showSnack({
@@ -883,7 +882,7 @@ console.log(tasks.length);</code></pre>
               },
             },
             {
-              label: 'Close',
+              label: '关闭',
               icon: 'close',
               color: 'primary',
             },

@@ -30,7 +30,7 @@ const PromptView: Component<PromptViewProps> = (props) => {
   const [taskPreviews, setTaskPreviews] = createSignal<Record<string, string[]>>({});
   const [projects, setProjects] = createSignal<Array<{ id: string; title: string }>>([]);
   const [generatedPrompt, setGeneratedPrompt] = createSignal<string>('');
-  const [copyButtonText, setCopyButtonText] = createSignal('📋 Copy to clipboard');
+  const [copyButtonText, setCopyButtonText] = createSignal('📋 复制到剪贴板');
 
   const { isLoading, loadTaskCounts, getTasksForSelection } = useTaskData();
 
@@ -76,19 +76,19 @@ const PromptView: Component<PromptViewProps> = (props) => {
     const success = await copyToClipboard(generatedPrompt());
 
     if (success) {
-      setCopyButtonText('Copied!');
-      setTimeout(() => setCopyButtonText('📋 Copy to clipboard'), 1500);
+      setCopyButtonText('已复制！');
+      setTimeout(() => setCopyButtonText('📋 复制到剪贴板'), 1500);
     }
   };
 
   const getSelectionDisplayName = () => {
     const selection = taskSelection();
-    if (selection === 'today') return "Today's tasks";
-    if (selection === 'context') return 'Context tasks';
-    if (selection === 'all') return 'All tasks';
+    if (selection === 'today') return '今日任务';
+    if (selection === 'context') return '当前工作区任务';
+    if (selection === 'all') return '全部任务';
     if (selection.startsWith('project-')) {
       const project = projects().find((p) => `project-${p.id}` === selection);
-      return project?.title || 'Project';
+      return project?.title || '项目';
     }
     return '';
   };
@@ -107,38 +107,38 @@ const PromptView: Component<PromptViewProps> = (props) => {
 
       <div class="prompt-options">
         <label class="dropdown-label">
-          Include tasks in prompt:
+          在提示词中包含任务：
           <select
             class="task-dropdown"
             value={taskSelection()}
             onChange={(e) => handleTaskSelectionChange(e.target.value)}
           >
-            <option value="none">No tasks</option>
-            <option value="today">Today's tasks ({taskCounts().today || 0} tasks)</option>
+            <option value="none">不包含任务</option>
+            <option value="today">今日任务（{taskCounts().today || 0} 个任务）</option>
             <option value="context">
-              Current project/context ({taskCounts().context || 0} tasks)
+              当前项目 / 工作区（{taskCounts().context || 0} 个任务）
             </option>
-            <optgroup label="Individual Projects">
+            <optgroup label="各个项目">
               <For each={projects()}>
                 {(project) => (
                   <option value={`project-${project.id}`}>
-                    {project.title} ({taskCounts()[`project-${project.id}`] || 0} tasks)
+                    {project.title}（{taskCounts()[`project-${project.id}`] || 0} 个任务）
                   </option>
                 )}
               </For>
             </optgroup>
-            <option value="all">All tasks ({taskCounts().all || 0} tasks)</option>
+            <option value="all">全部任务（{taskCounts().all || 0} 个任务）</option>
           </select>
         </label>
 
         <div class="task-preview">
           <Show when={isLoading()}>
-            <LoadingSpinner message="Loading tasks..." />
+            <LoadingSpinner message="正在加载任务…" />
           </Show>
 
           <Show when={!isLoading()}>
             <Show when={taskSelection() === 'none'}>
-              <span class="task-count-info text-muted">No tasks will be included</span>
+              <span class="task-count-info text-muted">不会包含任务</span>
             </Show>
 
             <Show when={taskSelection() !== 'none'}>
@@ -168,7 +168,7 @@ const PromptView: Component<PromptViewProps> = (props) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          🤖 Open in ChatGPT
+          🤖 在 ChatGPT 中打开
         </a>
       </div>
     </div>
@@ -188,21 +188,19 @@ const TaskPreview: Component<{
   return (
     <div class="task-preview-content">
       <Show when={hasNoTasks()}>
-        <span class="task-count-info text-muted">
-          No tasks available for this selection
-        </span>
+        <span class="task-count-info text-muted">所选范围内暂无任务</span>
       </Show>
 
       <Show when={!hasNoTasks()}>
         <div class="task-count-header">
-          {props.displayName} ({props.counts[props.selection] || 0}):
+          {props.displayName}（{props.counts[props.selection] || 0}):
         </div>
         <div class="task-preview-list">
           <For each={tasks().slice(0, 3)}>
             {(taskTitle) => <div class="task-preview-item">• {taskTitle}</div>}
           </For>
           <Show when={tasks().length > 3}>
-            <div class="task-preview-more">...and {tasks().length - 3} more</div>
+            <div class="task-preview-more">…还有 {tasks().length - 3} 个</div>
           </Show>
         </div>
       </Show>

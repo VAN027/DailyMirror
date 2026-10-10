@@ -12,7 +12,7 @@
   "permissions": [],
   "hooks": [],
   "i18n": {
-    "languages": ["en"]
+    "languages": ["en", "zh"]
   },
   "issueProvider": {
     "pollIntervalMs": 300000,

@@ -7,7 +7,7 @@ interface LoadingSpinnerProps {
 export const LoadingSpinner: Component<LoadingSpinnerProps> = (props) => {
   return (
     <div class="loading-container">
-      <p class="text-muted">{props.message || 'Loading...'}</p>
+      <p class="text-muted">{props.message || '正在加载…'}</p>
     </div>
   );
 };

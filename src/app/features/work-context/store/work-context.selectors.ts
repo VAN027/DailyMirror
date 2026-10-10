@@ -1,3 +1,4 @@
+import { getDbDateStr } from '../../../util/get-db-date-str';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { WorkContext, WorkContextState, WorkContextType } from '../work-context.model';
 import {
@@ -48,6 +49,7 @@ const computeOrderedTaskIdsForToday = (
         dueDay?: string | null;
         dueWithTime?: number | null;
         parentId?: string | null;
+        isDone?: boolean;
       }
     | undefined
   >,
@@ -68,13 +70,20 @@ const computeOrderedTaskIdsForToday = (
     if (task) {
       // Check dueWithTime first (takes priority - mutual exclusivity)
       if (task.dueWithTime) {
-        if (isTodayWithOffset(task.dueWithTime, todayStr, startOfNextDayDiffMs)) {
+        if (
+          isTodayWithOffset(task.dueWithTime, todayStr, startOfNextDayDiffMs) ||
+          (!task.isDone &&
+            getDbDateStr(new Date(task.dueWithTime - startOfNextDayDiffMs)) < todayStr)
+        ) {
           tasksForToday.push(taskId);
         }
         // If dueWithTime is set but not for today, skip (don't check dueDay)
       }
       // Fallback: check dueDay only if dueWithTime is not set
-      else if (task.dueDay === todayStr) {
+      else if (
+        task.dueDay === todayStr ||
+        (!task.isDone && !!task.dueDay && task.dueDay < todayStr)
+      ) {
         tasksForToday.push(taskId);
       }
     }
@@ -457,13 +466,20 @@ export const selectTodayTagRepair = createSelector(
       if (task) {
         // Check dueWithTime first (takes priority)
         if (task.dueWithTime) {
-          if (isTodayWithOffset(task.dueWithTime, todayStr, startOfNextDayDiffMs)) {
+          if (
+            isTodayWithOffset(task.dueWithTime, todayStr, startOfNextDayDiffMs) ||
+            (!task.isDone &&
+              getDbDateStr(new Date(task.dueWithTime - startOfNextDayDiffMs)) < todayStr)
+          ) {
             allTasksWithDueToday.add(task.id);
           }
           // If dueWithTime is set but not for today, skip (don't check dueDay)
         }
         // Fallback: check dueDay only if dueWithTime is not set
-        else if (task.dueDay === todayStr) {
+        else if (
+          task.dueDay === todayStr ||
+          (!task.isDone && !!task.dueDay && task.dueDay < todayStr)
+        ) {
           allTasksWithDueToday.add(task.id);
         }
       }

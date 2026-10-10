@@ -40,7 +40,7 @@
           step="5"
           min="0"
           max="100"
-          aria-label="units"
+          [attr.aria-label]="T.LOCAL_UI.UNITS | translate"
           ><input
             matSliderThumb
             [(ngModel)]="percentageDone"

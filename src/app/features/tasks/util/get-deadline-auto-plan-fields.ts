@@ -138,20 +138,10 @@ export const getDeadlineAutoPlanDecision = (
   return NO_AUTO_PLAN;
 };
 
+// DailyMirror: new local actions keep deadlines independent of execution dates.
+// Keep the legacy decision function above for deterministic replay of old operations.
 export const getDeadlineAutoPlanFields = (
-  dateService: Pick<DateService, 'todayStr' | 'getStartOfNextDayDiffMs'>,
-  deadlineDay?: string | null,
-  deadlineWithTime?: number | null,
-): DeadlineAutoPlanFields => {
-  const context: DeadlineAutoPlanContext = {
-    today: dateService.todayStr(),
-    startOfNextDayDiffMs: dateService.getStartOfNextDayDiffMs(),
-  };
-
-  return isDeadlineTodayForAutoPlan(deadlineDay, deadlineWithTime, context)
-    ? {
-        autoPlanToday: context.today,
-        autoPlanStartOfNextDayDiffMs: context.startOfNextDayDiffMs,
-      }
-    : {};
-};
+  _dateService: Pick<DateService, 'todayStr' | 'getStartOfNextDayDiffMs'>,
+  _deadlineDay?: string | null,
+  _deadlineWithTime?: number | null,
+): DeadlineAutoPlanFields => ({});

@@ -1,0 +1,76 @@
+{
+  "TITLE": {
+    "IMPORT": "从 Todoist 导入",
+    "PREVIEW": "预览",
+    "IMPORTING": "正在导入…",
+    "FINISHED": "导入完成",
+    "INCOMPLETE": "导入未完成"
+  },
+  "TOKEN": {
+    "LABEL": "Todoist API 令牌",
+    "PLACEHOLDER": "粘贴 Todoist API 令牌",
+    "INTRO": "将 Todoist 中未归档的项目、任务、子任务、标签和到期日期导入 Super Productivity。导入只会添加数据，不会更改或删除现有内容。",
+    "HELP": "在 Todoist 的“设置 → 集成 → 开发者”中获取令牌。令牌仅发送到 api.todoist.com，不会保存。",
+    "REQUIRED": "请先粘贴 Todoist API 令牌。",
+    "LOADING": "正在加载 Todoist 数据…",
+    "NO_PROJECTS": "此 Todoist 账户没有未归档的项目。"
+  },
+  "ERROR": {
+    "LOAD_FAILED": "无法从 Todoist 加载数据：{{error}}。请检查令牌和网络连接。",
+    "IMPORT_FAILED": "导入失败：{{error}}",
+    "IMPORT_STOPPED": "导入在“{{project}}”处停止：{{error}}。该项目仅创建了一部分。重试前请删除“{{project}}”，然后重新选择此项目及剩余项目。"
+  },
+  "BUTTON": {
+    "LOAD_PREVIEW": "加载预览",
+    "IMPORT": "导入",
+    "BACK": "返回"
+  },
+  "PREVIEW": {
+    "CHOOSE_PROJECTS": "选择要导入的项目：",
+    "PROJECT_COUNTS": "{{title}} — 任务：{{taskCount}}，子任务：{{subTaskCount}}",
+    "ALREADY_EXISTS": "已存在，可能之前已导入",
+    "PRIORITY_LEGEND": "将 Todoist 优先级映射为：",
+    "PRIORITY_NONE": "不映射",
+    "PRIORITY_TAGS": "p1–p3 标签（p4 不添加标签）",
+    "PRIORITY_EISENHOWER": "四象限：紧急 / 重要标签",
+    "LOSS_HEADING": "无法完整迁移的内容",
+    "SELECT_PROJECT": "请至少选择一个要导入的项目。"
+  },
+  "LOSS": {
+    "NESTED_PROJECTS": "嵌套项目将平铺到项目列表：{{count}} 个。",
+    "SECTIONS": "不保留分区，任务在项目中的顺序会保留：{{count}} 个。",
+    "DEMOTED_SUBTASKS": "多层子任务将改为直接子任务（最多两层）：{{count}} 个。",
+    "RECURRING": "重复任务仅保留下次日期，重复规则会写入任务备注：{{count}} 个。",
+    "DAY_DURATIONS": "不导入整天时长：{{count}} 个。",
+    "SUBTASK_LABELS": "不导入子任务标签（子任务不支持标签）：{{count}} 个。",
+    "SUBTASK_PRIORITIES": "带优先级的子任务不会获得优先级标签：{{count}} 个。",
+    "ASSIGNEES": "不保留任务协作者分配：{{count}} 个。",
+    "ATTACHMENTS": "评论附件仅保留链接，不包含文件：{{count}} 个。",
+    "TRUNCATED_FIELDS": "超长内容会截短至安全导入长度：{{count}} 项。",
+    "COMPLETED_AND_REMINDERS": "不导入已完成任务和提醒。"
+  },
+  "IMPORT": {
+    "STARTING": "正在开始…",
+    "PHASE_PROJECT": "正在创建项目",
+    "PHASE_TASKS": "正在创建任务",
+    "PHASE_DETAILS": "正在应用日期和标签 {{current}}/{{total}}",
+    "PROGRESS": "项目 {{current}}/{{total}}：{{title}} — {{detail}}"
+  },
+  "SUMMARY": {
+    "PROJECT_RESULT": "{{title}}：任务 {{landedTasks}}/{{plannedTasks}}，子任务 {{landedSubTasks}}/{{plannedSubTasks}}",
+    "SHORTFALL": "部分内容未能导入，请检查",
+    "UNVERIFIED": "无法核实导入数量，即使任务已导入，上方数量也可能显示为 0。",
+    "CREATED_TAGS": "已创建标签：{{tags}}",
+    "NOT_CARRIED_OVER": "未迁移的内容",
+    "SNACK_FINISHED": "Todoist 导入完成",
+    "UNDO": "导入只添加数据。如需撤销，请删除导入时创建的项目。"
+  },
+  "PARSE": {
+    "UNTITLED_PROJECT": "未命名项目",
+    "UNTITLED_TASK": "未命名任务",
+    "REPEATS": "重复规则：{{rule}}",
+    "DEADLINE": "截止日期：{{date}}",
+    "COMMENTS": "评论：",
+    "FILE": "文件"
+  }
+}

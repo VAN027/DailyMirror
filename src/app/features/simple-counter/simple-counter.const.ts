@@ -23,7 +23,7 @@ export const DEFAULT_SIMPLE_COUNTERS: SimpleCounter[] = [
   {
     ...EMPTY_SIMPLE_COUNTER,
     id: 'STANDING_DESK_ID',
-    title: 'Standing Desk Timer',
+    title: '站立办公计时器',
     type: SimpleCounterType.StopWatch,
     icon: 'directions_walk',
     isTrackStreaks: true,
@@ -32,7 +32,7 @@ export const DEFAULT_SIMPLE_COUNTERS: SimpleCounter[] = [
   {
     ...EMPTY_SIMPLE_COUNTER,
     id: 'COFFEE_COUNTER',
-    title: 'Coffee Counter',
+    title: '咖啡计数器',
     type: SimpleCounterType.ClickCounter,
     icon: 'free_breakfast',
     isTrackStreaks: false,
@@ -41,7 +41,7 @@ export const DEFAULT_SIMPLE_COUNTERS: SimpleCounter[] = [
   {
     ...EMPTY_SIMPLE_COUNTER,
     id: 'STRETCHING_COUNTER',
-    title: 'Stretching Counter',
+    title: '拉伸计数器',
     type: SimpleCounterType.RepeatedCountdownReminder,
     icon: 'fitness_center',
     countdownDuration: 30 * 60 * 1000,

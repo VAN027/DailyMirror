@@ -32,7 +32,7 @@ const CustomPromptManager: Component<CustomPromptManagerProps> = (props) => {
   const handleDeletePrompt = async (index: number) => {
     const prompt = prompts()[index];
 
-    if (!confirm(`Delete prompt "${prompt.title}"? This cannot be undone.`)) {
+    if (!confirm(`确定删除提示词“${prompt.title}”吗？此操作无法撤销。`)) {
       return;
     }
 
@@ -41,12 +41,12 @@ const CustomPromptManager: Component<CustomPromptManagerProps> = (props) => {
       await loadPrompts();
     } catch (error) {
       console.error('Error deleting prompt:', error);
-      alert('Error deleting prompt. Please try again.');
+      alert('删除提示词失败，请重试。');
     }
   };
 
   const CreatePromptButton = () => (
-    <Button onClick={() => props.onEditPrompt(null)}>➕ Add Custom Prompt</Button>
+    <Button onClick={() => props.onEditPrompt(null)}>➕ 添加自定义提示词</Button>
   );
 
   onMount(loadPrompts);
@@ -54,16 +54,16 @@ const CustomPromptManager: Component<CustomPromptManagerProps> = (props) => {
   return (
     <div class="page-fade">
       <div class="custom-prompts-header">
-        <h2 class="text-primary">My Custom Prompts</h2>
+        <h2 class="text-primary">我的自定义提示词</h2>
         <CreatePromptButton />
       </div>
 
       {isLoading() ? (
-        <LoadingSpinner message="Loading custom prompts..." />
+        <LoadingSpinner message="正在加载自定义提示词…" />
       ) : prompts().length === 0 ? (
         <EmptyState
-          title="No custom prompts yet."
-          message="Create your first custom prompt to get started!"
+          title="暂无自定义提示词。"
+          message="创建第一个自定义提示词开始使用。"
           action={<CreatePromptButton />}
         />
       ) : (
@@ -101,14 +101,14 @@ const PromptCard: Component<{
           <Button
             variant="secondary"
             onClick={props.onEdit}
-            title="Edit prompt"
+            title="编辑提示词"
           >
             ✏️
           </Button>
           <Button
             variant="secondary"
             onClick={props.onDelete}
-            title="Delete prompt"
+            title="删除提示词"
           >
             🗑️
           </Button>
@@ -120,7 +120,7 @@ const PromptCard: Component<{
       </div>
 
       <div class="prompt-card-actions">
-        <Button onClick={props.onSelect}>Use This Prompt</Button>
+        <Button onClick={props.onSelect}>使用此提示词</Button>
       </div>
     </div>
   );

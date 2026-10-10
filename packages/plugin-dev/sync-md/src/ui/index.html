@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>sync.md Configuration</title>
+    <title>Markdown 同步设置</title>
     <style>
       /*
        * sync.md Plugin Styles
@@ -129,11 +129,11 @@
   <body>
     <div class="container">
       <h1>sync.md</h1>
-      <p class="subtitle">Sync tasks between Super Productivity and Markdown files</p>
+      <p class="subtitle">在 Super Productivity 和 Markdown 文件之间同步任务</p>
 
       <form id="configForm">
         <div class="form-group">
-          <label for="filePath">Markdown File Path</label>
+          <label for="filePath">Markdown 文件路径</label>
           <div class="file-path-wrapper">
             <input
               type="text"
@@ -146,24 +146,21 @@
               class="test-file-btn"
               onclick="testFilePath()"
             >
-              Test
+              检查
             </button>
           </div>
-          <div class="help-text">Full path to the markdown file to sync with</div>
+          <div class="help-text">要同步的 Markdown 文件的完整路径</div>
         </div>
 
         <div class="form-group">
-          <label for="projectId">Project</label>
+          <label for="projectId">项目</label>
           <select id="projectId">
-            <option value="">Loading projects...</option>
+            <option value="">正在加载项目…</option>
           </select>
-          <div class="help-text">Select the project to sync tasks with</div>
+          <div class="help-text">选择要同步任务的项目</div>
         </div>
 
-        <div class="warning">
-          Please be warned that task data of this project might be involuntary changed or
-          deleted!
-        </div>
+        <div class="warning">请注意：此项目的任务数据可能被意外更改或删除！</div>
 
         <div class="button-group">
           <button
@@ -171,7 +168,7 @@
             class="btn-primary"
             id="saveBtn"
           >
-            Save & Sync
+            保存并同步
           </button>
         </div>
       </form>
@@ -252,7 +249,7 @@
           }
 
           const select = document.getElementById('projectId');
-          select.innerHTML = '<option value="">Select a project...</option>';
+          select.innerHTML = '<option value="">选择项目…</option>';
 
           if (projects && projects.length > 0) {
             projects.forEach((project) => {
@@ -262,11 +259,11 @@
               select.appendChild(option);
             });
           } else {
-            select.innerHTML = '<option value="">No projects found</option>';
+            select.innerHTML = '<option value="">没有找到项目</option>';
           }
         } catch (error) {
-          console.error('Failed to load projects:', error);
-          showStatus('Failed to load projects', 'error');
+          console.error('加载项目失败:', error);
+          showStatus('加载项目失败', 'error');
 
           // Retry after a delay
           setTimeout(() => {
@@ -293,16 +290,13 @@
       async function testFilePath() {
         const filePath = document.getElementById('filePath').value;
         if (!filePath) {
-          showStatus('Please enter a file path', 'error');
+          showStatus('请输入文件路径', 'error');
           return;
         }
 
         // Check if we're in desktop mode first
         if (!window.PluginAPI?.executeNodeScript) {
-          showStatus(
-            'File operations are only available in the desktop version of Super Productivity',
-            'error',
-          );
+          showStatus('文件操作仅在桌面版 Super Productivity 中可用', 'error');
           return;
         }
 
@@ -315,12 +309,12 @@
               try {
                 const absolutePath = path.resolve(args[0]);
                 if (!fs.existsSync(absolutePath)) {
-                  return { success: false, error: 'File not found' };
+                  return { success: false, error: '找不到文件' };
                 }
 
                 const stats = fs.statSync(absolutePath);
                 if (!stats.isFile()) {
-                  return { success: false, error: 'Path is not a file' };
+                  return { success: false, error: '此路径不是文件' };
                 }
 
                 const content = fs.readFileSync(absolutePath, 'utf8');
@@ -345,12 +339,12 @@
 
           if (result.success && result.result?.success) {
             const info = result.result.info;
-            showStatus(`File is valid! Found ${info.taskCount} tasks`, 'success');
+            showStatus(`文件有效，找到 ${info.taskCount} 个任务`, 'success');
           } else {
-            showStatus(result.result?.error || 'Failed to access file', 'error');
+            showStatus(result.result?.error || '无法访问文件', 'error');
           }
         } catch (error) {
-          showStatus('Failed to test file: ' + error.message, 'error');
+          showStatus('文件检查失败：' + error.message, 'error');
         }
       }
 
@@ -363,16 +357,13 @@
         const syncDirection = 'bidirectional';
 
         if (!filePath || !projectId) {
-          showStatus('Please fill in all required fields', 'error');
+          showStatus('请填写所有必填项', 'error');
           return;
         }
 
         // Check if we're in desktop mode
         if (!window.PluginAPI?.executeNodeScript) {
-          showStatus(
-            'sync.md plugin requires the desktop version of Super Productivity',
-            'error',
-          );
+          showStatus('Markdown 同步插件需要桌面版 Super Productivity', 'error');
           return;
         }
 
@@ -407,8 +398,8 @@
           config = newConfig;
 
           // Trigger sync immediately after saving
-          saveBtn.innerHTML = 'Syncing<span class="spinner"></span>';
-          showStatus('Configuration saved - sync started...', 'info');
+          saveBtn.innerHTML = '正在同步<span class="spinner"></span>';
+          showStatus('设置已保存，正在开始同步…', 'info');
 
           try {
             const syncResponse = await sendMessage({ type: 'syncNow' });
@@ -416,22 +407,22 @@
             // The SYNC_COMPLETED or SYNC_ERROR events will handle the final status
             if (!syncResponse?.success && syncResponse?.error) {
               // Only show error if there's an actual error message (not just missing success)
-              showStatus('Sync error: ' + syncResponse.error, 'error');
+              showStatus('同步错误：' + syncResponse.error, 'error');
             }
           } catch (error) {
-            showStatus('Failed to trigger sync: ' + error.message, 'error');
+            showStatus('无法启动同步：' + error.message, 'error');
           }
 
           // Re-enable button
           saveBtn.disabled = false;
-          saveBtn.textContent = 'Save & Sync';
+          saveBtn.textContent = '保存并同步';
         } catch (error) {
           console.error('Failed to save config:', error);
-          showStatus('Failed to save configuration', 'error');
+          showStatus('保存设置失败', 'error');
           // Re-enable button on error
           const saveBtn = document.getElementById('saveBtn');
           saveBtn.disabled = false;
-          saveBtn.textContent = 'Save & Sync';
+          saveBtn.textContent = '保存并同步';
         }
       });
 
@@ -445,36 +436,36 @@
           // Show success with sync result details
           if (event.data.result) {
             const result = event.data.result;
-            let message = 'Sync completed successfully';
+            let message = '同步成功';
             if (
               result.tasksAdded > 0 ||
               result.tasksUpdated > 0 ||
               result.tasksDeleted > 0
             ) {
-              message += ` - ${result.tasksAdded} added, ${result.tasksUpdated} updated, ${result.tasksDeleted} deleted`;
+              message += ` - 新增 ${result.tasksAdded} 个，更新 ${result.tasksUpdated} 个，删除 ${result.tasksDeleted} 个`;
             } else {
-              message += ' - no changes';
+              message += ' - 无更改';
             }
             showStatus(message, 'success');
           } else {
-            showStatus('Sync completed successfully', 'success');
+            showStatus('同步成功', 'success');
           }
 
           // Re-enable save button if it was disabled
           const saveBtn = document.getElementById('saveBtn');
           if (saveBtn && saveBtn.disabled) {
             saveBtn.disabled = false;
-            saveBtn.textContent = 'Save & Sync';
+            saveBtn.textContent = '保存并同步';
           }
         } else if (event.data?.type === 'SYNC_ERROR') {
           console.log('Sync error event received:', event.data.error);
-          showStatus('Sync error: ' + event.data.error, 'error');
+          showStatus('同步错误：' + event.data.error, 'error');
 
           // Re-enable save button on error
           const saveBtn = document.getElementById('saveBtn');
           if (saveBtn && saveBtn.disabled) {
             saveBtn.disabled = false;
-            saveBtn.textContent = 'Save & Sync';
+            saveBtn.textContent = '保存并同步';
           }
         }
       });
@@ -497,14 +488,14 @@
         // Wait for PluginAPI
         const apiAvailable = await waitForPluginAPI();
         if (!apiAvailable) {
-          showStatus('Plugin API not available. Please reload the page.', 'error');
+          showStatus('插件接口不可用，请重新加载页面。', 'error');
           return;
         }
 
         // Check if we're in desktop mode
         if (!window.PluginAPI?.executeNodeScript) {
           showStatus(
-            'sync.md plugin requires the desktop version of Super Productivity. File sync features are not available in the web version.',
+            'Markdown 同步插件需要桌面版 Super Productivity，网页版不支持文件同步。',
             'error',
           );
           document.getElementById('configForm').style.opacity = '0.5';

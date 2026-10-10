@@ -212,6 +212,9 @@
               </div>
             </button>
           }
+          @if (isOverdue() && !t.isDone) {
+            <small>{{ T.DM.CARRYOVER | translate }}</small>
+          }
           @if (hasTimeConflict()) {
             <!-- Decorative: MatIcon forces aria-hidden, and the adjacent schedule
                  button already exposes the conflict to assistive tech. Tooltip is

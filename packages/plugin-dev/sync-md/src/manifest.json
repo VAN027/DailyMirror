@@ -1,9 +1,9 @@
 {
   "id": "sync-md",
   "manifestVersion": 1,
-  "name": "sync.md",
+  "name": "Markdown 同步",
   "version": "2.0.0",
-  "description": "Sync markdown files with SuperProductivity projects",
+  "description": "在 Markdown 文件和项目之间同步任务。",
   "author": "SuperProductivity",
   "homepage": "https://github.com/super-productivity/super-productivity",
   "repository": {

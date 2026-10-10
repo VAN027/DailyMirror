@@ -136,8 +136,8 @@ export const selectFocusSessionLineChartDataComplete = createSelector(
     const chart: LineChartData = {
       labels: [],
       datasets: [
-        { data: [], label: 'Focus sessions' },
-        { data: [], label: 'Focus minutes' },
+        { data: [], label: '专注次数' },
+        { data: [], label: '专注分钟数' },
       ],
     };
 

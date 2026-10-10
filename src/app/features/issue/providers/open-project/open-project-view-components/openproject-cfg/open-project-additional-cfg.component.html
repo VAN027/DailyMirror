@@ -90,7 +90,7 @@
                   min="0"
                   max="100"
                   step="5"
-                  aria-label="units"
+                  [attr.aria-label]="T.LOCAL_UI.UNITS | translate"
                   [ngModel]="this.cfg.progressOnDone"
                   (ngModelChange)="partialModelChange({ progressOnDone: $event })"
                   [ngModelOptions]="{ standalone: true }"

@@ -1,3 +1,4 @@
+import { automationLabel } from '../labels';
 import { Condition, ConditionType } from '../../types';
 
 interface ConditionInputProps {
@@ -25,7 +26,7 @@ export function ConditionInput(props: ConditionInputProps) {
           }
         >
           {types.map((t) => (
-            <option value={t}>{t}</option>
+            <option value={t}>{automationLabel(t)}</option>
           ))}
         </select>
       </div>
@@ -34,7 +35,7 @@ export function ConditionInput(props: ConditionInputProps) {
           type="text"
           value={props.condition.value}
           onInput={(e) => props.onChange({ ...props.condition, value: e.currentTarget.value })}
-          placeholder="Value"
+          placeholder="内容"
         />
       </div>
       <div style={{ width: 'auto', flex: '0' }}>
@@ -42,7 +43,7 @@ export function ConditionInput(props: ConditionInputProps) {
           class="secondary outline"
           onClick={props.onRemove}
           style={{ width: 'auto' }}
-          title="Remove Condition"
+          title="移除条件"
         >
           ✕
         </button>

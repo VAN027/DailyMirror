@@ -1,3 +1,4 @@
+import { automationLabel } from '../labels';
 import { For, createSignal, createEffect } from 'solid-js';
 import { AutomationRule, AutomationTriggerType, Condition, Action } from '../../types';
 import { Dialog } from './Dialog';
@@ -78,9 +79,9 @@ export function RuleEditor(props: RuleEditorProps) {
 
   const formatActionLabel = (action: Action) => {
     if (action.type === 'deleteTask') {
-      return 'deleteTask';
+      return automationLabel('deleteTask');
     }
-    return `${action.type}: ${action.value}`;
+    return `${automationLabel(action.type)}: ${action.value}`;
   };
 
   // Condition handlers
@@ -122,8 +123,8 @@ export function RuleEditor(props: RuleEditorProps) {
   };
 
   const formatConditionLabel = (condition: Condition) => {
-    const regexSuffix = condition.isRegex ? ' (regex)' : '';
-    return `${condition.type}${regexSuffix}: ${condition.value}`;
+    const regexSuffix = condition.isRegex ? '（正则表达式）' : '';
+    return `${automationLabel(condition.type)}${regexSuffix}: ${condition.value}`;
   };
 
   return (
@@ -131,12 +132,12 @@ export function RuleEditor(props: RuleEditorProps) {
       <Dialog
         isOpen={props.isOpen}
         onClose={props.onCancel}
-        title={localRule().id ? 'Edit Rule' : 'New Rule'}
+        title={localRule().id ? '编辑规则' : '新建规则'}
         footer={
           <div class="grid">
             <div style={{ 'text-align': 'left' }}>
               {localRule().id && (
-                <button onClick={() => props.onDelete(localRule())}>Delete Rule</button>
+                <button onClick={() => props.onDelete(localRule())}>删除规则</button>
               )}
             </div>
             <div style={{ 'text-align': 'right' }}>
@@ -145,10 +146,10 @@ export function RuleEditor(props: RuleEditorProps) {
                 onClick={props.onCancel}
                 style={{ 'margin-right': '0.5rem' }}
               >
-                Cancel
+                取消
               </button>
               <button class="btn-primary" onClick={saveLocalRule}>
-                Save Rule
+                保存规则
               </button>
             </div>
           </div>
@@ -156,17 +157,17 @@ export function RuleEditor(props: RuleEditorProps) {
       >
         <form onSubmit={(e) => e.preventDefault()}>
           <label>
-            Rule Name
+            规则名称
             <input
               type="text"
               value={localRule().name}
               onInput={(e) => setLocalRule({ ...localRule(), name: e.currentTarget.value })}
-              placeholder="e.g. Auto-tag urgent tasks"
+              placeholder="例如：自动给紧急任务加标签"
             />
           </label>
 
           <label>
-            Trigger
+            触发条件
             <select
               value={localRule().trigger.type}
               onChange={(e) =>
@@ -177,7 +178,7 @@ export function RuleEditor(props: RuleEditorProps) {
               }
             >
               {triggerTypes.map((t) => (
-                <option value={t}>{t}</option>
+                <option value={t}>{automationLabel(t)}</option>
               ))}
             </select>
           </label>
@@ -185,10 +186,9 @@ export function RuleEditor(props: RuleEditorProps) {
           {localRule().trigger.type === 'shortcut' && (
             <p>
               <small>
-                Save the rule, then assign a key in <em>Settings &gt; Keyboard Shortcuts</em>, where
-                it is listed by its rule name under <em>automations</em>. Actions apply to the task
-                row you currently have focused; without a focused task only task-independent actions
-                (create task, snack, dialog, webhook) do anything.
+                保存规则后，在<em>设置 → 键盘快捷键</em>的<em>自动化</em>
+                分类中按规则名称指定按键。操作作用于当前选中的任务；没有选中任务时，仅执行创建任务、显示提示、弹窗和
+                Webhook 等独立操作。
               </small>
             </p>
           )}
@@ -197,15 +197,15 @@ export function RuleEditor(props: RuleEditorProps) {
             <>
               <div class="warning-box">
                 <small>
-                  <strong>Warning:</strong> Time-based triggers only work if the app is running.
-                  They might not work reliably if the app is in the background.
+                  <strong>警告：</strong>{' '}
+                  定时触发仅在应用运行时有效。应用处于后台时，触发可能不可靠。
                   <br />
-                  <em>Note: Conditions and some actions are restricted for time-based triggers.</em>
+                  <em>注意：定时触发可用的条件和操作有所限制。</em>
                 </small>
               </div>
 
               <label>
-                Time (24h format)
+                时间（24 小时制）
                 <input
                   type="time"
                   value={localRule().trigger.value || ''}
@@ -228,7 +228,7 @@ export function RuleEditor(props: RuleEditorProps) {
               <div class="section">
                 <div class="grid">
                   <div>
-                    <h4>Conditions</h4>
+                    <h4>条件</h4>
                   </div>
                   <div style={{ 'text-align': 'right' }}>
                     <button
@@ -237,7 +237,7 @@ export function RuleEditor(props: RuleEditorProps) {
                         setIsConditionDialogOpen(true);
                       }}
                     >
-                      + Add
+                      + 添加
                     </button>
                   </div>
                 </div>
@@ -249,7 +249,7 @@ export function RuleEditor(props: RuleEditorProps) {
                       fallback={
                         <tr>
                           <td colspan={2}>
-                            <small>No conditions</small>
+                            <small>暂无条件</small>
                           </td>
                         </tr>
                       }
@@ -266,7 +266,7 @@ export function RuleEditor(props: RuleEditorProps) {
                               }}
                               style={{ 'margin-right': '0.5rem' }}
                             >
-                              Edit
+                              编辑
                             </button>
                             <button onClick={() => handleRemoveCondition(i())}>✕</button>
                           </td>
@@ -284,7 +284,7 @@ export function RuleEditor(props: RuleEditorProps) {
           <div class="section">
             <div class="grid">
               <div>
-                <h4>Actions</h4>
+                <h4>操作</h4>
               </div>
               <div style={{ 'text-align': 'right' }}>
                 <button
@@ -293,7 +293,7 @@ export function RuleEditor(props: RuleEditorProps) {
                     setIsActionDialogOpen(true);
                   }}
                 >
-                  + Add
+                  + 添加
                 </button>
               </div>
             </div>
@@ -305,7 +305,7 @@ export function RuleEditor(props: RuleEditorProps) {
                   fallback={
                     <tr>
                       <td colspan={2}>
-                        <small>No actions</small>
+                        <small>暂无操作</small>
                       </td>
                     </tr>
                   }
@@ -322,7 +322,7 @@ export function RuleEditor(props: RuleEditorProps) {
                           }}
                           style={{ 'margin-right': '0.5rem' }}
                         >
-                          Edit
+                          编辑
                         </button>
                         <button onClick={() => handleRemoveAction(i())}>✕</button>
                       </td>

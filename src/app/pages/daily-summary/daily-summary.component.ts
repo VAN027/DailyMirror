@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import {
   AfterViewInit,
@@ -88,6 +89,7 @@ export const FINISH_DAY_FINAL_SYNC_TIMEOUT_MS = SYNC_WAIT_TIMEOUT_MS;
   styleUrls: ['./daily-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    RouterLink,
     MatAnchor,
     MatIcon,
     InlineInputComponent,

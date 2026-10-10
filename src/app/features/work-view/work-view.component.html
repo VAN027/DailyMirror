@@ -97,6 +97,9 @@
         ></plugin-index>
       } @else {
         <div class="task-list-wrapper">
+          @if (isOnTodayList()) {
+            <dm-deadline-reminders></dm-deadline-reminders>
+          }
           @if (!(workContextService.isHasTasksToWorkOn$ | async)) {
             <div
               @expandFade
@@ -167,7 +170,9 @@
                   ></task-list>
                 </collapsible>
               }
-            } @else if (sections().length && !customizerService.isCustomized()) {
+            } @else if (
+              !isOnTodayList() && sections().length && !customizerService.isCustomized()
+            ) {
               @let bySection = undoneTasksBySection();
               <div
                 class="sections-wrapper"
@@ -443,7 +448,7 @@
             </div>
           }
 
-          @if (isOnTodayList() && isFinishDayEnabled()) {
+          @if (isOnTodayList()) {
             <finish-day-btn [hasDoneTasks]="hasDoneTasks()"></finish-day-btn>
           }
         </div>

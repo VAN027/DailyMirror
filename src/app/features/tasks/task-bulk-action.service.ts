@@ -1,3 +1,4 @@
+import { PlanningActionsService } from '../dailymirror/planning-actions.service';
 import { computed, inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
@@ -67,6 +68,19 @@ interface DateTimePick {
   providedIn: 'root',
 })
 export class TaskBulkActionService {
+  private readonly _planning = inject(PlanningActionsService);
+
+  async reschedule(): Promise<void> {
+    const tasks = this._resolveInVisualOrder().filter((task) => !task.isDone);
+    if (!tasks.length) return;
+    const focusTarget = this._getFocusTargetAfterRemoval();
+    let applied = false;
+    await this._runSuppressed(async () => {
+      applied = await this._planning.open(tasks);
+    });
+    if (applied) this._finish(focusTarget);
+  }
+
   private readonly _store = inject(Store);
   private readonly _taskService = inject(TaskService);
   private readonly _multiSelect = inject(TaskMultiSelectService);
@@ -412,22 +426,15 @@ export class TaskBulkActionService {
 
   async unschedule(): Promise<void> {
     const tasks = this._resolveInVisualOrder().filter(
-      (t) => !!t.dueDay || !!t.dueWithTime,
+      (task) => !!task.dueDay || !!task.dueWithTime,
     );
     if (!tasks.length) {
       this._snackNothingToDo();
       return;
     }
-    const focusTargetId = this._getFocusTargetAfterRemoval();
-    await this._runSuppressed(() =>
-      tasks.forEach((t) =>
-        this._store.dispatch(
-          TaskSharedActions.unscheduleTask({ id: t.id, isSkipToast: true }),
-        ),
-      ),
-    );
-    this._snack('UNSCHEDULED', tasks.length, {}, 'event_busy');
-    this._finish(focusTargetId);
+    const focusTarget = this._getFocusTargetAfterRemoval();
+    await this._runSuppressed(() => this._planning.apply(tasks, null));
+    this._finish(focusTarget);
   }
 
   async addToToday(): Promise<void> {
@@ -446,6 +453,7 @@ export class TaskBulkActionService {
     this._store.dispatch(
       TaskSharedActions.planTasksForToday({
         taskIds: tasks.map((t) => t.id),
+        isAddToBottom: true,
         today: todayStr,
         startOfNextDayDiffMs: this._dateService.getStartOfNextDayDiffMs(),
         parentTaskMap: Object.fromEntries(tasks.map((t) => [t.id, t.parentId])),
@@ -660,10 +668,11 @@ export class TaskBulkActionService {
   }
 
   /** Runs the dispatch loop with per-action feedback suppressed, then flushes. */
-  private async _runSuppressed(loop: () => void): Promise<void> {
+  private async _runSuppressed(loop: () => void | Promise<void>): Promise<void> {
     this._multiSelect.setBulkFeedbackSuppressed(true);
     try {
-      loop();
+      const result = loop();
+      if (result) await result;
       await this._flush();
     } finally {
       this._multiSelect.setBulkFeedbackSuppressed(false);

@@ -126,7 +126,7 @@ export const validInsertRange = (
 };
 
 /**
- * Target insertion-gap index for a block-menu "Move up" / "Move down".
+ * Target insertion-gap index for a block-menu "上移" / "下移".
  * Returns null when the move is a no-op (already at a boundary it must
  * not cross).
  *

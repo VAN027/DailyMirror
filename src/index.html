@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <title>Super Productivity</title>
+    <title>DailyMirror</title>
 
     <!--
       interactive-widget=resizes-content makes the virtual keyboard shrink the
@@ -239,8 +239,8 @@
       <div class="loading-full-page-wrapper">
         <div class="app-loading">
           <div class="productivity-tip">
-            <h2 id="heading">Heading</h2>
-            <p id="text">Text</p>
+            <h2 id="heading">专注当下</h2>
+            <p id="text">从一件小事开始。</p>
           </div>
 
           <div class="spinner">
@@ -270,7 +270,7 @@
         </div>
       </div>
     </app-root>
-    <noscript>Please enable JavaScript to use this application.</noscript>
+    <noscript>请启用 JavaScript 以使用此应用。</noscript>
     <script>
       // Browser compatibility check — must use ES5 syntax only.
       // The app targets ES2022+ (Safari 18+, Chrome 107+). On older browsers the
@@ -293,12 +293,12 @@
           if (el) {
             el.innerHTML =
               '<div style="text-align:center;padding:32px 24px;max-width:400px">' +
-              '<h2 style="font:500 20px/28px sans-serif;margin:0 0 16px">Browser Update Required</h2>' +
+              '<h2 style="font:500 20px/28px sans-serif;margin:0 0 16px">请更新浏览器</h2>' +
               '<p style="font:400 14px/22px sans-serif;margin:0 0 12px">' +
-              'Super Productivity requires a newer browser version to run.' +
+              'Super Productivity 需要较新的浏览器版本才能运行。' +
               '</p>' +
               '<p style="font:400 14px/22px sans-serif;margin:0">' +
-              'Please update your operating system or browser and try again.' +
+              '请更新操作系统或浏览器后重试。' +
               '</p>' +
               '</div>';
           }
@@ -306,129 +306,42 @@
       })();
 
       var productivityTips = [
-        [
-          'Be kind',
-          'The simple act of paying positive attention to people has a great deal to do with productivity. ― Tom Peters',
-        ],
-        [
-          'Achieve something new',
-          'Productivity is being able to do things that you were never able to do before. ― Franz Kafka',
-        ],
-        [
-          'Focus on output not activity',
-          'Stressing output is the key to improving productivity, while looking to increase activity can result in just the opposite. ― Paul Gauguin',
-        ],
-        [
-          'There is only one solution to complex problems',
-          'Try and correct, try and correct, try and correct, try and correct, try and correct...',
-        ],
-        [
-          'Two step super productivity',
-          '1. Physically get in your work position. 2. Do one small thing.',
-        ],
-        ['Prioritize', 'Do first things first.'],
-        [
-          'Procrastination',
-          'Procrastination is an emotion regulation problem, not a time management problem.',
-        ],
-        [
-          "When in doubt, use the magic programmer's estimation factor",
-          'Programmers estimate task duration as π times the original estimate.',
-        ],
-        ['Be realistic', 'Almost everything will take longer than you think.'],
-        [
-          'Good is good enough',
-          "Don't aim for perfection. Focus on the important things.",
-        ],
-        [
-          'Distractions',
-          "If something is distracting you, get rid of it. If you can't get it out of your head and you can deal with it later, write it down.",
-        ],
-        ['Fun things first', 'The dopamine can get you through the rest!'],
-        [
-          'Celebrate',
-          "After completing a task, don't rush to the next. Give yourself some time to feel good about yourself!",
-        ],
-        [
-          'Establish routines',
-          'Decisions take time. So establishing routines can be very helpful.',
-        ],
-        [
-          'Take breaks',
-          'They help to clear your mind and make you more productive in the long run. Go! Take a walk!',
-        ],
-        ['Mess creates stress', 'Remove junk from your work area!'],
-        ['Focus on a single task', 'Multi-tasking is the worst.'],
-        [
-          'Set your goals',
-          'Having a goal to aim for (or even several smaller ones) increases motivation and focus. Remind yourself why you are doing something!',
-        ],
-        [
-          'Try to get it right the first time',
-          'This can help you avoid dragging a task on forever.',
-        ],
-        [
-          'We are what we repeatedly do',
-          'Excellence, then, is not an act, but a habit. ― Aristotle',
-        ],
-        [
-          "You don't learn to walk by following rules",
-          'You learn by doing, and by falling over. ― Richard Branson',
-        ],
-        ['Define each task', 'A problem well-put is half-solved ― John Dewey'],
-        [
-          "Either like what you do or know why you're doing it",
-          'If not, consider doing something else.',
-        ],
-        ['Focus on what matters', 'Wisdom is learning what to overlook ― William James'],
-        [
-          'Action overcomes fear',
-          'Better to do it than live with the fear of it. ― Logen Ninefingers',
-        ],
-        [
-          "It is not that I'm so smart",
-          'But I stay with the questions much longer. ― Albert Einstein',
-        ],
-        [
-          'You can do it',
-          'No problem can withstand the assault of sustained thinking. ― Voltaire',
-        ],
-        [
-          'I have not failed',
-          "I've just found 10,000 ways that won't work. ― Thomas A. Edison",
-        ],
-        [
-          'Review and reflect',
-          "At the end of the day or week, review your progress and reflect on what worked and what didn't. Adjust your strategies accordingly.",
-        ],
-        [
-          'Set realistic expectations',
-          "Don't overburden yourself with an unrealistic workload. Be honest about what you can accomplish in a given time frame.",
-        ],
-        [
-          'Prioritize tasks',
-          "Use techniques like the Eisenhower Matrix (urgent vs. important) to prioritize your tasks. Focus on what's most important and time-sensitive.",
-        ],
-        [
-          'Always be kind to yourself',
-          'Productivity is impossible without good self care (at the very least, in the long run).',
-        ],
-        [
-          'The path to progress is all about self evaluation',
-          'From time to time reflect if your goals and methods serve you well.',
-        ],
-        [
-          'Embrace progress over achievement',
-          "It's not about massive strides every day, but the accumulation of small, incremental progress that leads to significant achievements over time.",
-        ],
-        [
-          'Decide',
-          "You don't need more time in your day. You need to decide. ― Seth Godin",
-        ],
-        [
-          'Decide to decide what not to do',
-          'There is only is so much time in your day (and your life). Decide what you really want to do.',
-        ],
+        ['善待他人', '用心关注他人，也有助于提高工作效率。'],
+        ['尝试新的成果', '进步意味着做到以前做不到的事情。'],
+        ['关注成果', '以实际成果衡量工作，不只是看自己有多忙。'],
+        ['反复尝试和改进', '遇到复杂问题，就从一次小尝试开始。'],
+        ['从小事开始', '坐到工作位置，先完成一件小事。'],
+        ['分清轻重缓急', '先做最重要的事。'],
+        ['理解拖延', '留意任务带来的情绪，找到容易开始的第一步。'],
+        ['给估时留余量', '任务往往比最初预计花费更多时间。'],
+        ['保持现实', '为意外情况留出时间。'],
+        ['足够好就很好', '别让追求完美妨碍完成重要的事。'],
+        ['减少干扰', '把暂时无法处理的念头记下来，再回到当前任务。'],
+        ['先找一点乐趣', '用一件愿意做的小事启动状态。'],
+        ['庆祝完成', '完成任务后，给自己一点肯定。'],
+        ['建立习惯', '固定流程可以减少重复决策。'],
+        ['适时休息', '起身走走，让头脑恢复清晰。'],
+        ['整理工作区', '清除不需要的物品，让注意力更集中。'],
+        ['一次做一件事', '减少来回切换，专心完成当前任务。'],
+        ['明确目标', '提醒自己为什么要做这件事。'],
+        ['认真做好第一步', '尽早澄清要求，可以减少返工。'],
+        ['让行动成为习惯', '持续的小行动比偶尔的冲刺更可靠。'],
+        ['在实践中学习', '通过尝试和纠正积累经验。'],
+        ['把任务说清楚', '问题描述清楚，解决起来就更容易。'],
+        ['了解工作的意义', '想清楚自己为什么选择这件事。'],
+        ['专注重要的事', '学会放下不重要的细节。'],
+        ['用行动化解担忧', '先迈出一个可以完成的小步骤。'],
+        ['保持耐心', '给困难的问题多一点思考时间。'],
+        ['你可以做到', '持续思考和尝试，逐步找到解决办法。'],
+        ['从失败中学习', '一次不成功的尝试，也能排除一个错误方向。'],
+        ['回顾与反思', '每天或每周检查进展，调整不奏效的方法。'],
+        ['设定合理预期', '根据可用时间安排工作，避免过度承诺。'],
+        ['安排任务优先级', '根据重要性和紧急性安排任务。'],
+        ['照顾好自己', '休息、饮食和健康是持续工作的基础。'],
+        ['定期自我评估', '检查当前目标和方法是否仍然适合自己。'],
+        ['重视一点点进步', '小进步持续积累，也能带来显著成果。'],
+        ['做出决定', '明确下一步行动，让时间用于真正想做的事。'],
+        ['决定不做什么', '时间有限，把精力留给最重要的目标。'],
       ];
       var randomIndex = Math.floor(Math.random() * productivityTips.length);
       var headingEl = document.getElementById('heading');

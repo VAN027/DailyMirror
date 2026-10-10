@@ -126,7 +126,11 @@ const valueToRef = (value: string): CustomThemeRef => {
               @for (theme of customThemeService.themes(); track optionValue(theme)) {
                 <mat-option [value]="optionValue(theme)">
                   <span class="theme-option-row">
-                    <span class="theme-option-label">{{ theme.name }}</span>
+                    <span class="theme-option-label">{{
+                      theme.kind === 'builtin' && themeLabelKeys[theme.id]
+                        ? (themeLabelKeys[theme.id] | translate)
+                        : theme.name
+                    }}</span>
                     @if (theme.requiredMode && theme.requiredMode !== 'system') {
                       <span class="theme-mode-indicator">
                         ({{ theme.requiredMode === 'dark' ? '🌙' : '☀️' }})
@@ -385,6 +389,24 @@ export class ThemeSelectorComponent {
   private readonly _snackService = inject(SnackService);
   private readonly _matDialog = inject(MatDialog);
   readonly T = T;
+  readonly themeLabelKeys: Readonly<Record<string, string>> = {
+    default: T.LOCAL_UI.DEFAULT_THEME,
+    classic: T.LOCAL_UI.THEME_CLASSIC,
+    zen: T.LOCAL_UI.THEME_ZEN,
+    arc: T.LOCAL_UI.THEME_ARC,
+    ['catppuccin-mocha']: T.LOCAL_UI.THEME_MOCHA,
+    cybr: T.LOCAL_UI.THEME_CYBR,
+    ['dark-base']: T.LOCAL_UI.THEME_DARK_BASE,
+    dracula: T.LOCAL_UI.THEME_DRACULA,
+    everforest: T.LOCAL_UI.THEME_EVERFOREST,
+    glass: T.LOCAL_UI.THEME_GLASS,
+    ['liquid-glass']: T.LOCAL_UI.THEME_LIQUID_GLASS,
+    ['nord-polar-night']: T.LOCAL_UI.THEME_POLAR_NIGHT,
+    ['nord-snow-storm']: T.LOCAL_UI.THEME_SNOW_STORM,
+    plainspace: T.LOCAL_UI.THEME_PLAINSPACE,
+    rainbow: T.LOCAL_UI.THEME_RAINBOW,
+    velvet: T.LOCAL_UI.THEME_VELVET,
+  };
 
   readonly fileInput = viewChild<ElementRef<HTMLInputElement>>('fileInput');
 

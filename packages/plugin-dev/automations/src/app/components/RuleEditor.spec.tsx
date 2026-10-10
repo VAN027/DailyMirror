@@ -41,7 +41,7 @@ describe('RuleEditor', () => {
       />
     ));
 
-    const actionDialog = screen.getByText('Add Action').closest('dialog');
+    const actionDialog = screen.getByText('添加操作').closest('dialog');
     expect(actionDialog).not.toBeNull();
 
     const typeSelect = actionDialog!.querySelector('label select') as HTMLSelectElement | null;
@@ -69,13 +69,13 @@ describe('RuleEditor', () => {
       />
     ));
 
-    fireEvent.click(screen.getAllByText('+ Add')[0]);
+    fireEvent.click(screen.getAllByText('+ 添加')[0]);
 
-    const conditionDialog = screen.getByText('Add Condition').closest('dialog');
+    const conditionDialog = screen.getByText('添加条件').closest('dialog');
     expect(conditionDialog).not.toBeNull();
 
     const regexButton = Array.from(conditionDialog!.querySelectorAll('button')).find(
-      (button) => button.textContent?.trim() === 'Regex',
+      (button) => button.textContent?.trim() === '正则表达式',
     ) as HTMLButtonElement | undefined;
     expect(regexButton).toBeDefined();
     expect(regexButton?.getAttribute('aria-pressed')).toBe('false');
@@ -95,7 +95,7 @@ describe('RuleEditor', () => {
     expect(saveButton).not.toBeNull();
     fireEvent.click(saveButton!);
 
-    expect(screen.queryByText('titleContains (regex): ^Bug')).not.toBeNull();
+    expect(screen.queryByText('标题包含（正则表达式）: ^Bug')).not.toBeNull();
   });
 
   it('blocks saving invalid regex patterns and shows an inline error', () => {
@@ -111,13 +111,13 @@ describe('RuleEditor', () => {
       />
     ));
 
-    fireEvent.click(screen.getAllByText('+ Add')[0]);
+    fireEvent.click(screen.getAllByText('+ 添加')[0]);
 
-    const conditionDialog = screen.getByText('Add Condition').closest('dialog');
+    const conditionDialog = screen.getByText('添加条件').closest('dialog');
     expect(conditionDialog).not.toBeNull();
 
     const regexButton = Array.from(conditionDialog!.querySelectorAll('button')).find(
-      (button) => button.textContent?.trim() === 'Regex',
+      (button) => button.textContent?.trim() === '正则表达式',
     ) as HTMLButtonElement | undefined;
     expect(regexButton).toBeDefined();
     fireEvent.click(regexButton!);
@@ -128,7 +128,7 @@ describe('RuleEditor', () => {
     expect(valueInput).not.toBeNull();
     fireEvent.input(valueInput!, { target: { value: '[' } });
 
-    expect(screen.queryByRole('alert')?.textContent).toContain('Invalid regex:');
+    expect(screen.queryByRole('alert')?.textContent).toContain('正则表达式无效：');
 
     const saveButton = conditionDialog!.querySelector(
       'footer .btn-primary',
@@ -150,9 +150,9 @@ describe('RuleEditor', () => {
       />
     ));
 
-    fireEvent.click(screen.getAllByText('+ Add')[0]);
+    fireEvent.click(screen.getAllByText('+ 添加')[0]);
 
-    const conditionDialog = screen.getByText('Add Condition').closest('dialog');
+    const conditionDialog = screen.getByText('添加条件').closest('dialog');
     expect(conditionDialog).not.toBeNull();
 
     const typeSelect = conditionDialog!.querySelector('label select') as HTMLSelectElement | null;
@@ -160,7 +160,7 @@ describe('RuleEditor', () => {
     fireEvent.change(typeSelect!, { target: { value: 'projectIs' } });
 
     const regexButton = Array.from(conditionDialog!.querySelectorAll('button')).find(
-      (button) => button.textContent?.trim() === 'Regex',
+      (button) => button.textContent?.trim() === '正则表达式',
     );
     expect(regexButton).toBeUndefined();
   });
@@ -178,7 +178,7 @@ describe('RuleEditor', () => {
       />
     ));
 
-    const actionDialog = screen.getByText('Add Action').closest('dialog');
+    const actionDialog = screen.getByText('添加操作').closest('dialog');
     expect(actionDialog).not.toBeNull();
 
     const typeSelect = actionDialog!.querySelector('label select') as HTMLSelectElement | null;
@@ -199,7 +199,7 @@ describe('RuleEditor', () => {
       />
     ));
 
-    const actionDialog = screen.getByText('Add Action').closest('dialog');
+    const actionDialog = screen.getByText('添加操作').closest('dialog');
     expect(actionDialog).not.toBeNull();
 
     const typeSelect = actionDialog!.querySelector('label select') as HTMLSelectElement | null;
@@ -220,7 +220,7 @@ describe('RuleEditor', () => {
       />
     ));
 
-    const actionDialog = screen.getByText('Add Action').closest('dialog');
+    const actionDialog = screen.getByText('添加操作').closest('dialog');
     expect(actionDialog).not.toBeNull();
 
     const typeSelect = actionDialog!.querySelector('label select') as HTMLSelectElement | null;

@@ -1,0 +1,30 @@
+{
+  "APP": {
+    "TITLE": "Solid.js 插件模板",
+    "SUBTITLE": "基于 Super Productivity 插件 API 构建"
+  },
+  "STATS": {
+    "TOTAL_TASKS": "任务总数",
+    "COMPLETED_TODAY": "今日完成",
+    "PENDING": "待完成"
+  },
+  "TASK": {
+    "CREATE_NEW": "创建任务",
+    "ENTER_TITLE": "输入任务标题…",
+    "NO_PROJECT": "无项目",
+    "CREATE_BUTTON": "创建任务",
+    "RECENT_TASKS": "最近任务",
+    "CREATED_SUCCESS": "已创建任务“{{title}}”！"
+  },
+  "SETTINGS": {
+    "TITLE": "设置",
+    "THEME": "主题",
+    "THEME_LIGHT": "浅色",
+    "THEME_DARK": "深色",
+    "SHOW_COMPLETED": "显示已完成任务"
+  },
+  "BUTTONS": {
+    "REFRESH": "刷新数据"
+  },
+  "LOADING": "加载中…"
+}

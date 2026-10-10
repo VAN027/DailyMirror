@@ -4,7 +4,9 @@
     "TOKEN": "访问令牌",
     "FILTER_USERNAME": "用户名（例如，筛选出您自己的更改）",
     "BACKLOG_QUERY": "Backlog query (default: \"sort:updated state:open assignee:@me\")",
-    "HOW_TO_GET_TOKEN": "How to get a token"
+    "HOW_TO_GET_TOKEN": "How to get a token",
+    "API_BASE_URL": "GitHub API 基础地址（默认：https://api.github.com）",
+    "INCLUDE_PULL_REQUESTS": "包含拉取请求（搜索和待办列表同时返回议题与拉取请求）"
   },
   "DISPLAY": {
     "SUMMARY": "摘要",
@@ -18,6 +20,8 @@
   "FORM_HELP": "<p>在这里，您可以将 SuperProductivity 配置为在每日规划视图的任务创建看板中列出特定存储库的未结 GitHub 问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p> <p>此外，您还可以自动导入所有未结问题。</p><p>为了通过使用限制并访问，您可以提供一个访问令牌。 <a href='https://docs.github.com/en/free-pro-team@latest/developers/apps/scopes-for-oauth-apps '>可以在此处找到有关其范围的更多信息</a>。",
   "ERRORS": {
     "CONFIG_ERROR": "GitHub: 映射数据时出错。您的存储库名称是否正确？",
-    "ERR_UNKNOWN": "GitHub: 未知错误 {{statusCode}} {{errorMsg}}。API 速率限制超出？"
+    "ERR_UNKNOWN": "GitHub: 未知错误 {{statusCode}} {{errorMsg}}。API 速率限制超出？",
+    "TOKEN_REQUIRED": "GitHub：创建或更新议题需要个人访问令牌，请在议题来源设置中添加令牌。",
+    "INSUFFICIENT_PERMISSIONS": "GitHub：令牌可能缺少权限。传统令牌需要 repo 权限，细粒度令牌需要 Issues 的读写权限。也可能是仓库不存在或未启用议题。"
   }
 }

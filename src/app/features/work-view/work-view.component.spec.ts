@@ -680,7 +680,7 @@ describe('WorkViewComponent', () => {
       expect(cmp.isDoneHidden()).toBe(false);
     });
 
-    it('expands the collapsed Overdue panel for an overdue task', () => {
+    it('does not expand an obsolete overdue panel for tasks now in the main list', () => {
       const { cmp } = setup({
         focusItem: 'overdue-1',
         overdueTasks: [buildTask('overdue-1')],
@@ -690,10 +690,10 @@ describe('WorkViewComponent', () => {
 
       retriggerFocusAttempt(cmp);
 
-      expect(cmp.isOverdueHidden()).toBe(false);
+      expect(cmp.isOverdueHidden()).toBe(true);
     });
 
-    it('expands the collapsed Later Today panel for a later-today task', () => {
+    it('does not expand the events panel for a timed task now in the main list', () => {
       const { cmp } = setup({
         focusItem: 'later-1',
         laterTodayTasks: [buildTask('later-1')],
@@ -703,7 +703,7 @@ describe('WorkViewComponent', () => {
 
       retriggerFocusAttempt(cmp);
 
-      expect(cmp.isLaterTodayHidden()).toBe(false);
+      expect(cmp.isLaterTodayHidden()).toBe(true);
     });
 
     it('leaves the Today-only panels alone outside the Today list', () => {

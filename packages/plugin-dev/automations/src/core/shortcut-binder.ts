@@ -1,7 +1,7 @@
 import { PluginAPI } from '@super-productivity/plugin-api';
 import { AutomationRule } from '../types';
 
-const FALLBACK_SHORTCUT_LABEL = 'Unnamed automation rule';
+const FALLBACK_SHORTCUT_LABEL = '未命名自动化规则';
 
 const labelFor = (ruleName: string): string => ruleName.trim() || FALLBACK_SHORTCUT_LABEL;
 

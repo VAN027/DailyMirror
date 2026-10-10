@@ -31,9 +31,12 @@ describe('ScheduleComponent', () => {
   let mockGlobalConfigService: jasmine.SpyObj<GlobalConfigService>;
   let mockCalendarEventActionsService: jasmine.SpyObj<CalendarEventActionsService>;
 
+  afterEach(() => localStorage.removeItem('SELECTED_TIME_VIEW'));
+
   beforeAll(() => registerLocaleData(localeSv, 'sv'));
 
   beforeEach(async () => {
+    localStorage.setItem('SELECTED_TIME_VIEW', 'week');
     mockLocalization.set({ firstDayOfWeek: 1, dateTimeLocale: 'en-US' });
     // Create mock services
     mockTaskService = jasmine.createSpyObj('TaskService', ['currentTaskId']);
@@ -1260,15 +1263,30 @@ describe('ScheduleComponent', () => {
       expect((component as any).getTimeView()).toBe('day');
     });
 
-    it('reads back month, and defaults to week for absent or unknown values', () => {
+    it('keeps the former calendar choice until the native view is selected', () => {
+      localStorage.setItem(
+        'DAILYMIRROR_DISPLAY_V3',
+        JSON.stringify({ calendarView: 'day' }),
+      );
+      try {
+        localStorage.removeItem('SELECTED_TIME_VIEW');
+        expect(component['getTimeView']()).toBe('day');
+        component.selectTimeView('week');
+        expect(component['getTimeView']()).toBe('week');
+      } finally {
+        localStorage.removeItem('DAILYMIRROR_DISPLAY_V3');
+      }
+    });
+
+    it('reads back month, and defaults to month for absent or unknown values', () => {
       localStorage.setItem('SELECTED_TIME_VIEW', 'month');
       expect((component as any).getTimeView()).toBe('month');
 
       localStorage.removeItem('SELECTED_TIME_VIEW');
-      expect((component as any).getTimeView()).toBe('week');
+      expect((component as any).getTimeView()).toBe('month');
 
       localStorage.setItem('SELECTED_TIME_VIEW', 'not-a-view');
-      expect((component as any).getTimeView()).toBe('week');
+      expect((component as any).getTimeView()).toBe('month');
     });
   });
 

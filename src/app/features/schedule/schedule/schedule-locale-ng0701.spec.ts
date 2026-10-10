@@ -65,6 +65,7 @@ describe('issue #7383 — NG0701 race on /schedule', () => {
 
       mockScheduleService = jasmine.createSpyObj('ScheduleService', [
         'getDaysToShow',
+        'getMonthWeeksToShow',
         'getMonthDaysToShow',
         'buildScheduleDays',
         'getTodayStr',
@@ -78,6 +79,7 @@ describe('issue #7383 — NG0701 race on /schedule', () => {
         return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       });
       mockScheduleService.getDaysToShow.and.returnValue(monthDays);
+      mockScheduleService.getMonthWeeksToShow.and.returnValue(5);
       mockScheduleService.getMonthDaysToShow.and.returnValue(monthDays);
       mockScheduleService.buildScheduleDays.and.returnValue([]);
       mockScheduleService.getTodayStr.and.returnValue('2026-04-15');

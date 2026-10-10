@@ -31,7 +31,7 @@
           @if (attachment.isLoading) {
             <div class="image-loading">
               <mat-icon>image</mat-icon>
-              <span>Loading image...</span>
+              <span>{{ T.LOCAL_UI.LOADING_IMAGE | translate }}</span>
             </div>
           } @else {
             <img

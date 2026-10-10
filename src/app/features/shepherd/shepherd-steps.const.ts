@@ -20,7 +20,7 @@ const PRIMARY_CLASSES =
 
 const NEXT_BTN = {
   classes: PRIMARY_CLASSES,
-  text: 'Next',
+  text: '下一步',
   type: 'next',
 };
 
@@ -43,16 +43,16 @@ export const SHEPHERD_STEPS = (
   return [
     {
       id: TourId.CreateTask,
-      title: 'Create a task',
+      title: '创建任务',
       text: [
-        '<p>Tasks can be created from the Add Task Bar. ',
-        'It also understands short syntax, so you can set useful details ',
-        'while typing the task title.</p>',
+        '<p>您可以在任务输入栏创建任务。',
+        '输入栏支持快捷语法，您可以在输入标题时',
+        '同时设置任务详情。</p>',
       ].join(''),
       buttons: [
         {
           classes: PRIMARY_CLASSES,
-          text: 'Open Add Task Bar',
+          text: '打开任务输入栏',
           action: () => {
             layoutService.showAddTaskBar();
             window.setTimeout(() => shepherdService.next());
@@ -61,11 +61,11 @@ export const SHEPHERD_STEPS = (
       ],
     },
     {
-      title: 'Create a task',
+      title: '创建任务',
       text: [
-        'Try creating a task with a planned date and time estimate:<br><br>',
-        '<code>Prepare demo @tomorrow 30m</code><br><br>',
-        'Type it into the Add Task Bar and press <kbd>Enter</kbd>.',
+        '尝试创建一个包含计划日期和预计用时的任务：<br><br>',
+        '<code>准备演示 @tomorrow 30m</code><br><br>',
+        '在任务输入栏输入上述内容，然后按 <kbd>Enter</kbd>。',
       ].join(''),
       attachTo: {
         element: 'add-task-bar',
@@ -81,8 +81,8 @@ export const SHEPHERD_STEPS = (
       ),
     },
     {
-      title: 'Close the Add Task Bar',
-      text: 'Press the <kbd>Escape</kbd> key to close the Add Task Bar.',
+      title: '关闭任务输入栏',
+      text: '按 <kbd>Escape</kbd> 关闭任务输入栏。',
       attachTo: {
         element: 'add-task-bar',
         on: 'bottom',
@@ -91,28 +91,28 @@ export const SHEPHERD_STEPS = (
       when: nextOnObs(actions$.pipe(ofType(hideAddTaskBar)), shepherdService),
     },
     {
-      title: 'Short syntax',
+      title: '快捷语法',
       text: [
-        '<p>The example title is cleaned up automatically. ',
-        'With the default Short Syntax settings, ',
-        '<code>@tomorrow</code> plans the task for tomorrow and ',
-        '<code>30m</code> sets a 30 minute estimate.</p>',
-        '<p>You can also use:</p>',
+        '<p>任务标题中的快捷语法会自动转换。',
+        '使用默认快捷语法设置时，',
+        '<code>@tomorrow</code> 将任务安排到明天，',
+        '<code>30m</code> 将预计用时设为 30 分钟。</p>',
+        '<p>您还可以使用：</p>',
         '<ul>',
-        '<li><code>#tag</code> to add a tag</li>',
-        '<li><code>+project</code> to assign a project</li>',
-        '<li><code>@friday</code> or <code>@16:00</code> to plan a task</li>',
-        '<li><code>!friday</code> or <code>!14:30</code> to set a deadline</li>',
+        '<li><code>#标签</code>：添加标签</li>',
+        '<li><code>+项目</code>：指定项目</li>',
+        '<li><code>@friday</code> 或 <code>@16:00</code>：安排任务</li>',
+        '<li><code>!friday</code> 或 <code>!14:30</code>：设置截止时间</li>',
         '</ul>',
       ].join(''),
       buttons: [NEXT_BTN],
     },
     {
-      title: 'Short syntax settings',
-      text: '<p>You can enable or disable the individual short syntax options under <strong>Settings / Tasks / Short Syntax</strong>.</p><p>This how-to stays available from the Help menu whenever you want to try it again.</p>',
+      title: '快捷语法设置',
+      text: '<p>您可以在<strong>设置 / 任务 / 快捷语法</strong>中分别启用或关闭这些选项。</p><p>需要时，可随时从帮助菜单重新打开此引导。</p>',
       buttons: [
         {
-          text: 'End Tour',
+          text: '结束引导',
           classes: PRIMARY_CLASSES,
           action: () => {
             shepherdService.complete();
@@ -122,22 +122,21 @@ export const SHEPHERD_STEPS = (
     },
     {
       id: TourId.KeyboardNav,
-      title: 'Keyboard Navigation',
-      // eslint-disable-next-line max-len
-      text: `<p>The most efficient way to use Super Productivity is to make use of the keyboard shortcuts. Don't worry there just a handful of important ones :)</p><p>You can configure most of them under <strong>Settings/Keyboard Shortcuts</strong>, but let's start more practical.</p>`,
+      title: '键盘操作',
+      text: `<p>熟悉几个常用快捷键，可以更高效地使用 Super Productivity。</p><p>大部分快捷键都可以在<strong>设置 / 键盘快捷键</strong>中调整。现在先来实际操作。</p>`,
       buttons: [NEXT_BTN],
     },
     {
-      title: 'Keyboard Navigation',
-      text: `Let's add a couple of tasks. Press ${KEY_COMBO('addNewTask')}.`,
+      title: '键盘操作',
+      text: `先添加几个任务。请按 ${KEY_COMBO('addNewTask')}。`,
       when: nextOnObs(
         layoutService.isShowAddTaskBar$.pipe(filter((v) => v)),
         shepherdService,
       ),
     },
     {
-      title: 'Enter a title!',
-      text: 'Enter the title you want to give your task and hit the <kbd>Enter</kbd> key. <strong>Do this a couple of times until you have at least 4 tasks with different titles</strong>.',
+      title: '输入任务标题',
+      text: '输入任务标题，然后按 <kbd>Enter</kbd>。<strong>重复操作，创建至少 4 个不同标题的任务。</strong>',
       attachTo: {
         element: 'add-task-bar',
         on: 'bottom',
@@ -159,8 +158,8 @@ export const SHEPHERD_STEPS = (
       ),
     },
     {
-      title: 'Close the Add Task Bar!',
-      text: 'Press the <kbd>Escape</kbd> key to leave the add task bar.',
+      title: '关闭任务输入栏',
+      text: '按 <kbd>Escape</kbd> 关闭任务输入栏。',
       attachTo: {
         element: 'add-task-bar',
         on: 'bottom',
@@ -173,24 +172,24 @@ export const SHEPHERD_STEPS = (
       ),
     },
     {
-      title: 'A focused task',
-      text: 'Do you see the <span class="shepherd-colored-border">colored border</span> around the first task? This means the task is focused. To unfocus it click somewhere else in the document.',
+      title: '当前选中的任务',
+      text: '第一个任务周围的<span class="shepherd-colored-border">彩色边框</span>表示它已被选中。点击页面其他位置即可取消选中。',
       when: {
         show: () => taskService.focusFirstTaskIfVisible(),
       },
       buttons: [NEXT_BTN],
     },
     {
-      title: 'Focussing Tasks',
-      text: `If you lost focus you can always use the ${KEY_COMBO(
+      title: '选中任务',
+      text: `如果没有选中的任务，可以按 ${KEY_COMBO(
         'goToWorkView',
-      )} key to go to the main list view and focus the first task.`,
+      )} 回到主任务列表并选中第一个任务。`,
       buttons: [NEXT_BTN],
     },
     {
-      title: 'Moving around',
+      title: '切换任务',
 
-      text: `<p>When a task is focused you can navigate to other tasks by pressing the arrow keys <kbd>↑</kbd> and <kbd>↓</kbd>.</p>`,
+      text: `<p>选中任务后，按方向键 <kbd>↑</kbd> 和 <kbd>↓</kbd> 可以切换到其他任务。</p>`,
       when: {
         show: () => taskService.focusFirstTaskIfVisible(),
       },
@@ -202,10 +201,10 @@ export const SHEPHERD_STEPS = (
       highlightClass: '',
     },
     {
-      title: 'Moving tasks around',
-      text: `You can move the focused task itself around by pressing ${KEY_COMBO(
+      title: '移动任务',
+      text: `按 ${KEY_COMBO(
         'moveTaskUp',
-      )} and ${KEY_COMBO('moveTaskDown')}.`,
+      )} 和 ${KEY_COMBO('moveTaskDown')} 可以调整选中任务的位置。`,
       when: {
         show: () => taskService.focusFirstTaskIfVisible(),
       },
@@ -217,8 +216,8 @@ export const SHEPHERD_STEPS = (
       highlightClass: '',
     },
     {
-      title: 'Edit Task Title',
-      text: `You can edit the task by pressing the <kbd>Enter</kbd>.`,
+      title: '编辑任务标题',
+      text: `按 <kbd>Enter</kbd> 可以编辑任务。`,
       when: {
         show: () => taskService.focusFirstTaskIfVisible(),
       },
@@ -230,9 +229,12 @@ export const SHEPHERD_STEPS = (
       highlightClass: '',
     },
     {
-      title: 'Open, close and navigate the Task Details',
-      // eslint-disable-next-line max-len
-      text: `<p>You can open the task details panel for a task by pressing <kbd>→</kbd> while it is focused.</p><p>You can close it again by pressing <kbd>←</kbd>.</p><p>You can also navigate and activate its items by using the arrow keys <kbd>→</kbd> <kbd>↑</kbd> and <kbd>↓</kbd>.</p><p>You can leave most contexts that open up this way by pressing <kbd>Escape</kbd>.</p>`,
+      title: '打开、关闭和浏览任务详情',
+      text: [
+        '<p>选中任务后，按 <kbd>→</kbd> 打开任务详情，按 <kbd>←</kbd> 关闭。</p>',
+        '<p>使用 <kbd>→</kbd>、<kbd>↑</kbd> 和 <kbd>↓</kbd> 浏览并操作详情中的项目。</p>',
+        '<p>大多数面板都可以按 <kbd>Escape</kbd> 退出。</p>',
+      ].join(''),
       when: {
         show: () => taskService.focusFirstTaskIfVisible(),
       },
@@ -244,19 +246,18 @@ export const SHEPHERD_STEPS = (
       highlightClass: '',
     },
     {
-      title: 'More Task Shortcuts',
+      title: '更多任务快捷键',
       when: {
         show: () => taskService.focusFirstTaskIfVisible(),
       },
-      // eslint-disable-next-line max-len
-      text: `<p>There are more task related shortcuts that can be used when a task is focused. Best you check them all out under <strong>Settings/Keyboard Shortcuts/Tasks</strong>. The most useful are probably:</p>
+      text: `<p>在<strong>设置 / 键盘快捷键 / 任务</strong>中可以查看选中任务后可用的全部快捷键。常用操作有：</p>
           <ul>
-          <li>${KEY_COMBO('taskSchedule')}: Schedule task</li>
-          <li>${KEY_COMBO('taskDelete')}: Delete Task</li>
-          <li>${KEY_COMBO('taskToggleDone')}: Toggle done</li>
-          <li>${KEY_COMBO('taskAddSubTask')}: Add new sub task</li>
-          <li>${KEY_COMBO('taskAddAttachment')}: Attach a file or link to the task</li>
-          <li>${KEY_COMBO('togglePlay')}: Toggle tracking</li>
+          <li>${KEY_COMBO('taskSchedule')}: 安排任务</li>
+          <li>${KEY_COMBO('taskDelete')}: 删除任务</li>
+          <li>${KEY_COMBO('taskToggleDone')}: 切换完成状态</li>
+          <li>${KEY_COMBO('taskAddSubTask')}: 添加子任务</li>
+          <li>${KEY_COMBO('taskAddAttachment')}: 添加文件或链接附件</li>
+          <li>${KEY_COMBO('togglePlay')}: 开始或暂停计时</li>
           </ul>
 
       `,
@@ -268,11 +269,11 @@ export const SHEPHERD_STEPS = (
       highlightClass: '',
     },
     {
-      title: '🎉 Congratulations! 🎉',
-      text: '<p>This concludes the keyboard navigation tour. Remember that you can always start it again via the Help button in the menu.</p><p>Best way to get familiar with the app, is to play around with it. Have fun! 😄</p>',
+      title: '🎉 恭喜完成！🎉',
+      text: '<p>键盘操作引导已结束。您随时可以通过菜单中的帮助按钮重新开始。</p><p>接下来亲自试试，让这些操作逐渐熟悉起来。😄</p>',
       buttons: [
         {
-          text: 'End Tour',
+          text: '结束引导',
           classes: PRIMARY_CLASSES,
           action: () => {
             shepherdService.complete();

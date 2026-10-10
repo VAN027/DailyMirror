@@ -47,12 +47,12 @@ import { FormlyDatePickerComponent } from './formly-date-picker/formly-date-pick
     ReactiveFormsModule,
     FormlyModule.forRoot({
       validationMessages: [
-        { name: 'pattern', message: 'Invalid input' },
-        { name: 'required', message: 'This field is required' },
-        { name: 'min', message: 'Value is too low' },
-        { name: 'max', message: 'Value is too high' },
-        { name: 'minLength', message: 'Value is too short' },
-        { name: 'maxLength', message: 'Value is too long' },
+        { name: 'pattern', message: '输入无效' },
+        { name: 'required', message: '此项为必填项' },
+        { name: 'min', message: '数值过小' },
+        { name: 'max', message: '数值过大' },
+        { name: 'minLength', message: '内容过短' },
+        { name: 'maxLength', message: '内容过长' },
       ],
       types: [
         { name: 'slider', component: FormlySliderComponent },

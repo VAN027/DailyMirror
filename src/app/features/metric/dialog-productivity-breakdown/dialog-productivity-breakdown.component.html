@@ -19,12 +19,12 @@
     <table class="breakdown-table">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Score</th>
-          <th>Impact</th>
-          <th>Energy</th>
-          <th>Focused (min)</th>
-          <th>Total Work (min)</th>
+          <th>{{ T.LOCAL_UI.DATE | translate }}</th>
+          <th>{{ T.LOCAL_UI.SCORE | translate }}</th>
+          <th>{{ T.LOCAL_UI.IMPACT | translate }}</th>
+          <th>{{ T.LOCAL_UI.ENERGY | translate }}</th>
+          <th>{{ T.LOCAL_UI.FOCUSED_MIN | translate }}</th>
+          <th>{{ T.LOCAL_UI.TOTAL_WORK_MIN | translate }}</th>
         </tr>
       </thead>
       <tbody>
@@ -51,7 +51,9 @@
       </tbody>
     </table>
   } @else {
-    <div class="no-data">No productivity data available for the selected range.</div>
+    <div class="no-data">
+      {{ T.LOCAL_UI.NO_PRODUCTIVITY_DATA_AVAILABLE_FOR_THE_SELECTED_RANGE | translate }}
+    </div>
   }
 </div>
 

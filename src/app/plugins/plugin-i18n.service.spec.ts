@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { PluginI18nService } from './plugin-i18n.service';
 import { GlobalConfigService } from '../features/config/global-config.service';
+import { LanguageService } from '../core/language/language.service';
 
 describe('PluginI18nService', () => {
   let service: PluginI18nService;
@@ -14,10 +15,28 @@ describe('PluginI18nService', () => {
       providers: [
         PluginI18nService,
         { provide: GlobalConfigService, useValue: globalConfigSpy },
+        { provide: LanguageService, useValue: { detect: () => 'de' } },
       ],
     });
 
     service = TestBed.inject(PluginI18nService);
+    TestBed.tick();
+  });
+
+  it('uses Chinese when no language preference has been saved', () => {
+    const config = TestBed.inject(GlobalConfigService);
+    (config.localization as unknown as jasmine.Spy).and.returnValue({});
+    const freshService = TestBed.runInInjectionContext(() => new PluginI18nService());
+    TestBed.tick();
+    expect(freshService.currentLanguage()).toBe('zh');
+  });
+
+  it('follows the detected language for an explicit system-default preference', () => {
+    const config = TestBed.inject(GlobalConfigService);
+    (config.localization as unknown as jasmine.Spy).and.returnValue({ lng: null });
+    const freshService = TestBed.runInInjectionContext(() => new PluginI18nService());
+    TestBed.tick();
+    expect(freshService.currentLanguage()).toBe('de');
   });
 
   describe('loadPluginTranslationsFromContent', () => {

@@ -99,7 +99,7 @@ const onButtonClick = async (ctx: ActiveWorkContext): Promise<void> => {
 };
 
 PluginAPI.registerWorkContextHeaderButton({
-  label: 'Doc Mode',
+  label: '文档模式',
   icon: 'description',
   showFor: ['PROJECT', 'TODAY'],
   onClick: (ctx) => {

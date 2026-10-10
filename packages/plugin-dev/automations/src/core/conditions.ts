@@ -42,7 +42,7 @@ const isRegexCondition = (condition?: Condition): boolean => Boolean(condition?.
 
 export const ConditionTitleContains: IAutomationCondition = {
   id: 'titleContains',
-  name: 'Title contains',
+  name: '标题包含',
   check: async (ctx, event, value, condition) => {
     if (!event.task || !event.task.title || !value) return false;
     if (isRegexCondition(condition)) {
@@ -54,7 +54,7 @@ export const ConditionTitleContains: IAutomationCondition = {
 
 export const ConditionTitleStartsWith: IAutomationCondition = {
   id: 'titleStartsWith',
-  name: 'Title starts with',
+  name: '标题开头为',
   check: async (ctx, event, value, condition) => {
     if (!event.task || !event.task.title || !value) return false;
     return isRegexCondition(condition)
@@ -65,7 +65,7 @@ export const ConditionTitleStartsWith: IAutomationCondition = {
 
 export const ConditionProjectIs: IAutomationCondition = {
   id: 'projectIs',
-  name: 'Project is',
+  name: '所属项目为',
   check: async (ctx, event, value) => {
     if (!event.task || !event.task.projectId || !value) return false;
     const projects = await ctx.dataCache.getProjects();
@@ -76,7 +76,7 @@ export const ConditionProjectIs: IAutomationCondition = {
 
 export const ConditionHasTag: IAutomationCondition = {
   id: 'hasTag',
-  name: 'Has tag',
+  name: '包含标签',
   check: async (ctx, event, value) => {
     if (!event.task || !event.task.tagIds || !value) return false;
     const tags = await ctx.dataCache.getTags();
@@ -87,8 +87,8 @@ export const ConditionHasTag: IAutomationCondition = {
 
 export const ConditionWeekdayIs: IAutomationCondition = {
   id: 'weekdayIs',
-  name: 'Weekday is',
-  description: 'Checks if the current day is one of the specified days (e.g. "Monday", "Mon,Tue")',
+  name: '星期为',
+  description: '检查今天是否为指定星期，使用英文缩写，例如“Monday”或“Mon,Tue”。',
   check: async (ctx, event, value) => {
     if (!value) return false;
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];

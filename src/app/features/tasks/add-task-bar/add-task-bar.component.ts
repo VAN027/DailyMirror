@@ -167,15 +167,34 @@ export class AddTaskBarComponent implements AfterViewInit, OnInit, OnDestroy {
   tagsToRemove = input<string[]>([]);
   planForDay = input<string>();
 
+  readonly isChoosingDate = signal(false);
+  readonly arrangement = computed(() => {
+    const date = this.stateService.state().date;
+    return this.isChoosingDate() || (date && date !== this._dateService.todayStr())
+      ? 'date'
+      : date
+        ? 'today'
+        : 'none';
+  });
+
+  chooseArrangement(value: string): void {
+    this.isChoosingDate.set(value === 'date');
+    if (value === 'none') this.stateService.clearDate();
+    else if (value === 'today')
+      this.stateService.updateDate(this._dateService.todayStr(), null);
+  }
+
+  chooseDate(value: string): void {
+    if (value) this.stateService.updateDate(value, this.stateService.state().time);
+  }
+
   // Outputs
   afterTaskAdd = output<TaskAddEvent>();
   closed = output<void>();
   done = output<void>();
 
   // Local UI state
-  isAddToBottom = signal(
-    JSON.parse(localStorage.getItem(LS.IS_ADD_TO_BOTTOM) || 'false'),
-  );
+  isAddToBottom = signal(true);
   isAddToBacklog = signal(false);
   isSearchMode = signal(false);
   isSearchLoading = signal(false);
@@ -242,8 +261,8 @@ export class AddTaskBarComponent implements AfterViewInit, OnInit, OnDestroy {
             time: undefined as string | undefined,
           };
         } else if (
-          workContext?.type === WorkContextType.TAG &&
-          workContext?.id === 'TODAY'
+          this.isGlobalBarVariant() ||
+          (workContext?.type === WorkContextType.TAG && workContext?.id === 'TODAY')
         ) {
           return {
             date: this._dateService.todayStr(),
@@ -483,6 +502,7 @@ export class AddTaskBarComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     const currentState = this.stateService.state();
+    if (this.isChoosingDate() && !currentState.date) return;
     const rawInput = this.stateService.inputTxt().trim();
     if (!rawInput) return;
 

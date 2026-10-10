@@ -45,7 +45,7 @@
       >
         <!--      <mat-icon matPrefix>filter_alt</mat-icon>-->
         <!--      <mat-label>Filter</mat-label>-->
-        <mat-label>Search</mat-label>
+        <mat-label>{{ T.LOCAL_UI.SEARCH | translate }}</mat-label>
         <mat-icon
           matPrefix
           style="opacity: 0.5"
@@ -58,7 +58,7 @@
           autocomplete="off"
           matInput
           name="search"
-          placeholder="Search"
+          [placeholder]="T.LOCAL_UI.SEARCH | translate"
         />
 
         @if (isPinned()) {
@@ -67,7 +67,7 @@
             matSuffix
             style="cursor: pointer"
             (click)="unPinSearch()"
-            [matTooltip]="'Clear pinned search query'"
+            [matTooltip]="'清除已保存的搜索条件'"
             >bookmark</mat-icon
           >
         } @else if (
@@ -78,7 +78,7 @@
             matSuffix
             style="cursor: pointer"
             (click)="pinSearch()"
-            [matTooltip]="'Remember search query'"
+            [matTooltip]="'保存搜索条件'"
             >bookmark_add</mat-icon
           >
         }

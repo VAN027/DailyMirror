@@ -177,21 +177,18 @@ describe('WorkContextService - undoneTasks$ filtering', () => {
     });
   });
 
-  // Test the filtering logic directly instead of testing the full observable chain
-  describe('filtering logic', () => {
+  describe('single-list filtering', () => {
     const filterTasks = (
       tasks: TaskWithSubTasks[],
-      currentTaskId: string | null = null,
+      _currentTaskId: string | null = null,
     ): TaskWithSubTasks[] => {
-      return (
-        (service as any)
-          ._filterFutureScheduledTasksForToday(tasks, currentTaskId)
-          // The observable filters out done tasks afterwards
-          .filter((task: TaskWithSubTasks) => task && !task.isDone)
-      );
+      service.mainListTasks$ = of(tasks);
+      let result: TaskWithSubTasks[] = [];
+      const subscription = service.undoneTasks$.subscribe((value) => (result = value));
+      subscription.unsubscribe();
+      return result;
     };
-
-    it('should filter out tasks scheduled for later today', () => {
+    it('should keep later-today tasks in the single list', () => {
       const todayAt = (hours: number, minutes: number = 0): number => {
         const date = new Date();
         date.setHours(hours, minutes, 0, 0);
@@ -227,8 +224,8 @@ describe('WorkContextService - undoneTasks$ filtering', () => {
 
       const filteredTasks = filterTasks(mockTasks);
 
-      expect(filteredTasks.length).toBe(2);
-      expect(filteredTasks.find((t) => t.id === 'LATER_TODAY')).toBeUndefined();
+      expect(filteredTasks.length).toBe(3);
+      expect(filteredTasks.find((t) => t.id === 'LATER_TODAY')).toBeDefined();
       expect(filteredTasks.find((t) => t.id === 'EARLIER_TODAY')).toBeDefined();
       expect(filteredTasks.find((t) => t.id === 'UNSCHEDULED')).toBeDefined();
       expect(filteredTasks.find((t) => t.id === 'DONE_TASK')).toBeUndefined();
@@ -256,7 +253,7 @@ describe('WorkContextService - undoneTasks$ filtering', () => {
 
       const filteredTasks = filterTasks(mockTasks, 'TRACKED');
 
-      expect(filteredTasks.map((t) => t.id)).toEqual(['TRACKED']);
+      expect(filteredTasks.map((t) => t.id)).toEqual(['TRACKED', 'NOT_TRACKED']);
     });
 
     it('should keep the parent of the tracked subtask even when it starts later today', () => {
@@ -269,7 +266,7 @@ describe('WorkContextService - undoneTasks$ filtering', () => {
       });
 
       expect(filterTasks([parent], 'SUB').map((t) => t.id)).toEqual(['PARENT']);
-      expect(filterTasks([parent], null)).toEqual([]);
+      expect(filterTasks([parent], null)).toEqual([parent]);
     });
 
     it('should NOT filter out tasks scheduled for tomorrow', () => {
@@ -342,9 +339,9 @@ describe('WorkContextService - undoneTasks$ filtering', () => {
 
       const filteredTasks = filterTasks(mockTasks);
 
-      // Task scheduled at exactly current time should be filtered out
-      expect(filteredTasks.length).toBe(0);
-      expect(filteredTasks.find((t) => t.id === 'CURRENT_TIME_TASK')).toBeUndefined();
+      // Current and future times both remain in the single list.
+      expect(filteredTasks.length).toBe(1);
+      expect(filteredTasks.find((t) => t.id === 'CURRENT_TIME_TASK')).toBeDefined();
     });
 
     it('should include parent tasks with subtasks when parent is not scheduled for later', () => {
@@ -394,7 +391,7 @@ describe('WorkContextService - undoneTasks$ filtering', () => {
 
       const filteredTasks = filterTasks(mockTasks);
 
-      expect(filteredTasks.length).toBe(0);
+      expect(filteredTasks.length).toBe(1);
     });
   });
 

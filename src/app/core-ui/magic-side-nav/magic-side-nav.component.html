@@ -78,9 +78,7 @@
         class="mode-toggle"
         [class.visible]="!isMobile()"
         (click)="toggleSideNavMode()"
-        [attr.aria-label]="
-          isFullMode() ? 'Switch to compact mode' : 'Switch to full mode'
-        "
+        [attr.aria-label]="isFullMode() ? '切换为紧凑模式' : '切换为完整模式'"
         [attr.aria-expanded]="isFullMode()"
       >
         <svg
@@ -221,7 +219,7 @@
     class="resize-handle position-left"
     [class.compactMode-handle]="!isFullMode()"
     (mousedown)="onResizeStart($event)"
-    [attr.aria-label]="'Resize sidenav'"
+    [attr.aria-label]="'调整侧栏宽度'"
     role="separator"
   ></div>
 }

@@ -9,70 +9,58 @@ export const ProcrastinationInfo: Component<ProcrastinationInfoProps> = (props) 
   return (
     <div class="page-fade info-content">
       <div class="intro">
-        <h2>Understanding Procrastination</h2>
+        <h2>理解拖延</h2>
         <p>
-          <strong>
-            Procrastination is an emotion regulation problem, not a time management
-            problem.
-          </strong>
+          <strong>拖延常常与情绪调节有关，并不只是时间安排的问题。</strong>
         </p>
       </div>
 
       <section>
-        <h3>The Procrastination Cycle</h3>
-        <p>
-          When we face tasks that trigger uncomfortable emotions, we enter a feedback
-          loop:
-        </p>
+        <h3>拖延的循环</h3>
+        <p>面对引发不适情绪的任务时，我们可能陷入这样的循环：</p>
         <div class="procrastination-graph">
-          <div class="graph-item">Fear of failure</div>
+          <div class="graph-item">害怕失败</div>
           <div class="sync-icon">→</div>
-          <div class="graph-item">Avoid the task</div>
+          <div class="graph-item">回避任务</div>
           <div class="sync-icon">→</div>
-          <div class="graph-item">Temporary relief</div>
+          <div class="graph-item">暂时轻松</div>
           <div class="sync-icon">→</div>
-          <div class="graph-item">Increased anxiety</div>
+          <div class="graph-item">更加焦虑</div>
         </div>
       </section>
 
       <section>
-        <h3>Breaking the Cycle</h3>
-        <p>
-          The key is to approach procrastination with curiosity and compassion, not
-          judgment. Ask yourself:
-        </p>
+        <h3>打破循环</h3>
+        <p>用好奇和理解面对拖延，不要急着责备自己。试着问：</p>
         <ul>
-          <li>What emotions come up when I think about this task?</li>
-          <li>What specific aspect feels most challenging?</li>
-          <li>What am I afraid might happen if I start?</li>
+          <li>想到这项任务时，我有什么感受？</li>
+          <li>具体哪个部分最困难？</li>
+          <li>如果开始行动，我担心会发生什么？</li>
         </ul>
       </section>
 
       <section>
-        <h3>Practical Strategies</h3>
+        <h3>可以尝试的方法</h3>
         <ul>
           <li>
-            <strong>Start small:</strong> What's the tiniest first step you could take?
+            <strong>从小处开始：</strong> 现在能做的最小一步是什么？
           </li>
           <li>
-            <strong>Time-box:</strong> Work for just 10-25 minutes, then take a break
+            <strong>限定时间：</strong> 只做 10–25 分钟，然后休息
           </li>
           <li>
-            <strong>Reframe:</strong> Focus on progress over perfection
+            <strong>换个角度：</strong> 关注进步，不苛求完美
           </li>
           <li>
-            <strong>Self-compassion:</strong> Speak to yourself as you would to a good
-            friend
+            <strong>善待自己：</strong> 像对待好朋友那样与自己对话
           </li>
         </ul>
       </section>
 
       <section>
-        <h3>Common Triggers</h3>
+        <h3>常见诱因</h3>
         <p>
-          Procrastination is often triggered by perfectionism, fear of failure, feeling
-          overwhelmed, unclear expectations, or finding the task boring. Identifying your
-          specific trigger is the first step to moving forward.
+          追求完美、害怕失败、不知所措、要求不明确或任务枯燥，都可能引发拖延。找到自己的诱因，是迈出下一步的开始。
         </p>
       </section>
 
@@ -81,7 +69,7 @@ export const ProcrastinationInfo: Component<ProcrastinationInfoProps> = (props) 
           class="btn-primary"
           onClick={props.onBackToWork}
         >
-          Back to work!
+          回到工作
         </button>
       </div>
     </div>

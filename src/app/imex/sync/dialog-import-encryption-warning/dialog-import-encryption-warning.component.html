@@ -15,10 +15,14 @@
       }}</span>
       <span class="state-value">
         @if (currentEncryptionEnabled) {
-          <mat-icon aria-label="Encryption enabled">lock</mat-icon>
+          <mat-icon [attr.aria-label]="T.LOCAL_UI.ENCRYPTION_ENABLED | translate"
+            >lock</mat-icon
+          >
           {{ T.F.SYNC.FORM.IMPORT_ENCRYPTION_WARNING.ENCRYPTION_ENABLED | translate }}
         } @else {
-          <mat-icon aria-label="Encryption disabled">lock_open</mat-icon>
+          <mat-icon [attr.aria-label]="T.LOCAL_UI.ENCRYPTION_DISABLED | translate"
+            >lock_open</mat-icon
+          >
           {{ T.F.SYNC.FORM.IMPORT_ENCRYPTION_WARNING.ENCRYPTION_DISABLED | translate }}
         }
       </span>
@@ -34,10 +38,14 @@
       }}</span>
       <span class="state-value">
         @if (importedEncryptionEnabled) {
-          <mat-icon aria-label="Encryption enabled">lock</mat-icon>
+          <mat-icon [attr.aria-label]="T.LOCAL_UI.ENCRYPTION_ENABLED | translate"
+            >lock</mat-icon
+          >
           {{ T.F.SYNC.FORM.IMPORT_ENCRYPTION_WARNING.ENCRYPTION_ENABLED | translate }}
         } @else {
-          <mat-icon aria-label="Encryption disabled">lock_open</mat-icon>
+          <mat-icon [attr.aria-label]="T.LOCAL_UI.ENCRYPTION_DISABLED | translate"
+            >lock_open</mat-icon
+          >
           {{ T.F.SYNC.FORM.IMPORT_ENCRYPTION_WARNING.ENCRYPTION_DISABLED | translate }}
         }
       </span>

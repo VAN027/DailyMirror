@@ -38,7 +38,7 @@ export const NEXTCLOUD_DECK_CONFIG_FORM: LimitedFormlyFieldConfig<IssueProviderN
     },
     {
       type: 'collapsible',
-      props: { label: 'Advanced Config' },
+      props: { label: '高级设置' },
       fieldGroup: [
         ...ISSUE_PROVIDER_COMMON_FORM_FIELDS,
         {

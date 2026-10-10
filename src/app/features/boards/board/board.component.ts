@@ -48,6 +48,7 @@ export class BoardComponent {
   private _matDialog = inject(MatDialog);
 
   boardCfg = input.required<BoardCfg>();
+  hideCompleted = input(false);
   private _panels = viewChildren(BoardPanelComponent);
   private _panelElements = viewChildren(BoardPanelComponent, { read: ElementRef });
 

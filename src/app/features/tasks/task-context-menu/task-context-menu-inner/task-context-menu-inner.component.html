@@ -93,6 +93,12 @@
     }
   </div>
 
+  <button
+    mat-menu-item
+    (click)="dmPlanning.open([task])"
+  >
+    <mat-icon>edit_calendar</mat-icon>{{ T.DM.RESCHEDULE | translate }}
+  </button>
   @if (isTouchActive() && isInTaskRow) {
     <button
       (click)="enterSelectionMode()"
@@ -176,7 +182,7 @@
     </button>
   }
 
-  @if (isAdvancedControls() && !task.isDone && (!task.parentId || isInSubTaskList)) {
+  @if (!task.isDone && (!task.parentId || isInSubTaskList)) {
     <button
       (click)="moveToTop()"
       mat-menu-item

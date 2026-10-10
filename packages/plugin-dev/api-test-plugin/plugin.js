@@ -99,7 +99,7 @@ async function testTaskOperations() {
 
     // Create a test task
     const newTaskId = await PluginAPI.addTask({
-      title: 'API Test Task - ' + new Date().toLocaleTimeString(),
+      title: 'API 测试任务 - ' + new Date().toLocaleTimeString(),
       notes: 'This task was created by the API Test Plugin to test the addTask method',
       timeEstimate: 1800000, // 30 minutes in milliseconds
     });
@@ -119,7 +119,7 @@ async function testTaskOperations() {
       type: 'SUCCESS',
     });
   } catch (error) {
-    logResult('Task Operations', null, error);
+    logResult('任务操作', null, error);
   }
 }
 
@@ -134,7 +134,7 @@ async function testProjectOperations() {
 
     // Create a test project
     const newProject = await PluginAPI.addProject({
-      title: 'API Test Project - ' + new Date().toLocaleDateString(),
+      title: 'API 测试项目 - ' + new Date().toLocaleDateString(),
       themeColor: '#' + Math.floor(Math.random() * 16777215).toString(16), // Random color
     });
     logResult('addProject', `Created project: ${newProject.title}`);
@@ -167,7 +167,7 @@ async function testTagOperations() {
 
     // Create a test tag
     const newTag = await PluginAPI.addTag({
-      title: 'API Test Tag - ' + Date.now(),
+      title: 'API 测试标签 - ' + Date.now(),
       color: '#' + Math.floor(Math.random() * 16777215).toString(16), // Random color
     });
     logResult('addTag', `Created tag: ${newTag.title}`);
@@ -215,7 +215,7 @@ function testUIOperations() {
   // Test notification
   setTimeout(() => {
     PluginAPI.notify({
-      title: 'API Test Plugin',
+      title: 'API 测试插件',
       body: 'This is a test notification from the API Test Plugin',
     });
     logResult('notify', 'Notification sent');
@@ -243,7 +243,7 @@ PluginAPI.registerHook(PluginAPI.Hooks.CURRENT_TASK_CHANGE, (payload) => {
 
 PluginAPI.registerShortcut({
   id: 'run_api_tests',
-  label: 'Run All API Tests',
+  label: '运行全部 API 测试',
   onExec: runAllTests,
 });
 

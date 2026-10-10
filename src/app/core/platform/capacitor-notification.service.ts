@@ -101,16 +101,16 @@ export class CapacitorNotificationService {
             actions: [
               {
                 id: NOTIFICATION_ACTION.DONE,
-                title: 'Done',
+                title: '完成',
                 destructive: true,
               },
               {
                 id: NOTIFICATION_ACTION.SNOOZE_10M,
-                title: 'Snooze 10m',
+                title: '推迟 10 分钟',
               },
               {
                 id: NOTIFICATION_ACTION.SNOOZE_1H,
-                title: 'Snooze 1h',
+                title: '推迟 1 小时',
               },
             ],
           },

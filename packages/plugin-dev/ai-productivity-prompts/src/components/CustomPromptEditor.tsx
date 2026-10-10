@@ -29,12 +29,12 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
     const text = promptText().trim();
 
     if (!title) {
-      alert('Please enter a title for your prompt.');
+      alert('请输入提示词标题。');
       return;
     }
 
     if (!text) {
-      alert('Please enter a prompt template.');
+      alert('请输入提示词模板。');
       return;
     }
 
@@ -48,7 +48,7 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
       props.onSave();
     } catch (error) {
       console.error('Error saving prompt:', error);
-      alert('Error saving prompt. Please try again.');
+      alert('保存提示词失败，请重试。');
     } finally {
       setIsSaving(false);
     }
@@ -66,18 +66,17 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
     <div class="page-fade">
       <div class="editor-header">
         <h2 class="text-primary">
-          {isEditing() ? 'Edit Custom Prompt' : 'Create Custom Prompt'}
+          {isEditing() ? '编辑自定义提示词' : '创建自定义提示词'}
         </h2>
       </div>
 
       <div class="editor-container">
         <div class="editor-instructions">
           <p class="text-muted">
-            Create a custom prompt template. Your current tasks will be automatically
-            appended when you use this prompt.
+            创建自定义提示词模板。使用时，当前任务会自动附加到提示词中。
           </p>
           <p class="text-muted">
-            <strong>Tip:</strong> Press Ctrl+Enter (or Cmd+Enter) to save quickly.
+            <strong>提示：</strong> 按 Ctrl+Enter（或 Cmd+Enter）快速保存。
           </p>
         </div>
 
@@ -86,7 +85,7 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
             for="prompt-title"
             class="field-label"
           >
-            Prompt Title:
+            提示词标题：
           </label>
           <input
             id="prompt-title"
@@ -94,7 +93,7 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
             class="prompt-title-input"
             value={promptTitle()}
             onInput={(e) => setPromptTitle(e.currentTarget.value)}
-            placeholder="e.g., Daily Priority Planner"
+            placeholder="例如：每日优先级规划"
             autocomplete="off"
           />
         </div>
@@ -104,7 +103,7 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
             for="prompt-textarea"
             class="field-label"
           >
-            Prompt Template:
+            提示词模板：
           </label>
           <textarea
             id="prompt-textarea"
@@ -112,16 +111,10 @@ const CustomPromptEditor: Component<CustomPromptEditorProps> = (props) => {
             value={promptText()}
             onInput={(e) => setPromptText(e.currentTarget.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Enter your custom prompt here... 
+            placeholder="在此输入自定义提示词…
 
-Example:
-Help me prioritize my tasks for maximum impact today. Consider:
-- Urgency vs importance
-- Dependencies between tasks  
-- My current energy level
-- Available time blocks
-
-Give me a specific action plan with time estimates."
+例如：
+请根据紧急程度、重要程度、任务依赖、当前精力和可用时间，帮我安排今天的任务优先级，并给出包含预计用时的具体行动计划。"
             rows="12"
             autocomplete="off"
             spellcheck={true}
@@ -134,14 +127,14 @@ Give me a specific action plan with time estimates."
             onClick={props.onCancel}
             disabled={isSaving()}
           >
-            Cancel
+            取消
           </button>
           <button
             class="btn-primary"
             onClick={handleSave}
             disabled={isSaving() || !promptTitle().trim() || !promptText().trim()}
           >
-            {isSaving() ? 'Saving...' : isEditing() ? 'Update Prompt' : 'Save Prompt'}
+            {isSaving() ? '正在保存…' : isEditing() ? '更新提示词' : '保存提示词'}
           </button>
         </div>
       </div>

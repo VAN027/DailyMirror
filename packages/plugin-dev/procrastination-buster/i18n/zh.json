@@ -1,0 +1,108 @@
+{
+  "HOME": {
+    "TITLE": "是什么让您迟迟无法开始？",
+    "SUBTITLE": "选择最符合您当前感受的一项：",
+    "LEARN_MORE_BUTTON": "了解拖延 →"
+  },
+  "NAVIGATION": {
+    "BACK": "← 返回"
+  },
+  "STRATEGIES": {
+    "TITLE": "建议尝试：",
+    "ACTION_BUTTON": "🎯 开始专注",
+    "ACTION_BUTTON_TITLE": "开始一段专注时间"
+  },
+  "TYPES": {
+    "OVERWHELM": {
+      "TITLE": "不知所措",
+      "EMOTION": "事情一下子太多了",
+      "STRATEGY_1": "拆成小任务（每步 5 分钟）",
+      "STRATEGY_2": "制定行动约定（如果发生 X，就做 Y）",
+      "STRATEGY_3": "只选一件事",
+      "STRATEGY_4": "开始专注"
+    },
+    "PERFECTIONISM": {
+      "TITLE": "追求完美",
+      "EMOTION": "还不够完美",
+      "STRATEGY_1": "限定初稿时间（30 分钟）",
+      "STRATEGY_2": "写下来：怎样才算足够好？",
+      "STRATEGY_3": "对自己宽容一些",
+      "STRATEGY_4": "重视进步，而非完美"
+    },
+    "UNCLEAR": {
+      "TITLE": "方向不清",
+      "EMOTION": "不知道该做什么",
+      "STRATEGY_1": "确定一个具体的下一步",
+      "STRATEGY_2": "找人讨论",
+      "STRATEGY_3": "画一张思维导图",
+      "STRATEGY_4": "列出疑问"
+    },
+    "BORING": {
+      "TITLE": "无聊",
+      "EMOTION": "这件事太枯燥",
+      "STRATEGY_1": "增加一点趣味挑战",
+      "STRATEGY_2": "搭配音乐或播客",
+      "STRATEGY_3": "安排一个小奖励",
+      "STRATEGY_4": "拆成更小的部分"
+    },
+    "FEAR": {
+      "TITLE": "担忧",
+      "EMOTION": "担心自己会失败",
+      "STRATEGY_1": "想清楚最坏的情况",
+      "STRATEGY_2": "做一个小实验",
+      "STRATEGY_3": "寻求支持",
+      "STRATEGY_4": "记录成功经验"
+    },
+    "ENERGY": {
+      "TITLE": "精力不足",
+      "EMOTION": "太累了",
+      "STRATEGY_1": "活动身体 5 分钟",
+      "STRATEGY_2": "喝点水",
+      "STRATEGY_3": "先做最容易的任务",
+      "STRATEGY_4": "小睡 20 分钟"
+    },
+    "DISTRACTION": {
+      "TITLE": "分心",
+      "EMOTION": "其他事情更有吸引力",
+      "STRATEGY_1": "屏蔽干扰",
+      "STRATEGY_2": "安排一段不受打扰的时间",
+      "STRATEGY_3": "整理工作环境",
+      "STRATEGY_4": "建立开始专注的仪式"
+    },
+    "RESISTANCE": {
+      "TITLE": "抗拒",
+      "EMOTION": "不想做这件事",
+      "STRATEGY_1": "它为什么重要？",
+      "STRATEGY_2": "搭配一件愉快的事",
+      "STRATEGY_3": "考虑请他人协助",
+      "STRATEGY_4": "换个角度：我能学到什么？"
+    }
+  },
+  "INFO": {
+    "TITLE": "理解拖延",
+    "INTRO": "拖延常常与情绪调节有关，并不只是时间安排的问题。",
+    "CYCLE_TITLE": "拖延的循环",
+    "CYCLE_INTRO": "面对引发不适情绪的任务时，我们可能陷入这样的循环：",
+    "CYCLE_STEP_1": "害怕失败",
+    "CYCLE_STEP_2": "回避任务",
+    "CYCLE_STEP_3": "暂时轻松",
+    "CYCLE_STEP_4": "更加焦虑",
+    "BREAKING_TITLE": "打破循环",
+    "BREAKING_INTRO": "用好奇和理解面对拖延，不要急着责备自己。试着问：",
+    "BREAKING_Q1": "想到这项任务时，我有什么感受？",
+    "BREAKING_Q2": "具体哪个部分最困难？",
+    "BREAKING_Q3": "如果开始行动，我担心会发生什么？",
+    "STRATEGIES_TITLE": "可以尝试的方法",
+    "STRATEGY_START_SMALL": "从小处开始：",
+    "STRATEGY_START_SMALL_DESC": "现在能做的最小一步是什么？",
+    "STRATEGY_TIMEBOX": "限定时间：",
+    "STRATEGY_TIMEBOX_DESC": "只做 10–25 分钟，然后休息",
+    "STRATEGY_REFRAME": "换个角度：",
+    "STRATEGY_REFRAME_DESC": "关注进步，不苛求完美",
+    "STRATEGY_COMPASSION": "善待自己：",
+    "STRATEGY_COMPASSION_DESC": "像对待好朋友那样与自己对话",
+    "TRIGGERS_TITLE": "常见诱因",
+    "TRIGGERS_TEXT": "追求完美、害怕失败、不知所措、要求不明确或任务枯燥，都可能引发拖延。找到自己的诱因，是迈出下一步的开始。",
+    "BACK_TO_WORK": "回到工作"
+  }
+}

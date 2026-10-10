@@ -1,66 +1,66 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "API Test Plugin Configuration",
-  "description": "Configuration options for the API Test Plugin",
+  "title": "API 测试插件设置",
+  "description": "API 测试插件的配置选项",
   "type": "object",
   "properties": {
     "apiUrl": {
       "type": "string",
-      "title": "API URL",
-      "description": "The base URL for the API endpoints",
+      "title": "API 地址",
+      "description": "API 接口的基础地址",
       "default": "https://api.example.com"
     },
     "apiKey": {
       "type": "string",
-      "title": "API Key",
-      "description": "Your API key for authentication",
+      "title": "API 密钥",
+      "description": "用于身份验证的 API 密钥",
       "minLength": 10
     },
     "enabled": {
       "type": "boolean",
-      "title": "Enable API Integration",
-      "description": "Enable or disable the API integration",
+      "title": "启用 API 集成",
+      "description": "开启或关闭 API 集成",
       "default": true
     },
     "logLevel": {
       "type": "string",
-      "title": "Log Level",
-      "description": "Set the logging verbosity",
+      "title": "日志级别",
+      "description": "设置日志详细程度",
       "enum": ["debug", "info", "warn", "error"],
       "default": "info"
     },
     "requestTimeout": {
       "type": "number",
-      "title": "Request Timeout (ms)",
-      "description": "Timeout for API requests in milliseconds",
+      "title": "请求超时（毫秒）",
+      "description": "API 请求的超时时间，单位为毫秒",
       "minimum": 1000,
       "maximum": 60000,
       "default": 5000
     },
     "retryAttempts": {
       "type": "integer",
-      "title": "Retry Attempts",
-      "description": "Number of times to retry failed API requests",
+      "title": "重试次数",
+      "description": "API 请求失败后重新尝试的次数",
       "minimum": 0,
       "maximum": 5,
       "default": 3
     },
     "autoSync": {
       "type": "boolean",
-      "title": "Auto Sync",
-      "description": "Automatically sync data with the API",
+      "title": "自动同步",
+      "description": "自动通过 API 同步数据",
       "default": false
     },
     "notifications": {
       "type": "boolean",
-      "title": "Enable Notifications",
-      "description": "Show notifications for API events",
+      "title": "启用通知",
+      "description": "显示 API 事件通知",
       "default": true
     },
     "batchOperations": {
       "type": "boolean",
-      "title": "Batch Operations",
-      "description": "Enable batch API operations for better performance",
+      "title": "批量操作",
+      "description": "启用批量 API 操作以提高性能",
       "default": false
     }
   },

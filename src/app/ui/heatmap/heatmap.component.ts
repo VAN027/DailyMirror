@@ -1,3 +1,5 @@
+import { T } from '../../t.const';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -34,9 +36,10 @@ export interface HeatmapData {
   styleUrls: ['./heatmap.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe],
 })
 export class HeatmapComponent {
+  readonly T = T;
   private readonly _dateAdapter = inject(DateAdapter);
 
   readonly data = input.required<HeatmapData | null>();
@@ -61,7 +64,7 @@ export class HeatmapComponent {
   }
 
   readonly dayLabels = computed(() => {
-    const allDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const allDays = this._dateAdapter.getDayOfWeekNames('short');
     const firstDay = this._dateAdapter.getFirstDayOfWeek();
     return [...allDays.slice(firstDay), ...allDays.slice(0, firstDay)];
   });
@@ -77,6 +80,6 @@ export class HeatmapComponent {
     if (!day) {
       return '';
     }
-    return `${day.dateStr}: ${day.taskCount} tasks, ${msToString(day.timeSpent)}`;
+    return `${day.dateStr}: ${day.taskCount} 个任务， ${msToString(day.timeSpent)}`;
   }
 }

@@ -4,6 +4,8 @@ import {
   effect,
   ElementRef,
   inject,
+  input,
+  model,
   signal,
 } from '@angular/core';
 import { MatTab, MatTabContent, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
@@ -59,6 +61,10 @@ import { TaskMultiSelectService } from '../tasks/task-multi-select.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardsComponent {
+  readonly initialBoardId = input<string>();
+  readonly completedToggleBoardId = input<string>();
+  readonly hideCompleted = model(false);
+  private _didSelectInitialBoard = false;
   private _matDialog = inject(MatDialog);
   private _multiSelect = inject(TaskMultiSelectService);
   store = inject(Store);
@@ -72,6 +78,14 @@ export class BoardsComponent {
   DEFAULT_BOARD_CFG = DEFAULT_BOARD_CFG;
 
   constructor() {
+    effect(() => {
+      const id = this.initialBoardId();
+      const index = this.boards()?.findIndex((board) => board.id === id) ?? -1;
+      if (!this._didSelectInitialBoard && id && index >= 0) {
+        this._didSelectInitialBoard = true;
+        this.selectedTabIndex.set(index);
+      }
+    });
     effect(() => {
       localStorage.setItem(LS.SELECTED_BOARD, this.selectedTabIndex().toString());
     });

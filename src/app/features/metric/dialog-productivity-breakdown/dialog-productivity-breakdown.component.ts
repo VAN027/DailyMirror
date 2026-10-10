@@ -69,14 +69,14 @@ export class DialogProductivityBreakdownComponent {
         labels,
         datasets: [
           {
-            label: 'Productivity Score',
+            label: '效率得分',
             data: productivityScores,
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             tension: 0.1,
           },
           {
-            label: 'Sustainability Score',
+            label: '可持续性得分',
             data: sustainabilityScores,
             borderColor: 'rgb(153, 102, 255)',
             backgroundColor: 'rgba(153, 102, 255, 0.2)',

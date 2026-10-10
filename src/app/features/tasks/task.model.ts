@@ -102,6 +102,10 @@ export interface TaskCopy
    */
   priority?: TaskPriority | null;
 
+  // Compatibility with the retired DailyMirror board; converted to native tags on entry.
+  // Retained for old backups; new classification uses Important/Urgent tags.
+  dailymirrorQuadrant?: 0 | 1 | 2 | 3 | 4 | null;
+
   /**
    * Scheduled time as Unix timestamp (ms). For tasks scheduled with a specific time.
    *

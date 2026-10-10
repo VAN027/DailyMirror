@@ -49,7 +49,7 @@ export class DialogShareComponent {
     { target: 'facebook', label: 'Facebook', icon: 'link' },
     { target: 'whatsapp', label: 'WhatsApp', icon: 'chat' },
     { target: 'telegram', label: 'Telegram', icon: 'send' },
-    { target: 'email', label: 'Email', icon: 'email' },
+    { target: 'email', label: '电子邮件', icon: 'email' },
     { target: 'mastodon', label: 'Mastodon', icon: 'link' },
   ];
 

@@ -8,7 +8,9 @@
     "BOARD_DESC": "Select the board to search and import cards from. Enter your API key and token first, then the list loads.",
     "FILTER_USERNAME": "Filter by Trello username",
     "FILTER_USERNAME_DESC": "If provided, only imports cards assigned to this Trello username.",
-    "HOW_TO_GET_TOKEN": "如何获取令牌？"
+    "HOW_TO_GET_TOKEN": "如何获取令牌？",
+    "DEFAULT_LIST_ID": "默认 Trello 列表",
+    "DEFAULT_LIST_ID_DESC": "选择自动创建 Trello 卡片时使用的列表。未设置时，将使用看板上的第一个未关闭列表。选择看板并点击“重新加载选项”以填充此下拉列表。"
   },
   "DISPLAY": {
     "SUMMARY": "摘要",
@@ -19,5 +21,8 @@
     "ATTACHMENTS": "附件",
     "DESCRIPTION": "描述"
   },
-  "FORM_HELP": "<p>Configure Super Productivity to list and import cards from a Trello board in the task creation panel. Generate an API key and token at <a href=\"https://trello.com/power-ups/admin\">trello.com/power-ups/admin</a>, then load and select your board. See the <a href=\"https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/\">Trello REST API docs</a> for details.</p>"
+  "FORM_HELP": "<p>Configure Super Productivity to list and import cards from a Trello board in the task creation panel. Generate an API key and token at <a href=\"https://trello.com/power-ups/admin\">trello.com/power-ups/admin</a>, then load and select your board. See the <a href=\"https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/\">Trello REST API docs</a> for details.</p>",
+  "ERRORS": {
+    "DEFAULT_LIST_ID_REQUIRED": "所选 Trello 看板没有可用于创建卡片的未关闭列表。"
+  }
 }

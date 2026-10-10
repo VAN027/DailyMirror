@@ -78,7 +78,7 @@ export const REDMINE_CONFIG_FORM: LimitedFormlyFieldConfig<IssueProviderRedmine>
   {
     type: 'collapsible',
     // todo translate
-    props: { label: 'Advanced Config' },
+    props: { label: '高级设置' },
     fieldGroup: [
       ...ISSUE_PROVIDER_COMMON_FORM_FIELDS,
       {

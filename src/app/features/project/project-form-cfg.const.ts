@@ -10,7 +10,7 @@ export type CreateProjectFormModel = Project & { isShareOnPlainspace?: boolean }
 export const CREATE_PROJECT_BASIC_CONFIG_FORM_CONFIG: ConfigFormSection<CreateProjectFormModel> =
   {
     // TODO translate
-    title: 'Project Settings & Theme',
+    title: '项目设置与主题',
     key: 'basic',
 
     help: `Very basic settings for your project.`,

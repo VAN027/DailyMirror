@@ -1,0 +1,19 @@
+{
+  "PLUGIN": {
+    "NAME": "昨日任务",
+    "DESCRIPTION": "查看昨天处理过的任务及各自用时。"
+  },
+  "SHORTCUT": {
+    "SHOW_YESTERDAY_TASKS": "查看昨日任务"
+  },
+  "DATE": {
+    "YESTERDAY": "昨天",
+    "DAYS_AGO": "{{count}} 天前"
+  },
+  "MESSAGES": {
+    "LOADING_TASKS": "正在加载任务…",
+    "NO_RECENT_TASKS_FOUND": "暂无最近任务",
+    "NO_TASKS_LAST_30_DAYS": "最近 30 天没有计时记录。",
+    "ERROR_LOADING_TASKS": "加载任务失败，请重试。"
+  }
+}

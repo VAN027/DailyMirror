@@ -1,3 +1,4 @@
+import { DeadlineRemindersComponent } from '../dailymirror/deadline-reminders.component';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -66,10 +67,7 @@ import { BacklogComponent } from './backlog/backlog.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MsToStringPipe } from '../../ui/duration/ms-to-string.pipe';
 import { TranslatePipe } from '@ngx-translate/core';
-import {
-  selectLaterTodayTasksWithSubTasks,
-  selectOverdueTasksWithSubTasks,
-} from '../tasks/store/task.selectors';
+import { selectOverdueTasksWithSubTasks } from '../tasks/store/task.selectors';
 import {
   selectStartOfNextDayDiffMs,
   selectTodayStr,
@@ -78,10 +76,6 @@ import { CalendarIntegrationService } from '../calendar-integration/calendar-int
 import { PlannerCalendarEventComponent } from '../planner/planner-calendar-event/planner-calendar-event.component';
 import { ScheduleCalendarMapEntry } from '../schedule/schedule.model';
 import { getLaterTodayCalendarEvents } from './get-later-today-calendar-events';
-import {
-  getEndOfTodayTime,
-  isLaterTodayEntryUpcoming,
-} from '../tasks/util/later-today-window';
 import { GlobalTrackingIntervalService } from '../../core/global-tracking-interval/global-tracking-interval.service';
 import { fastArrayCompare } from '../../util/fast-array-compare';
 import { CollapsibleComponent } from '../../ui/collapsible/collapsible.component';
@@ -124,6 +118,7 @@ const INITIAL_CUSTOMIZED_UNDONE_TASKS: CustomizedUndoneTasks = { list: [] };
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    DeadlineRemindersComponent,
     CdkDropListGroup,
     CdkDropList,
     CdkDrag,
@@ -213,10 +208,6 @@ export class WorkViewComponent implements OnInit, OnDestroy {
   overdueTasks = toSignal(this._store.select(selectOverdueTasksWithSubTasks), {
     initialValue: [],
   });
-  private _laterTodayTaskCandidates = toSignal(
-    this._store.select(selectLaterTodayTasksWithSubTasks),
-    { initialValue: [] as TaskWithSubTasks[] },
-  );
   // Calendar events are not in the store — sourced live (cached + polled,
   // shareReplay/refCount) from the calendar integration. Shown as read-only
   // outlines in the "Later Today" section, mirroring the planner.
@@ -253,23 +244,8 @@ export class WorkViewComponent implements OnInit, OnDestroy {
     },
     { equal: fastArrayCompare },
   );
-  // The selector's cutoff is only as fresh as the last task-state change, so
-  // re-apply it here against the current clock. It can only ever include too
-  // much, which makes this filter enough to keep the panel exact.
-  laterTodayTasks = computed(
-    () => {
-      this._refreshTick();
-      const endOfTodayTime = getEndOfTodayTime(
-        this._todayStr(),
-        this._startOfNextDayDiffMs(),
-      );
-      const now = Date.now();
-      return this._laterTodayTaskCandidates().filter((task) =>
-        isLaterTodayEntryUpcoming(task, now, endOfTodayTime),
-      );
-    },
-    { equal: fastArrayCompare },
-  );
+  // Timed tasks stay in the main list. Only external events use Later Today.
+  laterTodayTasks = computed<TaskWithSubTasks[]>(() => []);
   undoneTasks = input.required<TaskWithSubTasks[]>();
   customizedUndoneTasks = toSignal(
     this.customizerService.customizeUndoneTasks(this.workContextService.undoneTasks$),
@@ -293,7 +269,7 @@ export class WorkViewComponent implements OnInit, OnDestroy {
   });
   selectedTaskId = this.taskService.selectedTaskId;
   isOnTodayList = toSignal(this.workContextService.isTodayList$, { initialValue: false });
-  isDoneHidden = signal(!!localStorage.getItem(LS.DONE_TASKS_HIDDEN));
+  isDoneHidden = signal(localStorage.getItem(LS.DONE_TASKS_HIDDEN) !== 'false');
   isLaterTodayHidden = signal(!!localStorage.getItem(LS.LATER_TODAY_TASKS_HIDDEN));
   isOverdueHidden = signal(!!localStorage.getItem(LS.OVERDUE_TASKS_HIDDEN));
   isRepeatCfgsHidden = signal(!!localStorage.getItem(LS.REPEAT_CFGS_HIDDEN));
@@ -372,9 +348,7 @@ export class WorkViewComponent implements OnInit, OnDestroy {
     return { dict, noSection };
   });
 
-  isShowOverduePanel = computed(
-    () => this.isOnTodayList() && this.overdueTasks().length > 0,
-  );
+  isShowOverduePanel = computed(() => false);
 
   isShowTimeWorkedWithoutBreak: boolean = true;
   splitInputPos: number = 100;
@@ -461,7 +435,7 @@ export class WorkViewComponent implements OnInit, OnDestroy {
       if (isExpanded) {
         localStorage.setItem(LS.DONE_TASKS_HIDDEN, 'true');
       } else {
-        localStorage.removeItem(LS.DONE_TASKS_HIDDEN);
+        localStorage.setItem(LS.DONE_TASKS_HIDDEN, 'false');
       }
     });
 

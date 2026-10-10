@@ -1,6 +1,6 @@
 {
   "id": "caldav-calendar-provider",
-  "name": "CalDAV Events",
+  "name": "CalDAV 日历",
   "version": "1.0.0",
   "manifestVersion": 1,
   "minSupVersion": "13.0.0",
@@ -13,9 +13,13 @@
     "pollIntervalMs": 60000,
     "icon": "calendar",
     "humanReadableName": "CalDAV Events",
-    "issueStrings": { "singular": "Event", "plural": "Events" },
+    "issueStrings": {
+      "singular": "Event",
+      "plural": "Events"
+    },
     "useAgendaView": true,
     "defaultAutoAddToBacklog": false,
     "allowPrivateNetwork": true
-  }
+  },
+  "description": "连接 CalDAV 日历并管理日程。"
 }

@@ -1,6 +1,7 @@
 <div class="page-settings page-wrapper">
   @if (globalCfg) {
     <div class="settings-container">
+      <dm-navigation-settings />
       <!-- Shared by every tab's `mat-tab-label`: an icon + translated title. -->
       <ng-template
         #tabLabel
@@ -330,7 +331,7 @@
   <a
     href="https://github.com/super-productivity/super-productivity/releases/latest"
     target="_blank"
-    >Changelog</a
+    >{{ T.LOCAL_UI.CHANGELOG | translate }}</a
   >
   @if (isUpdateCheckPossible) {
     –
@@ -344,7 +345,7 @@
   <a
     (click)="showLogs(); $event?.preventDefault()"
     href="#"
-    >Logs</a
+    >{{ T.LOCAL_UI.LOGS | translate }}</a
   >
   –
   <a

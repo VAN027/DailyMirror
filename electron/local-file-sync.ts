@@ -301,7 +301,7 @@ export const initLocalFileSyncAdapter = (): void => {
       _installPendingResetHook(win);
       const discardGenAtOpen = _discardGeneration;
       const { canceled, filePaths } = (await dialog.showOpenDialog(win, {
-        title: 'Select sync folder',
+        title: '选择同步文件夹',
         buttonLabel: 'Select Folder',
         properties: [
           'openDirectory',
@@ -391,7 +391,7 @@ export const initLocalFileSyncAdapter = (): void => {
       // version closes that gap.)
       try {
         const { canceled, filePaths } = (await dialog.showOpenDialog(getWin(), {
-          title: 'Select image',
+          title: '选择图片',
           buttonLabel: 'Select',
           properties: ['openFile'],
           filters: [
@@ -444,7 +444,7 @@ export const initLocalFileSyncAdapter = (): void => {
       },
     ): Promise<string[] | undefined> => {
       const { canceled, filePaths } = (await dialog.showOpenDialog(getWin(), {
-        title: options.title || 'Select folder',
+        title: options.title || '选择文件夹',
         buttonLabel: 'Select',
         properties: options.properties as any,
         defaultPath: options.defaultPath,

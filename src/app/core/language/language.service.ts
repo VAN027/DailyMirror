@@ -38,7 +38,8 @@ export class LanguageService {
   }
 
   setLng(lng?: LanguageCode | null): void {
-    if (!lng) this._set(this.detect());
+    if (lng === undefined) this._set(LanguageCode.zh);
+    else if (lng === null) this._set(this.detect());
     else if (this.isSupported(lng)) this._set(lng);
     else {
       // eslint-disable-next-line local-rules/no-user-content-in-logs -- grandfathered log baseline (2026-09), not yet triaged

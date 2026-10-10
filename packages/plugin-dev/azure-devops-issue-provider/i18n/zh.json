@@ -9,7 +9,9 @@
     "SCOPE_CREATED": "Created by me",
     "SCOPE_ASSIGNED": "Assigned to me",
     "AUTO_IMPORT_LIMIT": "Auto import limit",
-    "AUTO_IMPORT_LIMIT_DESC": "Maximum number of Azure DevOps work items to fetch for automatic backlog import. Max {{max}}."
+    "AUTO_IMPORT_LIMIT_DESC": "Maximum number of Azure DevOps work items to fetch for automatic backlog import. Max {{max}}.",
+    "AUTO_IMPORT_WIQL": "自动导入 WIQL 查询（仅用于自动导入）",
+    "AUTO_IMPORT_WIQL_DESC": "可选。填写后，此 WIQL 查询将完全替代自动导入查询；范围、状态筛选和排序由您控制，上方的范围设置将被忽略。可按迭代路径、区域路径、工作项类型筛选，或匹配自定义的完成状态名称。留空则使用范围设置。请使用平面 WorkItems 查询，例如：Select [System.Id] From WorkItems Where [System.TeamProject] = 'MyProject' AND [System.IterationPath] = 'MyProject\\Sprint 1' AND [System.State] <> 'Closed'。"
   },
   "DISPLAY": {
     "SUMMARY": "摘要",

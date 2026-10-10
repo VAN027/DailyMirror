@@ -1,3 +1,4 @@
+import { NavigationSettingsComponent } from '../../features/dailymirror/navigation-settings.component';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,7 +9,7 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GlobalConfigService } from '../../features/config/global-config.service';
 import { getChangedAppFeatures } from '../../features/config/get-changed-app-features.util';
 import { TaskWidgetSettingsService } from '../../features/config/task-widget-settings.service';
@@ -89,6 +90,7 @@ const TAB_ANIMATION_DURATION_MS = 200;
   styleUrls: ['./config-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    NavigationSettingsComponent,
     ThemeSelectorComponent,
     ConfigSectionComponent,
     ConfigSoundFormComponent,
@@ -101,7 +103,6 @@ const TAB_ANIMATION_DURATION_MS = 200;
     MatTooltip,
     MatButton,
     MatIconButton,
-    RouterLink,
     NgTemplateOutlet,
     FormsModule,
     MatFormField,

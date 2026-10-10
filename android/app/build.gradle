@@ -10,23 +10,30 @@ apply from: "config.gradle"
 // Load the application configuration properties
 def appConfig = loadAppConfig()
 
+// Local DailyMirror signing identity; never commit this file or the keystore.
+def dailySigning = new Properties()
+def dailySigningFile = rootProject.file('dailymirror-signing.properties')
+if (dailySigningFile.exists()) {
+    dailySigningFile.withInputStream { dailySigning.load(it) }
+}
+
 // Retrieve the build configuration fields for Debug and Release builds
 def debugConfigFields = getBuildConfigFields(appConfig, true)
 def releaseConfigFields = getBuildConfigFields(appConfig, false)
 
 android {
     defaultConfig {
-        applicationId "com.superproductivity.superproductivity"
+        applicationId "com.dailymirror.app"
         minSdkVersion 24
         targetSdkVersion 36
         compileSdk 36
-        versionCode 19_01_00_9000
+        versionCode 19_01_00_9001
         versionName "19.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 hostName       : "app.super-productivity.com",
                 defaultUrl     : "https://app.super-productivity.com",
-                launcherName   : "Super Productivity",
+                launcherName   : "DailyMirror",
                 assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], ' +
                         '"target": {"namespace": "web", "site": "https://app.super-productivity.com"}}]'
         ]
@@ -34,10 +41,10 @@ android {
 
     signingConfigs{
         release{
-            storeFile file("../../keystore.jks")
-            storePassword System.getenv("RELEASE_KEYSTORE_PASSWORD")
-            keyAlias System.getenv("RELEASE_KEYSTORE_ALIAS")
-            keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+            storeFile dailySigningFile.exists() ? rootProject.file(dailySigning.getProperty('storeFile')) : file("../../keystore.jks")
+            storePassword dailySigning.getProperty('storePassword') ?: System.getenv("RELEASE_KEYSTORE_PASSWORD")
+            keyAlias dailySigning.getProperty('keyAlias') ?: System.getenv("RELEASE_KEYSTORE_ALIAS")
+            keyPassword dailySigning.getProperty('keyPassword') ?: System.getenv("RELEASE_KEY_PASSWORD")
         }
     }
 

@@ -27,6 +27,7 @@
       <ng-template matTabContent>
         <board
           [boardCfg]="board"
+          [hideCompleted]="board.id === completedToggleBoardId() && hideCompleted()"
           cdkDropListGroup
         ></board>
       </ng-template>
@@ -57,6 +58,17 @@
     matMenuContent
     let-board="boardCfg"
   >
+    @if (board.id === completedToggleBoardId()) {
+      <button
+        mat-menu-item
+        (click)="hideCompleted.set(!hideCompleted())"
+      >
+        <mat-icon>{{
+          hideCompleted() ? 'check_box' : 'check_box_outline_blank'
+        }}</mat-icon>
+        {{ T.DM.HIDE_DONE | translate }}
+      </button>
+    }
     <button
       mat-menu-item
       (click)="editBoard(board)"

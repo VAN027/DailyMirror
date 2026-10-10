@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,6 +36,7 @@ interface ResolvedAttachment extends TaskAttachment {
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [standardListAnimation],
   imports: [
+    TranslatePipe,
     TaskAttachmentLinkDirective,
     MatIcon,
     EnlargeImgDirective,

@@ -1,10 +1,10 @@
 {
   "id": "automations",
-  "name": "Automations (experimental)",
+  "name": "自动化（实验性）",
   "version": "1.0.0",
   "manifestVersion": 1,
   "minSupVersion": "16.0.0",
-  "description": "Simple rule-based automation for Super Productivity",
+  "description": "通过规则自动执行任务操作。",
   "author": "Super Productivity",
   "homepage": "",
   "repository": {

@@ -67,7 +67,7 @@ export const OPEN_PROJECT_CONFIG_FORM: LimitedFormlyFieldConfig<IssueProviderOpe
     {
       type: 'collapsible',
       // todo translate
-      props: { label: 'Advanced Config' },
+      props: { label: '高级设置' },
       fieldGroup: [
         ...ISSUE_PROVIDER_COMMON_FORM_FIELDS,
         {

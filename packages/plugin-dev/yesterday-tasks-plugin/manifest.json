@@ -1,14 +1,14 @@
 {
-  "name": "Yesterday's Tasks",
+  "name": "昨日任务",
   "id": "yesterday-tasks",
   "manifestVersion": 1,
   "version": "1.0.0",
   "minSupVersion": "13.0.0",
-  "description": "Shows all tasks you worked on yesterday with time spent on each.",
+  "description": "查看昨天处理的任务及各自用时。",
   "hooks": [],
   "permissions": ["getTasks", "getArchivedTasks", "showIndexHtmlAsView", "openDialog"],
   "i18n": {
-    "languages": ["en", "de"]
+    "languages": ["en", "de", "zh"]
   },
   "iFrame": true,
   "sidePanel": true,

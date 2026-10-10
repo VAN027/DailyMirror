@@ -1,10 +1,10 @@
 {
-  "name": "Brain Dump",
+  "name": "批量记事",
   "id": "brain-dump",
   "manifestVersion": 1,
   "version": "1.0.0",
   "minSupVersion": "13.0.0",
-  "description": "Quickly capture many tasks at once. Each line becomes a task.",
+  "description": "快速记录多个任务，每行创建一个任务。",
   "author": "Super Productivity",
   "permissions": [
     "getAllProjects",

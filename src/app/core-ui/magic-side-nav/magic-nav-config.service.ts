@@ -1,3 +1,4 @@
+import { DisplayPreferencesService } from '../../features/dailymirror/display-preferences.service';
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
@@ -143,7 +144,7 @@ export class MagicNavConfigService {
   }
 
   // Main navigation configuration
-  readonly navConfig = computed<NavConfig>(() => ({
+  private readonly _legacyNavConfig = computed<NavConfig>(() => ({
     items: [
       // Work Context Items
       ...this._buildWorkContextItems(),
@@ -348,6 +349,80 @@ export class MagicNavConfigService {
     collapseThreshold: 150,
     expandThreshold: 180,
   }));
+
+  readonly displayPreferences = inject(DisplayPreferencesService);
+  readonly isMoreExpanded = signal(false);
+  private readonly _coreItems: NavItem[] = [
+    {
+      type: 'route',
+      id: 'dm-quadrants',
+      label: T.DM.QUADRANTS,
+      icon: 'grid_view',
+      route: '/quadrants',
+    },
+    {
+      type: 'route',
+      id: 'dm-calendar',
+      label: T.MH.SCHEDULE,
+      icon: 'calendar_month',
+      route: '/schedule',
+    },
+    {
+      type: 'route',
+      id: 'dm-review',
+      label: T.DM.REVIEW,
+      icon: 'fact_check',
+      route: '/tag/TODAY/daily-summary',
+    },
+  ];
+  readonly configurableItems = computed(() => [
+    ...this._coreItems,
+    ...this._legacyNavConfig().items.filter(
+      (item) =>
+        item.type !== 'separator' &&
+        !item.id.startsWith('main-') &&
+        !['search', 'scheduled-list', 'donate', 'help', 'settings', 'schedule'].includes(
+          item.id,
+        ),
+    ),
+  ]);
+  readonly navConfig = computed<NavConfig>(() => {
+    const legacy = this._legacyNavConfig();
+    const today = legacy.items.filter((item) => item.id.startsWith('main-'));
+    const pinned = this.configurableItems().filter((item) =>
+      this.displayPreferences.isPinned(item.id),
+    );
+    const hidden = this.configurableItems().filter(
+      (item) => !this.displayPreferences.isPinned(item.id),
+    );
+    return {
+      ...legacy,
+      items: [
+        ...today,
+        ...pinned.filter((item) => this._coreItems.some((core) => core.id === item.id)),
+        { type: 'separator', id: 'dm-bottom', mtAuto: true },
+        ...pinned.filter((item) => !this._coreItems.some((core) => core.id === item.id)),
+        {
+          type: 'action',
+          id: 'dm-more',
+          label: T.DM.MORE,
+          icon: this.isMoreExpanded() ? 'expand_less' : 'expand_more',
+          action: () => this.isMoreExpanded.update((value) => !value),
+        },
+        ...(this.isMoreExpanded() ? hidden : []),
+        {
+          type: 'route',
+          id: 'search',
+          label: T.MH.SEARCH,
+          icon: 'search',
+          route: '/search',
+        },
+        ...legacy.items.filter((item) =>
+          ['scheduled-list', 'donate', 'help', 'settings'].includes(item.id),
+        ),
+      ],
+    };
+  });
 
   // Simple action handler
   onNavItemClick(item: NavItem): void {

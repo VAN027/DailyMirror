@@ -1,3 +1,5 @@
+import { T } from '../../t.const';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -44,7 +46,7 @@ import { dragDelayForTouch } from '../../util/input-intent';
 @Component({
   selector: 'tree-dnd',
   standalone: true,
-  imports: [NgTemplateOutlet, NgStyle, NgClass, DragDropModule],
+  imports: [TranslatePipe, NgTemplateOutlet, NgStyle, NgClass, DragDropModule],
   providers: [TreeIndicatorService, TreeDragService],
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
@@ -52,6 +54,7 @@ import { dragDelayForTouch } from '../../util/input-intent';
   animations: [expandCollapseAni],
 })
 export class TreeDndComponent<TData = unknown> {
+  readonly T = T;
   // === INJECTED DEPENDENCIES ===
   private readonly _host = inject(ElementRef<HTMLElement>);
   private readonly _destroyRef = inject(DestroyRef);

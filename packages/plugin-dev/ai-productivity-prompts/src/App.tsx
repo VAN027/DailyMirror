@@ -40,7 +40,7 @@ const App: Component = () => {
             variant="back"
             onClick={navigateBack}
           >
-            ← Back
+            ← 返回
           </Button>
         </header>
       </Show>

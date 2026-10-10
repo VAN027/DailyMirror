@@ -1,4 +1,5 @@
 import { TaskContextMenuInnerComponent } from './task-context-menu-inner.component';
+import { PlanningActionsService } from '../../../dailymirror/planning-actions.service';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
 import { signal } from '@angular/core';
 import { TaskService } from '../../task.service';
@@ -88,6 +89,13 @@ describe('TaskContextMenuInnerComponent', () => {
         TranslateModule.forRoot(),
       ],
       providers: [
+        {
+          provide: PlanningActionsService,
+          useValue: {
+            open: jasmine.createSpy('open'),
+            apply: jasmine.createSpy('apply'),
+          },
+        },
         provideMockStore(),
         { provide: TaskService, useValue: taskService },
         { provide: TaskDuplicateService, useValue: taskDuplicateService },

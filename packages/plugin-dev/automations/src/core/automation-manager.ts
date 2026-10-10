@@ -285,22 +285,22 @@ export class AutomationManager {
 
       const dialogCfg: DialogCfg = {
         htmlContent: `
-              <h3>High Automation Activity Detected</h3>
-              <p>The rule <strong>"${this.escapeHtml(rule.name)}"</strong> is triggering too frequently (infinite loop protection).</p>
-              <p>Do you want to disable this rule or continue execution?</p>
+              <h3>检测到规则触发过于频繁</h3>
+              <p>规则<strong>“${this.escapeHtml(rule.name)}”</strong>触发过于频繁，已启动死循环保护。</p>
+              <p>要禁用此规则还是继续执行？</p>
             `,
         buttons: [
           {
-            label: 'Disable Rule',
+            label: '禁用规则',
             color: 'warn',
             onClick: async () => {
               await this.toggleRuleStatus(rule.id, false);
-              this.plugin.showSnack({ msg: `Rule "${rule.name}" disabled`, type: 'INFO' });
+              this.plugin.showSnack({ msg: `已禁用规则“${rule.name}”`, type: 'INFO' });
               this.pendingDialogs.delete(rule.id);
             },
           },
           {
-            label: 'Continue',
+            label: '继续',
             color: 'primary',
             onClick: () => {
               this.rateLimiter.reset(rule.id);

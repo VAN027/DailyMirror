@@ -12,8 +12,8 @@ const HomeView: Component<HomeViewProps> = (props) => {
   return (
     <>
       <div class="intro page-fade">
-        <h2>AI Productivity Prompts</h2>
-        <p class="text-muted">Choose what you need help with:</p>
+        <h2>AI 效率提示词</h2>
+        <p class="text-muted">选择您需要的帮助：</p>
       </div>
 
       <div class="category-grid page-fade">
@@ -30,8 +30,8 @@ const HomeView: Component<HomeViewProps> = (props) => {
           onClick={props.onCustomPromptsClick}
           class="custom-prompts-card"
         >
-          <h3 class="text-primary">My Custom Prompts</h3>
-          <p class="text-muted">Create & manage your own prompts</p>
+          <h3 class="text-primary">我的自定义提示词</h3>
+          <p class="text-muted">创建和管理自己的提示词</p>
         </Card>
       </div>
     </>
@@ -49,7 +49,7 @@ const CategoryCard: Component<{
       class="category-card"
     >
       <h3 class="text-primary">{props.category.title}</h3>
-      <p class="text-muted">{props.category.prompts.length} prompts</p>
+      <p class="text-muted">{props.category.prompts.length} 个提示词</p>
     </Card>
   );
 };

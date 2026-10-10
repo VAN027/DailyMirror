@@ -239,15 +239,13 @@
 
 <mat-card class="community-plugins-card">
   <mat-card-header>
-    <mat-card-title>Community Plugins</mat-card-title>
+    <mat-card-title>{{ T.LOCAL_UI.COMMUNITY_PLUGINS | translate }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <div class="install-warning">
       <mat-icon>warning</mat-icon>
       <span>
-        These plugins are developed by the community and are NOT reviewed or guaranteed by
-        the Super Productivity team. Install and use them at your own risk — they might
-        contain malicious code or break your application.
+        {{ T.LOCAL_UI.COMMUNITY_WARNING | translate }}
       </span>
     </div>
 
@@ -263,7 +261,7 @@
           </h3>
           <p class="plugin-author">
             <span>
-              by
+              作者：
               @if (plugin.authorUrl) {
                 <a
                   [href]="plugin.authorUrl"
@@ -277,7 +275,7 @@
             @if (plugin.stars !== undefined) {
               <span
                 class="plugin-stars"
-                [attr.aria-label]="plugin.stars + ' stars'"
+                [attr.aria-label]="plugin.stars + ' 个星标'"
               >
                 <mat-icon>star</mat-icon>
                 {{ plugin.stars }}
@@ -297,7 +295,7 @@
         color="primary"
       >
         <mat-icon>add</mat-icon>
-        Get your plugin to show up here
+        {{ T.LOCAL_UI.GET_YOUR_PLUGIN_TO_SHOW_UP_HERE | translate }}
       </a>
     </div>
   </mat-card-content>

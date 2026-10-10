@@ -113,6 +113,7 @@ export class BoardPanelComponent implements TaskCardList {
   dragDelayForTouch = dragDelayForTouch;
 
   panelCfg = input.required<BoardPanelCfg>();
+  hideCompleted = input(false);
   editBoard = output<void>();
   adjacentPanel = output<BoardPanelNavigation>();
 
@@ -317,8 +318,10 @@ export class BoardPanelComponent implements TaskCardList {
     // Hoist the backlog predicate out of the filter callback so it's allocated
     // once per recompute, not once per task.
     const isInBacklog = (t: Readonly<TaskCopy>): boolean => this._isTaskInBacklog(t);
-    const allFilteredTasks = this.allTasks().filter((task) =>
-      doesTaskMatchPanel(task, panelCfg, isInBacklog),
+    const allFilteredTasks = this.allTasks().filter(
+      (task) =>
+        (!this.hideCompleted() || !task.isDone) &&
+        doesTaskMatchPanel(task, panelCfg, isInBacklog),
     );
 
     allFilteredTasks.forEach((task) => {

@@ -519,3 +519,24 @@
     }
   }
 }
+
+.dm-arrangement {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s);
+  padding: var(--s);
+  label {
+    display: flex;
+    align-items: center;
+    gap: var(--s);
+  }
+  select,
+  input {
+    font: inherit;
+    color: inherit;
+    background: var(--bg-lighter);
+    padding: var(--s-half);
+    border: 1px solid var(--extra-border-color);
+    border-radius: var(--s-half);
+  }
+}

@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { Log } from '../log';
 import { DEFAULT_LANGUAGE } from '../locale.constants';
 import EN_TRANSLATIONS from '../../../assets/i18n/en.json';
+import ZH_TRANSLATIONS from '../../../assets/i18n/zh.json';
 
 /**
  * TranslateLoader that degrades gracefully when the translation JSON cannot be
@@ -20,7 +21,7 @@ import EN_TRANSLATIONS from '../../../assets/i18n/en.json';
  * rejection reaches the GlobalErrorHandler and the app shows a crash card
  * instead of booting.
  *
- * On a status-0 failure we fall back to the English translations bundled at
+ * On a status-0 failure we fall back to translations bundled at
  * build time so the app boots with readable text rather than a crash card or
  * raw translation keys, and self-heals once a cached or online copy is
  * available. Any other failure (e.g. a 404 or a JSON parse error, which
@@ -42,7 +43,7 @@ export class TranslateHttpLoaderWithFallback implements TranslateLoader {
           // Expected, recoverable offline degrade — warn, don't err.
           Log.warn(
             `Translation file for "${lang}" could not be loaded (offline?). ` +
-              `Falling back to bundled English translations so the app can still boot.`,
+              `Falling back to bundled translations so the app can still boot.`,
           );
           return of(this._getFallbackTranslations(lang));
         }
@@ -52,12 +53,11 @@ export class TranslateHttpLoaderWithFallback implements TranslateLoader {
   }
 
   /**
-   * Bundled English baseline for the offline fallback. For non-English
-   * languages we still return English (the only language bundled): English is
-   * the source language with complete key coverage, so it is the best readable
-   * fallback. An empty map for `en` itself would only ever yield raw keys.
+   * Keep Simplified Chinese available offline. Other languages retain the
+   * bundled English baseline instead of displaying raw translation keys.
    */
   private _getFallbackTranslations(lang: string): TranslationObject {
+    if (lang === 'zh') return ZH_TRANSLATIONS as TranslationObject;
     if (lang !== DEFAULT_LANGUAGE) {
       Log.warn(
         `No bundled translations for "${lang}"; using bundled "${DEFAULT_LANGUAGE}" as fallback.`,

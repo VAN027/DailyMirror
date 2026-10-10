@@ -19,21 +19,17 @@ describe('getDeadlineAutoPlanFields', () => {
     dateService.getStartOfNextDayDiffMs.and.returnValue(123);
   });
 
-  it('should include auto-plan context for a whole-day deadline today', () => {
-    expect(getDeadlineAutoPlanFields(dateService, '2026-01-05')).toEqual({
-      autoPlanToday: '2026-01-05',
-      autoPlanStartOfNextDayDiffMs: 123,
-    });
+  it('should not auto-plan a whole-day deadline today', () => {
+    expect(getDeadlineAutoPlanFields(dateService, '2026-01-05')).toEqual({});
   });
 
-  it('should include auto-plan context for a timed deadline today', () => {
+  it('should not auto-plan a timed deadline today', () => {
     dateService.getStartOfNextDayDiffMs.and.returnValue(0);
     const deadlineWithTime = new Date(2026, 0, 5, 12).getTime();
 
-    expect(getDeadlineAutoPlanFields(dateService, undefined, deadlineWithTime)).toEqual({
-      autoPlanToday: '2026-01-05',
-      autoPlanStartOfNextDayDiffMs: 0,
-    });
+    expect(getDeadlineAutoPlanFields(dateService, undefined, deadlineWithTime)).toEqual(
+      {},
+    );
   });
 
   it('should return no auto-plan context for future deadlines', () => {

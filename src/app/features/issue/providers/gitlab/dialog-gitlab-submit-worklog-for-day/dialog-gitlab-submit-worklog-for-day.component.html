@@ -19,7 +19,8 @@
   }
 
   <h3>
-    For gitlab project: <strong>{{ (issueProviderCfg$ | async)?.project }}</strong>
+    {{ T.LOCAL_UI.FOR_GITLAB_PROJECT | translate }}
+    <strong>{{ (issueProviderCfg$ | async)?.project }}</strong>
   </h3>
 
   <div class="table-wrapper">

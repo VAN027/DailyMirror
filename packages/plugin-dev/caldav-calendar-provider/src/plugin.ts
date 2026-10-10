@@ -905,7 +905,7 @@ const veventToOccurrence = (
   const status = vevent.getFirstPropertyValue('status');
   return {
     id: toCompoundId(calendarHref, eventHref, occurrenceMs),
-    title: (typeof summary === 'string' && summary) || '(No title)',
+    title: (typeof summary === 'string' && summary) || '（无标题）',
     status: (typeof status === 'string' && status) || 'CONFIRMED',
     start: startMs,
     dueWithTime: isAllDay ? undefined : startMs,
@@ -1247,60 +1247,59 @@ PluginAPI.registerIssueProvider({
     {
       key: 'serverUrl',
       type: 'input' as const,
-      label: 'CalDAV server URL',
+      label: 'CalDAV 服务器地址',
       description:
-        'The CalDAV server URL — the root works (e.g. https://cloud.example.com/remote.php/dav for Nextcloud, https://caldav.fastmail.com/dav/ for Fastmail). A specific calendar-home URL also works.',
+        'CalDAV 服务器地址。可使用根地址，例如 Nextcloud 的 https://cloud.example.com/remote.php/dav 或 Fastmail 的 https://caldav.fastmail.com/dav/，也可填写具体的日历主目录地址。',
       required: true,
     },
     {
       key: 'username',
       type: 'input' as const,
-      label: 'Username',
+      label: '用户名',
       required: true,
     },
     {
       key: 'password',
       type: 'password' as const,
-      label: 'Password',
+      label: '密码',
       required: true,
     },
     {
       key: 'readCalendarIds',
       type: 'multiSelect' as const,
-      label: 'Calendars to display',
-      description: 'Select which calendars to show in planner and schedule views.',
+      label: '要显示的日历',
+      description: '选择在规划和日程视图中显示的日历。',
       options: [],
       loadOptions: loadCalendars,
     },
     {
       key: 'writeCalendarId',
       type: 'select' as const,
-      label: 'Default calendar for new events',
-      description: 'Used when creating or rescheduling events directly from the planner.',
+      label: '新建日程的默认日历',
+      description: '直接从规划视图创建或调整日程时使用。',
       options: [],
       loadOptions: loadCalendars,
     },
     {
       key: 'syncRangeWeeks',
       type: 'input' as const,
-      label: 'Sync range (weeks)',
-      description: 'How many weeks ahead to sync events. Defaults to 2.',
+      label: '同步范围（周）',
+      description: '向前同步多少周的日程，默认为 2 周。',
       required: false,
       pattern: '^[0-9]*$',
     },
     {
       key: 'isAutoTimeBlock',
       type: 'checkbox' as const,
-      label: 'Auto time blocking',
+      label: '自动创建日历时间段',
       description:
-        'When you schedule a task to a specific time, automatically create a matching event in the CalDAV calendar. Rescheduling, completing, or deleting the task updates the event.',
+        '将任务安排到具体时间时，自动在 CalDAV 日历中创建对应日程。调整时间、完成或删除任务时，也会更新日程。',
     },
     {
       key: 'timeBlockCalendarId',
       type: 'select' as const,
-      label: 'Time block calendar',
-      description:
-        'Which calendar to create time block events in. Use "Load Calendars" above to populate this list.',
+      label: '时间段所属日历',
+      description: '选择用于创建任务时间段的日历。使用上方的“加载日历”填充此列表。',
       required: false,
       showIf: 'isAutoTimeBlock',
       options: [],
@@ -1397,13 +1396,13 @@ PluginAPI.registerIssueProvider({
 
     return {
       id: issueId,
-      title: event.summary || '(No title)',
+      title: event.summary || '（无标题）',
       body: event.description || '',
       state: event.status || 'CONFIRMED',
       lastUpdated: event.lastModified
         ? parseIcalDateTime(event.lastModified, '')?.getTime()
         : undefined,
-      summary: event.summary || '(No title)',
+      summary: event.summary || '（无标题）',
       start,
       end,
       startParams,
@@ -1448,11 +1447,11 @@ PluginAPI.registerIssueProvider({
   },
 
   issueDisplay: [
-    { field: 'summary', label: 'Title', type: 'text' },
-    { field: 'startFormatted', label: 'Start', type: 'text' },
-    { field: 'endFormatted', label: 'End', type: 'text' },
-    { field: 'status', label: 'Status', type: 'text' },
-    { field: 'description', label: 'Description', type: 'text' },
+    { field: 'summary', label: '标题', type: 'text' },
+    { field: 'startFormatted', label: '开始', type: 'text' },
+    { field: 'endFormatted', label: '结束', type: 'text' },
+    { field: 'status', label: '状态', type: 'text' },
+    { field: 'description', label: '描述', type: 'text' },
   ],
 
   fieldMappings: [
@@ -1464,7 +1463,7 @@ PluginAPI.registerIssueProvider({
       toTaskValue: (issueValue: unknown): string => {
         const val = issueValue as string;
         if (val && val.startsWith('[DONE] ')) return val.slice(7);
-        return val || '(No title)';
+        return val || '（无标题）';
       },
     },
     {

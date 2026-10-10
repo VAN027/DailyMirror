@@ -86,7 +86,7 @@ describe('workContext selectors', () => {
       const taskNotForToday = {
         id: 'task3',
         tagIds: [],
-        dueDay: '2000-01-01', // Not today
+        dueDay: '2999-01-01', // Not today
         subTaskIds: [],
       } as Partial<TaskCopy> as TaskCopy;
 
@@ -504,7 +504,7 @@ describe('workContext selectors', () => {
       const task2 = {
         id: 'task2',
         tagIds: [],
-        dueDay: '2000-01-01', // No longer today
+        dueDay: '2999-01-01', // No longer today
         subTaskIds: [],
       } as Partial<TaskCopy> as TaskCopy;
 
@@ -719,7 +719,7 @@ describe('workContext selectors', () => {
       const taskWithBothFields = {
         id: 'task1',
         tagIds: [],
-        dueDay: '2000-01-01', // Legacy dueDay set to different date
+        dueDay: '2999-01-01', // Legacy dueDay set to different date
         dueWithTime: todayTimestamp, // dueWithTime for today takes priority
         subTaskIds: [],
       } as Partial<TaskCopy> as TaskCopy;
@@ -978,7 +978,7 @@ describe('workContext selectors', () => {
         expect(result).toEqual([]);
       });
 
-      it('should NOT include task with dueWithTime at 11 PM Feb 14 when offset is 4h (11 PM - 4h = 7 PM Feb 14 != Feb 15)', () => {
+      it('should carry unfinished tasks from the previous logical day with a 4h offset', () => {
         // 11 PM on Feb 14 local time
         const feb14_11pm = new Date(2026, 1, 14, 23, 0, 0, 0).getTime();
 
@@ -1000,7 +1000,7 @@ describe('workContext selectors', () => {
           offsetTodayStr,
           FOUR_HOURS_MS,
         );
-        expect(result).toEqual([]);
+        expect(result).toEqual(['task1']);
       });
 
       it('should NOT include task with dueWithTime at exactly 4:00 AM Feb 16 when offset is 4h (4 AM - 4h = midnight Feb 16 != Feb 15)', () => {
@@ -1260,7 +1260,7 @@ describe('workContext selectors', () => {
       const task2 = {
         id: 'task2',
         tagIds: [],
-        dueDay: '2000-01-01', // NOT today - should be removed
+        dueDay: '2999-01-01', // NOT today - should be removed
         subTaskIds: [],
       } as Partial<TaskCopy> as TaskCopy;
 
@@ -1318,7 +1318,7 @@ describe('workContext selectors', () => {
       const task2 = {
         id: 'task2',
         tagIds: [],
-        dueDay: '2000-01-01', // NOT today - stale
+        dueDay: '2999-01-01', // NOT today - stale
         subTaskIds: [],
       } as Partial<TaskCopy> as TaskCopy;
       const task3 = {
@@ -1414,7 +1414,7 @@ describe('workContext selectors', () => {
       const parentTask = {
         id: 'parent',
         tagIds: [],
-        dueDay: '2000-01-01', // Parent is NOT in Today
+        dueDay: '2999-01-01', // Parent is NOT in Today
         subTaskIds: ['subtask1'],
       } as Partial<TaskCopy> as TaskCopy;
       const subtask = {
@@ -1443,7 +1443,7 @@ describe('workContext selectors', () => {
       const parentTask = {
         id: 'parent',
         tagIds: [],
-        dueDay: '2000-01-01', // Parent is NOT in Today
+        dueDay: '2999-01-01', // Parent is NOT in Today
         subTaskIds: ['subtask1'],
       } as Partial<TaskCopy> as TaskCopy;
       const subtask = {
@@ -1561,7 +1561,7 @@ describe('workContext selectors', () => {
       const parent2 = {
         id: 'parent2',
         tagIds: [],
-        dueDay: '2000-01-01',
+        dueDay: '2999-01-01',
         subTaskIds: ['sub2'],
       } as Partial<TaskCopy> as TaskCopy;
 
@@ -1624,7 +1624,7 @@ describe('workContext selectors', () => {
       const parent = {
         id: 'parent',
         tagIds: [],
-        dueDay: '2000-01-01',
+        dueDay: '2999-01-01',
         subTaskIds: ['sub1', 'sub2'],
       } as Partial<TaskCopy> as TaskCopy;
 

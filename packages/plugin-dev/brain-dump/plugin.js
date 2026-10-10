@@ -52,10 +52,7 @@ function parseTasksWithSubTasks(text) {
 
   if (hasBullets && hasPlainText) {
     PluginAPI.showSnack({
-      msg:
-        'Warning: ' +
-        plainTextCount +
-        ' plain-text line(s) detected. These will be added as regular tasks.',
+      msg: '提示：检测到 ' + plainTextCount + ' 行纯文本，将作为普通任务添加。',
       type: 'WARNING',
     });
   }
@@ -140,7 +137,7 @@ function parseTasksWithSubTasks(text) {
     PluginAPI.showSnack({
       msg:
         deeplyNestedWarnings.length +
-        ' deeply-nested item(s) flattened to sub-task level. Sub-tasks in Super Productivity do not support nesting.',
+        ' 个多层嵌套条目已转为直接子任务，Super Productivity 的子任务不支持继续嵌套。',
       type: 'INFO',
     });
   }
@@ -258,21 +255,21 @@ async function openBrainDump() {
 
   // SUGGESTION: Expose expected format to users
   var placeholderText =
-    'One task per line. For sub-tasks, indent with 4 spaces:\n\n- Main task\n    - Sub task\n    - Another sub task\n\nPlain text tasks are also supported.';
+    '每行一个任务，子任务请缩进 4 个空格：\n\n- 主任务\n    - 子任务\n    - 另一个子任务\n\n也支持纯文本任务。';
 
   var html =
     '<div id="bd-container" style="padding:4px 0">' +
     '<div style="display:flex;gap:12px;margin-bottom:12px">' +
     '<div style="flex:1">' +
-    '<label for="bd-project" style="display:block;margin-bottom:4px;font-size:12px;opacity:0.7">Project</label>' +
+    '<label for="bd-project" style="display:block;margin-bottom:4px;font-size:12px;opacity:0.7">项目</label>' +
     '<select id="bd-project" style="width:100%">' +
-    '<option value="">No project</option>' +
+    '<option value="">无项目</option>' +
     projectOptions +
     '</select>' +
     '<div id="bd-color-bar" style="height:3px;margin-top:4px;border-radius:2px"></div>' +
     '</div>' +
     '<div>' +
-    '<label for="bd-due" style="display:block;margin-bottom:4px;font-size:12px;opacity:0.7">Due date</label>' +
+    '<label for="bd-due" style="display:block;margin-bottom:4px;font-size:12px;opacity:0.7">到期日期</label>' +
     '<input type="date" id="bd-due" value="' +
     escapeHtml(savedDueDay) +
     '" style="width:100%">' +
@@ -290,18 +287,18 @@ async function openBrainDump() {
   var lastSavedText = savedText;
 
   PluginAPI.openDialog({
-    title: 'Brain Dump',
+    title: '批量记事',
     htmlContent: html,
     buttons: [
       {
-        label: 'Cancel',
+        label: '取消',
         onClick: function () {
           _bdCleanup();
           return saveDraft();
         },
       },
       {
-        label: 'Add Tasks',
+        label: '添加任务',
         color: 'primary',
         icon: 'add',
         raised: true,
@@ -344,13 +341,9 @@ function updateStatus() {
   var count = countTasks(textarea);
   if (count === 0) {
     statusEl.textContent =
-      'One task per line. Empty lines are skipped.\n - Use - for bullet points\n    indent 4 spaces for sub-tasks.';
+      '每行一个任务，空行会跳过。\n用 - 表示列表项，子任务请缩进 4 个空格。';
   } else {
-    statusEl.textContent =
-      count +
-      ' item' +
-      (count !== 1 ? 's' : '') +
-      ' detected (including sub-tasks) to add.';
+    statusEl.textContent = count + ' 个条目待添加（包括子任务）。';
   }
 }
 
@@ -394,7 +387,7 @@ async function submitTasks() {
   var text = textarea.value.trim();
   if (text.length === 0) {
     PluginAPI.showSnack({
-      msg: 'Nothing to add — enter at least one task.',
+      msg: '请至少输入一个任务。',
       type: 'WARNING',
     });
     return;
@@ -448,7 +441,7 @@ async function submitTasks() {
       }, 0);
 
     PluginAPI.showSnack({
-      msg: totalTasks + ' task' + (totalTasks !== 1 ? 's' : '') + ' added',
+      msg: totalTasks + ' 个任务已添加',
       type: 'SUCCESS',
       ico: 'check',
     });
@@ -470,7 +463,7 @@ async function submitTasks() {
     }
 
     PluginAPI.showSnack({
-      msg: lines.length + ' task' + (lines.length !== 1 ? 's' : '') + ' added',
+      msg: lines.length + ' 个任务已添加',
       type: 'SUCCESS',
       ico: 'check',
     });
@@ -485,13 +478,13 @@ async function submitTasks() {
 
 // Register menu entry and shortcut
 PluginAPI.registerMenuEntry({
-  label: 'Brain Dump',
+  label: '批量记事',
   icon: 'lightbulb',
   onClick: openBrainDump,
 });
 
 PluginAPI.registerShortcut({
   id: 'open-brain-dump',
-  label: 'Open Brain Dump',
+  label: '打开批量记事',
   onExec: openBrainDump,
 });

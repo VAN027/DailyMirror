@@ -10,6 +10,7 @@ import {
 } from '@ngx-translate/http-loader';
 import { TranslateHttpLoaderWithFallback } from './translate-http-loader-with-fallback.class';
 import EN_TRANSLATIONS from '../../../assets/i18n/en.json';
+import ZH_TRANSLATIONS from '../../../assets/i18n/zh.json';
 
 describe('TranslateHttpLoaderWithFallback', () => {
   let loader: TranslateHttpLoaderWithFallback;
@@ -36,6 +37,20 @@ describe('TranslateHttpLoaderWithFallback', () => {
   });
 
   afterEach(() => httpMock.verify());
+
+  it('keeps the Chinese interface readable when its language file is unavailable offline', (done) => {
+    loader.getTranslation('zh').subscribe({
+      next: (res: unknown) => {
+        expect(res).toBe(ZH_TRANSLATIONS as unknown as object);
+        done();
+      },
+      error: () => done.fail('should recover with bundled Chinese'),
+    });
+    httpMock.expectOne('./assets/i18n/zh.json').error(new ProgressEvent('error'), {
+      status: 0,
+      statusText: '',
+    });
+  });
 
   it('returns the parsed translations on success', (done) => {
     // `unknown` avoids the deep recursive `TranslationObject` type blowing up inference.

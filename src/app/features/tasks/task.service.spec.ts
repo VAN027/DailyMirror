@@ -284,14 +284,14 @@ describe('TaskService', () => {
       expect(action.task.notes).toBe('Test notes');
     });
 
-    it('should include auto-plan context when adding a task with a deadline today', () => {
+    it('should keep deadlines independent from execution planning', () => {
       service.add('New Task', false, { deadlineDay: '2026-01-05' });
 
       const dispatchCall = (store.dispatch as jasmine.Spy).calls.mostRecent();
       const action = dispatchCall.args[0] as ReturnType<typeof TaskSharedActions.addTask>;
 
-      expect(action.autoPlanToday).toBe('2026-01-05');
-      expect(action.autoPlanStartOfNextDayDiffMs).toBe(0);
+      expect(action.autoPlanToday).toBeUndefined();
+      expect(action.autoPlanStartOfNextDayDiffMs).toBeUndefined();
     });
   });
 
@@ -305,6 +305,7 @@ describe('TaskService', () => {
         TaskSharedActions.planTasksForToday({
           taskIds: ['task-1'],
           today: '2026-01-05',
+          isAddToBottom: true,
           startOfNextDayDiffMs: 0,
         }),
       );

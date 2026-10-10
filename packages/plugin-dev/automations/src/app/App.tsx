@@ -70,7 +70,7 @@ function App() {
   };
 
   const handleDelete = async (rule: AutomationRule) => {
-    if (confirm(`Are you sure you want to delete "${rule.name}"?`)) {
+    if (confirm(`确定删除“${rule.name}”吗？`)) {
       await sendMessage('deleteRule', { id: rule.id });
       await fetchRules();
       setIsEditorOpen(false);
@@ -122,17 +122,17 @@ function App() {
         await fetchRules();
 
         if (validRules.length > 0) {
-          let msg = `Successfully imported ${validRules.length} rules.`;
+          let msg = `成功导入 ${validRules.length} 条规则。`;
           if (invalidRules.length > 0) {
-            msg += ` (${invalidRules.length} rules were skipped due to invalid format)`;
+            msg += `（${invalidRules.length} 条规则因格式无效被跳过）`;
           }
           alert(msg);
         } else if (invalidRules.length > 0) {
-          alert('No valid rules found to import.');
+          alert('没有可导入的有效规则。');
         }
       } catch (err) {
         console.error('Import failed:', err);
-        alert('Failed to import rules. Invalid JSON file.');
+        alert('导入规则失败，JSON 文件无效。');
       }
     };
     reader.readAsText(file);
@@ -142,7 +142,7 @@ function App() {
     <div class="app">
       <main>
         {isLoading() ? (
-          <p>Loading...</p>
+          <p>正在加载…</p>
         ) : (
           <>
             <RuleList

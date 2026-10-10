@@ -449,6 +449,8 @@ export const TaskSharedActions = createActionGroup({
     // Today Tag Management
     planTasksForToday: (taskProps: {
       taskIds: string[];
+      // Omitted on legacy operations to retain their original insertion order.
+      isAddToBottom?: boolean;
       // The logical day "today" referred to when the action was created.
       // Optional only for legacy operation replay and older tests.
       today?: string;

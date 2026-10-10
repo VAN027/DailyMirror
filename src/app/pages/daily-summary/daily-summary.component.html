@@ -1,3 +1,4 @@
+<a routerLink="/tag/TODAY/history">{{ T.DM.HISTORY | translate }}</a>
 <div class="page-wrapper">
   <h1 class="done-headline">
     <!-- `isDisableCelebration` gates the confetti only (see ngAfterViewInit). The
@@ -120,7 +121,7 @@
         [placeholderTxt]="T.PDS.END_OF_DAYS_RITUALS_PLACEHOLDER | translate"
       >
         <button
-          [matTooltip]="'Remove daily summary note'"
+          [matTooltip]="'删除每日总结备注'"
           (click)="updateDailySummaryTxt(undefined)"
           mat-icon-button
         >
@@ -132,7 +133,10 @@
         mat-icon-button
         style="opacity: 0.4"
         (click)="updateDailySummaryTxt('', true)"
-        matTooltip="Click to add a custom text block to describe your day end routine."
+        [matTooltip]="
+          T.LOCAL_UI.CLICK_TO_ADD_A_CUSTOM_TEXT_BLOCK_TO_DESCRIBE_YOUR_DAY_END_ROUTINE
+            | translate
+        "
       >
         <mat-icon>note_alt</mat-icon>
       </button>

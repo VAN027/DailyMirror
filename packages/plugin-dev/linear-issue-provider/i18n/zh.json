@@ -1,0 +1,17 @@
+{
+  "CFG": {
+    "API_KEY": "API 密钥",
+    "TEAM_ID": "团队 ID（可选，用于筛选指定团队）",
+    "PROJECT_ID": "项目 ID（可选，用于筛选指定项目）",
+    "HOW_TO_GET_TOKEN": "获取 API 密钥"
+  },
+  "DISPLAY": {
+    "SUMMARY": "摘要",
+    "STATE": "状态",
+    "PRIORITY": "优先级",
+    "ASSIGNEE": "负责人",
+    "LABELS": "标签",
+    "DESCRIPTION": "描述"
+  },
+  "FORM_HELP": "<p>设置后，Super Productivity 会在任务创建面板中列出并支持导入分配给您的 Linear 问题，同时显示问题链接和相关信息。</p>"
+}

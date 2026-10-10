@@ -50,7 +50,7 @@ describe('ShortcutBinder', () => {
     binder.sync([rule({ name: '  ' })]);
 
     expect(mockPlugin.registerShortcut).toHaveBeenCalledWith(
-      expect.objectContaining({ label: 'Unnamed automation rule' }),
+      expect.objectContaining({ label: '未命名自动化规则' }),
     );
   });
 

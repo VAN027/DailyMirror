@@ -1,3 +1,4 @@
+import { PlanningActionsService } from '../../../dailymirror/planning-actions.service';
 import { TaskPriorityIndicatorComponent } from '../../task-priority-indicator/task-priority-indicator.component';
 import { TASK_PRIORITY_LABEL_KEY, TASK_PRIORITY_LEVELS } from '../../task-priority.const';
 import {
@@ -114,6 +115,8 @@ import { PluginTaskContextMenuTarget } from '@super-productivity/plugin-api';
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class TaskContextMenuInnerComponent implements AfterViewInit, OnDestroy {
+  readonly dmPlanning = inject(PlanningActionsService);
+
   private readonly _datePipe = inject(LocaleDatePipe);
   private readonly _taskService = inject(TaskService);
   private readonly _matDialog = inject(MatDialog);
@@ -609,11 +612,7 @@ export class TaskContextMenuInnerComponent implements AfterViewInit, OnDestroy {
   }
 
   unschedule(): void {
-    this._store.dispatch(
-      TaskSharedActions.unscheduleTask({
-        id: this.task.id,
-      }),
-    );
+    void this.dmPlanning.apply([this.task], null);
   }
 
   convertToMainTask(): void {
@@ -789,11 +788,7 @@ export class TaskContextMenuInnerComponent implements AfterViewInit, OnDestroy {
   }
 
   unscheduleTask(): void {
-    this._store.dispatch(
-      TaskSharedActions.unscheduleTask({
-        id: this.task.id,
-      }),
-    );
+    void this.dmPlanning.apply([this.task], null);
   }
 
   protected readonly ICAL_TYPE = ICAL_TYPE;

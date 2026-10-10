@@ -186,6 +186,7 @@ const handlePlanTasksForToday = (
   todayFromAction?: string,
   startOfNextDayDiffMsFromAction?: number,
   isClearScheduledTime?: boolean,
+  isAddToBottom?: boolean,
 ): RootState => {
   const todayTag = getTag(state, TODAY_TAG.id);
   const today = todayFromAction ?? state[appStateFeatureKey]?.todayStr ?? getDbDateStr();
@@ -260,7 +261,11 @@ const handlePlanTasksForToday = (
     {
       id: TODAY_TAG.id,
       changes: {
-        taskIds: unique([...newTasksForToday, ...todayTag.taskIds]),
+        taskIds: unique(
+          isAddToBottom
+            ? [...todayTag.taskIds, ...newTasksForToday]
+            : [...newTasksForToday, ...todayTag.taskIds],
+        ),
       },
     },
   ]);
@@ -353,6 +358,7 @@ const createActionHandlers = (state: RootState, action: Action): ActionHandlerMa
       startOfNextDayDiffMs,
       parentTaskMap = {},
       isClearScheduledTime,
+      isAddToBottom,
     } = action as ReturnType<typeof TaskSharedActions.planTasksForToday>;
     return handlePlanTasksForToday(
       state,
@@ -361,6 +367,7 @@ const createActionHandlers = (state: RootState, action: Action): ActionHandlerMa
       today,
       startOfNextDayDiffMs,
       isClearScheduledTime,
+      isAddToBottom,
     );
   },
   [TaskSharedActions.restoreTask.type]: () => {

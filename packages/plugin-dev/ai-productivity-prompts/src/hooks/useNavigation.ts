@@ -46,7 +46,7 @@ export const useNavigation = () => {
   const navigateToCustomPrompt = (prompt: CustomPrompt, index: number) => {
     setSelectedCustomPrompt({ prompt, index });
     setSelectedPrompt({
-      category: { title: 'Custom Prompts', prompts: [] },
+      category: { title: '自定义提示词', prompts: [] },
       prompt: { title: prompt.title, template: prompt.template },
     });
     setCurrentView('prompt');

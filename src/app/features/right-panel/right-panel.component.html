@@ -16,14 +16,14 @@
       <div
         class="resize-handle"
         (pointerdown)="onResizePointerDown($event)"
-        [attr.aria-label]="'Resize right panel'"
+        [attr.aria-label]="'调整右侧面板宽度'"
         role="separator"
       ></div>
       <button
         class="edge-close-handle tour-edge-close-handle"
         role="button"
         tabindex="0"
-        [attr.aria-label]="'Close right panel or drag to resize'"
+        [attr.aria-label]="'关闭右侧面板，或拖动调整宽度'"
         (pointerdown)="onCloseButtonPointerDown($event)"
         (pointerup)="onCloseButtonPointerUp($event)"
         (keydown.enter)="close()"

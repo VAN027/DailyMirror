@@ -330,12 +330,12 @@ test('issues a grant to an uploaded (non-bundled) plugin and labels it unverifie
   const opts = dialogCalls[0][1];
   // Dialog anchors on the validated id and flags the self-declared name as unverified,
   // and defaults to Deny.
-  assert.match(opts.detail, /Plugin ID: uploaded-node-plugin/);
-  assert.match(opts.detail, /self-declared, unverified/);
+  assert.match(opts.detail, /插件 ID：uploaded-node-plugin/);
+  assert.match(opts.detail, /插件自行声明，未经验证/);
   // The Allow is persisted (ask-once), so the prompt must disclose that the choice is
   // remembered rather than claiming it is only valid "for this app session".
-  assert.match(opts.detail, /remembered on this device/);
-  assert.equal(opts.detail.includes('for this app session'), false);
+  assert.match(opts.detail, /本设备会记住您的选择/);
+  assert.equal(opts.detail.includes('本次应用会话期间'), false);
   assert.equal(opts.defaultId, 1);
 });
 
@@ -533,8 +533,8 @@ test('never upgrades trust: an on-disk match that does not cleanly verify uses t
 
     assert.equal(typeof grant.token, 'string');
     const opts = dialogCalls[dialogCalls.length - 1][1];
-    assert.match(opts.title, /run code on your machine/);
-    assert.match(opts.detail, /self-declared, unverified/);
+    assert.match(opts.title, /在您的设备上运行代码/);
+    assert.match(opts.detail, /插件自行声明，未经验证/);
     assert.equal(opts.defaultId, 1);
   } finally {
     BUILT_IN_PLUGIN_MANIFEST.permissions = originalPermissions;

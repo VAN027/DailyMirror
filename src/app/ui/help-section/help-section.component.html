@@ -1,6 +1,6 @@
 <button
   (click)="isShowHelp = !isShowHelp"
-  aria-label="Show Help for section"
+  [attr.aria-label]="T.LOCAL_UI.SHOW_HELP_FOR_SECTION | translate"
   class="help-btn mat-elevation-z2"
   color=""
   mat-mini-fab

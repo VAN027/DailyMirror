@@ -195,25 +195,25 @@ export const SYNC_FORM: ConfigFormSection<SyncConfig> = {
         label: T.F.SYNC.FORM.L_SYNC_PROVIDER,
         required: true,
         options: [
-          { label: 'SuperSync (Beta)', value: SyncProviderId.SuperSync },
+          { label: 'SuperSync（测试版）', value: SyncProviderId.SuperSync },
           { label: SyncProviderId.Dropbox, value: SyncProviderId.Dropbox },
           { label: 'Nextcloud', value: SyncProviderId.Nextcloud },
           ...(IS_ONEDRIVE_SUPPORTED
             ? [
                 {
-                  label: 'Microsoft 365 / OneDrive (experimental)',
+                  label: 'Microsoft 365 / OneDrive（实验性）',
                   value: SyncProviderId.OneDrive,
                 },
               ]
             : []),
           {
-            label: 'WebDAV (not recommended / no support)',
+            label: 'WebDAV（不推荐，无支持服务）',
             value: SyncProviderId.WebDAV,
           },
           ...(IS_ELECTRON || IS_ANDROID_WEB_VIEW
             ? [
                 {
-                  label: 'LocalFile (experimental &  deprecated)',
+                  label: '本地文件（实验性，已弃用）',
                   value: SyncProviderId.LocalFile,
                 },
               ]

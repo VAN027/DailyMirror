@@ -1,3 +1,4 @@
+import { automationLabel } from '../labels';
 import { createEffect, createSignal } from 'solid-js';
 import { Action, ActionType } from '../../types';
 import { Dialog } from './Dialog';
@@ -41,18 +42,18 @@ export function ActionDialog(props: ActionDialogProps) {
   const getPlaceholder = () => {
     switch (action().type) {
       case 'createTask':
-        return 'e.g. "Follow up task"';
+        return '例如“跟进任务”';
       case 'deleteTask':
-        return 'Deletes the task that triggered this rule';
+        return '删除触发此规则的任务';
       case 'addTag':
       case 'removeTag':
         return 'e.g. "review-needed"';
       case 'moveToProject':
-        return 'e.g. "Project A"';
+        return '例如“项目 A”';
       case 'displaySnack':
-        return 'e.g. "Task completed!"';
+        return '例如“任务已完成！”';
       case 'displayDialog':
-        return 'e.g. "Please remember to..."';
+        return '例如“请记得……”';
       case 'webhook':
         return 'e.g. "https://hooks.slack.com/..."';
       default:
@@ -72,41 +73,41 @@ export function ActionDialog(props: ActionDialogProps) {
     <Dialog
       isOpen={props.isOpen}
       onClose={props.onClose}
-      title={props.initialAction ? 'Edit Action' : 'Add Action'}
+      title={props.initialAction ? '编辑操作' : '添加操作'}
       footer={
         <div class="grid">
           <button class="btn-outline" onClick={props.onClose}>
-            Cancel
+            取消
           </button>
           <button
             class="btn-primary"
             disabled={action().type !== 'deleteTask' && !action().value.trim()}
             onClick={() => props.onSave(action())}
           >
-            Save
+            保存
           </button>
         </div>
       }
     >
       <label>
-        Type
+        类型
         <select
           value={action().type}
           onChange={(e) => handleTypeChange(e.currentTarget.value as ActionType)}
         >
           {availableTypes().map((t) => (
-            <option value={t}>{t}</option>
+            <option value={t}>{automationLabel(t)}</option>
           ))}
         </select>
       </label>
       <label>
-        Value
+        内容
         {action().type === 'moveToProject' && props.projects?.length ? (
           <select
             value={action().value}
             onChange={(e) => setAction({ ...action(), value: e.currentTarget.value })}
           >
-            <option value="">Select Project</option>
+            <option value="">选择项目</option>
             {props.projects.map((p) => (
               <option value={p.id}>{p.title}</option>
             ))}
@@ -129,8 +130,7 @@ export function ActionDialog(props: ActionDialogProps) {
             'margin-top': 'var(--s)',
           }}
         >
-          ⚠️ Warning: Your full task data (including title, description, etc.) will be sent to this
-          URL. Ensure the endpoint is secure.
+          ⚠️ 警告：完整任务数据（包括标题、描述等）将发送到此地址，请确认接收端可信。
         </p>
       )}
     </Dialog>

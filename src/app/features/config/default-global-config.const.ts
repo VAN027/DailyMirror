@@ -1,4 +1,5 @@
 import { environment } from '../../../environments/environment';
+import { LanguageCode } from '../../core/locale.constants';
 import {
   HAS_OFFICIAL_ONEDRIVE_CLIENT_ID,
   OFFICIAL_ONEDRIVE_CLIENT_ID,
@@ -10,11 +11,11 @@ import { INBOX_PROJECT } from '../project/project.const';
 import { DEFAULT_MAX_BACKUP_FILES } from '../../../../electron/shared-with-frontend/backup-file-cleanup.util';
 
 const minute = 60 * 1000;
-const defaultTaskNotesTemplate = `**How can I best achieve it now?**
+const defaultTaskNotesTemplate = `**现在怎样才能更好地完成它？**
 
-**What do I want?**
+**我想达成什么？**
 
-**Why do I want it?**
+**为什么要做这件事？**
 `;
 
 export const DEFAULT_DAY_START = '9:00';
@@ -35,8 +36,8 @@ export const DEFAULT_GLOBAL_CONFIG: GlobalConfigState = {
     isFinishDayEnabled: true,
   },
   localization: {
-    lng: undefined,
-    dateTimeLocale: undefined,
+    lng: LanguageCode.zh,
+    dateTimeLocale: 'zh-cn',
     firstDayOfWeek: undefined,
   },
   tasks: {
@@ -60,10 +61,9 @@ export const DEFAULT_GLOBAL_CONFIG: GlobalConfigState = {
     startOfNextDayTime: '00:00',
     isDisableAnimations: false,
     isVerticalActionBar: false,
-    // Confetti is attention-grabbing, so it ships off and stays opt-in
-    // (product principle: less noise, more depth). Existing installs keep
-    // their persisted value.
-    isDisableCelebration: true,
+    // DailyMirror uses the native daily-summary celebration by default.
+    // Existing installs keep their persisted preference.
+    isDisableCelebration: false,
     // NOTE: isUseCustomWindowTitleBar is intentionally NOT defaulted here. A
     // persisted default would be pushed to Electron on every launch and override
     // a legacy `isUseObsidianStyleHeader` choice. Its effective default is resolved

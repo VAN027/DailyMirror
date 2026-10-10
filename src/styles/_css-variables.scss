@@ -322,7 +322,7 @@
   --task-icon-default-opacity: 0.7;
   --task-inner-padding-top-bottom: 4px;
   --task-is-done-dim-opacity: 0.3;
-  --task-border-radius: 0px;
+  --task-border-radius: var(--radius-sm);
 
   // Task z-indexes
   --z-drag-handle: 1;
@@ -527,21 +527,20 @@ body.isDarkTheme {
   --notes-container-bg: inherit;
 
   // Task surfaces (Cat A)
-  // Tasks are flat rows by default: no surface, no box border, hairline
-  // separators, sharp corners. The "classic" theme restores the boxed look by
-  // setting these same tokens, so keep every switch here token-driven.
-  --task-c-bg: transparent;
+  // DailyMirror defaults to the original classic task cards. Keep the same
+  // shared tokens used by classic.css so all task surfaces reuse native styles.
+  --task-c-bg: var(--surface-2);
   --task-c-current-bg: var(--surface-3);
   --task-c-drag-drop-bg: var(--surface-3);
   --task-border-color: var(--divider-color);
-  --task-border: none;
-  --task-separator: 1px solid var(--separator-color);
+  --task-border: 1px solid var(--task-border-color);
+  --task-separator: none;
   // Top/bottom edge for rows that draw their own box (planner, boards, issue
   // panel): the separator when flat, the box border when boxed, so the two
   // never cancel each other out on the same element.
-  --task-row-edge: var(--task-separator);
-  --task-selected-edge: 3px solid color-mix(in srgb, var(--text-color) 65%, transparent);
-  --task-list-row-gap: 0px;
+  --task-row-edge: var(--task-border);
+  --task-selected-edge: none;
+  --task-list-row-gap: var(--s-half);
 
   // Task shadows (Cat A — same in both modes)
   --task-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

@@ -1,10 +1,10 @@
 {
-  "name": "AI Productivity Prompts",
+  "name": "AI 效率提示词",
   "id": "ai-productivity-prompts",
   "manifestVersion": 1,
   "version": "1.0.0",
   "minSupVersion": "13.0.0",
-  "description": "Productivity prompts to use with the AI of your choice to help you plan your day, week, and overcome challenges",
+  "description": "用于每日、每周规划及解决工作难题的 AI 提示词。",
   "author": "Super Productivity Community",
   "homepage": "https://github.com/super-productivity/super-productivity",
   "repository": {
