@@ -3,7 +3,7 @@
     "B_INSTALL": {
       "IGNORE": "無視する",
       "INSTALL": "インストール",
-      "MSG": "Super ProductivityをPWAとしてインストールしますか？"
+      "MSG": "DailyMirrorをPWAとしてインストールしますか？"
     },
     "B_OFFLINE": "インターネットに接続していません。課題プロバイダーデータの同期と要求は機能しません。",
     "B_RECOVERY_POINT": {
@@ -13,12 +13,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "後で",
-      "MSG": "Super Productivity をしばらくご利用いただいています。同期を設定して、データをバックアップし、すべてのデバイスで安全に保ちましょう。",
+      "MSG": "DailyMirror をしばらくご利用いただいています。同期を設定して、データをバックアップし、すべてのデバイスで安全に保ちましょう。",
       "SETUP": "同期を設定"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "ダウンロード",
-      "MSG": "Super Productivity の新しいバージョンがあります（{{version}}）。"
+      "MSG": "DailyMirror の新しいバージョンがあります（{{version}}）。"
     },
     "CONTEXT_MENU": {
       "CHANGE_BACKGROUND": "変更の背景",
@@ -83,7 +83,7 @@
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "キーボードショートカットを覚える",
-      "NOTES": "Super Productivityはキーボードでの操作を前提に設計されています。ショートカットを覚えて、より速く作業しましょう。\n\n**始め方：**\n1. **サイドバーメニュー**を開く\n2. **ヘルプ**に移動する\n3. **キーボードナビゲーションツアー**をクリックする"
+      "NOTES": "DailyMirrorはキーボードでの操作を前提に設計されています。ショートカットを覚えて、より速く作業しましょう。\n\n**始め方：**\n1. **サイドバーメニュー**を開く\n2. **ヘルプ**に移動する\n3. **キーボードナビゲーションツアー**をクリックする"
     },
     "CREATE_PROJECT": {
       "TITLE": "最初のプロジェクトを作成する",
@@ -203,7 +203,7 @@
         "POLL_INTERVAL_MINUTES": "ポーリング間隔（分）"
       },
       "FORM_SECTION": {
-        "HELP": "<p>ここでは、SuperProductivityを構成して、特定のプロジェクトの未完了のCalDavタスクを日次計画ビューのタスク作成パネルに一覧表示できます。それらは提案としてリストされ、todoへのリンクとそれに関する詳細情報を提供します。</p> <p>さらに、未完了のすべてのToDoをタスクバックログに自動的に追加して同期することができます。</p>"
+        "HELP": "<p>ここでは、DailyMirrorを構成して、特定のプロジェクトの未完了のCalDavタスクを日次計画ビューのタスク作成パネルに一覧表示できます。それらは提案としてリストされ、todoへのリンクとそれに関する詳細情報を提供します。</p> <p>さらに、未完了のすべてのToDoをタスクバックログに自動的に追加して同期することができます。</p>"
       },
       "S": {
         "CALENDAR_NOT_FOUND": "CalDav：カレンダー \"{{calendarName}}\"が見つかりません",
@@ -275,7 +275,7 @@
       "FEEDBACK_PUBLIC": "GitHub Discussions に投稿",
       "FEEDBACK_PUBLIC_DESC": "他の人が見て返信できます",
       "FEEDBACK_TITLE": "どのように協力しますか？",
-      "TITLE": "Super Productivity は気に入りましたか？",
+      "TITLE": "DailyMirror は気に入りましたか？",
       "TXT": "これは有志による<strong>無料のオープンソースプロジェクト</strong>です — トラッキングも広告もありません。評価や短いメッセージが、より多くの人に届けるのに役立ちます。"
     },
     "DROPBOX": {
@@ -397,7 +397,7 @@
         "FILTER_LABELS_DESCRIPTION": "カンマ区切りのラベル名リストです。これらすべてのラベルが付いた課題のみ同期されます。空のままにすると、範囲に一致するすべての課題を同期します。"
       },
       "FORM_SECTION": {
-        "HELP": "<p>ここで SuperProductivity を設定し、日次計画ビューのタスク作成パネルで特定のリポジトリに対して未解決の Gitea 課題を一覧表示させることができます。それらは提案としてリストされ、課題へのリンクとそれに関する詳細情報が提供されます。</p> <p>さらに、すべてのオープン課題を自動的に追加してインポートすることもできます。</p><p>利用制限を通過してアクセスするには、アクセストークンを提供することができます。"
+        "HELP": "<p>ここで DailyMirror を設定し、日次計画ビューのタスク作成パネルで特定のリポジトリに対して未解決の Gitea 課題を一覧表示させることができます。それらは提案としてリストされ、課題へのリンクとそれに関する詳細情報が提供されます。</p> <p>さらに、すべてのオープン課題を自動的に追加してインポートすることもできます。</p><p>利用制限を通過してアクセスするには、アクセストークンを提供することができます。"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "譲受人",
@@ -439,7 +439,7 @@
         "TOKEN": "アクセストークン"
       },
       "FORM_SECTION": {
-        "HELP": "<p>ここでは、SuperProductivityを構成して、特定のプロジェクトの開いているGitLab（オンラインバージョンまたはセルフホストインスタンス）の課題を日次計画ビューのタスク作成パネルに一覧表示できます。それらは提案としてリストされ、課題へのリンクとそれに関する詳細情報を提供します。</p> <p>さらに、すべての未解決の課題をタスクバックログに自動的に追加して同期できます。</p>"
+        "HELP": "<p>ここでは、DailyMirrorを構成して、特定のプロジェクトの開いているGitLab（オンラインバージョンまたはセルフホストインスタンス）の課題を日次計画ビューのタスク作成パネルに一覧表示できます。それらは提案としてリストされ、課題へのリンクとそれに関する詳細情報を提供します。</p> <p>さらに、すべての未解決の課題をタスクバックログに自動的に追加して同期できます。</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "担当者",
@@ -457,7 +457,7 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "この統合は、お使いのブラウザでは動作しない可能性があります。デスクトップ版またはAndroid版のSuper Productivityをダウンロードしてください！",
+      "CROSS_ORIGIN_BROWSER_WARNING": "この統合は、お使いのブラウザでは動作しない可能性があります。デスクトップ版またはAndroid版のDailyMirrorをダウンロードしてください！",
       "DEFAULT": {
         "ISSUE_STR": "問題",
         "ISSUES_STR": "課題"
@@ -570,7 +570,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira：APIからの締め出しを防ぐために、アクセスはSuper Productivityによってブロックされています。あなたはおそらくあなたのJira設定をチェックするべきです！",
+        "BLOCK_ACCESS_MSG": "Jira：APIからの締め出しを防ぐために、アクセスはDailyMirrorによってブロックされています。あなたはおそらくあなたのJira設定をチェックするべきです！",
         "BLOCK_ACCESS_UNBLOCK": "ブロック解除"
       },
       "CFG_CMP": {
@@ -880,7 +880,7 @@
         "TOKEN": "アクセストークン"
       },
       "FORM_SECTION": {
-        "HELP": "<p>ここでは、開いているOpenProjectワークパッケージを一覧表示するようにSuperProductivityを構成できます。これがブラウザで機能するためには、おそらくOpenProjectサーバーのCORSを構成して、app.super-productivity.comからのアクセスを許可する必要があることに注意してください</p>"
+        "HELP": "<p>ここでは、開いているOpenProjectワークパッケージを一覧表示するようにDailyMirrorを構成できます。これがブラウザで機能するためには、おそらくOpenProjectサーバーのCORSを構成して、使用中の DailyMirror ウェブアプリのオリジン（スキーム、ホスト、ポート）からのアクセスを許可する必要があることに注意してください</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "譲受人",
@@ -1060,7 +1060,7 @@
         "IS_SHOW_TIME_TRACKING_DIALOG_FOR_EACH_SUB_TASK": "サブタスク完了時に時間トラッキングダイアログを表示"
       },
       "FORM_SECTION": {
-        "HELP": "<p>ここで SuperProductivity を設定し、日次計画ビューのタスク作成パネルで、特定のプロジェクトの Redmine (オンライン版またはセルフホスト インスタンス) の未解決の課題をリストすることができます。それらは提案としてリストされ、課題へのリンクとそれに関する詳細情報が提供されます。</p><p>さらに、すべての未解決課題を自動的にインポートすることもできます。</p>",
+        "HELP": "<p>ここで DailyMirror を設定し、日次計画ビューのタスク作成パネルで、特定のプロジェクトの Redmine (オンライン版またはセルフホスト インスタンス) の未解決の課題をリストすることができます。それらは提案としてリストされ、課題へのリンクとそれに関する詳細情報が提供されます。</p><p>さらに、すべての未解決課題を自動的にインポートすることもできます。</p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1306,7 +1306,7 @@
         "TITLE": "同期",
         "WEB_DAV": {
           "CORS_INFO": "<strong>実験的!!</strong> これを機能させるには、NextcloudインスタンスのCORSを無効にするか制限する必要があります。これは、セキュリティに悪影響を与える可能性があります。詳細については、 <a href='https://github.com/nextcloud/server/issues/3131'>このスレッド</a> を参照してください。自己責任！",
-          "INFO": "残念ながらWebDAVの実装は大きく異なります。Super ProductivityはNextcloudとうまく連携していることで知られていますが、 <strong>あなたのプロバイダー</strong>ではうまくいかないかもしれません。",
+          "INFO": "残念ながらWebDAVの実装は大きく異なります。DailyMirrorはNextcloudとうまく連携していることで知られていますが、 <strong>あなたのプロバイダー</strong>ではうまくいかないかもしれません。",
           "L_BASE_URL": "ベースURL",
           "L_PASSWORD": "パスワード",
           "L_SYNC_FOLDER_PATH": "同期フォルダパス",
@@ -1557,7 +1557,7 @@
         "ERROR_REMOTE_FILE_CORRUPTED": "リモート同期データを読み取れません（切り詰められているか破損している可能性があります）。ローカルデータは安全です。ローカルデータでリモートを上書きできます。",
         "ERROR_REMOTE_FILE_EMPTY": "リモート同期ファイルが空です。同期が中断された後に発生することがあります。ローカルデータでリモートを上書きしますか？",
         "ERROR_REMOTE_FILE_LOCKED": "リモート同期ファイルはサーバーによってロックされています。次回の同期試行で解決する可能性があります。",
-        "ERROR_SYNC_VERSION_MISMATCH": "リモート同期データは互換性のない形式バージョンを使用しています。すべてのデバイスで同じバージョンのSuper Productivityを実行してください。",
+        "ERROR_SYNC_VERSION_MISMATCH": "リモート同期データは互換性のない形式バージョンを使用しています。すべてのデバイスで同じバージョンのDailyMirrorを実行してください。",
         "WARN_CLIENT_ID_REGENERATED": "同期デバイスIDが無効だったため再生成されました。次回の同期で競合が発生する可能性があります。",
         "LEGACY_FORMAT_DETECTED": "同期形式が一致しません: リモートストレージは、異なる同期形式を使用する古いアプリバージョン（v16.x以前）によって最後に書き込まれました。すべてのデバイスを同じアプリバージョンに更新してください。「強制上書き」は、レガシーファイルの横に新しい形式を書き込むことでこのデバイスのブロックを解除します。古いデバイスがこのリモートに今後同期しない場合にのみ使用してください。そうしないと、それらのデバイスはこのデバイスと静かに分岐します。",
         "SYNC_VALIDATION_FAILED": "同期後の状態検証に失敗しました。一部のデータに不整合がある可能性があります。",
@@ -2483,11 +2483,11 @@
     "EXPORT_DATA": "データのエクスポート",
     "IMPORT_FROM_FILE": "ファイルからインポート",
     "IMPORT_FROM_URL": "URLからインポート",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "インポートしたいSuper ProductivityのバックアップJSONファイルの完全なURLを入力してください。",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "インポートしたいDailyMirrorのバックアップJSONファイルの完全なURLを入力してください。",
     "IMPORT_FROM_URL_DIALOG_TITLE": "URLからインポート",
     "OPEN_IMPORT_FROM_URL_DIALOG": "URLからインポート",
     "PRIVACY_EXPORT": "データをエクスポート（匿名化）",
-    "PRIVACY_EXPORT_DESCRIPTION": "匿名化されたデータをエクスポートする（デバッグ用に contact@super-productivity.com に送信する）。",
+    "PRIVACY_EXPORT_DESCRIPTION": "匿名化されたデータをエクスポートする（デバッグ用に https://github.com/VAN027/DailyMirror/issues に送信する）。",
     "S_BACKUP_DOWNLOADED": "バックアップをAndroidドキュメントフォルダにダウンロードしました",
     "S_ERR_IMPORT_FAILED": "データのインポートに失敗しました",
     "S_ERR_INVALID_DATA": "インポートに失敗しました：無効なJSON",
@@ -2589,10 +2589,10 @@
       "S_RESTORE_SUCCESS": "バックアップを復元しました。"
     },
     "CALENDARS": {
-      "BROWSER_WARNING": "クロスオリジン制限 <b>のため、これは Super Productivity のブラウザ バージョンでは動作しない可能性があります。<br /> この機能を使用するには、 <a href=\"https://super-productivity.com/download/\">デスクトップ バージョン</a> をダウンロードしてください。</b>",
+      "BROWSER_WARNING": "クロスオリジン制限 <b>のため、これは DailyMirror のブラウザ バージョンでは動作しない可能性があります。<br /> この機能を使用するには、 <a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">デスクトップ バージョン</a> をダウンロードしてください。</b>",
       "CAL_PATH": "ICalソースのURL",
       "CHECK_UPDATES": "リモートのアップデートを毎X回チェックする",
-      "HELP": "カレンダーを統合してリマインドしたり、Super Productivity内でタスクとして追加することができます。統合はiCal形式を使用して動作します。この機能を使用するには、カレンダーにインターネット経由またはファイルシステム経由でアクセスできる必要があります。",
+      "HELP": "カレンダーを統合してリマインドしたり、DailyMirror内でタスクとして追加することができます。統合はiCal形式を使用して動作します。この機能を使用するには、カレンダーにインターネット経由またはファイルシステム経由でアクセスできる必要があります。",
       "SHOW_BANNER_THRESHOLD": "イベント前に通知Xを表示（無効は空白）",
       "AUTO_IMPORT_FOR_CURRENT_DAY": "今日のイベントをタスクとして自動インポート",
       "CAL_COLOR": "カレンダーの色",
@@ -2648,7 +2648,7 @@
       "EXPAND_SUB_TASKS": "サブタスクを展開",
       "GLOBAL_ADD_NOTE": "新しいメモを追加",
       "GLOBAL_ADD_TASK": "新しいタスクを追加する",
-      "GLOBAL_SHOW_HIDE": "Super Productivityの表示/非表示",
+      "GLOBAL_SHOW_HIDE": "DailyMirrorの表示/非表示",
       "GLOBAL_TOGGLE_TASK_START": "最後のアクティブタスクのタイムトラッキングを切り替えます",
       "GO_TO_DAILY_AGENDA": "アジェンダに移動",
       "GO_TO_FOCUS_MODE": "フォーカスモードに移動",
@@ -2781,7 +2781,7 @@
       "IS_SHOW_TIP_LONGER": "アプリの起動時に生産性のヒントを少し長く表示する",
       "IS_TRAY_SHOW_CURRENT_COUNTDOWN": "トレイ/ステータスメニューに現在のカウントダウンを表示する(デスクトップMacのみ)",
       "LOCAL_REST_API_TOKEN": "アクセストークン",
-      "LOCAL_REST_API_TOKEN_ERROR": "アクセストークンを保存できなかったため、API は動作していません。Super Productivity がデータフォルダーに書き込めるか確認してから、「再生成」でやり直してください。",
+      "LOCAL_REST_API_TOKEN_ERROR": "アクセストークンを保存できなかったため、API は動作していません。DailyMirror がデータフォルダーに書き込めるか確認してから、「再生成」でやり直してください。",
       "LOCAL_REST_API_TOKEN_REGENERATE": "アクセストークンを再生成",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "新しいアクセストークンを保存できませんでした。以前のトークンは引き続き有効です。",
       "START_OF_NEXT_DAY": "翌日の開始時間",
@@ -2821,7 +2821,7 @@
       "TITLE": "注意事項",
       "DISABLE_REMINDERS": "すべてのリマインダーを無効にする",
       "DUE_DATE_NOTIFICATION_HOUR": "期日通知を表示する時間 (0-23)",
-      "HELP": "<p><strong>重要:</strong> リマインダーはプッシュ通知ではなく<strong>ローカル通知</strong>を使用します。リマインダーがスケジュールされるためには、デバイスでアプリを少なくとも1回開く必要があります。他のデバイスで設定されたリマインダーは、対象デバイスでアプリが同期された後にのみ表示されます。</p><p><strong>iOS</strong>では、デバイス設定の「設定」>「通知」でSuper Productivityの通知が有効になっていることを確認してください。</p>",
+      "HELP": "<p><strong>重要:</strong> リマインダーはプッシュ通知ではなく<strong>ローカル通知</strong>を使用します。リマインダーがスケジュールされるためには、デバイスでアプリを少なくとも1回開く必要があります。他のデバイスで設定されたリマインダーは、対象デバイスでアプリが同期された後にのみ表示されます。</p><p><strong>iOS</strong>では、デバイス設定の「設定」>「通知」でDailyMirrorの通知が有効になっていることを確認してください。</p>",
       "IS_FOCUS_WINDOW": "リマインダー発動時にアプリウィンドウをフォーカス",
       "NOTIFY_ON_DUE_DATE": "今日期限のタスクの通知を表示",
       "USE_ALARM_STYLE_REMINDERS": "アラーム式通知を使用 (Androidのみ)",
@@ -3111,7 +3111,7 @@
     "STATUS_PREPARING": "移行を準備中..."
   },
   "ONBOARDING": {
-    "TITLE": "Super Productivityをどのように使いますか？",
+    "TITLE": "DailyMirrorをどのように使いますか？",
     "SUBTITLE": "あなたのワークフローに合ったセットアップを選んでください。後からいつでも設定で変更できます。",
     "PRIVACY_HINT": "データはお使いのデバイスに安全に保存されます。サーバーには何も送信されません。",
     "PRESETS": {
@@ -3139,7 +3139,7 @@
       "OR_PRESS": "または",
       "SKIP_ARIA": "ヒントを閉じる"
     },
-    "SYNC_CTA": "別のデバイスですでに Super Productivity を使用していますか？",
+    "SYNC_CTA": "別のデバイスですでに DailyMirror を使用していますか？",
     "SYNC_CTA_LINK": "同期を設定"
   },
   "PDS": {
@@ -3389,7 +3389,7 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "GitHub Sponsorsで寄付する",
-    "INTRO_1": "Super Productivityはコミュニティによって完全に支えられています。トラッキング、広告、データ収集は一切ありません。タスクはお使いのデバイスに保存されます。",
+    "INTRO_1": "この寄付リンクは、元のプロジェクト Super Productivity と作者 Johannes Millan を支援するものです。DailyMirror のメンテナーへの寄付ではありません。",
     "INTRO_2": "このアプローチに価値を感じ、プロジェクトの健全な発展を支援したい場合、任意の寄付をいただけると大変ありがたいです。"
   },
   "GLOBAL": {

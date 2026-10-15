@@ -3,7 +3,7 @@
     "B_INSTALL": {
       "IGNORE": "Ignora",
       "INSTALL": "Installa",
-      "MSG": "Vuoi installare Super Productivity come PWA?"
+      "MSG": "Vuoi installare DailyMirror come PWA?"
     },
     "B_OFFLINE": "Sei disconnesso da Internet. La sincronizzazione e la richiesta dei dati del provider di problemi non funzioneranno.",
     "B_RECOVERY_POINT": {
@@ -13,12 +13,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "Non ora",
-      "MSG": "Usi Super Productivity da un po'. Configura la sincronizzazione per eseguire il backup dei tuoi dati e tenerli al sicuro su tutti i dispositivi.",
+      "MSG": "Usi DailyMirror da un po'. Configura la sincronizzazione per eseguire il backup dei tuoi dati e tenerli al sicuro su tutti i dispositivi.",
       "SETUP": "Configura sincronizzazione"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "Scarica",
-      "MSG": "È disponibile una nuova versione di Super Productivity ({{version}})."
+      "MSG": "È disponibile una nuova versione di DailyMirror ({{version}})."
     },
     "CONTEXT_MENU": {
       "CHANGE_BACKGROUND": "Cambia sfondo",
@@ -82,13 +82,13 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "Dona tramite GitHub Sponsors",
-    "INTRO_1": "Super Productivity è finanziato interamente dalla comunità. Non ci sono tracciamenti, pubblicità o raccolta dati — le tue attività restano sul tuo dispositivo.",
+    "INTRO_1": "Questo link per le donazioni sostiene il progetto originale Super Productivity e il suo autore Johannes Millan, non il manutentore di DailyMirror.",
     "INTRO_2": "Se apprezzi questo approccio e vuoi mantenere il progetto sano e in evoluzione, una donazione volontaria è molto apprezzata."
   },
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "Impara le scorciatoie da tastiera",
-      "NOTES": "Super Productivity è progettato per essere usato con la tastiera. Impara le scorciatoie per lavorare più velocemente.\n\n**Come iniziare:**\n1. Apri il **menu della barra laterale**\n2. Vai su **Aiuto**\n3. Clicca su **Tour della navigazione da tastiera**"
+      "NOTES": "DailyMirror è progettato per essere usato con la tastiera. Impara le scorciatoie per lavorare più velocemente.\n\n**Come iniziare:**\n1. Apri il **menu della barra laterale**\n2. Vai su **Aiuto**\n3. Clicca su **Tour della navigazione da tastiera**"
     },
     "CREATE_PROJECT": {
       "TITLE": "Crea il tuo primo progetto",
@@ -208,7 +208,7 @@
         "POLL_INTERVAL_MINUTES": "Intervallo di polling (minuti)"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Qui puoi configurare SuperProductivity per elencare le cose da fare CalDav non completate per un progetto specifico nel pannello di creazione dell'attività nella visualizzazione della pianificazione giornaliera. Verranno elencati come suggerimenti e forniranno un collegamento alla cosa da fare, nonché ulteriori informazioni a riguardo.</p> <p>Inoltre, è possibile aggiungere e sincronizzare automaticamente tutte le attività non completate tra le arretrate.</p>"
+        "HELP": "<p>Qui puoi configurare DailyMirror per elencare le cose da fare CalDav non completate per un progetto specifico nel pannello di creazione dell'attività nella visualizzazione della pianificazione giornaliera. Verranno elencati come suggerimenti e forniranno un collegamento alla cosa da fare, nonché ulteriori informazioni a riguardo.</p> <p>Inoltre, è possibile aggiungere e sincronizzare automaticamente tutte le attività non completate tra le arretrate.</p>"
       },
       "ISSUE_CONTENT": {
         "DESCRIPTION": "Descrizione",
@@ -280,7 +280,7 @@
       "FEEDBACK_PUBLIC": "Pubblica su GitHub Discussions",
       "FEEDBACK_PUBLIC_DESC": "Altri possono vedere e rispondere",
       "FEEDBACK_TITLE": "Come vuoi aiutare?",
-      "TITLE": "Ti piace Super Productivity?",
+      "TITLE": "Ti piace DailyMirror?",
       "TXT": "È un progetto <strong>gratuito e open source</strong> creato da appassionati — niente tracciamento, niente pubblicità. Una recensione o un breve messaggio aiuta più persone a scoprirlo."
     },
     "DROPBOX": {
@@ -402,7 +402,7 @@
         "FILTER_LABELS_DESCRIPTION": "Elenco di nomi di etichette separati da virgole. Verranno sincronizzate solo le issue con tutte queste etichette. Lascia vuoto per sincronizzare tutte le issue che corrispondono all'ambito."
       },
       "FORM_SECTION": {
-        "HELP": "<p>Qui è possibile configurare SuperProductivity in modo che elenchi le issue aperte di Gitea per uno specifico repository nel pannello di creazione delle attività nella vista di pianificazione giornaliera. Saranno elencati come suggerimenti e forniranno un link all'issue e ulteriori informazioni su di esso.</p> <p>Inoltre è possibile aggiungere e importare automaticamente tutte le issue aperte.</p><p>Per superare i limiti di utilizzo e accedere è possibile fornire un token di accesso."
+        "HELP": "<p>Qui è possibile configurare DailyMirror in modo che elenchi le issue aperte di Gitea per uno specifico repository nel pannello di creazione delle attività nella vista di pianificazione giornaliera. Saranno elencati come suggerimenti e forniranno un link all'issue e ulteriori informazioni su di esso.</p> <p>Inoltre è possibile aggiungere e importare automaticamente tutte le issue aperte.</p><p>Per superare i limiti di utilizzo e accedere è possibile fornire un token di accesso."
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assegnatario",
@@ -430,7 +430,7 @@
         "FILTER_USER": "Nome utente (es. per filtrare le modifiche fatte da te)",
         "GITLAB_BASE_URL": "URL di base GitLab personalizzato",
         "PROJECT": "Percorso completo o nome utente / progetto",
-        "PROJECT_HINT": "es. super-productivity/super-productivity",
+        "PROJECT_HINT": "es. group/project",
         "SCOPE": "Scopo",
         "SCOPE_ALL": "Tutti",
         "SCOPE_ASSIGNED": "Assegnato a me",
@@ -444,7 +444,7 @@
         "TOKEN": "Token di accesso"
       },
       "FORM_SECTION": {
-        "HELP": "<p> Qui puoi configurare SuperProductivity per elencare i problemi di GitLab aperti (sia la versione online o un'istanza ospitata autonomamente) per un progetto specifico nel pannello di creazione dell'attività nella vista di pianificazione giornaliera. Saranno elencati come suggerimenti e forniranno un collegamento al problema, nonché ulteriori informazioni al riguardo. </p> <p> Inoltre puoi aggiungere e sincronizzare automaticamente tutti i problemi aperti nelle attività arretrate. </p>"
+        "HELP": "<p> Qui puoi configurare DailyMirror per elencare i problemi di GitLab aperti (sia la versione online o un'istanza ospitata autonomamente) per un progetto specifico nel pannello di creazione dell'attività nella vista di pianificazione giornaliera. Saranno elencati come suggerimenti e forniranno un collegamento al problema, nonché ulteriori informazioni al riguardo. </p> <p> Inoltre puoi aggiungere e sincronizzare automaticamente tutti i problemi aperti nelle attività arretrate. </p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assegnatario",
@@ -462,13 +462,13 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "Questa integrazione non funzionerà sul tuo browser. Scarica la versione Desktop o Android di Super Productivity!",
+      "CROSS_ORIGIN_BROWSER_WARNING": "Questa integrazione non funzionerà sul tuo browser. Scarica la versione Desktop o Android di DailyMirror!",
       "DEFAULT": {
         "ISSUE_STR": "Problema",
         "ISSUES_STR": "problemi"
       },
       "DEFAULT_PROJECT_DESCRIPTION": "Progetto assegnato all'attività creata da un issue.",
-      "DEFAULT_PROJECT_LABEL": "Progetto predefiniti di Super Productivity",
+      "DEFAULT_PROJECT_LABEL": "Progetto predefiniti di DailyMirror",
       "HOW_TO_GET_A_TOKEN": "Come ottenere un token?",
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assegnatario",
@@ -575,7 +575,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira: Per prevenire il blocco dalle api, l'accesso è stato bloccato da Super Productivity. Dovresti controllare le tue impostazioni di jira!",
+        "BLOCK_ACCESS_MSG": "Jira: Per prevenire il blocco dalle api, l'accesso è stato bloccato da DailyMirror. Dovresti controllare le tue impostazioni di jira!",
         "BLOCK_ACCESS_UNBLOCK": "Sblocca"
       },
       "CFG_CMP": {
@@ -912,7 +912,7 @@
         "TOKEN": "Token di accesso"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Qui puoi configurare SuperProductivity per elencare i pacchetti di lavoro OpenProject aperti. Nota che per farlo funzionare nel browser devi probabilmente configurare CORS per il tuo server OpenProject, per consentire l'accesso da app.super-productivity.com</p>"
+        "HELP": "<p>Qui puoi configurare DailyMirror per elencare i pacchetti di lavoro OpenProject aperti. Nota che per farlo funzionare nel browser devi probabilmente configurare CORS per il tuo server OpenProject, per consentire l'accesso da l’origine della tua app web DailyMirror (protocollo, host e porta)</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assegnatario",
@@ -1101,7 +1101,7 @@
         "IS_SHOW_TIME_TRACKING_DIALOG_FOR_EACH_SUB_TASK": "Mostra finestra di tracciamento tempo quando le sotto-attività vengono completate"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Qui è possibile configurare SuperProductivity per elencare le issue aperte di Redmine (sia la versione online che un'istanza self-hosted) per un progetto specifico nel pannello di creazione delle attività nella vista di pianificazione giornaliera. Saranno elencate come suggerimenti e forniranno un link all'issue e ulteriori informazioni su di esso.</p><p>Inoltre è possibile importare automaticamente tutte le issue aperte.</p>",
+        "HELP": "<p>Qui è possibile configurare DailyMirror per elencare le issue aperte di Redmine (sia la versione online che un'istanza self-hosted) per un progetto specifico nel pannello di creazione delle attività nella vista di pianificazione giornaliera. Saranno elencate come suggerimenti e forniranno un link all'issue e ulteriori informazioni su di esso.</p><p>Inoltre è possibile importare automaticamente tutte le issue aperte.</p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1459,9 +1459,9 @@
         },
         "TITLE": "Sincronizzazione",
         "WEB_DAV": {
-          "CORS_INFO": "<strong>Per farlo funzionare nel browser:</strong> Per far funzionare questo nel browser devi inserire Super Productivity nella whitelist per le richieste CORS per la tua istanza Nextcloud. Questo può avere implicazioni negative per la sicurezza! <a href='https://github.com/nextcloud/server/issues/3131'>Fai riferimento a questo thread per maggiori informazioni</a>. Un approccio per farlo funzionare su mobile è inserire nella whitelist \"https://app.super-productivity.com\" tramite l'app nextcloud <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword<a>. Usa a tuo rischio e pericolo!</p>",
+          "CORS_INFO": "<strong>Per farlo funzionare nel browser:</strong> Per far funzionare questo nel browser devi inserire DailyMirror nella whitelist per le richieste CORS per la tua istanza Nextcloud. Questo può avere implicazioni negative per la sicurezza! <a href='https://github.com/nextcloud/server/issues/3131'>Fai riferimento a questo thread per maggiori informazioni</a>. Un approccio per farlo funzionare su mobile è inserire nella whitelist \"l’origine della tua app web DailyMirror (protocollo, host e porta)\" tramite l'app nextcloud <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword<a>. Usa a tuo rischio e pericolo!</p>",
           "D_SYNC_FOLDER_PATH": "Percorso relativo alla radice del server WebDAV dove verranno archiviati i file di sincronizzazione (es. ' /super-productivity' o ' /'). Questo NON è il percorso della directory interna del tuo server.",
-          "INFO": "Le implementazioni WebDAV differiscono notevolmente purtroppo. Super Productivity funziona bene con Nextcloud, ma potrebbe non funzionare con il tuo provider.",
+          "INFO": "Le implementazioni WebDAV differiscono notevolmente purtroppo. DailyMirror funziona bene con Nextcloud, ma potrebbe non funzionare con il tuo provider.",
           "L_BASE_URL": "URL di base",
           "L_PASSWORD": "Password",
           "L_SYNC_FOLDER_PATH": "Sincronizza percorso cartella",
@@ -1470,7 +1470,7 @@
           "S_FILL_ALL_FIELDS": "Per favore, compila prima tutti i campi WebDAV",
           "S_TEST_FAIL": "Test di connessione fallito: {{error}} - URL di destinazione: {{url}}",
           "S_TEST_SUCCESS": "Test di connessione riuscito! URL di destinazione: {{url}}",
-          "CONDITIONAL_HEADER_WARNING_MSG": "Il tuo server WebDAV non supporta gli header condizionali (If-Unmodified-Since). Ciò significa che Super Productivity non può rilevare modifiche simultanee da altri dispositivi durante il caricamento.<br><br>La sincronizzazione funzionerà comunque, ma c'è un piccolo rischio di conflitti se modifichi i dati su più dispositivi contemporaneamente.",
+          "CONDITIONAL_HEADER_WARNING_MSG": "Il tuo server WebDAV non supporta gli header condizionali (If-Unmodified-Since). Ciò significa che DailyMirror non può rilevare modifiche simultanee da altri dispositivi durante il caricamento.<br><br>La sincronizzazione funzionerà comunque, ma c'è un piccolo rischio di conflitti se modifichi i dati su più dispositivi contemporaneamente.",
           "CONDITIONAL_HEADER_WARNING_TITLE": "Sicurezza sincronizzazione ridotta"
         },
         "BTN_DISABLE_ENCRYPTION": "Disattiva crittografia",
@@ -1610,7 +1610,7 @@
         "ERROR_REMOTE_FILE_CORRUPTED": "I dati di sincronizzazione remoti non sono leggibili (forse troncati o danneggiati). I tuoi dati locali sono al sicuro. Puoi sovrascrivere i dati remoti con i dati locali.",
         "ERROR_REMOTE_FILE_EMPTY": "Il file di sincronizzazione remoto è vuoto. Può succedere dopo una sincronizzazione interrotta. Sovrascrivere i dati remoti con i dati locali?",
         "ERROR_REMOTE_FILE_LOCKED": "Il file di sincronizzazione remoto è bloccato dal server. Potrebbe risolversi al prossimo tentativo di sincronizzazione.",
-        "ERROR_SYNC_VERSION_MISMATCH": "I dati di sincronizzazione remoti usano una versione di formato incompatibile. Assicurati che tutti i dispositivi eseguano la stessa versione di Super Productivity.",
+        "ERROR_SYNC_VERSION_MISMATCH": "I dati di sincronizzazione remoti usano una versione di formato incompatibile. Assicurati che tutti i dispositivi eseguano la stessa versione di DailyMirror.",
         "WARN_CLIENT_ID_REGENERATED": "L'ID del dispositivo di sincronizzazione non era valido ed è stato rigenerato. Alla prossima sincronizzazione potrebbe verificarsi un conflitto.",
         "LEGACY_FORMAT_DETECTED": "Formato di sincronizzazione non corrispondente: l'archivio remoto è stato scritto l'ultima volta da una versione precedente dell'app (v16.x o precedente) che usa un formato di sincronizzazione diverso. Aggiorna tutti i dispositivi alla stessa versione dell'app. \"Forza sovrascrittura\" sblocca questo dispositivo scrivendo il nuovo formato accanto ai file legacy; usalo solo se nessun vecchio dispositivo sincronizzerà più questo remoto, altrimenti divergeranno silenziosamente da questo dispositivo.",
         "SYNC_VALIDATION_FAILED": "Validazione dello stato non riuscita dopo la sincronizzazione. Alcuni dati potrebbero essere incoerenti.",
@@ -2488,11 +2488,11 @@
     "EXPORT_DATA": "Esporta dati",
     "IMPORT_FROM_FILE": "Importa da file",
     "IMPORT_FROM_URL": "Importa da URL",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Inserisci l'URL completo del file di backup JSON di Super Productivity che desideri importare.",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Inserisci l'URL completo del file di backup JSON di DailyMirror che desideri importare.",
     "IMPORT_FROM_URL_DIALOG_TITLE": "Importa da URL",
     "OPEN_IMPORT_FROM_URL_DIALOG": "Importa da URL",
     "PRIVACY_EXPORT": "Esporta dati (anonimizzati)",
-    "PRIVACY_EXPORT_DESCRIPTION": "Esporta dati anonimizzati (da inviare a contact@super-productivity.com per il debug)",
+    "PRIVACY_EXPORT_DESCRIPTION": "Esporta dati anonimizzati (da inviare a https://github.com/VAN027/DailyMirror/issues per il debug)",
     "S_BACKUP_DOWNLOADED": "Fai backup dei download nella cartella dei documenti di Android",
     "S_ERR_IMPORT_FAILED": "Importazione dei dati fallita",
     "S_ERR_INVALID_DATA": "Importazione fallita: JSON non valido",
@@ -2616,10 +2616,10 @@
       "S_RESTORE_SUCCESS": "Backup ripristinato correttamente."
     },
     "CALENDARS": {
-      "BROWSER_WARNING": "<b>Questo NON funzionerà con la versione Browser di Super Productivity.<br /> <a href=\"https://super-productivity.com/download/\">Scarica la versione desktop</a> per usare questa funzionalità!</b>",
+      "BROWSER_WARNING": "<b>Questo NON funzionerà con la versione Browser di DailyMirror.<br /> <a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">Scarica la versione desktop</a> per usare questa funzionalità!</b>",
       "CAL_PATH": "URL della sorgente iCal",
       "CHECK_UPDATES": "Verifica aggiornamenti remoti ogni X tempo",
-      "HELP": "Puoi integrare calendari per essere ricordati e aggiungerli come attività con Super Productivity. L'integrazione funziona usando il formato iCal. Affinché questo funzioni, il tuo calendario deve essere accessibile sia da Internet che da file system.",
+      "HELP": "Puoi integrare calendari per essere ricordati e aggiungerli come attività con DailyMirror. L'integrazione funziona usando il formato iCal. Affinché questo funzioni, il tuo calendario deve essere accessibile sia da Internet che da file system.",
       "SHOW_BANNER_THRESHOLD": "Mostra una notifica X tempo prima dell'evento (lascia bianco per disabilitare)",
       "AUTO_IMPORT_FOR_CURRENT_DAY": "Importa automaticamente gli eventi come attività per il giorno corrente",
       "CAL_COLOR": "Colore calendario",
@@ -2705,7 +2705,7 @@
       "EXPAND_SUB_TASKS": "Espandi le sotto-attività",
       "GLOBAL_ADD_NOTE": "Aggiungi nuova nota",
       "GLOBAL_ADD_TASK": "Aggiungi nuova attività",
-      "GLOBAL_SHOW_HIDE": "Mostra/nascondi Super Productivity",
+      "GLOBAL_SHOW_HIDE": "Mostra/nascondi DailyMirror",
       "GLOBAL_TOGGLE_TASK_START": "Abilita/disabilita il tracciamento del tempo per l'ultima attività attiva",
       "GO_TO_DAILY_AGENDA": "Vai all'agenda",
       "GO_TO_FOCUS_MODE": "Vai alla modalità concentrazione",
@@ -2841,7 +2841,7 @@
       "IS_USE_CUSTOM_WINDOW_TITLE_BAR": "Usa barra del titolo personalizzata (solo Windows/Linux)",
       "IS_USE_CUSTOM_WINDOW_TITLE_BAR_HINT": "Richiede il riavvio per avere effetto",
       "LOCAL_REST_API_TOKEN": "Token di accesso",
-      "LOCAL_REST_API_TOKEN_ERROR": "Non è stato possibile salvare il token di accesso, quindi l'API non è attiva. Verifica che Super Productivity possa scrivere nella sua cartella dati, poi usa Rigenera per riprovare.",
+      "LOCAL_REST_API_TOKEN_ERROR": "Non è stato possibile salvare il token di accesso, quindi l'API non è attiva. Verifica che DailyMirror possa scrivere nella sua cartella dati, poi usa Rigenera per riprovare.",
       "LOCAL_REST_API_TOKEN_REGENERATE": "Rigenera token di accesso",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "Non è stato possibile salvare il nuovo token di accesso. Il token precedente è ancora valido.",
       "START_OF_NEXT_DAY": "Ora di inizio del prossimo giorno",
@@ -2878,7 +2878,7 @@
       "IS_COUNTDOWN_BANNER_ENABLED": "Mostra banner con il conto alla rovescia perima che i promemoria siano in scadenza",
       "TITLE": "Promemoria",
       "DUE_DATE_NOTIFICATION_HOUR": "Ora per mostrare le notifiche di scadenza (0-23)",
-      "HELP": "<p><strong>Importante:</strong> i promemoria usano <strong>notifiche locali</strong>, non notifiche push. Ciò significa che l'app deve essere stata aperta almeno una volta sul tuo dispositivo per pianificare i promemoria. I promemoria impostati su un altro dispositivo appariranno solo dopo la sincronizzazione dell'app sul dispositivo di destinazione.</p><p>Su <strong>iOS</strong>, assicurati che le notifiche siano abilitate per Super Productivity nelle impostazioni del dispositivo in 'Impostazioni' > 'Notifiche'.</p>",
+      "HELP": "<p><strong>Importante:</strong> i promemoria usano <strong>notifiche locali</strong>, non notifiche push. Ciò significa che l'app deve essere stata aperta almeno una volta sul tuo dispositivo per pianificare i promemoria. I promemoria impostati su un altro dispositivo appariranno solo dopo la sincronizzazione dell'app sul dispositivo di destinazione.</p><p>Su <strong>iOS</strong>, assicurati che le notifiche siano abilitate per DailyMirror nelle impostazioni del dispositivo in 'Impostazioni' > 'Notifiche'.</p>",
       "IS_FOCUS_WINDOW": "Porta in primo piano la finestra dell'applicazione quando scatta il promemoria",
       "NOTIFY_ON_DUE_DATE": "Mostra notifiche per le attività in scadenza oggi",
       "USE_ALARM_STYLE_REMINDERS": "Usa notifiche stile sveglia (solo Android)",
@@ -3119,7 +3119,7 @@
     "STATUS_MIGRATING": "Migrazione dati..."
   },
   "ONBOARDING": {
-    "TITLE": "Come vuoi usare Super Productivity?",
+    "TITLE": "Come vuoi usare DailyMirror?",
     "SUBTITLE": "Scegli una configurazione adatta al tuo modo di lavorare. Puoi sempre modificarla nelle Impostazioni.",
     "PRIVACY_HINT": "I tuoi dati restano al sicuro sul tuo dispositivo. Nulla viene inviato a un server.",
     "PRESETS": {
@@ -3147,7 +3147,7 @@
       "OR_PRESS": "o premi",
       "SKIP_ARIA": "Chiudi suggerimento"
     },
-    "SYNC_CTA": "Usi già Super Productivity su un altro dispositivo?",
+    "SYNC_CTA": "Usi già DailyMirror su un altro dispositivo?",
     "SYNC_CTA_LINK": "Configura sincronizzazione"
   },
   "PDS": {

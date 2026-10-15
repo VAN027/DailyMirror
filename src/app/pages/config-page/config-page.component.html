@@ -319,7 +319,7 @@
   class="version-footer"
   title="Rev {{ versions?.revision }} {{ versions?.branch }} {{ versions?.version }}"
 >
-  Super Productivity
+  DailyMirror
   <a
     class="version"
     [matTooltip]="T.PS.CLICK_TO_COPY_VERSION | translate"
@@ -328,9 +328,18 @@
     >{{ appVersion }}<mat-icon>content_copy</mat-icon></a
   >
   –
+  {{ 'DM_PRIVACY.MAINTAINER' | translate }}
   <a
-    href="https://github.com/super-productivity/super-productivity/releases/latest"
+    href="https://github.com/VAN027"
     target="_blank"
+    rel="noopener noreferrer"
+    >Kael Vex</a
+  >
+  –
+  <a
+    href="https://github.com/VAN027/DailyMirror/releases/latest"
+    target="_blank"
+    rel="noopener noreferrer"
     >{{ T.LOCAL_UI.CHANGELOG | translate }}</a
   >
   @if (isUpdateCheckPossible) {
@@ -349,14 +358,52 @@
   >
   –
   <a
-    href="https://super-productivity.com/privacy/"
-    target="_blank"
+    (click)="showPrivacyPolicy(privacyPolicy); $event.preventDefault()"
+    href="#"
     >{{ T.PS.PRIVACY_POLICY | translate }}</a
   >
   –
   <a
-    href="https://github.com/super-productivity/super-productivity/discussions/new"
+    href="https://github.com/VAN027/DailyMirror/issues/new"
     target="_blank"
+    rel="noopener noreferrer"
     >{{ T.PS.PROVIDE_FEEDBACK | translate }}</a
   >
 </footer>
+
+<ng-template #privacyPolicy>
+  <h2
+    mat-dialog-title
+    id="dailymirror-privacy-title"
+  >
+    {{ 'DM_PRIVACY.TITLE' | translate }}
+  </h2>
+  <mat-dialog-content>
+    <p>{{ 'DM_PRIVACY.INTRO' | translate }}</p>
+    @for (section of privacySections; track section) {
+      <h3>{{ 'DM_PRIVACY.' + section + '.TITLE' | translate }}</h3>
+      <p>{{ 'DM_PRIVACY.' + section + '.BODY' | translate }}</p>
+    }
+    <a
+      href="https://github.com/VAN027/DailyMirror/issues/new"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ T.PS.PROVIDE_FEEDBACK | translate }}</a
+    >
+    ·
+    <a
+      href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ 'DM_PRIVACY.GITHUB_POLICY' | translate }}</a
+    >
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-button
+      mat-dialog-close
+    >
+      {{ T.G.CLOSE | translate }}
+    </button>
+  </mat-dialog-actions>
+</ng-template>

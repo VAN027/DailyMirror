@@ -1,6 +1,4 @@
 import { LS } from '../../core/persistence/storage-keys.const';
-import { IS_ANDROID_WEB_VIEW, IS_F_DROID_APP } from '../../util/is-android-web-view';
-import { IS_IOS } from '../../util/is-ios';
 import { getAppVersionStr } from '../../util/get-app-version-str';
 import { getOsLabel } from '../../core/util/get-os-label';
 import { PlatformCode, getCurrentPlatformCode } from '../../core/util/generate-client-id';
@@ -39,20 +37,11 @@ export const ERROR_SUPPRESSION_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 // wall-clock floor of ~this many days. Afterwards the normal cadence resumes.
 export const FEEDBACK_SUPPRESSION_STARTS = 90;
 
-export const MAINTAINER_EMAIL = 'contact@super-productivity.com';
-const PLAY_STORE_URL =
-  'https://play.google.com/store/apps/details?id=com.superproductivity.superproductivity';
-const APP_STORE_URL = 'https://apps.apple.com/app/id1482572463';
-const HOW_TO_RATE_URL =
-  'https://github.com/super-productivity/super-productivity/blob/master/docs/how-to-rate.md';
-// Web/Electron have no app store to rank in; a GitHub star is the equivalent
-// social-proof/discovery signal for the desktop distribution, so that's the CTA
-// there instead of the near-zero-conversion "how to rate" doc.
-const GITHUB_REPO_URL = 'https://github.com/super-productivity/super-productivity';
-export const DISCUSSIONS_URL =
-  'https://github.com/super-productivity/super-productivity/discussions/new';
-export const CONTRIBUTING_URL =
-  'https://github.com/super-productivity/super-productivity/blob/master/CONTRIBUTING.md';
+// No DailyMirror support mailbox has been configured; hide the email option.
+export const MAINTAINER_EMAIL = '';
+const GITHUB_REPO_URL = 'https://github.com/VAN027/DailyMirror';
+export const DISCUSSIONS_URL = `${GITHUB_REPO_URL}/issues/new`;
+export const CONTRIBUTING_URL = GITHUB_REPO_URL;
 
 export interface RateDialogState {
   lastShownAppStartDay: number;
@@ -171,21 +160,7 @@ export interface PrimaryCta {
 }
 
 export const getPrimaryCta = (): PrimaryCta => {
-  if (IS_ANDROID_WEB_VIEW) {
-    // F-Droid has no store ratings, so point those users at the neutral
-    // "how to rate / support" doc instead of the Play listing. The play flavor
-    // normally uses the native review card and never reaches this dialog; the
-    // Play URL here is only a fallback if the native flow is unavailable.
-    if (IS_F_DROID_APP) {
-      return { labelKey: 'F.D_RATE.A_HOW', url: HOW_TO_RATE_URL };
-    }
-    return { labelKey: 'F.D_RATE.BTN_RATE_PLAY_STORE', url: PLAY_STORE_URL };
-  }
-  if (IS_IOS) {
-    return { labelKey: 'F.D_RATE.BTN_RATE_APP_STORE', url: APP_STORE_URL };
-  }
-  // Web / Electron: no app store to rank in — a GitHub star is the equivalent
-  // discovery signal for the desktop distribution.
+  // DailyMirror has no configured store listing. Never rate the upstream app.
   return { labelKey: 'F.D_RATE.BTN_STAR_GITHUB', url: GITHUB_REPO_URL };
 };
 
@@ -205,7 +180,8 @@ export const getPlatformLabel = (
 };
 
 export const buildFeedbackMailto = (): string => {
-  const subject = 'Super Productivity feedback';
+  if (!MAINTAINER_EMAIL) return '';
+  const subject = 'DailyMirror feedback';
   const body = `What I'd like to share:\n\n\n---\nApp version: ${getAppVersionStr()}\nPlatform: ${getPlatformLabel()}`;
   return `mailto:${MAINTAINER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };

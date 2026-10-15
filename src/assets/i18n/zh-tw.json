@@ -3,7 +3,7 @@
     "B_INSTALL": {
       "IGNORE": "忽略",
       "INSTALL": "安裝",
-      "MSG": "您想將 Super Productivity 安裝為 PWA 嗎？"
+      "MSG": "您想將 DailyMirror 安裝為 PWA 嗎？"
     },
     "B_OFFLINE": "您已斷開與網際網路的連接。同步和資料請求將失效。",
     "B_RECOVERY_POINT": {
@@ -13,12 +13,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "暫不",
-      "MSG": "您已經使用 Super Productivity 一段時間了。設定同步以備份您的資料，並在所有裝置上保持安全。",
+      "MSG": "您已經使用 DailyMirror 一段時間了。設定同步以備份您的資料，並在所有裝置上保持安全。",
       "SETUP": "設定同步"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "下載",
-      "MSG": "Super Productivity 有新版本可用（{{version}}）。"
+      "MSG": "DailyMirror 有新版本可用（{{version}}）。"
     },
     "CONTEXT_MENU": {
       "CHANGE_BACKGROUND": "更改背景",
@@ -52,7 +52,7 @@
   },
   "CONFIRM": {
     "AUTO_FIX": "您的資料似乎已損壞（\"{{validityError}}\"）。您想嘗試自動修復它嗎？這可能會導致部分資料丟失。",
-    "RELOAD_AFTER_IDB_ERROR": "資料庫錯誤 - 應用程式即將重新啟動\n\nSuper Productivity 無法儲存資料！這通常是由以下原因造成的：\n• 硬碟空間不足（最常見）\n• 應用程式在背景更新\n• Linux Snap 使用者：請執行 'snap set core experimental.refresh-app-awareness=true'\n\n您最近的變更可能尚未儲存。如果硬碟空間不足，請釋放空間。關閉此對話方塊後應用程式將重新啟動。",
+    "RELOAD_AFTER_IDB_ERROR": "資料庫錯誤 - 應用程式即將重新啟動\n\nDailyMirror 無法儲存資料！這通常是由以下原因造成的：\n• 硬碟空間不足（最常見）\n• 應用程式在背景更新\n• Linux Snap 使用者：請執行 'snap set core experimental.refresh-app-awareness=true'\n\n您最近的變更可能尚未儲存。如果硬碟空間不足，請釋放空間。關閉此對話方塊後應用程式將重新啟動。",
     "RESTORE_FILE_BACKUP": "似乎沒有資料，但是\"{{dir}}\"處有可用的備份。您是否要從 {{from}} 恢復最新備份？",
     "RESTORE_FILE_BACKUP_ANDROID": "似乎沒有資料，但是有可用備份。是否要從備份載入？",
     "RESTORE_FILE_BACKUP_WITH_COUNTS": "似乎沒有任何資料，但在「{{dir}}」中有可用的備份。要還原 {{from}} 的最新備份嗎（任務：{{tasks}}，專案：{{projects}}）？",
@@ -82,13 +82,13 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "透過 GitHub Sponsors 贊助",
-    "INTRO_1": "Super Productivity 完全由社群資助。沒有追蹤、沒有廣告、不收集資料 —— 您的工作保留在您的裝置上。",
+    "INTRO_1": "此贊助入口支持上游 Super Productivity 專案及其作者 Johannes Millan，並非贊助 DailyMirror 維護者。",
     "INTRO_2": "如果您認同這種做法並希望讓專案保持健康發展，非常感謝您的自願贊助。"
   },
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "學習鍵盤快捷鍵",
-      "NOTES": "Super Productivity 專為鍵盤操作而設計。學習快捷鍵可以讓您更有效率地工作。\n\n**如何開始：**\n1. 開啟**側邊欄選單**\n2. 前往**說明**\n3. 點擊**鍵盤導覽教學**"
+      "NOTES": "DailyMirror 專為鍵盤操作而設計。學習快捷鍵可以讓您更有效率地工作。\n\n**如何開始：**\n1. 開啟**側邊欄選單**\n2. 前往**說明**\n3. 點擊**鍵盤導覽教學**"
     },
     "CREATE_PROJECT": {
       "TITLE": "建立您的第一個專案",
@@ -208,7 +208,7 @@
         "POLL_INTERVAL_MINUTES": "輪詢間隔（分鐘）"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在此您可以設定 Super Productivity 在每日規劃檢視的工作建立面板中列出特定專案的未完成 CalDAV 待辦事項。它們將作為建議列出，並提供待辦事項的連結以及更多相關資訊。</p> <p>此外，您可以自動新增並同步所有未完成的待辦事項到您的工作待辦事項。</p><p>要在網頁應用程式中讓 Nextcloud 運作，您可能需要透過 Nextcloud 應用程式 <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword<a> 將 \"https://app.super-productivity.com\" 加入白名單。</p>"
+        "HELP": "<p>可在 DailyMirror 中將未完成的 CalDAV 待辦事項列為建立工作時的建議，也可自動匯入待辦清單。</p><p>在瀏覽器中連接 Nextcloud 時，請允許你實際使用的 DailyMirror 網頁來源位址（協定、主機與連接埠），例如透過 Nextcloud 的 <a href=\"https://apps.nextcloud.com/apps/webapppassword\">webapppassword</a> 應用程式設定。不要直接照抄上游託管網頁的位址。</p>"
       },
       "ISSUE_CONTENT": {
         "DESCRIPTION": "描述",
@@ -283,9 +283,9 @@
       "FEEDBACK_PRIVATE": "寄信給維護者",
       "FEEDBACK_PRIVATE_DESC": "寄送私人訊息",
       "FEEDBACK_PUBLIC": "在 GitHub Discussions 發文",
-      "FEEDBACK_PUBLIC_DESC": "他人可看到並回覆",
+      "FEEDBACK_PUBLIC_DESC": "在 DailyMirror GitHub 儲存庫提交公開回饋，請勿包含密碼、權杖或私人備份。",
       "FEEDBACK_TITLE": "您想如何協助？",
-      "TITLE": "喜歡 Super Productivity 嗎？",
+      "TITLE": "喜歡 DailyMirror 嗎？",
       "TXT": "這是一個由愛好者打造的<strong>免費開源專案</strong>——沒有追蹤、沒有廣告。一個評分或簡短訊息能幫助更多人發現它。"
     },
     "DROPBOX": {
@@ -407,7 +407,7 @@
         "FILTER_LABELS_DESCRIPTION": "以逗號分隔的標籤名稱清單。只會同步含有所有這些標籤的議題。留空則同步符合範圍的所有議題。"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在此您可以設定 Super Productivity 在每日規劃檢視的工作建立面板中列出特定程式碼庫的開放 Gitea 議題。它們將作為建議列出，並提供議題的連結以及更多相關資訊。</p> <p>此外，您可以自動新增和匯入所有開放議題。</p><p>為了繞過使用限制並存取，您可以提供存取權杖。"
+        "HELP": "<p>在此您可以設定 DailyMirror 在每日規劃檢視的工作建立面板中列出特定程式碼庫的開放 Gitea 議題。它們將作為建議列出，並提供議題的連結以及更多相關資訊。</p> <p>此外，您可以自動新增和匯入所有開放議題。</p><p>為了繞過使用限制並存取，您可以提供存取權杖。"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "指派人",
@@ -435,7 +435,7 @@
         "FILTER_USER": "篩選使用者名稱",
         "GITLAB_BASE_URL": "自訂 GitLab 基礎網址（選填）",
         "PROJECT": "使用者名稱/專案",
-        "PROJECT_HINT": "例如：super-productivity/super-productivity",
+        "PROJECT_HINT": "例如：group/project",
         "SCOPE": "範圍",
         "SCOPE_ALL": "全部",
         "SCOPE_ASSIGNED": "指派給我",
@@ -449,7 +449,7 @@
         "TOKEN": "存取權杖"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在此您可以設定 Super Productivity 在每日規劃檢視的工作建立面板中列出特定專案的開放 GitLab（線上版本或自架實例）議題。它們將作為建議列出，並提供議題的連結以及更多相關資訊。</p> <p>此外，您可以自動匯入所有開放議題。</p>"
+        "HELP": "<p>在此您可以設定 DailyMirror 在每日規劃檢視的工作建立面板中列出特定專案的開放 GitLab（線上版本或自架實例）議題。它們將作為建議列出，並提供議題的連結以及更多相關資訊。</p> <p>此外，您可以自動匯入所有開放議題。</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "指派人",
@@ -467,13 +467,13 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "此整合可能無法在您的瀏覽器中運作。請下載 Super Productivity 的桌面版或 Android 版！",
+      "CROSS_ORIGIN_BROWSER_WARNING": "此整合可能無法在您的瀏覽器中運作。請下載 DailyMirror 的桌面版或 Android 版！",
       "DEFAULT": {
         "ISSUE_STR": "議題",
         "ISSUES_STR": "議題"
       },
       "DEFAULT_PROJECT_DESCRIPTION": "從議題建立的工作所指派的專案。",
-      "DEFAULT_PROJECT_LABEL": "預設 Super Productivity 專案",
+      "DEFAULT_PROJECT_LABEL": "預設 DailyMirror 專案",
       "DIALOG": {
         "ADVANCED_CONFIG": "進階設定",
         "DELETE_CONFIRM": "您確定要刪除此議題提供者嗎？刪除後，<strong>所有先前匯入的議題任務將失去其參考</strong>。此操作無法復原！",
@@ -580,7 +580,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira：為防止被 API 封鎖，Super Productivity 已阻止存取。您可能需要檢查您的 Jira 設定！",
+        "BLOCK_ACCESS_MSG": "Jira：為防止被 API 封鎖，DailyMirror 已阻止存取。您可能需要檢查您的 Jira 設定！",
         "BLOCK_ACCESS_UNBLOCK": "解除封鎖"
       },
       "CFG_CMP": {
@@ -629,7 +629,7 @@
         "TITLE": "Jira：提交工作記錄"
       },
       "FORM_ADV": {
-        "AUTO_ADD_BACKLOG_JQL_QUERY": "用於自動匯入議題到 Super Productivity 的 JQL",
+        "AUTO_ADD_BACKLOG_JQL_QUERY": "用於自動匯入議題到 DailyMirror 的 JQL",
         "IS_ADD_WORKLOG_ON_SUB_TASK_DONE": "子工作完成時開啟對話方塊以提交工作記錄到 Jira",
         "IS_CHECK_TO_RE_ASSIGN_TICKET_ON_TASK_START": "檢查目前工作的議題是否指派給目前使用者",
         "IS_WORKLOG_ENABLED": "工作完成時開啟對話方塊以提交工作記錄到 Jira",
@@ -687,7 +687,7 @@
       },
       "S": {
         "ADDED_WORKLOG_FOR": "Jira：已為 {{issueKey}} 新增工作記錄",
-        "EXTENSION_NOT_LOADED": "Super Productivity 擴充功能未載入。重新載入頁面可能有幫助",
+        "EXTENSION_NOT_LOADED": "第三方 Super Productivity 瀏覽器擴充功能未載入，重新載入頁面可能會有所幫助。",
         "INSUFFICIENT_SETTINGS": "為 Jira 提供的設定不足",
         "INVALID_RESPONSE": "Jira：回應包含無效資料",
         "NO_AUTO_IMPORT_JQL": "Jira：未定義自動匯入的搜尋查詢",
@@ -917,7 +917,7 @@
         "TOKEN": "存取權杖"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在此您可以設定 Super Productivity 列出開放的 OpenProject 工作套件。請注意，要在瀏覽器中運作，您可能需要為 OpenProject 伺服器設定 CORS，以允許從 app.super-productivity.com 存取</p>"
+        "HELP": "<p>可在 DailyMirror 中列出未完成的 OpenProject 工作套件。若使用網頁版，請在 OpenProject 伺服器上允許你實際使用的 DailyMirror 網頁來源位址（協定、主機與連接埠）發起跨來源請求。</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "受託人",
@@ -1106,7 +1106,7 @@
         "SCOPE_CREATED": "由我建立"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在此您可以設定 Super Productivity 在每日規劃檢視的工作建立面板中列出特定專案的開放 Redmine（線上版本或自架實例）議題。它們將作為建議列出，並提供議題的連結以及更多相關資訊。</p><p>此外，您可以自動匯入所有開放議題。</p>",
+        "HELP": "<p>在此您可以設定 DailyMirror 在每日規劃檢視的工作建立面板中列出特定專案的開放 Redmine（線上版本或自架實例）議題。它們將作為建議列出，並提供議題的連結以及更多相關資訊。</p><p>此外，您可以自動匯入所有開放議題。</p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1552,11 +1552,11 @@
         },
         "TITLE": "同步",
         "WEB_DAV": {
-          "CONDITIONAL_HEADER_WARNING_MSG": "您的 WebDAV 伺服器不支援條件式標頭（If-Unmodified-Since）。這表示 Super Productivity 無法在上傳期間偵測來自其他裝置的並行變更。<br><br>同步仍然可以運作，但如果您同時在多個裝置上進行變更，則存在資料衝突的小風險。",
+          "CONDITIONAL_HEADER_WARNING_MSG": "您的 WebDAV 伺服器不支援條件式標頭（If-Unmodified-Since）。這表示 DailyMirror 無法在上傳期間偵測來自其他裝置的並行變更。<br><br>同步仍然可以運作，但如果您同時在多個裝置上進行變更，則存在資料衝突的小風險。",
           "CONDITIONAL_HEADER_WARNING_TITLE": "降低的同步安全性",
-          "CORS_INFO": "<strong>在瀏覽器中使用：</strong>允許 Super Productivity 向您的 WebDAV 伺服器發送 CORS 請求。這可能會帶來安全隱患！對於 Nextcloud，請參考 <a href='https://github.com/nextcloud/server/issues/3131'>此 GitHub 討論串</a>以取得更多資訊。在行動裝置上使此功能運作的一種方法是透過 Nextcloud 應用程式 <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword<a> 將 \"https://app.super-productivity.com\" 加入白名單。風險自負！</p>",
+          "CORS_INFO": "<strong>在瀏覽器中使用：</strong>請允許你實際使用的 DailyMirror 網頁來源位址（協定、主機與連接埠）向 WebDAV 伺服器發起跨來源請求。Nextcloud 使用者可參考 <a href=\"https://apps.nextcloud.com/apps/webapppassword\">webapppassword</a> 應用程式及 <a href=\"https://github.com/nextcloud/server/issues/3131\">Nextcloud 討論</a>，僅允許你信任的來源。",
           "D_SYNC_FOLDER_PATH": "相對於 WebDAV 伺服器根目錄的路徑，用於儲存同步檔案（例如 '/super-productivity' 或 '/'）。這不是伺服器的內部目錄路徑。",
-          "INFO": "<strong>警告：</strong>WebDAV 的實作方式差異很大。Super Productivity 已知可與 Nextcloud 良好配合，<strong>但可能無法與您的提供者一起使用</strong>。在正式使用前請徹底測試。",
+          "INFO": "<strong>警告：</strong>WebDAV 的實作方式差異很大。DailyMirror 已知可與 Nextcloud 良好配合，<strong>但可能無法與您的提供者一起使用</strong>。在正式使用前請徹底測試。",
           "L_BASE_URL": "基本網址",
           "L_PASSWORD": "密碼",
           "L_SYNC_FOLDER_PATH": "同步資料夾路徑",
@@ -1671,7 +1671,7 @@
         "ERROR_REMOTE_FILE_CORRUPTED": "遠端同步資料無法讀取（可能被截斷或損毀）。你的本機資料是安全的。你可以用本機資料覆寫遠端資料。",
         "ERROR_REMOTE_FILE_EMPTY": "遠端同步檔案是空的。這可能發生在同步中斷之後。要用本機資料覆寫遠端資料嗎？",
         "ERROR_REMOTE_FILE_LOCKED": "遠端同步檔案被伺服器鎖定。下次嘗試同步時可能會解決。",
-        "ERROR_SYNC_VERSION_MISMATCH": "遠端同步資料使用不相容的格式版本。請確保所有裝置都執行相同版本的 Super Productivity。",
+        "ERROR_SYNC_VERSION_MISMATCH": "遠端同步資料使用不相容的格式版本。請確保所有裝置都執行相同版本的 DailyMirror。",
         "WARN_CLIENT_ID_REGENERATED": "同步裝置 ID 無效，已重新產生。下次同步時可能會發生同步衝突。",
         "LEGACY_FORMAT_DETECTED": "同步格式不相符：遠端儲存上次是由較舊的應用程式版本（v16.x 或更早）寫入，該版本使用不同的同步格式。請將所有裝置更新到相同的應用程式版本。「強制覆寫」會在舊版檔案旁寫入新格式以解除此裝置的阻塞；只有在沒有舊裝置會再同步到此遠端位置時才使用，否則它們會與此裝置悄悄分歧。",
         "SYNC_VALIDATION_FAILED": "同步後狀態驗證失敗。部分資料可能不一致。",
@@ -2489,11 +2489,11 @@
     "EXPORT_DATA": "匯出資料",
     "IMPORT_FROM_FILE": "從檔案匯入",
     "IMPORT_FROM_URL": "從網址匯入",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "請輸入要匯入的 Super Productivity 備份 JSON 檔案的完整網址。",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "請輸入要匯入的 DailyMirror 或相容的 Super Productivity 備份 JSON 檔案的完整網址。",
     "IMPORT_FROM_URL_DIALOG_TITLE": "從網址匯入",
     "OPEN_IMPORT_FROM_URL_DIALOG": "從網址匯入",
     "PRIVACY_EXPORT": "匯出資料（匿名）",
-    "PRIVACY_EXPORT_DESCRIPTION": "匯出匿名資料（傳送至 contact@super-productivity.com 以進行除錯）",
+    "PRIVACY_EXPORT_DESCRIPTION": "匯出匿名化資料以排查問題。請先檢查檔案內容，再透過 DailyMirror 回饋入口分享；GitHub Issues 中的內容是公開的。",
     "S_BACKUP_DOWNLOADED": "備份已下載至 Android 文件資料夾",
     "S_ERR_IMPORT_FAILED": "匯入資料失敗",
     "S_ERR_INVALID_DATA": "匯入失敗：無效的 JSON",
@@ -2616,10 +2616,10 @@
       "S_RESTORE_SUCCESS": "備份已成功還原。"
     },
     "CALENDARS": {
-      "BROWSER_WARNING": "由於跨來源限制，<b>這可能無法在 Super Productivity 的網頁瀏覽器版本中運作。<br />請<a href=\"https://super-productivity.com/download/\">下載桌面版</a>以使用此功能！</b>",
+      "BROWSER_WARNING": "由於跨來源限制，<b>這可能無法在 DailyMirror 的網頁瀏覽器版本中運作。<br />請<a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">下載桌面版</a>以使用此功能！</b>",
       "CAL_PATH": "iCal 來源的網址",
       "CHECK_UPDATES": "每 X 檢查遠端更新一次",
-      "HELP": "您可以整合行事曆以在 Super Productivity 中收到提醒並將其新增為工作。此整合使用 iCal 格式運作。為此，您的行事曆必須可透過網際網路或檔案系統存取。",
+      "HELP": "您可以整合行事曆以在 DailyMirror 中收到提醒並將其新增為工作。此整合使用 iCal 格式運作。為此，您的行事曆必須可透過網際網路或檔案系統存取。",
       "SHOW_BANNER_THRESHOLD": "在事件前 X 顯示通知（留空則停用）",
       "AUTO_IMPORT_FOR_CURRENT_DAY": "自動將當天事件匯入為任務",
       "CAL_COLOR": "行事曆顏色",
@@ -2705,7 +2705,7 @@
       "EXPAND_SUB_TASKS": "展開子工作",
       "GLOBAL_ADD_NOTE": "新增筆記",
       "GLOBAL_ADD_TASK": "新增工作",
-      "GLOBAL_SHOW_HIDE": "顯示/隱藏 Super Productivity",
+      "GLOBAL_SHOW_HIDE": "顯示/隱藏 DailyMirror",
       "GLOBAL_TOGGLE_TASK_START": "切換最後使用工作的時間追蹤",
       "GO_TO_DAILY_AGENDA": "前往議程",
       "GO_TO_FOCUS_MODE": "進入專注模式",
@@ -2841,7 +2841,7 @@
       "IS_USE_CUSTOM_WINDOW_TITLE_BAR": "使用自訂標題列（僅限 Windows/Linux）",
       "IS_USE_CUSTOM_WINDOW_TITLE_BAR_HINT": "需要重新啟動才能生效。",
       "LOCAL_REST_API_TOKEN": "存取權杖",
-      "LOCAL_REST_API_TOKEN_ERROR": "無法儲存存取權杖，因此 API 未執行。請確認 Super Productivity 能寫入其資料資料夾，然後使用「重新產生」再試一次。",
+      "LOCAL_REST_API_TOKEN_ERROR": "無法儲存存取權杖，因此 API 未執行。請確認 DailyMirror 能寫入其資料資料夾，然後使用「重新產生」再試一次。",
       "LOCAL_REST_API_TOKEN_REGENERATE": "重新產生存取權杖",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "無法儲存新的存取權杖。先前的權杖仍然有效。",
       "START_OF_NEXT_DAY": "下一天的開始時間",
@@ -2876,7 +2876,7 @@
       "DEFAULT_TASK_REMIND_OPTION": "建立工作時選擇的預設提醒選項",
       "DISABLE_REMINDERS": "停用所有提醒",
       "DUE_DATE_NOTIFICATION_HOUR": "顯示到期通知的時間（0-23）",
-      "HELP": "<p><strong>重要：</strong>提醒使用<strong>本地通知</strong>，而非推播通知。這意味著應用程式需要在您的裝置上至少開啟過一次才能排定提醒。在另一台裝置上設定的提醒只有在應用程式在目標裝置上同步後才會顯示。</p><p>在 <strong>iOS</strong> 上，請確保在裝置設定的「設定」>「通知」中為 Super Productivity 啟用通知。</p>",
+      "HELP": "<p><strong>重要：</strong>提醒使用<strong>本地通知</strong>，而非推播通知。這意味著應用程式需要在您的裝置上至少開啟過一次才能排定提醒。在另一台裝置上設定的提醒只有在應用程式在目標裝置上同步後才會顯示。</p><p>在 <strong>iOS</strong> 上，請確保在裝置設定的「設定」>「通知」中為 DailyMirror 啟用通知。</p>",
       "IS_COUNTDOWN_BANNER_ENABLED": "在提醒到期前顯示倒數計時橫幅",
       "IS_FOCUS_WINDOW": "提醒觸發時聚焦應用程式視窗",
       "NOTIFY_ON_DUE_DATE": "顯示今天到期任務的通知",
@@ -3124,7 +3124,7 @@
     "TASK_MARKED_DONE": "任務已標記為完成"
   },
   "ONBOARDING": {
-    "TITLE": "你想如何使用 Super Productivity？",
+    "TITLE": "你想如何使用 DailyMirror？",
     "SUBTITLE": "選擇適合你工作方式的設定。你可以隨時在設定中更改。",
     "PRIVACY_HINT": "你的資料安全地保存在你的裝置上。不會向伺服器傳送任何內容。",
     "PRESETS": {
@@ -3152,7 +3152,7 @@
       "OR_PRESS": "或按",
       "SKIP_ARIA": "關閉提示"
     },
-    "SYNC_CTA": "您已在另一台裝置上使用 Super Productivity？",
+    "SYNC_CTA": "您已在另一台裝置上使用 DailyMirror？",
     "SYNC_CTA_LINK": "設定同步"
   },
   "PDS": {

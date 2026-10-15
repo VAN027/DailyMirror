@@ -1,9 +1,43 @@
 {
+  "DM_PRIVACY": {
+    "MAINTAINER": "维护者：",
+    "TITLE": "DailyMirror 隐私说明",
+    "INTRO": "更新日期：2026 年 10 月 14 日。本说明适用于当前 DailyMirror 客户端，维护者为 Kael Vex（GitHub：VAN027）。说明随应用提供，可离线阅读。",
+    "GITHUB_POLICY": "GitHub 隐私声明",
+    "LOCAL": {
+      "TITLE": "1. 本地数据",
+      "BODY": "任务、项目、备注、计时记录和设置主要保存在你的设备上。网页版使用浏览器存储，桌面版和安卓版使用各自的应用数据存储。核心任务管理无需注册 DailyMirror 账号；打开应用不会自动把任务数据库发送给维护者。导出文件和备份可能包含任务数据，请留意其保存位置是否由云盘或其他备份软件管理。"
+    },
+    "NETWORK": {
+      "TITLE": "2. 更新检查与其他联网行为",
+      "BODY": "支持更新检查的桌面版本默认开启自动检查，通过 GitHub 查询 VAN027/DailyMirror 的发布信息，可在设置中关闭。请求不附带任务内容或账号凭据，但 GitHub 可接收到 IP 地址及常规请求信息。软件只提示更新并提供下载链接，不会自动安装。访问网页版、打开外部链接或加载远程资源时，也会连接相应的托管方或第三方服务。"
+    },
+    "SYNC": {
+      "TITLE": "3. 可选同步",
+      "BODY": "同步默认关闭。配置并启用后，任务及配置数据会传输到你选择的服务、服务器或文件夹，并按服务要求使用认证信息。端到端加密不是默认开启的，其可用性和设置取决于同步方式。正式版本的 SuperSync 默认地址为 https://sync.super-productivity.com，它是第三方服务，不是 DailyMirror 自营云服务，适用其运营方的政策。关闭同步不会删除已上传的远端副本。"
+    },
+    "INTEGRATIONS": {
+      "TITLE": "4. 集成、插件与权限",
+      "BODY": "配置 GitHub、Jira、日历等集成后，相关功能会连接你指定的服务，并可能交换事项或任务内容及认证信息。启用的插件可按其功能与权限访问数据或联网。可选的桌面本地 API 允许获得授权的本机程序访问任务数据。通知可能在屏幕或锁屏上显示任务信息，可通过应用和系统的通知设置控制。"
+    },
+    "LOGS": {
+      "TITLE": "5. 诊断与反馈",
+      "BODY": "诊断日志保存在本地用于排查问题，客户端不会自动提交给维护者。只有在你导出日志、分享备份或提交反馈时，接收方才会收到你选择发送的内容。分享前请检查文件、截图和错误信息，其中可能含有可识别身份或敏感内容。DailyMirror 的反馈入口使用 GitHub Issues，提交内容通常公开，请勿发布密码、令牌或完整的私人备份。"
+    },
+    "CONTROL": {
+      "TITLE": "6. 数据管理与保留",
+      "BODY": "你可以编辑或删除任务、导出备份、关闭同步和集成、撤销服务授权，以及移除插件。本地记录会保留到你主动删除，或由浏览器、操作系统及存储清理机制移除。卸载应用不保证删除桌面数据目录、导出文件、备份及远端副本。若需清除全部副本，请分别检查这些位置，以及系统或第三方备份服务。"
+    },
+    "CONTACT": {
+      "TITLE": "7. 维护者与说明更新",
+      "BODY": "DailyMirror 由 Kael Vex 通过 VAN027/DailyMirror GitHub 仓库维护。对本说明有疑问，可使用该仓库的反馈入口，仅提交你愿意公开的信息。GitHub 及其他服务根据各自政策处理数据。客户端的数据处理方式变化时，本说明会相应更新，请以你使用版本内的说明为准。"
+    }
+  },
   "APP": {
     "B_INSTALL": {
       "IGNORE": "忽略",
       "INSTALL": "安装",
-      "MSG": "您想要将超级生产力安装为 PWA 吗？"
+      "MSG": "您想要将 DailyMirror 安装为 PWA 吗？"
     },
     "B_OFFLINE": "您已断开互联网连接。同步和请求问题提供者数据将无法工作。",
     "B_SUPER_SYNC_ENCRYPTION": {
@@ -19,12 +53,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "暂不",
-      "MSG": "您已经使用 Super Productivity 一段时间了。设置同步以备份您的数据，并在所有设备上保持安全。",
+      "MSG": "您已经使用 DailyMirror 一段时间了。设置同步以备份您的数据，并在所有设备上保持安全。",
       "SETUP": "设置同步"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "下载",
-      "MSG": "Super Productivity 有新版本可用（{{version}}）。"
+      "MSG": "DailyMirror 有新版本可用（{{version}}）。"
     },
     "CONTEXT_MENU": {
       "CHANGE_PROJECT_SETTINGS": "更改项目设置",
@@ -88,13 +122,13 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "通过 GitHub Sponsors 捐赠",
-    "INTRO_1": "Super Productivity 完全由社区资助。没有追踪、没有广告、也没有数据收集——您的任务数据仅存于本地设备。",
+    "INTRO_1": "此赞助入口支持上游 Super Productivity 项目及其作者 Johannes Millan，并非赞助 DailyMirror 维护者。",
     "INTRO_2": "如果您认同这种方式，并希望项目持续健康地发展，您的自愿性捐赠我们将非常感激。"
   },
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "学习键盘快捷键",
-      "NOTES": "Super Productivity 专为键盘操作而设计。学习快捷键可以让您工作更高效。\n\n**如何开始：**\n1. 打开**侧边栏菜单**\n2. 进入**帮助**\n3. 点击**键盘导航教程**"
+      "NOTES": "DailyMirror 专为键盘操作而设计。学习快捷键可以让您工作更高效。\n\n**如何开始：**\n1. 打开**侧边栏菜单**\n2. 进入**帮助**\n3. 点击**键盘导航教程**"
     },
     "CREATE_PROJECT": {
       "TITLE": "创建您的第一个项目",
@@ -113,7 +147,7 @@
     "IOS_SHARE": {
       "SAVE": "保存",
       "DESTINATION": "收件箱",
-      "NEXT_OPEN": "将在下次打开 Super Productivity 时添加",
+      "NEXT_OPEN": "将在下次打开 DailyMirror 时添加",
       "SAVE_ERROR": "无法保存，请重试。",
       "IMPORT_ERROR": "无法导入分享内容。内容已保存在此设备上，请重新打开应用重试。",
       "INVALID": "请分享链接或文字（最多 100,000 个字符）。"
@@ -231,7 +265,7 @@
         "TWO_WAY_SYNC_TITLE": "标题同步方向"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在这里，您可以将 SuperProductivity 配置为在每日规划视图的任务创建看板中列出特定项目的未完成 CalDav 待办事项。它们将列为建议，并提供指向待办事项的链接以及有关它的更多信息。</p> <p>此外，您还可以自动添加并同步所有未完成的待办事项到您的任务待办事项列表。</p><p>要在网页应用中为 nextcloud 启用此功能，您可能需要通过 nextcloud 应用 <a href='https://apps.nextcloud.com/apps/webapppassword '>webapppassword<a> 将 \"https://app.super-productivity.com \" 加入白名单。</p>"
+        "HELP": "<p>可在 DailyMirror 中将未完成的 CalDAV 待办事项列为创建任务时的建议，也可自动导入待办列表。</p><p>在浏览器中连接 Nextcloud 时，请允许你实际使用的 DailyMirror 网页源地址（协议、主机和端口），例如通过 Nextcloud 的 <a href=\"https://apps.nextcloud.com/apps/webapppassword\">webapppassword</a> 应用配置。不要直接照抄上游托管网页的地址。</p>"
       },
       "ISSUE_CONTENT": {
         "DESCRIPTION": "描述",
@@ -306,9 +340,9 @@
       "FEEDBACK_PRIVATE": "向维护者发邮件",
       "FEEDBACK_PRIVATE_DESC": "发送一条私信",
       "FEEDBACK_PUBLIC": "在 GitHub Discussions 发帖",
-      "FEEDBACK_PUBLIC_DESC": "他人可以看到并回复",
+      "FEEDBACK_PUBLIC_DESC": "在 DailyMirror GitHub 仓库提交公开反馈，请勿包含密码、令牌或私人备份。",
       "FEEDBACK_TITLE": "您想如何帮助？",
-      "TITLE": "喜欢 Super Productivity 吗？",
+      "TITLE": "喜欢 DailyMirror 吗？",
       "TXT": "这是一个由爱好者打造的<strong>免费开源项目</strong> —— 没有追踪，没有广告。一条评分或简短留言能帮助更多人发现它。"
     },
     "DROPBOX": {
@@ -427,7 +461,7 @@
         "TOKEN": "访问令牌"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在这里，您可以将 SuperProductivity 配置为在每日规划视图的任务创建看板中列出特定存储库的未结 Gitea 问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p> <p>此外，您还可以自动添加和导入所有未结问题。</p><p>为了通过使用限制并访问，您可以提供一个访问令牌。"
+        "HELP": "<p>在这里，您可以将 DailyMirror 配置为在每日规划视图的任务创建看板中列出特定存储库的未结 Gitea 问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p> <p>此外，您还可以自动添加和导入所有未结问题。</p><p>为了通过使用限制并访问，您可以提供一个访问令牌。"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "负责人",
@@ -455,7 +489,7 @@
         "FILTER_USER": "筛选用户名",
         "GITLAB_BASE_URL": "自定义 GitLab 基本 URL（可选）",
         "PROJECT": "用户名/项目",
-        "PROJECT_HINT": "例如 super-productivity/super-productivity",
+        "PROJECT_HINT": "例如 group/project",
         "SCOPE": "范围",
         "SCOPE_ALL": "全部",
         "SCOPE_ASSIGNED": "分配给我",
@@ -469,7 +503,7 @@
         "TOKEN": "访问令牌"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在这里，您可以将 SuperProductivity 配置为在每日规划视图的任务创建看板中列出特定项目的未结 GitLab（无论是在线版本还是自托管实例）问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p> <p>此外，您还可以自动导入所有未结问题。</p>"
+        "HELP": "<p>在这里，您可以将 DailyMirror 配置为在每日规划视图的任务创建看板中列出特定项目的未结 GitLab（无论是在线版本还是自托管实例）问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p> <p>此外，您还可以自动导入所有未结问题。</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "负责人",
@@ -487,14 +521,14 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "此集成很可能无法在您的浏览器中工作。请下载超级生产力的桌面版或安卓版！",
+      "CROSS_ORIGIN_BROWSER_WARNING": "此集成很可能无法在您的浏览器中工作。请下载 DailyMirror 的桌面版或安卓版！",
       "DEFAULT": {
         "ISSUE_STR": "问题",
         "ISSUES_STR": "问题"
       },
       "DEFAULT_NOTE_LABEL": "导入任务的默认备注",
       "DEFAULT_PROJECT_DESCRIPTION": "分配给从问题创建的任务的项目。",
-      "DEFAULT_PROJECT_LABEL": "默认超级生产力项目",
+      "DEFAULT_PROJECT_LABEL": "默认 DailyMirror 项目",
       "DEFAULT_TAGS_LABEL": "导入任务的默认标签",
       "FORM": {
         "AUTO_ADD_TO_BACKLOG": "自动导入到默认项目（需要默认项目）",
@@ -600,7 +634,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira: 为了防止被 API 封锁，超级生产力已阻止访问。您可能应该检查您的 jira 设置！",
+        "BLOCK_ACCESS_MSG": "Jira: 为了防止被 API 封锁，DailyMirror 已阻止访问。您可能应该检查您的 jira 设置！",
         "BLOCK_ACCESS_UNBLOCK": "解除封锁"
       },
       "CFG_CMP": {
@@ -649,7 +683,7 @@
         "TITLE": "Jira: 提交工作日志"
       },
       "FORM_ADV": {
-        "AUTO_ADD_BACKLOG_JQL_QUERY": "用于自动将问题导入超级生产力的 JQL",
+        "AUTO_ADD_BACKLOG_JQL_QUERY": "用于自动将问题导入 DailyMirror 的 JQL",
         "IS_ADD_WORKLOG_ON_SUB_TASK_DONE": "在子任务完成时打开对话框以向 Jira 提交工作日志",
         "IS_CHECK_TO_RE_ASSIGN_TICKET_ON_TASK_START": "检查当前处理的问题是否分配给当前用户",
         "IS_WORKLOG_ENABLED": "在任务完成时打开对话框以向 Jira 提交工作日志",
@@ -707,7 +741,7 @@
       },
       "S": {
         "ADDED_WORKLOG_FOR": "Jira: 为 {{issueKey}} 添加了工作日志",
-        "EXTENSION_NOT_LOADED": "超级生产力扩展未加载。重新加载页面可能会有所帮助",
+        "EXTENSION_NOT_LOADED": "第三方 Super Productivity 浏览器扩展未加载，重新加载页面可能会有所帮助。",
         "INSUFFICIENT_SETTINGS": "为 Jira 提供的设置不足",
         "INVALID_RESPONSE": "Jira: 响应包含无效数据",
         "NO_AUTO_IMPORT_JQL": "Jira: 未定义自动导入的搜索查询",
@@ -937,7 +971,7 @@
         "TOKEN": "访问令牌"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在这里，您可以将 SuperProductivity 配置为列出未结的 OpenProject 工作包。请注意，为了使其在浏览器中工作，您可能需要为您的 OpenProject 服务器配置跨域资源共享，以允许从 app.super-productivity.com 访问</p>"
+        "HELP": "<p>可在 DailyMirror 中列出未完成的 OpenProject 工作包。若使用网页版，请在 OpenProject 服务器上允许你实际使用的 DailyMirror 网页源地址（协议、主机和端口）发起跨域请求。</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "负责人",
@@ -1125,7 +1159,7 @@
         "SCOPE_CREATED": "由我创建"
       },
       "FORM_SECTION": {
-        "HELP": "<p>在这里，您可以将 SuperProductivity 配置为在每日规划视图的任务创建看板中列出特定项目的未结 Redmine（无论是在线版本还是自托管实例）问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p><p>此外，您还可以自动导入所有未结问题。</p>",
+        "HELP": "<p>在这里，您可以将 DailyMirror 配置为在每日规划视图的任务创建看板中列出特定项目的未结 Redmine（无论是在线版本还是自托管实例）问题。它们将列为建议，并提供指向问题的链接以及有关它的更多信息。</p><p>此外，您还可以自动导入所有未结问题。</p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1590,9 +1624,9 @@
         },
         "TITLE": "同步",
         "WEB_DAV": {
-          "CORS_INFO": "<strong>在浏览器中使其工作：</strong> 要使此功能在浏览器中工作，您需要将 Super Productivity 添加到您的 WebDAV 服务器的 CORS 请求白名单中。这可能会带来安全风险！对于 Nextcloud，请<a href='https://github.com/nextcloud/server/issues/3131'>参考此线程获取更多信息</a>。一种在移动设备上实现的方法是，通过 Nextcloud 应用 <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword</a> 将 \"https://app.super-productivity.com\" 加入白名单。风险自负！",
+          "CORS_INFO": "<strong>在浏览器中使用：</strong>请允许你实际使用的 DailyMirror 网页源地址（协议、主机和端口）向 WebDAV 服务器发起跨域请求。Nextcloud 用户可参考 <a href=\"https://apps.nextcloud.com/apps/webapppassword\">webapppassword</a> 应用及 <a href=\"https://github.com/nextcloud/server/issues/3131\">Nextcloud 讨论</a>，仅允许你信任的来源。",
           "D_SYNC_FOLDER_PATH": "同步文件将存储在 WebDAV 服务器根目录下的相对路径（例如 '/super-productivity' 或 '/'）。这不是您服务器的内部目录路径。",
-          "INFO": "不幸的是，WebDAV 的实现方式差异很大。已知 Super Productivity 与 Nextcloud 配合良好，但可能不适用于您的提供商。",
+          "INFO": "不幸的是，WebDAV 的实现方式差异很大。已知 DailyMirror 与 Nextcloud 配合良好，但可能不适用于您的提供商。",
           "L_BASE_URL": "基础 URL",
           "L_PASSWORD": "密码",
           "L_SYNC_FOLDER_PATH": "同步文件夹路径",
@@ -1636,7 +1670,7 @@
         "ERROR_REMOTE_FILE_EMPTY": "远程同步文件为空。这可能发生在同步中断之后。要用本地数据覆盖远程数据吗？",
         "ERROR_REMOTE_FILE_LOCKED": "远程同步文件被服务器锁定。下次尝试同步时可能会解决。",
         "ERROR_REMOTE_RESPONSE_NOT_SYNC_DATA": "同步服务器返回的是一个网页而不是你的同步数据（例如登录页、代理页或错误页）。你的远程数据很可能完好——请检查服务器地址、凭据和网络，然后重试。如果问题持续，可以通过 同步设置 → 强制覆盖 覆盖远程数据。",
-        "ERROR_SYNC_VERSION_MISMATCH": "远程同步数据使用不兼容的格式版本。请确保所有设备运行相同版本的 Super Productivity。",
+        "ERROR_SYNC_VERSION_MISMATCH": "远程同步数据使用不兼容的格式版本。请确保所有设备运行相同版本的 DailyMirror。",
         "WARN_CLIENT_ID_REGENERATED": "同步设备 ID 无效，已重新生成。下次同步时可能会发生同步冲突。",
         "ERROR_UNABLE_TO_READ_REMOTE_DATA": "同步时出错。无法读取远程数据。可能是您启用了加密，而您的本地密码与用于加密远程数据的密码不匹配？",
         "FINISH_DAY_SYNC_ERROR": "在结束一天时发生同步错误。请重试。",
@@ -1837,7 +1871,7 @@
         "OPEN_IN_FULLSCREEN": "全屏打开"
       },
       "B": {
-        "ADD_ALL_TO_TODAY": "全部添加到今天",
+        "ADD_ALL_TO_TODAY": "一键添加到今天",
         "ADD_HALF_HOUR": "添加 1/2 小时",
         "DEADLINES_TODAY": "{{count}} 个任务今天到期但尚未规划",
         "ESTIMATE_EXCEEDED": "任务 \"{{title}}\" 超出时间估计"
@@ -2424,11 +2458,11 @@
     "IMPORT_FROM_FILE": "从文件导入",
     "IMPORT_FROM_TODOIST": "从 Todoist 导入",
     "IMPORT_FROM_URL": "从 URL 导入",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "请输入您要导入的超级生产力备份 JSON 文件的完整 URL。",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "请输入要导入的 DailyMirror 或兼容的 Super Productivity 备份 JSON 文件的完整 URL。",
     "IMPORT_FROM_URL_DIALOG_TITLE": "从 URL 导入",
     "OPEN_IMPORT_FROM_URL_DIALOG": "从 URL 导入",
     "PRIVACY_EXPORT": "导出数据（匿名化）",
-    "PRIVACY_EXPORT_DESCRIPTION": "导出匿名化数据（发送至 contact@super-productivity.com 进行调试）",
+    "PRIVACY_EXPORT_DESCRIPTION": "导出匿名化数据用于排查问题。请先检查文件内容，再通过 DailyMirror 反馈入口分享；GitHub Issues 中的内容是公开的。",
     "S_BACKUP_DOWNLOADED": "备份已下载至安卓文档文件夹",
     "S_ERR_IMPORT_FAILED": "导入数据失败",
     "S_ERR_IMPORT_UNREPAIRABLE": "导入失败：此备份包含无法修复的数据。请尝试较早的备份，并导出日志、报告问题。",
@@ -2548,7 +2582,7 @@
     },
     "CALENDARS": {
       "AUTO_IMPORT_FOR_CURRENT_DAY": "自动将当天事件导入为任务",
-      "BROWSER_WARNING": "由于跨源限制，<b>超级生产力的浏览器版本可能无法使用此功能。<br />请 <a href=\"https://super-productivity.com/download/ \">下载桌面版本</a> 以使用此功能！</b>",
+      "BROWSER_WARNING": "由于跨源限制，<b>DailyMirror 的浏览器版本可能无法使用此功能。<br />请 <a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">下载桌面版本</a> 以使用此功能！</b>",
       "CAL_COLOR": "日历颜色",
       "CAL_PATH": "iCal 源的 URL",
       "CHECK_UPDATES": "每 X 检查远程更新",
@@ -2558,7 +2592,7 @@
       "FILTER_INCLUDE_REGEX": "包含与正则表达式匹配的事件（可选）",
       "FILTER_INCLUDE_REGEX_DESCRIPTION": "只显示标题与此正则表达式匹配的事件。留空则包含所有事件。例如：会议|站会",
       "INVALID_REGEX": "正则表达式无效",
-      "HELP": "您可以集成日历，以便在超级生产力中收到提醒并添加它们作为任务。集成通过使用 iCal 格式工作。为此，您的日历需要通过互联网或文件系统访问。",
+      "HELP": "您可以集成日历，以便在 DailyMirror 中收到提醒并添加它们作为任务。集成通过使用 iCal 格式工作。为此，您的日历需要通过互联网或文件系统访问。",
       "REFERENCE_CALENDAR": "参考日历（仅显示，不创建任务）",
       "SHOW_BANNER_THRESHOLD": "在事件前 X 显示通知（留空以禁用）"
     },
@@ -2643,7 +2677,7 @@
       "EXPAND_SUB_TASKS": "展开子任务",
       "GLOBAL_ADD_NOTE": "添加新备注",
       "GLOBAL_ADD_TASK": "添加新任务",
-      "GLOBAL_SHOW_HIDE": "显示/隐藏超级生产力",
+      "GLOBAL_SHOW_HIDE": "显示/隐藏 DailyMirror",
       "GLOBAL_TOGGLE_TASK_START": "切换最后活动任务的时间跟踪",
       "GLOBAL_TOGGLE_TASK_WIDGET": "显示/隐藏任务小组件",
       "GO_TO_DAILY_AGENDA": "转到每日议程",
@@ -2775,7 +2809,7 @@
       "IS_LOCAL_REST_API_ENABLED_HINT": "允许本地脚本通过 http://127.0.0.1:3876 控制正在运行的应用。此计算机上运行的任何应用都将能够读取和修改你的任务。",
       "LOCAL_REST_API_TOKEN": "访问令牌",
       "LOCAL_REST_API_TOKEN_REGENERATE": "重新生成访问令牌",
-      "LOCAL_REST_API_TOKEN_ERROR": "无法保存访问令牌，因此 API 未运行。请检查 Super Productivity 是否能写入其数据文件夹，然后使用“重新生成”重试。",
+      "LOCAL_REST_API_TOKEN_ERROR": "无法保存访问令牌，因此 API 未运行。请检查 DailyMirror 是否能写入其数据文件夹，然后使用“重新生成”重试。",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "无法保存新的访问令牌。之前的令牌仍然有效。",
       "IS_MINIMIZE_TO_TRAY": "最小化到托盘（仅限桌面）",
       "IS_SHOW_TIP_LONGER": "在应用启动时显示生产力提示更长一点",
@@ -2812,7 +2846,7 @@
       "DEFAULT_TASK_REMIND_OPTION": "创建任务时默认选中的提醒方式",
       "DISABLE_REMINDERS": "禁用所有提醒",
       "DUE_DATE_NOTIFICATION_HOUR": "显示到期通知的时间（0-23）",
-      "HELP": "<p><strong>重要：</strong>提醒使用<strong>本地通知</strong>，而非推送通知。这意味着应用需要在您的设备上至少打开过一次才能安排提醒。在另一台设备上设置的提醒只有在应用在目标设备上同步后才会显示。</p><p>在 <strong>iOS</strong> 上，请确保在设备设置的\"设置\">\"通知\"中为 Super Productivity 启用通知。</p>",
+      "HELP": "<p><strong>重要：</strong>提醒使用<strong>本地通知</strong>，而非推送通知。这意味着应用需要在您的设备上至少打开过一次才能安排提醒。在另一台设备上设置的提醒只有在应用在目标设备上同步后才会显示。</p><p>在 <strong>iOS</strong> 上，请确保在设备设置的\"设置\">\"通知\"中为 DailyMirror 启用通知。</p>",
       "IS_COUNTDOWN_BANNER_ENABLED": "提醒到期前显示倒计时横幅",
       "IS_FOCUS_WINDOW": "提醒触发时，将应用程序窗口设为焦点",
       "NOTIFY_ON_DUE_DATE": "显示今天到期任务的通知",
@@ -3408,7 +3442,7 @@
     "INSERT_TABLE": "插入表格",
     "SHOW_HELP_FOR_SECTION": "查看此部分的帮助",
     "TREE": "树形列表",
-    "COMMUNITY_WARNING": "这些插件由社区开发，未经 Super Productivity 团队审核，也不受其担保。安装和使用的风险需自行承担：插件可能包含恶意代码或导致应用异常。",
+    "COMMUNITY_WARNING": "这些插件由社区开发，未经 DailyMirror 团队审核，也不受其担保。安装和使用的风险需自行承担：插件可能包含恶意代码或导致应用异常。",
     "DEFAULT_THEME": "默认",
     "THEME_CLASSIC": "经典",
     "THEME_ZEN": "禅意",

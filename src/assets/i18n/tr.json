@@ -3,7 +3,7 @@
     "B_INSTALL": {
       "IGNORE": "Yoksay",
       "INSTALL": "Yükle",
-      "MSG": "Süper Verimliliği PWA olarak kurmak ister misiniz?"
+      "MSG": "DailyMirror uygulamasını PWA olarak kurmak ister misiniz?"
     },
     "B_OFFLINE": "İnternet bağlantınız kesildi. Verileri senkronize etmek ve sağlayıcıdan sorunları istemek işe yaramaz.",
     "B_RECOVERY_POINT": {
@@ -19,12 +19,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "Şimdi değil",
-      "MSG": "Super Productivity'yi bir süredir kullanıyorsunuz. Verilerinizi yedeklemek ve tüm cihazlarınızda güvende tutmak için senkronizasyonu ayarlayın.",
+      "MSG": "DailyMirror'yi bir süredir kullanıyorsunuz. Verilerinizi yedeklemek ve tüm cihazlarınızda güvende tutmak için senkronizasyonu ayarlayın.",
       "SETUP": "Senkronizasyonu ayarla"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "İndir",
-      "MSG": "Super Productivity'nin yeni bir sürümü mevcut ({{version}})."
+      "MSG": "DailyMirror'nin yeni bir sürümü mevcut ({{version}})."
     },
     "CONTEXT_MENU": {
       "CHANGE_PROJECT_SETTINGS": "Proje Ayarlarını Değiştir",
@@ -88,13 +88,13 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "Github Sponsorları ile Bağış Yapın",
-    "INTRO_1": "Super Productivity tamamen topluluk tarafından finanse edilmektedir. Takip, reklam veya veri toplama yoktur — görevleriniz cihazınızda kalır.",
+    "INTRO_1": "Bu bağış bağlantısı DailyMirror bakımcısını değil, kaynak proje Super Productivity ve yazarı Johannes Millan’ı destekler.",
     "INTRO_2": "Bu yaklaşımı değerli buluyorsanız ve projenin sağlıklı ve gelişen kalmasını istiyorsanız, gönüllü bir bağış büyük takdirle karşılanır."
   },
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "Klavye kısayollarını öğrenin",
-      "NOTES": "Super Productivity klavye ile kullanılmak üzere tasarlanmıştır. Daha hızlı çalışmak için kısayolları öğrenin.\n\n**Nasıl başlanır:**\n1. **Kenar çubuğu menüsünü** açın\n2. **Yardım** bölümüne gidin\n3. **Klavye Gezinti Turu**'na tıklayın"
+      "NOTES": "DailyMirror klavye ile kullanılmak üzere tasarlanmıştır. Daha hızlı çalışmak için kısayolları öğrenin.\n\n**Nasıl başlanır:**\n1. **Kenar çubuğu menüsünü** açın\n2. **Yardım** bölümüne gidin\n3. **Klavye Gezinti Turu**'na tıklayın"
     },
     "CREATE_PROJECT": {
       "TITLE": "İlk projenizi oluşturun",
@@ -220,7 +220,7 @@
         "TWO_WAY_SYNC_TITLE": "Başlık senkronizasyon yönü"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Burada, SuperProductivity'yi günlük planlama görünümündeki görev oluşturma panelinde belirli bir proje için tamamlanmamış CalDav yapılacak işleri listeleyecek şekilde yapılandırabilirsiniz. Öneriler olarak listelenecekler ve yapılacaklar için bir bağlantı ve bununla ilgili daha fazla bilgi sağlayacaklar.</p> <p>Ek olarak, tamamlanmamış tüm görevleri görev biriktirme listesine otomatik olarak ekleyebilir ve senkronize edebilirsiniz.</p>"
+        "HELP": "<p>Burada, DailyMirror'yi günlük planlama görünümündeki görev oluşturma panelinde belirli bir proje için tamamlanmamış CalDav yapılacak işleri listeleyecek şekilde yapılandırabilirsiniz. Öneriler olarak listelenecekler ve yapılacaklar için bir bağlantı ve bununla ilgili daha fazla bilgi sağlayacaklar.</p> <p>Ek olarak, tamamlanmamış tüm görevleri görev biriktirme listesine otomatik olarak ekleyebilir ve senkronize edebilirsiniz.</p>"
       },
       "ISSUE_CONTENT": {
         "DESCRIPTION": "Açıklama",
@@ -297,7 +297,7 @@
       "FEEDBACK_PUBLIC": "GitHub Discussions'a yaz",
       "FEEDBACK_PUBLIC_DESC": "Başkaları görebilir ve yanıtlayabilir",
       "FEEDBACK_TITLE": "Nasıl yardım etmek istersin?",
-      "TITLE": "Super Productivity'yi beğeniyor musun?",
+      "TITLE": "DailyMirror'yi beğeniyor musun?",
       "TXT": "Bu, meraklılar tarafından yapılmış <strong>ücretsiz ve açık kaynaklı</strong> bir projedir — takip yok, reklam yok. Bir puan veya kısa bir mesaj, daha fazla kişinin uygulamayı bulmasına yardımcı olur."
     },
     "DROPBOX": {
@@ -416,7 +416,7 @@
         "TOKEN": "Erişim Jetonu"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Burada SuperProductivity'yi, günlük planlama görünümündeki görev oluşturma panelinde belirli bir depo için açık Gitea sorunlarını listeleyecek şekilde yapılandırabilirsiniz. Öneriler olarak listelenecekler ve konuyla ilgili bir bağlantının yanı sıra konuyla ilgili daha fazla bilgi sağlayacaklar.</p> <p>Ek olarak, tüm açık sorunları otomatik olarak görev biriktirme listenize ekleyebilir ve senkronize edebilirsiniz.</p><p>Kullanım sınırlarını aşmak ve erişim sağlamak için bir erişim jetonu sağlayabilirsiniz."
+        "HELP": "<p>Burada DailyMirror'yi, günlük planlama görünümündeki görev oluşturma panelinde belirli bir depo için açık Gitea sorunlarını listeleyecek şekilde yapılandırabilirsiniz. Öneriler olarak listelenecekler ve konuyla ilgili bir bağlantının yanı sıra konuyla ilgili daha fazla bilgi sağlayacaklar.</p> <p>Ek olarak, tüm açık sorunları otomatik olarak görev biriktirme listenize ekleyebilir ve senkronize edebilirsiniz.</p><p>Kullanım sınırlarını aşmak ve erişim sağlamak için bir erişim jetonu sağlayabilirsiniz."
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Atanan",
@@ -458,7 +458,7 @@
         "TOKEN": "Erişim Jetonu"
       },
       "FORM_SECTION": {
-        "HELP": "<p> Burada SuperProductivity'yi günlük planlama görünümünde görev oluşturma panelinde belirli bir proje için açık GitLab (çevrimiçi sürümü veya kendi kendine barındırılan bir örnek) sorunlarını listeleyecek şekilde yapılandırabilirsiniz. Bunlar öneri olarak listelenecek ve sorunla ilgili bir bağlantı ve bununla ilgili daha fazla bilgi sağlayacaktır. </p> <p> Buna ek olarak, tüm açık sorunları otomatik olarak görev biriktirme listesine ekleyebilir ve senkronize edebilirsiniz. </p>"
+        "HELP": "<p> Burada DailyMirror'yi günlük planlama görünümünde görev oluşturma panelinde belirli bir proje için açık GitLab (çevrimiçi sürümü veya kendi kendine barındırılan bir örnek) sorunlarını listeleyecek şekilde yapılandırabilirsiniz. Bunlar öneri olarak listelenecek ve sorunla ilgili bir bağlantı ve bununla ilgili daha fazla bilgi sağlayacaktır. </p> <p> Buna ek olarak, tüm açık sorunları otomatik olarak görev biriktirme listesine ekleyebilir ve senkronize edebilirsiniz. </p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Atanan",
@@ -476,14 +476,14 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "Bu entegrasyon muhtemelen tarayıcınızda çalışmayacaktır. Lütfen Super Productivity'nin Masaüstü veya Android sürümünü indirin!",
+      "CROSS_ORIGIN_BROWSER_WARNING": "Bu entegrasyon muhtemelen tarayıcınızda çalışmayacaktır. Lütfen DailyMirror'nin Masaüstü veya Android sürümünü indirin!",
       "DEFAULT": {
         "ISSUE_STR": "Sorun",
         "ISSUES_STR": "Sorunlar"
       },
       "DEFAULT_NOTE_LABEL": "İçe aktarılan görevler için varsayılan not",
       "DEFAULT_PROJECT_DESCRIPTION": "Sorunlardan oluşturulan görevlere atanan proje.",
-      "DEFAULT_PROJECT_LABEL": "Varsayılan Super Productivity Projesi",
+      "DEFAULT_PROJECT_LABEL": "Varsayılan DailyMirror Projesi",
       "DEFAULT_TAGS_LABEL": "İçe aktarılan görevler için varsayılan etiketler",
       "FORM": {
         "AUTO_ADD_TO_BACKLOG": "Varsayılan projeye otomatik aktar (varsayılan proje gerektirir)",
@@ -589,7 +589,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira: Api'nin kapatılmasını önlemek için erişim Super Productivity tarafından engellendi. Muhtemelen jira ayarlarınızı kontrol etmelisiniz!",
+        "BLOCK_ACCESS_MSG": "Jira: Api'nin kapatılmasını önlemek için erişim DailyMirror tarafından engellendi. Muhtemelen jira ayarlarınızı kontrol etmelisiniz!",
         "BLOCK_ACCESS_UNBLOCK": "Engeli kaldır"
       },
       "CFG_CMP": {
@@ -926,7 +926,7 @@
         "TOKEN": "Erişim Jetonu"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Burada SuperProductivity'yi açık OpenProject iş paketlerini listeleyecek şekilde yapılandırabilirsiniz. Lütfen bunun tarayıcıda çalışması için, app.super-productivity.com adresinden erişime izin vermek üzere OpenProject sunucunuz için CORS'u yapılandırmanız gerektiğini unutmayın</p>"
+        "HELP": "<p>Burada DailyMirror'yi açık OpenProject iş paketlerini listeleyecek şekilde yapılandırabilirsiniz. Lütfen bunun tarayıcıda çalışması için, DailyMirror web uygulamanızın kaynağı (protokol, ana makine ve bağlantı noktası)adresinden erişime izin vermek üzere OpenProject sunucunuz için CORS'u yapılandırmanız gerektiğini unutmayın</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Atanan",
@@ -1110,7 +1110,7 @@
         "SCOPE_CREATED": "Benim tarafımdan oluşturuldu"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Burada, günlük planlama görünümündeki görev oluşturma panelinde belirli bir proje için açık Redmine (çevrimiçi sürümü veya şirket içinde barındırılan bir örnek) sorunlarını listelemek için SuperProductivity'yi yapılandırabilirsiniz. Öneriler olarak listelenecekler ve konuyla ilgili bir bağlantının yanı sıra konuyla ilgili daha fazla bilgi sağlayacaklar.</p><p>Ek olarak, tüm açık sorunları otomatik olarak görev biriktirme listenize ekleyebilir ve senkronize edebilirsiniz.</p>",
+        "HELP": "<p>Burada, günlük planlama görünümündeki görev oluşturma panelinde belirli bir proje için açık Redmine (çevrimiçi sürümü veya şirket içinde barındırılan bir örnek) sorunlarını listelemek için DailyMirror'yi yapılandırabilirsiniz. Öneriler olarak listelenecekler ve konuyla ilgili bir bağlantının yanı sıra konuyla ilgili daha fazla bilgi sağlayacaklar.</p><p>Ek olarak, tüm açık sorunları otomatik olarak görev biriktirme listenize ekleyebilir ve senkronize edebilirsiniz.</p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1626,9 +1626,9 @@
         },
         "TITLE": "Senkronize et",
         "WEB_DAV": {
-          "CORS_INFO": "<strong>Tarayıcıda çalışmasını sağlamak:</strong> Bunun tarayıcıda çalışmasını sağlamak için Nextcloud örneğiniz için CORS isteklerine yönelik Süper Üretkenliği beyaz listeye almanız gerekir. Bunun olumsuz güvenlik etkileri olabilir! Lütfen <a href='https://github.com/nextcloud/server/issues/3131'>daha fazla bilgi için bu konuya bakın</a>. Bunun mobil cihazlarda çalışmasını sağlamanın bir yolu, nextcloud uygulaması <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword aracılığıyla \"https://app.super-productivity.com\" adresini beyaz listeye eklemektir. <a>. Kullanım riski size aittir!</p>",
+          "CORS_INFO": "<strong>Tarayıcıda çalışmasını sağlamak:</strong> Bunun tarayıcıda çalışmasını sağlamak için Nextcloud örneğiniz için CORS isteklerine yönelik DailyMirror uygulamasını beyaz listeye almanız gerekir. Bunun olumsuz güvenlik etkileri olabilir! Lütfen <a href='https://github.com/nextcloud/server/issues/3131'>daha fazla bilgi için bu konuya bakın</a>. Bunun mobil cihazlarda çalışmasını sağlamanın bir yolu, nextcloud uygulaması <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword aracılığıyla \"DailyMirror web uygulamanızın kaynağı (protokol, ana makine ve bağlantı noktası)\" adresini beyaz listeye eklemektir. <a>. Kullanım riski size aittir!</p>",
           "D_SYNC_FOLDER_PATH": "Senkronizasyon dosyalarının depolanacağı WebDAV sunucu köküne göreli yol (örneğin '/super-productivity' veya '/'). Bu, sunucunuzun dahili dizin yolu DEĞİLDİR.",
-          "INFO": "WebDAV uygulamaları ne yazık ki çılgınca farklılık gösteriyor. Süper Verimliliğin Nextcloud ile iyi çalıştığı biliniyor, <strong> ancak sağlayıcınızla çalışmayabilir</strong>.",
+          "INFO": "WebDAV uygulamaları ne yazık ki çılgınca farklılık gösteriyor. DailyMirror’ın Nextcloud ile iyi çalıştığı biliniyor, <strong> ancak sağlayıcınızla çalışmayabilir</strong>.",
           "L_BASE_URL": "Temel URL",
           "L_PASSWORD": "Parola",
           "L_SYNC_FOLDER_PATH": "Dosya Yolunu Senkronize Et",
@@ -1670,7 +1670,7 @@
         "ERROR_REMOTE_FILE_EMPTY": "Uzak eşitleme dosyası boş. Bu, kesintiye uğramış bir eşitlemeden sonra olabilir. Uzaktaki verilerin üzerine yerel verileriniz yazılsın mı?",
         "ERROR_REMOTE_FILE_LOCKED": "Uzak eşitleme dosyası sunucu tarafından kilitli. Bu durum bir sonraki eşitleme denemesinde çözülebilir.",
         "ERROR_REMOTE_RESPONSE_NOT_SYNC_DATA": "Eşitleme sunucusu, eşitleme verilerin yerine bir web sayfasıyla yanıt verdi (örneğin bir oturum açma, vekil sunucu veya hata sayfası). Uzak verilerin büyük olasılıkla sağlam — sunucu adresini, kimlik bilgilerini ve ağı kontrol edip tekrar dene. Sorun devam ederse uzak verileri Eşitleme Ayarları → Zorla Üzerine Yaz ile değiştirebilirsin.",
-        "ERROR_SYNC_VERSION_MISMATCH": "Uzak senkronizasyon verileri uyumsuz bir format sürümü kullanıyor. Tüm cihazların aynı Super Productivity sürümünü çalıştırdığından emin olun.",
+        "ERROR_SYNC_VERSION_MISMATCH": "Uzak senkronizasyon verileri uyumsuz bir format sürümü kullanıyor. Tüm cihazların aynı DailyMirror sürümünü çalıştırdığından emin olun.",
         "WARN_CLIENT_ID_REGENERATED": "Senkronizasyon cihaz kimliği geçersizdi ve yeniden oluşturuldu. Bir sonraki senkronizasyonda bir senkronizasyon çakışması oluşabilir.",
         "ERROR_UNABLE_TO_READ_REMOTE_DATA": "Senkronize ederken hata. Uzak veri okunamıyor. Belki şifrelemeyi etkinleştirdiniz ve yerel parolanız uzak veriyi şifrelemek için kullanılanla eşleşmiyor?",
         "FINISH_DAY_SYNC_ERROR": "Gün sonu sırasında senkronizasyon hatası. Lütfen tekrar deneyin.",
@@ -2441,11 +2441,11 @@
     "IMPORT_FROM_FILE": "Dosyadan içe aktar",
     "IMPORT_FROM_TODOIST": "Todoist'ten aktar",
     "IMPORT_FROM_URL": "URL'den İçe Aktar",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Lütfen içe aktarmak istediğiniz Super Productivity yedek JSON dosyasının tam URL'sini girin.",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Lütfen içe aktarmak istediğiniz DailyMirror yedek JSON dosyasının tam URL'sini girin.",
     "IMPORT_FROM_URL_DIALOG_TITLE": "URL'den İçe Aktar",
     "OPEN_IMPORT_FROM_URL_DIALOG": "URL'den İçe Aktar",
     "PRIVACY_EXPORT": "Verileri Dışa Aktar (Anonimleştirilmiş)",
-    "PRIVACY_EXPORT_DESCRIPTION": "Anonimleştirilmiş verileri dışa aktarın (hata ayıklama için contact@super-productivity.com adresine göndermek üzere)",
+    "PRIVACY_EXPORT_DESCRIPTION": "Anonimleştirilmiş verileri dışa aktarın (hata ayıklama için https://github.com/VAN027/DailyMirror/issues adresine göndermek üzere)",
     "S_BACKUP_DOWNLOADED": "Android belgeler klasörüne indirilen yedekleme",
     "S_ERR_IMPORT_FAILED": "Verileri içeri aktarma başarısız oldu",
     "S_ERR_INVALID_DATA": "İçe aktarma başarısız oldu: Geçersiz JSON",
@@ -2567,7 +2567,7 @@
     },
     "CALENDARS": {
       "AUTO_IMPORT_FOR_CURRENT_DAY": "Bugün için olan etkinlikleri görev olarak otomatik içe aktar",
-      "BROWSER_WARNING": "Çapraz kaynak kısıtlamaları nedeniyle <b>bu muhtemelen Super Productivity'nin Tarayıcı sürümüyle ÇALIŞMAYACAKTIR.<br /> Bu özelliği kullanmak için lütfen <a href=\"https://super-productivity.com/download/\">masaüstü sürümünü indirin</a>!</b>",
+      "BROWSER_WARNING": "Çapraz kaynak kısıtlamaları nedeniyle <b>bu muhtemelen DailyMirror'nin Tarayıcı sürümüyle ÇALIŞMAYACAKTIR.<br /> Bu özelliği kullanmak için lütfen <a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">masaüstü sürümünü indirin</a>!</b>",
       "CAL_COLOR": "Takvim rengi",
       "CAL_PATH": "iCal kaynağının URL'si",
       "CHECK_UPDATES": "Her X'te bir uzaktan güncellemeleri kontrol edin",
@@ -2577,7 +2577,7 @@
       "FILTER_INCLUDE_REGEX": "Regex ile eşleşen etkinlikleri dahil et (isteğe bağlı)",
       "FILTER_INCLUDE_REGEX_DESCRIPTION": "Yalnızca başlığı bu düzenli ifadeyle eşleşen etkinlikler gösterilecektir. Tüm etkinlikleri dahil etmek için boş bırakın. Örnek: toplantı|standup",
       "INVALID_REGEX": "Geçersiz düzenli ifade",
-      "HELP": "Hatırlatılacak takvimleri entegre edebilir ve bunları Super Productivity içinde görev olarak ekleyebilirsiniz. Entegrasyon iCal biçimini kullanarak çalışır. Bunun çalışması için takvimlerinizin internet üzerinden veya dosya sistemi aracılığıyla erişilebilir olması gerekir.",
+      "HELP": "Hatırlatılacak takvimleri entegre edebilir ve bunları DailyMirror içinde görev olarak ekleyebilirsiniz. Entegrasyon iCal biçimini kullanarak çalışır. Bunun çalışması için takvimlerinizin internet üzerinden veya dosya sistemi aracılığıyla erişilebilir olması gerekir.",
       "REFERENCE_CALENDAR": "Referans takvim (yalnızca görüntüleme, görev oluşturmaz)",
       "SHOW_BANNER_THRESHOLD": "Etkinlikten önce bir bildirim X göster (devre dışı bırakmak için boş bırak)"
     },
@@ -2662,7 +2662,7 @@
       "EXPAND_SUB_TASKS": "Alt Görevler'i genişletin",
       "GLOBAL_ADD_NOTE": "Yeni not ekle",
       "GLOBAL_ADD_TASK": "Yeni Görev ekle",
-      "GLOBAL_SHOW_HIDE": "Süper Verimliliği Göster / Gizle",
+      "GLOBAL_SHOW_HIDE": "DailyMirror’ı Göster / Gizle",
       "GLOBAL_TOGGLE_TASK_START": "Son etkin görev için zaman izlemesini değiştir",
       "GLOBAL_TOGGLE_TASK_WIDGET": "Görev pencere öğesini göster/gizle",
       "GO_TO_DAILY_AGENDA": "Gündeme Git",
@@ -2793,7 +2793,7 @@
       "IS_LOCAL_REST_API_ENABLED_HINT": "Yerel betiklerin çalışan uygulamayı http://127.0.0.1:3876 üzerinden kontrol etmesini sağlar. Bu bilgisayarda çalışan herhangi bir uygulama görevlerinizi okuyabilir ve değiştirebilir.",
       "LOCAL_REST_API_TOKEN": "Erişim Token'ı",
       "LOCAL_REST_API_TOKEN_REGENERATE": "Erişim Token'ını Yeniden Oluştur",
-      "LOCAL_REST_API_TOKEN_ERROR": "Erişim token'ı kaydedilemedi, bu nedenle API çalışmıyor. Super Productivity'nin kendi veri klasörüne yazabildiğinden emin olun ve yeniden denemek için Yeniden Oluştur'u kullanın.",
+      "LOCAL_REST_API_TOKEN_ERROR": "Erişim token'ı kaydedilemedi, bu nedenle API çalışmıyor. DailyMirror'nin kendi veri klasörüne yazabildiğinden emin olun ve yeniden denemek için Yeniden Oluştur'u kullanın.",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "Yeni erişim token'ı kaydedilemedi. Önceki token hala geçerli.",
       "IS_MINIMIZE_TO_TRAY": "Tepsiye küçült (yalnızca masaüstü)",
       "IS_SHOW_TIP_LONGER": "Uygulamada üretkenlik ipucunu biraz daha uzun süre başlatın",
@@ -2830,7 +2830,7 @@
       "DEFAULT_TASK_REMIND_OPTION": "Görev oluştururken varsayılan hatırlatma seçeneği",
       "DISABLE_REMINDERS": "Tüm hatırlatıcıları devre dışı bırak",
       "DUE_DATE_NOTIFICATION_HOUR": "Son tarih bildirimlerinin gösterileceği saat (0-23)",
-      "HELP": "<p><strong>Önemli:</strong> Hatırlatıcılar push bildirimleri değil, <strong>yerel bildirimler</strong> kullanır. Bu, hatırlatıcıların planlanabilmesi için uygulamanın cihazınızda en az bir kez açılmış olması gerektiği anlamına gelir. Başka bir cihazda ayarlanan hatırlatıcılar, yalnızca uygulama hedef cihazda senkronize olduktan sonra görünecektir.</p><p><strong>iOS</strong>'ta, 'Ayarlar' > 'Bildirimler' altında Super Productivity için bildirimlerin etkinleştirildiğinden emin olun.</p>",
+      "HELP": "<p><strong>Önemli:</strong> Hatırlatıcılar push bildirimleri değil, <strong>yerel bildirimler</strong> kullanır. Bu, hatırlatıcıların planlanabilmesi için uygulamanın cihazınızda en az bir kez açılmış olması gerektiği anlamına gelir. Başka bir cihazda ayarlanan hatırlatıcılar, yalnızca uygulama hedef cihazda senkronize olduktan sonra görünecektir.</p><p><strong>iOS</strong>'ta, 'Ayarlar' > 'Bildirimler' altında DailyMirror için bildirimlerin etkinleştirildiğinden emin olun.</p>",
       "IS_COUNTDOWN_BANNER_ENABLED": "Hatırlatıcıların son teslim tarihinden önce geri sayım afişini göster",
       "IS_FOCUS_WINDOW": "Hatırlatıcı tetiklendiğinde uygulama penceresine odaklan",
       "NOTIFY_ON_DUE_DATE": "Bugün son tarihi olan görevler için bildirim göster",
@@ -3056,10 +3056,10 @@
     "TASK_MARKED_DONE": "Görev tamamlandı olarak işaretlendi"
   },
   "ONBOARDING": {
-    "TITLE": "Super Productivity'yi nasıl kullanmak istiyorsunuz?",
+    "TITLE": "DailyMirror'yi nasıl kullanmak istiyorsunuz?",
     "SUBTITLE": "Çalışma tarzınıza uygun bir kurulum seçin. Bunu daha sonra Ayarlar'dan istediğiniz zaman değiştirebilirsiniz.",
     "PRIVACY_HINT": "Verileriniz cihazınızda güvenle kalır. Sunucuya hiçbir şey gönderilmez.",
-    "SYNC_CTA": "Başka bir cihazda zaten Super Productivity mi kullanıyorsunuz?",
+    "SYNC_CTA": "Başka bir cihazda zaten DailyMirror mi kullanıyorsunuz?",
     "SYNC_CTA_LINK": "Eşitlemeyi ayarla",
     "PRESETS": {
       "SIMPLE_TODO": {

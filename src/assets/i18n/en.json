@@ -1,9 +1,43 @@
 {
+  "DM_PRIVACY": {
+    "MAINTAINER": "Maintainer:",
+    "TITLE": "DailyMirror Privacy Notice",
+    "INTRO": "Updated: 14 October 2026. This notice describes the current DailyMirror client, maintained by Kael Vex (GitHub: VAN027). It is included with the app and can be read offline.",
+    "GITHUB_POLICY": "GitHub Privacy Statement",
+    "LOCAL": {
+      "TITLE": "1. Local data",
+      "BODY": "Tasks, projects, notes, time records and settings are primarily stored on your device. The web version uses browser storage; desktop and Android versions use their app data storage. Core task management does not require a DailyMirror account. Opening the app does not automatically send your task database to the maintainer. Exported files and backups may contain your task data; their storage location matters, including folders managed by cloud backup software."
+    },
+    "NETWORK": {
+      "TITLE": "2. Update checks and other connections",
+      "BODY": "On supported desktop builds, automatic update checks are enabled by default and contact GitHub for VAN027/DailyMirror release information. You can disable them in Settings. The request does not attach task content or account credentials, but GitHub can receive your IP address and normal request metadata. Updates are announced with a download link, not installed automatically. Visiting the web app, opening external links or loading remote resources also contacts the corresponding hosting or third-party service."
+    },
+    "SYNC": {
+      "TITLE": "3. Optional synchronization",
+      "BODY": "Sync is disabled by default. Once you configure and enable it, task and configuration data is transferred to the provider, server or folder you select, with authentication information used as required by that service. End-to-end encryption is not enabled by default; availability and settings depend on the provider. The production SuperSync default address is https://sync.super-productivity.com, a third-party service rather than a DailyMirror-operated cloud. Its operator's policies apply. Turning sync off does not delete copies already stored remotely."
+    },
+    "INTEGRATIONS": {
+      "TITLE": "4. Integrations, plugins and permissions",
+      "BODY": "Configured integrations such as GitHub, Jira or calendars communicate with their selected services and may exchange issue or task content and authentication information. Enabled plugins can access data or network resources according to their capabilities and permissions. The optional desktop local API lets authorized local programs access task data. Notifications may display task information on your screen or lock screen; control this using app and system notification settings."
+    },
+    "LOGS": {
+      "TITLE": "5. Diagnostics and feedback",
+      "BODY": "Diagnostic logs are kept locally for troubleshooting; the client does not automatically submit them to the maintainer. If you export logs, share a backup or submit feedback, the recipient receives what you choose to send. Review files, screenshots and error messages before sharing: they may contain identifying or sensitive information. DailyMirror feedback goes to GitHub Issues, where submitted content is normally public. Do not post passwords, tokens or complete private backups."
+    },
+    "CONTROL": {
+      "TITLE": "6. Your controls and data retention",
+      "BODY": "You can edit or delete tasks, export a backup, disable sync and integrations, revoke provider credentials, and remove plugins. Local records remain until removed by you or by browser, operating-system or storage cleanup. Uninstalling an application does not guarantee that desktop data folders, exported files, backups or remote copies are deleted. To remove all copies, review those locations and any operating-system or third-party backup services separately."
+    },
+    "CONTACT": {
+      "TITLE": "7. Maintainer and changes",
+      "BODY": "DailyMirror is maintained by Kael Vex through the VAN027/DailyMirror GitHub repository. Use its feedback entry for questions about this notice, sharing only information you are comfortable making public. GitHub and other services process data under their own policies. This notice will be updated when the client's data handling changes; check the notice included with the version you use."
+    }
+  },
   "APP": {
     "B_INSTALL": {
       "IGNORE": "Ignore",
       "INSTALL": "Install",
-      "MSG": "Do you want to install Super Productivity as a PWA (Progressive Web App)?"
+      "MSG": "Do you want to install DailyMirror as a PWA (Progressive Web App)?"
     },
     "B_OFFLINE": "You are disconnected from the internet. Syncing and requesting issue provider data will not work.",
     "B_SUPER_SYNC_ENCRYPTION": {
@@ -19,12 +53,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "Not now",
-      "MSG": "You've been using Super Productivity for a while. Set up sync to back up your data and keep it safe across devices.",
+      "MSG": "You've been using DailyMirror for a while. Set up sync to back up your data and keep it safe across devices.",
       "SETUP": "Set up sync"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "Download",
-      "MSG": "A new version of Super Productivity is available ({{version}})."
+      "MSG": "A new version of DailyMirror is available ({{version}})."
     },
     "CONTEXT_MENU": {
       "CHANGE_PROJECT_SETTINGS": "Change Project Settings",
@@ -51,7 +85,7 @@
   },
   "CONFIRM": {
     "DELETE_SECTION": "Are you sure you want to delete this section? Tasks in it will be moved to the task list.",
-    "RELOAD_AFTER_IDB_ERROR": "Database Error - App Will Restart\n\nSuper Productivity cannot save data! This is usually caused by:\n• Low disk space (most common)\n• App update in background\n• Linux Snap users: run 'snap set core experimental.refresh-app-awareness=true'\n\nYour recent changes may not have been saved. Please free up disk space if low. The app will restart after you close this dialog.",
+    "RELOAD_AFTER_IDB_ERROR": "Database Error - App Will Restart\n\nDailyMirror cannot save data! This is usually caused by:\n• Low disk space (most common)\n• App update in background\n• Linux Snap users: run 'snap set core experimental.refresh-app-awareness=true'\n\nYour recent changes may not have been saved. Please free up disk space if low. The app will restart after you close this dialog.",
     "RESTORE_FILE_BACKUP": "There seems to be NO DATA, but there are backups available at \"{{dir}}\". Do you want to restore the latest backup from {{from}}?",
     "RESTORE_FILE_BACKUP_ANDROID": "There seems to be NO DATA, but there is a backup available. Do you want to load it?",
     "RESTORE_FILE_BACKUP_MOBILE": "No data was found on this device, but a backup is available to restore (tasks: {{tasks}}, projects: {{projects}}). Restore it?",
@@ -88,13 +122,13 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "Donate via GitHub Sponsors",
-    "INTRO_1": "Super Productivity is funded entirely by the community. There is no tracking, no ads, and no data collection — your tasks stay on your device.",
+    "INTRO_1": "This donation link supports the upstream Super Productivity project and its author Johannes Millan, not the DailyMirror maintainer.",
     "INTRO_2": "If you value this approach and want to keep the project healthy and evolving, a voluntary donation is greatly appreciated."
   },
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "Learn the keyboard shortcuts",
-      "NOTES": "Super Productivity is designed to be used with the keyboard. Learn the shortcuts to work faster.\n\n**How to start:**\n1. Open the **sidebar menu**\n2. Go to **Help**\n3. Click **How to: Keyboard Navigation**"
+      "NOTES": "DailyMirror is designed to be used with the keyboard. Learn the shortcuts to work faster.\n\n**How to start:**\n1. Open the **sidebar menu**\n2. Go to **Help**\n3. Click **How to: Keyboard Navigation**"
     },
     "CREATE_PROJECT": {
       "TITLE": "Create your first project",
@@ -113,7 +147,7 @@
     "IOS_SHARE": {
       "SAVE": "Save",
       "DESTINATION": "Inbox",
-      "NEXT_OPEN": "Added when you next open Super Productivity",
+      "NEXT_OPEN": "Added when you next open DailyMirror",
       "SAVE_ERROR": "Could not save. Please try again.",
       "IMPORT_ERROR": "Could not import shared content. It has been kept on this device; reopen the app to retry.",
       "INVALID": "Share a link or text (up to 100,000 characters)."
@@ -231,7 +265,7 @@
         "TWO_WAY_SYNC_TITLE": "Title sync direction"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Here you can configure Super Productivity to list uncompleted CalDAV tasks for a specific project in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the task as well as more information about it.</p><p>In addition, you can automatically add and sync all uncompleted tasks to your task backlog.</p><p>To make it work for Nextcloud in the webapp, you may need to allow \"https://app.super-productivity.com\" in the Nextcloud app <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword</a>.</p>"
+        "HELP": "<p>Configure DailyMirror to list incomplete CalDAV tasks as suggestions when creating tasks, or automatically import them into your backlog.</p><p>For Nextcloud in a web browser, allow the origin of the DailyMirror page you actually use (scheme, host and port), for example via the Nextcloud <a href=\"https://apps.nextcloud.com/apps/webapppassword\">webapppassword</a> app. The upstream hosted web app address is not the origin of your DailyMirror installation.</p>"
       },
       "ISSUE_CONTENT": {
         "DESCRIPTION": "Description",
@@ -306,9 +340,9 @@
       "FEEDBACK_PRIVATE": "Email maintainer",
       "FEEDBACK_PRIVATE_DESC": "Send a private message",
       "FEEDBACK_PUBLIC": "Post on GitHub Discussions",
-      "FEEDBACK_PUBLIC_DESC": "Others can see and respond",
+      "FEEDBACK_PUBLIC_DESC": "Open a public issue in the DailyMirror GitHub repository. Do not include passwords, tokens or private backups.",
       "FEEDBACK_TITLE": "How would you like to help?",
-      "TITLE": "Enjoying Super Productivity?",
+      "TITLE": "Enjoying DailyMirror?",
       "TXT": "It's a free, open-source project built by enthusiasts – no tracking, no ads. A rating or short message helps more people find it."
     },
     "DROPBOX": {
@@ -427,7 +461,7 @@
         "TOKEN": "Access Token"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Here you can configure Super Productivity to list open Gitea issues for a specific repository in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the issue as well as more information about it.</p><p>In addition, you can automatically add and import all open issues.</p><p>To get by usage limits and gain access, you can provide an access token."
+        "HELP": "<p>Here you can configure DailyMirror to list open Gitea issues for a specific repository in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the issue as well as more information about it.</p><p>In addition, you can automatically add and import all open issues.</p><p>To get by usage limits and gain access, you can provide an access token."
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assignee",
@@ -455,7 +489,7 @@
         "FILTER_USER": "Filter username",
         "GITLAB_BASE_URL": "Custom GitLab base URL (optional)",
         "PROJECT": "user name/project",
-        "PROJECT_HINT": "Project path (namespace/project-slug) or numeric project ID, not the display name (e.g. super-productivity/super-productivity or 12345)",
+        "PROJECT_HINT": "Project path (namespace/project-slug) or numeric project ID, not the display name (e.g. group/project or 12345)",
         "SCOPE": "Scope",
         "SCOPE_ALL": "All",
         "SCOPE_ASSIGNED": "Assigned to me",
@@ -469,7 +503,7 @@
         "TOKEN": "Access Token"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Here you can configure Super Productivity to list open GitLab (either its the online version or a self-hosted instance) issues for a specific project in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the issue as well as more information about it.</p><p>In addition, you can automatically import all open issues.</p>"
+        "HELP": "<p>Here you can configure DailyMirror to list open GitLab (either its the online version or a self-hosted instance) issues for a specific project in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the issue as well as more information about it.</p><p>In addition, you can automatically import all open issues.</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assignee",
@@ -487,14 +521,14 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "This integration will likely not work in your web browser. Please download the desktop or Android version of Super Productivity!",
+      "CROSS_ORIGIN_BROWSER_WARNING": "This integration will likely not work in your web browser. Please download the desktop or Android version of DailyMirror!",
       "DEFAULT": {
         "ISSUE_STR": "issue",
         "ISSUES_STR": "issues"
       },
       "DEFAULT_NOTE_LABEL": "Default note for imported tasks",
       "DEFAULT_PROJECT_DESCRIPTION": "Project assigned to tasks created from issues.",
-      "DEFAULT_PROJECT_LABEL": "Default Super Productivity Project",
+      "DEFAULT_PROJECT_LABEL": "Default DailyMirror Project",
       "DEFAULT_TAGS_LABEL": "Default tags for imported tasks",
       "FORM": {
         "AUTO_ADD_TO_BACKLOG": "Auto import to default project (requires a default project)",
@@ -600,7 +634,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira: To prevent API lock out, access has been blocked by Super Productivity. You probably should check your Jira settings!",
+        "BLOCK_ACCESS_MSG": "Jira: To prevent API lock out, access has been blocked by DailyMirror. You probably should check your Jira settings!",
         "BLOCK_ACCESS_UNBLOCK": "Unblock"
       },
       "CFG_CMP": {
@@ -649,7 +683,7 @@
         "TITLE": "Jira: Submit Worklog"
       },
       "FORM_ADV": {
-        "AUTO_ADD_BACKLOG_JQL_QUERY": "JQL used for importing issues to Super Productivity automatically",
+        "AUTO_ADD_BACKLOG_JQL_QUERY": "JQL used for importing issues to DailyMirror automatically",
         "IS_ADD_WORKLOG_ON_SUB_TASK_DONE": "Open dialog to submit worklog to Jira when subtask is completed",
         "IS_CHECK_TO_RE_ASSIGN_TICKET_ON_TASK_START": "Check if the currently worked on issue is assigned to current user",
         "IS_WORKLOG_ENABLED": "Open dialog to submit worklog to Jira when task is completed",
@@ -707,7 +741,7 @@
       },
       "S": {
         "ADDED_WORKLOG_FOR": "Jira: Added worklog for {{issueKey}}",
-        "EXTENSION_NOT_LOADED": "Super Productivity Extension not loaded. Reloading the page may help",
+        "EXTENSION_NOT_LOADED": "The third-party Super Productivity browser extension is not loaded. Reloading the page may help.",
         "INSUFFICIENT_SETTINGS": "Insufficient settings provided for Jira",
         "INVALID_RESPONSE": "Jira: Response contained invalid data",
         "NO_AUTO_IMPORT_JQL": "Jira: No search query defined for auto-import",
@@ -937,7 +971,7 @@
         "TOKEN": "Access Token"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Here you can configure Super Productivity to list open OpenProject work packages. Please note that for this to work in the web browser version, you need to probably configure CORS for your OpenProject server to allow access from app.super-productivity.com</p>"
+        "HELP": "<p>Configure DailyMirror to list open OpenProject work packages. In a web browser, configure your OpenProject server to allow CORS requests from the origin of the DailyMirror page you actually use (scheme, host and port).</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Assignee",
@@ -1125,7 +1159,7 @@
         "SCOPE_CREATED": "Created by me"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Here you can configure Super Productivity to list open Redmine (either its the online version or a self-hosted instance) issues for a specific project in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the issue as well as more information about it.</p><p>In addition you can automatically import all open issues.</p>",
+        "HELP": "<p>Here you can configure DailyMirror to list open Redmine (either its the online version or a self-hosted instance) issues for a specific project in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the issue as well as more information about it.</p><p>In addition you can automatically import all open issues.</p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1590,9 +1624,9 @@
         },
         "TITLE": "Sync",
         "WEB_DAV": {
-          "CORS_INFO": "<strong>Making it work in a web browser:</strong> You need to allow Super Productivity to make CORS requests to your server. For Nextcloud, one approach is allowing \"https://app.super-productivity.com\" via the <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword</a> app. Refer to <a href='https://github.com/nextcloud/server/issues/3131'>this GitHub thread</a> for more information.",
+          "CORS_INFO": "<strong>Using a web browser:</strong> Allow CORS requests from the origin of the DailyMirror page you actually use (scheme, host and port). For Nextcloud, consult the <a href=\"https://apps.nextcloud.com/apps/webapppassword\">webapppassword</a> app and this <a href=\"https://github.com/nextcloud/server/issues/3131\">Nextcloud discussion</a>. Only allow origins you trust.",
           "D_SYNC_FOLDER_PATH": "Path relative to the WebDAV server root where sync files will be stored (e.g. '/super-productivity' or '/'). This is NOT your server's internal directory path.",
-          "INFO": "<strong>Warning:</strong> Generic WebDAV sync is <strong>experimental and provided as-is, without support</strong>. WebDAV implementations differ enormously between servers, and the vast majority of sync problems are caused by your provider's setup or quirks (CORS, authentication, non-standard behavior, file locking, etc.) — <strong>not by Super Productivity</strong>. We cannot debug individual WebDAV servers, so please troubleshoot such issues with your provider and do not report them to us as bugs. If you are using Nextcloud, use the dedicated Nextcloud option instead. For reliable, fully supported sync consider Dropbox or SuperSync.",
+          "INFO": "<strong>Warning:</strong> Generic WebDAV sync is <strong>experimental and provided as-is, without support</strong>. WebDAV implementations differ enormously between servers, and the vast majority of sync problems are caused by your provider's setup or quirks (CORS, authentication, non-standard behavior, file locking, etc.) — <strong>not by DailyMirror</strong>. We cannot debug individual WebDAV servers, so please troubleshoot such issues with your provider and do not report them to us as bugs. If you are using Nextcloud, use the dedicated Nextcloud option instead. For reliable, fully supported sync consider Dropbox or SuperSync.",
           "L_BASE_URL": "Base URL",
           "L_PASSWORD": "Password",
           "L_SYNC_FOLDER_PATH": "Sync Folder Path",
@@ -1636,7 +1670,7 @@
         "ERROR_REMOTE_FILE_EMPTY": "Remote sync file is empty. This can happen after an interrupted sync. Overwrite remote with your local data?",
         "ERROR_REMOTE_FILE_LOCKED": "Remote sync file is locked by the server. This may resolve on the next sync attempt.",
         "ERROR_REMOTE_RESPONSE_NOT_SYNC_DATA": "The sync server answered with a web page instead of your sync data (e.g. a login, proxy or error page). Your remote data is probably intact — check your server URL, credentials and network, then try again. If the problem persists, you can overwrite the remote via Sync Settings → Force Overwrite.",
-        "ERROR_SYNC_VERSION_MISMATCH": "Remote sync data uses an incompatible format version. Ensure all devices run the same version of Super Productivity.",
+        "ERROR_SYNC_VERSION_MISMATCH": "Remote sync data uses an incompatible format version. Ensure all devices run the same version of DailyMirror.",
         "WARN_CLIENT_ID_REGENERATED": "Sync device ID was invalid and has been regenerated. A sync conflict may occur on next sync.",
         "ERROR_UNABLE_TO_READ_REMOTE_DATA": "Error while syncing. Unable to read remote data. Maybe you enabled encryption and your local password does not match the one used to encrypt the remote data?",
         "FINISH_DAY_SYNC_ERROR": "Sync error while finishing day. Please try again.",
@@ -2424,11 +2458,11 @@
     "IMPORT_FROM_FILE": "Import from File",
     "IMPORT_FROM_TODOIST": "Import from Todoist",
     "IMPORT_FROM_URL": "Import from URL",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Please enter the full URL of the Super Productivity backup JSON file to import.",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Please enter the full URL of the DailyMirror backup JSON file to import.",
     "IMPORT_FROM_URL_DIALOG_TITLE": "Import from URL",
     "OPEN_IMPORT_FROM_URL_DIALOG": "Import from URL",
     "PRIVACY_EXPORT": "Export Data (anonymized)",
-    "PRIVACY_EXPORT_DESCRIPTION": "Export anonymized data (to send to contact@super-productivity.com for debugging)",
+    "PRIVACY_EXPORT_DESCRIPTION": "Export anonymized data for troubleshooting. Review the file before sharing it through DailyMirror feedback; GitHub Issues are public.",
     "S_BACKUP_DOWNLOADED": "Backup exported",
     "S_ERR_IMPORT_FAILED": "Importing data failed",
     "S_ERR_IMPORT_UNREPAIRABLE": "Import failed: this backup contains data that can't be repaired. Please try an older backup, and export your logs and report the issue.",
@@ -2548,7 +2582,7 @@
     },
     "CALENDARS": {
       "AUTO_IMPORT_FOR_CURRENT_DAY": "Auto import events as tasks for current day",
-      "BROWSER_WARNING": "Due to cross-origin and WebView restrictions <b>this will likely NOT work with the web browser or Android app versions of Super Productivity.<br /> Please <a href=\"https://super-productivity.com/download/\">download the desktop version</a> to use this feature!</b>",
+      "BROWSER_WARNING": "Due to cross-origin and WebView restrictions <b>this will likely NOT work with the web browser or Android app versions of DailyMirror.<br /> Please <a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">download the desktop version</a> to use this feature!</b>",
       "CAL_COLOR": "Calendar color",
       "CAL_PATH": "URL of the iCal source",
       "CHECK_UPDATES": "Check for remote updates every X",
@@ -2558,7 +2592,7 @@
       "FILTER_INCLUDE_REGEX": "Include events matching regex (optional)",
       "FILTER_INCLUDE_REGEX_DESCRIPTION": "Only events whose title matches this regular expression will be shown. Leave empty to include all events. Example: meeting|standup",
       "INVALID_REGEX": "Invalid regular expression",
-      "HELP": "You can integrate calendars to be reminded and add them as tasks within Super Productivity. The integration works by using the iCal format. For this to work your calendars need to be accessible either over the internet or via file system.",
+      "HELP": "You can integrate calendars to be reminded and add them as tasks within DailyMirror. The integration works by using the iCal format. For this to work your calendars need to be accessible either over the internet or via file system.",
       "REFERENCE_CALENDAR": "Reference calendar (display only, no task creation)",
       "SHOW_BANNER_THRESHOLD": "Show a notification X before the event (blank for disabled)"
     },
@@ -2643,7 +2677,7 @@
       "EXPAND_SUB_TASKS": "Expand subtasks",
       "GLOBAL_ADD_NOTE": "Add new note",
       "GLOBAL_ADD_TASK": "Add new task",
-      "GLOBAL_SHOW_HIDE": "Show/hide Super Productivity",
+      "GLOBAL_SHOW_HIDE": "Show/hide DailyMirror",
       "GLOBAL_TOGGLE_TASK_START": "Start/stop time tracking for last active task",
       "GLOBAL_TOGGLE_TASK_WIDGET": "Show/hide task widget",
       "GO_TO_DAILY_AGENDA": "Go to agenda",
@@ -2775,7 +2809,7 @@
       "IS_LOCAL_REST_API_ENABLED_HINT": "Allows local scripts to control the running app via http://127.0.0.1:3876. Requests require the access token shown below; keep it private and regenerate it if it may have been exposed. Any application running as you on this computer can read the token and modify your tasks.",
       "LOCAL_REST_API_TOKEN": "Access Token",
       "LOCAL_REST_API_TOKEN_REGENERATE": "Regenerate Access Token",
-      "LOCAL_REST_API_TOKEN_ERROR": "Could not store the access token, so the API is not running. Check that Super Productivity can write to its data folder, then use Regenerate to retry.",
+      "LOCAL_REST_API_TOKEN_ERROR": "Could not store the access token, so the API is not running. Check that DailyMirror can write to its data folder, then use Regenerate to retry.",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "Could not save the new access token. The previous token is still valid.",
       "IS_MINIMIZE_TO_TRAY": "Minimize to tray (desktop only)",
       "IS_SHOW_TIP_LONGER": "Show productivity tip on app start a little longer",
@@ -2812,7 +2846,7 @@
       "DEFAULT_TASK_REMIND_OPTION": "Default remind option selected when creating tasks",
       "DISABLE_REMINDERS": "Disable all reminders",
       "DUE_DATE_NOTIFICATION_HOUR": "Hour to show planned-task notifications (0-23)",
-      "HELP": "<p><strong>Important:</strong> Reminders use <strong>local notifications</strong>, not push notifications. This means the app needs to have been opened at least once on your device for reminders to be scheduled. Reminders set on another device will only appear after the app syncs on the target device.</p><p>On <strong>iOS</strong>, make sure notifications are enabled for Super Productivity in your device settings under 'Settings' > 'Notifications'.</p>",
+      "HELP": "<p><strong>Important:</strong> Reminders use <strong>local notifications</strong>, not push notifications. This means the app needs to have been opened at least once on your device for reminders to be scheduled. Reminders set on another device will only appear after the app syncs on the target device.</p><p>On <strong>iOS</strong>, make sure notifications are enabled for DailyMirror in your device settings under 'Settings' > 'Notifications'.</p>",
       "IS_COUNTDOWN_BANNER_ENABLED": "Show countdown banner before reminders are due",
       "IS_FOCUS_WINDOW": "Focus application window when reminder is triggered",
       "NOTIFY_ON_DUE_DATE": "Show notifications for tasks planned for today",
@@ -3408,7 +3442,7 @@
     "INSERT_TABLE": "Insert table",
     "SHOW_HELP_FOR_SECTION": "Show Help for section",
     "TREE": "Tree",
-    "COMMUNITY_WARNING": "These plugins are developed by the community and are NOT reviewed or guaranteed by the Super Productivity team. Install and use them at your own risk — they might contain malicious code or break your application.",
+    "COMMUNITY_WARNING": "These plugins are developed by the community and are NOT reviewed or guaranteed by the DailyMirror team. Install and use them at your own risk — they might contain malicious code or break your application.",
     "DEFAULT_THEME": "Default",
     "THEME_CLASSIC": "Classic",
     "THEME_ZEN": "Zen",

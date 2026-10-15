@@ -233,7 +233,7 @@ const createTaskWidgetWindowForGeneration = async (
     height: bounds.height,
     x: bounds.x,
     y: bounds.y,
-    title: 'Super Productivity 任务悬浮窗',
+    title: 'DailyMirror',
     frame: false,
     transparent: !IS_MAC,
     backgroundColor: IS_MAC ? '#00000000' : undefined,

@@ -11,7 +11,13 @@ module.exports = {
   productName: 'DailyMirror',
   directories: { ...base.directories, output: '../releases/windows' },
   files: [...base.files, 'LICENSE'],
-  extraMetadata: { name: 'dailymirror', productName: 'DailyMirror' },
+  extraMetadata: {
+    name: 'dailymirror',
+    productName: 'DailyMirror',
+    author: { name: 'Kael Vex', email: '', url: '' },
+  },
+  // Keep the existing copyright field independent of the publisher/company name.
+  copyright: base.copyright ?? `Copyright © ${new Date().getFullYear()} Johannes Millan`,
   win: {
     executableName: 'DailyMirror',
     icon: 'build/dailymirror.ico',

@@ -8,6 +8,7 @@ import {
   ElementRef,
   inject,
   OnInit,
+  TemplateRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalConfigService } from '../../features/config/global-config.service';
@@ -62,7 +63,13 @@ import { DialogLogsComponent } from '../../ui/dialog-logs/dialog-logs.component'
 import { SnackService } from '../../core/snack/snack.service';
 import { ShareService } from '../../core/share/share.service';
 import { SyncWrapperService } from '../../imex/sync/sync-wrapper.service';
-import { MatDialog } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 import { SyncProviderId } from '../../op-log/sync-providers/provider.const';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { MatIcon } from '@angular/material/icon';
@@ -112,6 +119,10 @@ const TAB_ANIMATION_DURATION_MS = 200;
     MatAutocomplete,
     MatAutocompleteTrigger,
     MatOption,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
   ],
 })
 export class ConfigPageComponent implements OnInit {
@@ -135,6 +146,16 @@ export class ConfigPageComponent implements OnInit {
   readonly focusModeLocalSettingsService = inject(FocusModeLocalSettingsService);
 
   T: typeof T = T;
+
+  readonly privacySections = [
+    'LOCAL',
+    'NETWORK',
+    'SYNC',
+    'INTEGRATIONS',
+    'LOGS',
+    'CONTROL',
+    'CONTACT',
+  ] as const;
 
   selectedTabIndex = 0;
   expandedSection: string | null = null;
@@ -479,6 +500,15 @@ export class ConfigPageComponent implements OnInit {
       width: '600px',
       maxWidth: '95vw',
       data: { logs: Log.exportLogHistory() },
+    });
+  }
+
+  showPrivacyPolicy(template: TemplateRef<unknown>): void {
+    this._matDialog.open(template, {
+      width: '720px',
+      maxWidth: '95vw',
+      autoFocus: 'dialog',
+      ariaLabelledBy: 'dailymirror-privacy-title',
     });
   }
 

@@ -3,7 +3,7 @@
     "B_INSTALL": {
       "IGNORE": "Overse",
       "INSTALL": "Installere",
-      "MSG": "Vil du installere Super Productivity som en PWA?"
+      "MSG": "Vil du installere DailyMirror som en PWA?"
     },
     "B_OFFLINE": "Du er koblet fra internett. Synkronisering og å be om data fra leverandører fungerer ikke.",
     "B_RECOVERY_POINT": {
@@ -13,12 +13,12 @@
     },
     "B_SYNC_SAFETY": {
       "DISMISS": "Ikke nå",
-      "MSG": "Du har brukt Super Productivity en stund. Sett opp synkronisering for å sikkerhetskopiere dataene dine og holde dem trygge på tvers av enheter.",
+      "MSG": "Du har brukt DailyMirror en stund. Sett opp synkronisering for å sikkerhetskopiere dataene dine og holde dem trygge på tvers av enheter.",
       "SETUP": "Sett opp synkronisering"
     },
     "B_UPDATE_AVAILABLE": {
       "DOWNLOAD": "Last ned",
-      "MSG": "En ny versjon av Super Productivity er tilgjengelig ({{version}})."
+      "MSG": "En ny versjon av DailyMirror er tilgjengelig ({{version}})."
     },
     "CONTEXT_MENU": {
       "CHANGE_BACKGROUND": "Endre bakgrunn",
@@ -82,13 +82,13 @@
   },
   "DONATE_PAGE": {
     "BUTTON_TEXT": "Doner via GitHub Sponsors",
-    "INTRO_1": "Super Productivity finansieres helt av fellesskapet. Det er ingen sporing, ingen annonser, og ingen datainnsamling — oppgavene dine forblir på enheten din.",
+    "INTRO_1": "Denne donasjonslenken støtter det opprinnelige prosjektet Super Productivity og forfatteren Johannes Millan, ikke vedlikeholderen av DailyMirror.",
     "INTRO_2": "Hvis du verdsetter denne tilnærmingen og ønsker å holde prosjektet sunt og i utvikling, er en frivillig donasjon svært verdsatt."
   },
   "EXAMPLE_TASKS": {
     "LEARN_KEYBOARD_SHORTCUTS": {
       "TITLE": "Lær hurtigtastene",
-      "NOTES": "Super Productivity er laget for å brukes med tastaturet. Lær hurtigtastene for å jobbe raskere.\n\n**Slik kommer du i gang:**\n1. Åpne **sidefeltmenyen**\n2. Gå til **Hjelp**\n3. Klikk på **Tastaturnavigasjonstur**"
+      "NOTES": "DailyMirror er laget for å brukes med tastaturet. Lær hurtigtastene for å jobbe raskere.\n\n**Slik kommer du i gang:**\n1. Åpne **sidefeltmenyen**\n2. Gå til **Hjelp**\n3. Klikk på **Tastaturnavigasjonstur**"
     },
     "CREATE_PROJECT": {
       "TITLE": "Opprett ditt første prosjekt",
@@ -208,7 +208,7 @@
         "POLL_INTERVAL_MINUTES": "Pollingsintervall (minutter)"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Her kan du konfigurere SuperProductivity til å liste ufullførte CalDav-oppgaver for et spesifikt prosjekt i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til oppgaven samt mer informasjon om den.<\\/p> <p>I tillegg kan du automatisk legge til og synkronisere alle ufullførte oppgaver til oppgavelisten din.<\\/p><p>For at det skal fungere for Nextcloud i nettappen, må du kanskje hviteliste \"https:\\/\\/app.super-productivity.com\" via Nextcloud-appen <a href='https:\\/\\/apps.nextcloud.com\\/apps\\/webapppassword'>webapppassword<a>.<\\/p>"
+        "HELP": "<p>Her kan du konfigurere DailyMirror til å liste ufullførte CalDav-oppgaver for et spesifikt prosjekt i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til oppgaven samt mer informasjon om den.<\\/p> <p>I tillegg kan du automatisk legge til og synkronisere alle ufullførte oppgaver til oppgavelisten din.<\\/p><p>For at det skal fungere for Nextcloud i nettappen, må du kanskje hviteliste \"https:\\/\\/opprinnelsen til DailyMirror-nettappen din (protokoll, vert og port)\" via Nextcloud-appen <a href='https:\\/\\/apps.nextcloud.com\\/apps\\/webapppassword'>webapppassword<a>.<\\/p>"
       },
       "ISSUE_CONTENT": {
         "DESCRIPTION": "Beskrivelse",
@@ -280,7 +280,7 @@
       "FEEDBACK_PUBLIC": "Skriv på GitHub Discussions",
       "FEEDBACK_PUBLIC_DESC": "Andre kan se og svare",
       "FEEDBACK_TITLE": "Hvordan vil du hjelpe?",
-      "TITLE": "Liker du Super Productivity?",
+      "TITLE": "Liker du DailyMirror?",
       "TXT": "Det er et <strong>gratis prosjekt med åpen kildekode</strong> laget av entusiaster – ingen sporing, ingen reklame. En vurdering eller kort melding hjelper flere å finne det."
     },
     "DROPBOX": {
@@ -402,7 +402,7 @@
         "FILTER_LABELS_DESCRIPTION": "Kommaseparert liste over etikettnavn. Bare saker med alle disse etikettene synkroniseres. La feltet stå tomt for å synkronisere alle saker som samsvarer med omfanget."
       },
       "FORM_SECTION": {
-        "HELP": "<p>Her kan du konfigurere SuperProductivity til å liste åpne Gitea-problemer for et spesifikt repository i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til problemet samt mer informasjon om det.<\\/p> <p>I tillegg kan du automatisk legge til og importere alle åpne problemer.<\\/p><p>For å komme forbi bruksgrensene og få tilgang kan du gi et tilgangstoken."
+        "HELP": "<p>Her kan du konfigurere DailyMirror til å liste åpne Gitea-problemer for et spesifikt repository i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til problemet samt mer informasjon om det.<\\/p> <p>I tillegg kan du automatisk legge til og importere alle åpne problemer.<\\/p><p>For å komme forbi bruksgrensene og få tilgang kan du gi et tilgangstoken."
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Mottaker",
@@ -444,7 +444,7 @@
         "TOKEN": "Tilgangstoken"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Her kan du konfigurere SuperProductivity til å liste åpne GitLab-problemer (enten den online-versjonen eller en selvstyrt forekomst) for et bestemt prosjekt i oppgavelagerpanelet i den daglige planvisningen. De vil bli oppført som forslag og vil gi en lenke til problemet, samt mer informasjon om det.</p><p> I tillegg kan du automatisk legge til og synkronisere alle åpne problemer i oppgaven din.</p>"
+        "HELP": "<p>Her kan du konfigurere DailyMirror til å liste åpne GitLab-problemer (enten den online-versjonen eller en selvstyrt forekomst) for et bestemt prosjekt i oppgavelagerpanelet i den daglige planvisningen. De vil bli oppført som forslag og vil gi en lenke til problemet, samt mer informasjon om det.</p><p> I tillegg kan du automatisk legge til og synkronisere alle åpne problemer i oppgaven din.</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Oppdragsgiver",
@@ -462,7 +462,7 @@
       }
     },
     "ISSUE": {
-      "CROSS_ORIGIN_BROWSER_WARNING": "Denne integrasjonen vil sannsynligvis ikke fungere i nettleseren din. Last ned Desktop- eller Android-versjonen av Super Productivity!",
+      "CROSS_ORIGIN_BROWSER_WARNING": "Denne integrasjonen vil sannsynligvis ikke fungere i nettleseren din. Last ned Desktop- eller Android-versjonen av DailyMirror!",
       "DEFAULT": {
         "ISSUE_STR": "Problem",
         "ISSUES_STR": "problemer"
@@ -575,7 +575,7 @@
     },
     "JIRA": {
       "BANNER": {
-        "BLOCK_ACCESS_MSG": "Jira: For å forhindre at api er stengt, har tilgang blitt blokkert av Super Productivity. Du bør sannsynligvis sjekke Jira-innstillingene dine!",
+        "BLOCK_ACCESS_MSG": "Jira: For å forhindre at api er stengt, har tilgang blitt blokkert av DailyMirror. Du bør sannsynligvis sjekke Jira-innstillingene dine!",
         "BLOCK_ACCESS_UNBLOCK": "Fjern blokkering"
       },
       "CFG_CMP": {
@@ -912,7 +912,7 @@
         "TOKEN": "Tilgangstoken"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Her kan du konfigurere SuperProductivity til å liste opp åpne OpenProject-arbeidspakker. Vær oppmerksom på at for at dette skal fungere i nettleseren, må du sannsynligvis konfigurere CORS for OpenProject-serveren din, for å tillate tilgang fra app.super-productivity.com</p>"
+        "HELP": "<p>Her kan du konfigurere DailyMirror til å liste opp åpne OpenProject-arbeidspakker. Vær oppmerksom på at for at dette skal fungere i nettleseren, må du sannsynligvis konfigurere CORS for OpenProject-serveren din, for å tillate tilgang fra opprinnelsen til DailyMirror-nettappen din (protokoll, vert og port)</p>"
       },
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Tildelt",
@@ -1101,7 +1101,7 @@
         "IS_SHOW_TIME_TRACKING_DIALOG_FOR_EACH_SUB_TASK": "Vis tidsregistreringsdialog når deloppgaver fullføres"
       },
       "FORM_SECTION": {
-        "HELP": "<p>Her kan du konfigurere SuperProductivity til å liste åpne Redmine (enten det er den nettbaserte versjonen eller en selvhostet instans) problemer for et spesifikt prosjekt i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til problemet samt mer informasjon om det.<\\/p><p>I tillegg kan du automatisk importere alle åpne problemer.<\\/p>",
+        "HELP": "<p>Her kan du konfigurere DailyMirror til å liste åpne Redmine (enten det er den nettbaserte versjonen eller en selvhostet instans) problemer for et spesifikt prosjekt i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til problemet samt mer informasjon om det.<\\/p><p>I tillegg kan du automatisk importere alle åpne problemer.<\\/p>",
         "TITLE": "Redmine"
       },
       "ISSUE_CONTENT": {
@@ -1459,9 +1459,9 @@
         },
         "TITLE": "Synkroniser",
         "WEB_DAV": {
-          "CORS_INFO": "<strong>Få det til å fungere i nettleseren:<\\/strong> For å få dette til å fungere i nettleseren må du hviteliste Super Productivity for CORS-forespørselene til din Nextcloud-instans. Dette kan ha negative sikkerhetsimplikasjoner! Vennligst <a href='https:\\/\\/github.com\\/nextcloud\\/server\\/issues\\/3131'>se denne tråden for mer informasjon<\\/a>. En tilnærming for å få dette til å fungere på mobil er å hviteliste \"https:\\/\\/app.super-productivity.com\" via Nextcloud-appen <a href='https:\\/\\/apps.nextcloud.com\\/apps\\/webapppassword'>webapppassword<a>. Bruk på egen risiko!<\\/p>",
+          "CORS_INFO": "<strong>Få det til å fungere i nettleseren:<\\/strong> For å få dette til å fungere i nettleseren må du hviteliste DailyMirror for CORS-forespørselene til din Nextcloud-instans. Dette kan ha negative sikkerhetsimplikasjoner! Vennligst <a href='https:\\/\\/github.com\\/nextcloud\\/server\\/issues\\/3131'>se denne tråden for mer informasjon<\\/a>. En tilnærming for å få dette til å fungere på mobil er å hviteliste \"https:\\/\\/opprinnelsen til DailyMirror-nettappen din (protokoll, vert og port)\" via Nextcloud-appen <a href='https:\\/\\/apps.nextcloud.com\\/apps\\/webapppassword'>webapppassword<a>. Bruk på egen risiko!<\\/p>",
           "D_SYNC_FOLDER_PATH": "Sti relativ til WebDAV-serverens rot hvor synkroniseringsfiler vil bli lagret (f.eks. '/super-productivity' eller '/'). Dette er IKKE serverens interne katalogsti.",
-          "INFO": "WebDAV-implementeringer varierer dessverre mye. Super Productivity er kjent for å fungere godt med Nextcloud, <strong>men det kan hende det ikke fungerer med din leverandør</strong>.",
+          "INFO": "WebDAV-implementeringer varierer dessverre mye. DailyMirror er kjent for å fungere godt med Nextcloud, <strong>men det kan hende det ikke fungerer med din leverandør</strong>.",
           "L_BASE_URL": "Base URL",
           "L_PASSWORD": "Passord",
           "L_SYNC_FOLDER_PATH": "Synkroniseringsmappebane",
@@ -1470,7 +1470,7 @@
           "S_FILL_ALL_FIELDS": "Vennligst fyll ut alle WebDAV-feltene først",
           "S_TEST_FAIL": "Tilkoblingstest mislyktes: {{error}} - Mål-URL: {{url}}",
           "S_TEST_SUCCESS": "Tilkoblingstest vellykket! Mål-URL: {{url}}",
-          "CONDITIONAL_HEADER_WARNING_MSG": "WebDAV-serveren din støtter ikke betingede hoder (If-Unmodified-Since). Dette betyr at Super Productivity ikke kan oppdage samtidige endringer fra andre enheter under opplasting.<br><br>Synkronisering vil fortsatt fungere, men det er en liten risiko for datakonflikter hvis du gjør endringer på flere enheter samtidig.",
+          "CONDITIONAL_HEADER_WARNING_MSG": "WebDAV-serveren din støtter ikke betingede hoder (If-Unmodified-Since). Dette betyr at DailyMirror ikke kan oppdage samtidige endringer fra andre enheter under opplasting.<br><br>Synkronisering vil fortsatt fungere, men det er en liten risiko for datakonflikter hvis du gjør endringer på flere enheter samtidig.",
           "CONDITIONAL_HEADER_WARNING_TITLE": "Redusert synkroniseringssikkerhet"
         },
         "BTN_DISABLE_ENCRYPTION": "Deaktiver kryptering",
@@ -1613,7 +1613,7 @@
         "ERROR_REMOTE_FILE_CORRUPTED": "Eksterne synkroniseringsdata kan ikke leses (de kan være avkortet eller skadet). De lokale dataene dine er trygge. Du kan overskrive de eksterne dataene med de lokale dataene dine.",
         "ERROR_REMOTE_FILE_EMPTY": "Den eksterne synkroniseringsfilen er tom. Dette kan skje etter en avbrutt synkronisering. Vil du overskrive de eksterne dataene med de lokale dataene dine?",
         "ERROR_REMOTE_FILE_LOCKED": "Den eksterne synkroniseringsfilen er låst av serveren. Dette kan løse seg ved neste synkroniseringsforsøk.",
-        "ERROR_SYNC_VERSION_MISMATCH": "Eksterne synkroniseringsdata bruker en inkompatibel formatversjon. Sørg for at alle enheter kjører samme versjon av Super Productivity.",
+        "ERROR_SYNC_VERSION_MISMATCH": "Eksterne synkroniseringsdata bruker en inkompatibel formatversjon. Sørg for at alle enheter kjører samme versjon av DailyMirror.",
         "FORCE_UPLOAD_FAILED": "Kunne ikke overskrive dataene på serveren. De lokale endringene dine er fortsatt tilgjengelige.",
         "HYDRATION_FALLBACK_RECOVERY": "Kunne ikke laste inn lagrede data — viser det som kunne gjenopprettes fra den lokale loggen. Manglende elementer kan gjenopprettes med en full synkronisering eller ved å importere en sikkerhetskopi.",
         "INCOMPLETE_REMOTE_OPERATIONS": "Nedlastede endringer kunne ikke tas i bruk fullstendig. Synkroniseringen er satt på pause for å beskytte dataene dine. Start appen på nytt for å prøve igjen. Hvis dette fortsetter å skje, må du gjenopprette en sikkerhetskopi.",
@@ -2488,11 +2488,11 @@
     "EXPORT_DATA": "Eksporter data",
     "IMPORT_FROM_FILE": "Importer fra fil",
     "IMPORT_FROM_URL": "Importer fra URL",
-    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Vennligst skriv inn den fullstendige URL-en til Super Productivity sikkerhetskopi JSON-filen du ønsker å importere.",
+    "IMPORT_FROM_URL_DIALOG_DESCRIPTION": "Vennligst skriv inn den fullstendige URL-en til DailyMirror sikkerhetskopi JSON-filen du ønsker å importere.",
     "IMPORT_FROM_URL_DIALOG_TITLE": "Importer fra URL",
     "OPEN_IMPORT_FROM_URL_DIALOG": "Importer fra URL",
     "PRIVACY_EXPORT": "Eksporter data (anonymisert)",
-    "PRIVACY_EXPORT_DESCRIPTION": "Eksporter anonymiserte data (for å sende til contact@super-productivity.com for feilsøking)",
+    "PRIVACY_EXPORT_DESCRIPTION": "Eksporter anonymiserte data (for å sende til https://github.com/VAN027/DailyMirror/issues for feilsøking)",
     "S_BACKUP_DOWNLOADED": "Sikkerhetskopi lastet ned til Android-dokumentmappe",
     "S_ERR_IMPORT_FAILED": "Import av data mislyktes",
     "S_ERR_INVALID_DATA": "Import mislyktes: Ugyldig JSON",
@@ -2616,10 +2616,10 @@
       "S_RESTORE_SUCCESS": "Sikkerhetskopien ble gjenopprettet."
     },
     "CALENDARS": {
-      "BROWSER_WARNING": "På grunn av begrensninger på tvers av opprinnelse <b>vil dette sannsynligvis IKKE fungere med nettleserversjonen av Super Productivity.<br /> Vennligst <a href=\"https://super-productivity.com/download/\">last ned skrivebordsversjonen</a> for å bruke denne funksjonen!</b>",
+      "BROWSER_WARNING": "På grunn av begrensninger på tvers av opprinnelse <b>vil dette sannsynligvis IKKE fungere med nettleserversjonen av DailyMirror.<br /> Vennligst <a href=\"https://github.com/VAN027/DailyMirror/releases/latest\">last ned skrivebordsversjonen</a> for å bruke denne funksjonen!</b>",
       "CAL_PATH": "URL til iCal-kilden",
       "CHECK_UPDATES": "Se etter eksterne oppdateringer hver X",
-      "HELP": "Du kan integrere kalendere for å bli påminnet og legge dem til som oppgaver i Super Productivity. Integreringen fungerer ved å bruke iCal-formatet. For at dette skal fungere, må kalenderne dine være tilgjengelige enten via Internett eller filsystemet.",
+      "HELP": "Du kan integrere kalendere for å bli påminnet og legge dem til som oppgaver i DailyMirror. Integreringen fungerer ved å bruke iCal-formatet. For at dette skal fungere, må kalenderne dine være tilgjengelige enten via Internett eller filsystemet.",
       "SHOW_BANNER_THRESHOLD": "Vis et varsel X før hendelsen (blank for deaktivert)",
       "AUTO_IMPORT_FOR_CURRENT_DAY": "Importer hendelser automatisk som oppgaver for gjeldende dag",
       "CAL_COLOR": "Kalenderfarge",
@@ -2705,7 +2705,7 @@
       "EXPAND_SUB_TASKS": "Utvid underoppgaver",
       "GLOBAL_ADD_NOTE": "Legg til et nytt notat",
       "GLOBAL_ADD_TASK": "Legg til en ny oppgave",
-      "GLOBAL_SHOW_HIDE": "Vis / skjul Super Productivity",
+      "GLOBAL_SHOW_HIDE": "Vis / skjul DailyMirror",
       "GLOBAL_TOGGLE_TASK_START": "Bytt tidssporing for siste aktive oppgave",
       "GO_TO_DAILY_AGENDA": "Gå til Agenda",
       "GO_TO_FOCUS_MODE": "Gå til Fokusmodus",
@@ -2841,7 +2841,7 @@
       "IS_USE_CUSTOM_WINDOW_TITLE_BAR": "Bruk egendefinert tittellinje (kun Windows/Linux)",
       "IS_USE_CUSTOM_WINDOW_TITLE_BAR_HINT": "Krever omstart for å tre i kraft",
       "LOCAL_REST_API_TOKEN": "Tilgangstoken",
-      "LOCAL_REST_API_TOKEN_ERROR": "Tilgangstokenet kunne ikke lagres, så API-et kjører ikke. Sjekk at Super Productivity kan skrive til datamappen sin, og bruk deretter Generer på nytt for å prøve igjen.",
+      "LOCAL_REST_API_TOKEN_ERROR": "Tilgangstokenet kunne ikke lagres, så API-et kjører ikke. Sjekk at DailyMirror kan skrive til datamappen sin, og bruk deretter Generer på nytt for å prøve igjen.",
       "LOCAL_REST_API_TOKEN_REGENERATE": "Generer tilgangstoken på nytt",
       "LOCAL_REST_API_TOKEN_REGENERATE_ERROR": "Det nye tilgangstokenet kunne ikke lagres. Det forrige tokenet er fortsatt gyldig.",
       "START_OF_NEXT_DAY": "Starttidspunkt neste dag",
@@ -2878,7 +2878,7 @@
       "IS_COUNTDOWN_BANNER_ENABLED": "Vis nedtellingsbanner før påminnelser forfaller",
       "TITLE": "Påminnelser",
       "DUE_DATE_NOTIFICATION_HOUR": "Time for visning av forfallsdatovarslinger (0-23)",
-      "HELP": "<p><strong>Viktig:</strong> Påminnelser bruker <strong>lokale varslinger</strong>, ikke push-varslinger. Dette betyr at appen må ha vært åpnet minst én gang på enheten din for at påminnelser skal bli planlagt. Påminnelser satt på en annen enhet vil bare vises etter at appen synkroniserer på målenheten.</p><p>På <strong>iOS</strong>, sørg for at varslinger er aktivert for Super Productivity i enhetsinnstillingene under «Innstillinger» > «Varslinger».</p>",
+      "HELP": "<p><strong>Viktig:</strong> Påminnelser bruker <strong>lokale varslinger</strong>, ikke push-varslinger. Dette betyr at appen må ha vært åpnet minst én gang på enheten din for at påminnelser skal bli planlagt. Påminnelser satt på en annen enhet vil bare vises etter at appen synkroniserer på målenheten.</p><p>På <strong>iOS</strong>, sørg for at varslinger er aktivert for DailyMirror i enhetsinnstillingene under «Innstillinger» > «Varslinger».</p>",
       "IS_FOCUS_WINDOW": "Fokuser appvinduet når påminnelse utløses",
       "NOTIFY_ON_DUE_DATE": "Vis varslinger for oppgaver som forfaller i dag",
       "USE_ALARM_STYLE_REMINDERS": "Bruk alarmstil-varslinger (kun Android)",
@@ -3119,7 +3119,7 @@
     "STATUS_PREPARING": "Forbereder migrering..."
   },
   "ONBOARDING": {
-    "TITLE": "Hvordan vil du bruke Super Productivity?",
+    "TITLE": "Hvordan vil du bruke DailyMirror?",
     "SUBTITLE": "Velg et oppsett som passer arbeidsflyten din. Du kan alltid endre dette senere i Innstillinger.",
     "PRIVACY_HINT": "Dataene dine forblir trygt på enheten din. Ingenting sendes til en server.",
     "PRESETS": {
@@ -3147,7 +3147,7 @@
       "OR_PRESS": "eller trykk",
       "SKIP_ARIA": "Lukk hint"
     },
-    "SYNC_CTA": "Bruker du allerede Super Productivity på en annen enhet?",
+    "SYNC_CTA": "Bruker du allerede DailyMirror på en annen enhet?",
     "SYNC_CTA_LINK": "Sett opp synkronisering"
   },
   "PDS": {

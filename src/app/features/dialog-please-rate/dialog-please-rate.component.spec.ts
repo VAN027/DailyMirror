@@ -49,6 +49,21 @@ describe('DialogPleaseRateComponent', () => {
     expect(view()).toBe('main');
   });
 
+  it('uses DailyMirror links and does not expose an unconfigured support mailbox', () => {
+    const root: HTMLElement = fixture.nativeElement;
+    expect(root.querySelector('a.action-item--primary')?.getAttribute('href')).toBe(
+      'https://github.com/VAN027/DailyMirror',
+    );
+    nav('showFeedback');
+    fixture.detectChanges();
+    const links = Array.from(root.querySelectorAll('a')).map((a) => a.href);
+    expect(links).toContain('https://github.com/VAN027/DailyMirror/issues/new');
+    expect(
+      links.every((url) => url.startsWith('https://github.com/VAN027/DailyMirror')),
+    ).toBeTrue();
+    expect(root.querySelector('.feedback-email')).toBeNull();
+  });
+
   it('navigating to feedback never closes the dialog or opts the user out', () => {
     nav('showFeedback');
     nav('showMain');
