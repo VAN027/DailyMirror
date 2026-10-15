@@ -1,61 +1,61 @@
-<a href="https://super-productivity.com/"><img alt="Banner" src="docs/screens/banner.png"/></a>
+<a href="https://super-productivity.com/"><img alt="项目横幅" src="docs/screens/banner.png"/></a>
 
 <p align="center">
   <strong>
-    An advanced todo list app with timeboxing & time tracking capabilities that supports importing tasks from your calendar, Jira, GitHub and others
+    一款功能丰富的待办事项应用，支持时间盒规划与时间追踪，可从日历、Jira、GitHub 等服务导入任务
   </strong>
 </p>
 
 <p align="center">
-  :globe_with_meridians: <a href="https://app.super-productivity.com">Open Web App</a> or :computer: <a href="https://github.com/super-productivity/super-productivity/wiki/2.01-Downloads-and-Install">Download</a>
+  :globe_with_meridians: <a href="https://app.super-productivity.com">打开网页版</a> 或 :computer: <a href="https://github.com/super-productivity/super-productivity/wiki/2.01-Downloads-and-Install">下载</a>
 </p>
 
 <br/>
 
-<!-- The <a> and <img> elements are intentionally made without space.
-     Because of the extra whitespace characters in <a>, makes blue underline lines appear for them.
-     Please do not change this formatting, so as not to make them.
+<!-- <a> 与 <img> 元素之间特意不留空格。
+     <a> 中的多余空白字符会导致蓝色下划线出现。
+     请保留此格式，避免产生多余的下划线。
 -->
 <p align="center">
-  <a href="https://lbesson.mit-license.org"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"/></a>
+  <a href="https://lbesson.mit-license.org"><img alt="MIT 许可证" src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"/></a>
   &nbsp;
-  <a href="https://github.com/super-productivity/super-productivity/discussions"><img alt="GitHub Discussions" src="https://img.shields.io/badge/Community-Discussions-blue?style=flat-square&logo=github"/></a>
+  <a href="https://github.com/super-productivity/super-productivity/discussions"><img alt="GitHub 讨论区" src="https://img.shields.io/badge/Community-Discussions-blue?style=flat-square&logo=github"/></a>
 </p>
 
 <p align="center">
-  <a href="https://www.reddit.com/r/superProductivity/"><img alt="Reddit Community" src="https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=Reddit&logoColor=white" width="85"/></a>
+  <a href="https://www.reddit.com/r/superProductivity/"><img alt="Reddit 社区" src="https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=Reddit&logoColor=white" width="85"/></a>
   &nbsp;
-  <a href="https://mastodon.social/@superproductivity"><img alt="Super Productivity on Mastodon" src="https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white" width="105"/></a>
+  <a href="https://mastodon.social/@superproductivity"><img alt="Super Productivity 的 Mastodon 主页" src="https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white" width="105"/></a>
   &nbsp;
-  <a href="https://x.com/intent/post?text=Super%20Productivity%20%20https%3A%2F%2Fsuper-productivity.com"><img alt="Tweet" src="https://img.shields.io/badge/TWEET-%23000000.svg?style=for-the-badge&logo=X" width="90"/></a>
+  <a href="https://x.com/intent/post?text=Super%20Productivity%20%20https%3A%2F%2Fsuper-productivity.com"><img alt="分享到 X" src="https://img.shields.io/badge/TWEET-%23000000.svg?style=for-the-badge&logo=X" width="90"/></a>
 </p>
 
 <p align="center">
-  <a href="https://youtu.be/_mvMXWLsL-8"><img src="docs/screens/reel.gif" alt="Super Productivity: capture a task, plan it on the schedule, then focus on it"/></a>
+  <a href="https://youtu.be/_mvMXWLsL-8"><img src="docs/screens/reel.gif" alt="Super Productivity：记录任务、安排日程，然后专注完成"/></a>
 </p>
 
-## :computer: Downloads & Install
+## :computer: 下载与安装
 
 <p align="center">
-  <a href='https://flathub.org/apps/com.super_productivity.SuperProductivity' target="_blank"><img alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en' height="30"/></a>
-  <a href="https://snapcraft.io/superproductivity" target="_blank"><img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="30"/></a>
-  <a href='//www.microsoft.com/store/apps/9NHFVG8361TW?cid=storebadge&ocid=badge' target="_blank"><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='Get it from Microsoft Store' height="30"/></a>
-  <a href='https://play.google.com/store/apps/details?id=com.superproductivity.superproductivity&amp;referrer=utm_source%3Dgithub%26utm_medium%3Downed%26utm_campaign%3Dreadme' target="_blank"><img src='docs/screens/google-play-badge.svg' alt='Play Store Badge' height="30"/></a>
-  <a href='//f-droid.org/en/packages/com.superproductivity.superproductivity' target="_blank"><img src='https://f-droid.org/assets/fdroid-logo-text_S0MUfk_FsnAYL7n2MQye-34IoSNm6QM6xYjDnMqkufo=.svg' alt='F-Droid Badge' height="30"/></a>
-  <a href='http://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/super-productivity/super-productivity/releases'><img src='https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png' alt='Get it on Obtainium' height="30"/></a>
-  <a href='//apps.apple.com/app/super-productivity/id1482572463?l=en' target="_blank"><img src='docs/screens/app-store-badge.svg' alt='App Store Badge' height="30"/></a>
+  <a href='https://flathub.org/apps/com.super_productivity.SuperProductivity' target="_blank"><img alt='从 Flathub 获取' src='https://flathub.org/api/badge?locale=en' height="30"/></a>
+  <a href="https://snapcraft.io/superproductivity" target="_blank"><img alt="从 Snap 商店获取" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="30"/></a>
+  <a href='//www.microsoft.com/store/apps/9NHFVG8361TW?cid=storebadge&ocid=badge' target="_blank"><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='从 Microsoft Store 获取' height="30"/></a>
+  <a href='https://play.google.com/store/apps/details?id=com.superproductivity.superproductivity&amp;referrer=utm_source%3Dgithub%26utm_medium%3Downed%26utm_campaign%3Dreadme' target="_blank"><img src='docs/screens/google-play-badge.svg' alt='Google Play 商店徽章' height="30"/></a>
+  <a href='//f-droid.org/en/packages/com.superproductivity.superproductivity' target="_blank"><img src='https://f-droid.org/assets/fdroid-logo-text_S0MUfk_FsnAYL7n2MQye-34IoSNm6QM6xYjDnMqkufo=.svg' alt='F-Droid 徽章' height="30"/></a>
+  <a href='http://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/super-productivity/super-productivity/releases'><img src='https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png' alt='通过 Obtainium 获取' height="30"/></a>
+  <a href='//apps.apple.com/app/super-productivity/id1482572463?l=en' target="_blank"><img src='docs/screens/app-store-badge.svg' alt='App Store 徽章' height="30"/></a>
 </p>
 
 <p align="center">
-  <strong>For all current downloads, package links, and platform-specific notes:
+  <strong>查看最新下载入口、软件包链接及各平台的使用说明：
     <a href="https://github.com/super-productivity/super-productivity/wiki/2.01-Downloads-and-Install" target="_blank">
-      check the wiki
+      请查阅 Wiki
     </a>
   </strong><br/>
   <a href="https://github.com/super-productivity/super-productivity/wiki/2.01-Downloads-and-Install" target="_blank">
     <img
       src="docs/screens/get-it-on-github.webp"
-      alt="Get it on GitHub"
+      alt="从 GitHub 获取"
       height="120"
     />
   </a>
@@ -67,158 +67,156 @@
   <a href="https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-rahunok-dlya-gumanitarnoyi-dopomogi-ukrayintsyam-postrajdalim-vid-rosiyskoyi-agresiyi" target="_blank">
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
-      alt="Ukraine Flag"
+      alt="乌克兰国旗"
       height="120"
     /><br/>
-    <strong>Humanitarian Aid for Ukraine</strong><br/>
-    Support humanitarian relief via the official National Bank of Ukraine account.
+    <strong>向乌克兰提供人道主义援助</strong><br/>
+    通过乌克兰国家银行的官方账户支持人道主义救援。
   </a>
 </p>
 
 <hr>
 
-## :heavy_check_mark: Features
+## :heavy_check_mark: 功能特色
 
-- **Keep organized and focused!** Plan and categorize your tasks using sub-tasks, projects and tags and color code them as needed.
-- **Plan ahead** with the **planner** and see your day laid out on the **schedule** timeline, next to your calendar events.
-- Sort tasks visually on **boards**, like the built-in **Kanban** and **Eisenhower Matrix**, or build your own.
-- Use **timeboxing** and **track your time**. Create time sheets and work summaries in a breeze to easily export them to your company's time tracking system.
-- Helps you to **establish healthy & productive habits**:
-  - A **break reminder** reminds you when it's time to step away.
-  - The **anti-procrastination feature** helps you gain perspective when you really need to.
-  - Need some extra focus? **Focus mode** offers **Pomodoro**, **Flowtime** and **countdown** sessions.
-  - **Collect personal metrics** to see, which of your work routines need adjustments.
-- Integrate with **Jira**, **Trello**, **GitHub**, **GitLab**, **Gitea**, **OpenProject**, **Linear**, **ClickUp**, **Redmine**, **Nextcloud Deck** and **Azure DevOps**. Auto import tasks assigned to you, plan the details locally, automatically create work logs, and get notified immediately, when something changes.
-- Basic **CalDAV** integration.
-- Back up and synchronize your data across multiple devices with **SuperSync**, **Dropbox** and **WebDAV** support. SuperSync is our own end-to-end encrypted sync service, which you can also [host yourself](https://github.com/super-productivity/super-productivity/tree/master/packages/super-sync-server).
-- Attach context information to tasks and projects. Create **notes**, attach **files** or create **project-level bookmarks** for links, files, and even commands.
-- Super Productivity **respects your privacy** and **does NOT collect any data**. No account or registration is required. **You decide where you store your data!**
-- Extend and restyle the app with **[plugins](https://github.com/super-productivity/super-productivity/wiki/2.15-Develop-a-Plugin)** and **[custom themes](https://github.com/super-productivity/super-productivity/wiki/3.09-Theming)**.
-- Runs on **Linux**, **macOS**, **Windows**, **Android**, **iOS** and in the **browser**.
-- It's **free** and **open source** and always will be.
+- **保持条理与专注！** 使用子任务、项目和标签规划与分类任务，并按需用颜色区分。
+- 通过**规划器**提前安排任务，在**日程**时间轴中查看每日计划，并与日历事件一同展示。
+- 通过**看板**直观整理任务，可使用内置的**看板视图**和**四象限矩阵**，也可创建自己的看板。
+- 使用**时间盒规划**与**时间追踪**，轻松生成工时表和工作总结，并导出到公司的工时管理系统。
+- 帮助你**养成健康、高效的工作习惯**：
+  - **休息提醒**会在适当的时候提醒你暂停工作、放松一下。
+  - **防拖延功能**帮助你在需要时理清思路，重新审视当前任务。
+  - 需要更专注？**专注模式**提供**番茄钟**、**心流计时**和**倒计时**。
+  - **记录个人统计数据**，了解哪些工作习惯需要调整。
+- 集成 **Jira**、**Trello**、**GitHub**、**GitLab**、**Gitea**、**OpenProject**、**Linear**、**ClickUp**、**Redmine**、**Nextcloud Deck** 和 **Azure DevOps**。自动导入分配给你的任务，在本地安排细节、自动创建工作日志，并在发生变化时及时收到通知。
+- 提供基础的 **CalDAV** 集成。
+- 通过 **SuperSync**、**Dropbox** 和 **WebDAV** 在多台设备间备份与同步数据。SuperSync 是项目提供的端到端加密同步服务，你也可以[自行部署](https://github.com/super-productivity/super-productivity/tree/master/packages/super-sync-server)。
+- 为任务和项目补充相关信息：创建**笔记**、添加**文件**，或为链接、文件乃至命令创建**项目书签**。
+- Super Productivity **尊重你的隐私**，**不会收集任何数据**，无需账户或注册。**数据存放在哪里，由你决定！**
+- 通过**[插件](https://github.com/super-productivity/super-productivity/wiki/2.15-Develop-a-Plugin)**和**[自定义主题](https://github.com/super-productivity/super-productivity/wiki/3.09-Theming)**扩展应用功能并调整外观。
+- 支持 **Linux**、**macOS**、**Windows**、**Android**、**iOS** 和**浏览器**。
+- 始终**免费**且**开源**。
 
-And much more!
+还有更多功能等你探索！
 
 > [!NOTE]
-> The web version has some limitations: See the **[Web App vs Desktop comparison](https://github.com/super-productivity/super-productivity/wiki/3.05-Web-App-vs-Desktop)** for more details.
+> 网页版存在一些限制，详情请参阅**[网页版与桌面版对比](https://github.com/super-productivity/super-productivity/wiki/3.05-Web-App-vs-Desktop)**。
 
-## :book: Documentation and Guides
+## :book: 文档与指南
 
-<!-- Getting Started -->
-<h3>Getting Started</h3>
+<!-- 快速入门 -->
+<h3>快速入门</h3>
 <ul>
-  <li><a href="https://dev.to/johannesjo/getting-started-with-super-productivity-2791">Getting started guide</a> (article)</li>
-  <li><a href="https://www.youtube.com/watch?v=VoF2_RSdNXA">Video walkthrough</a> (YouTube)</li>
-  <li><a href="https://dev.to/johannesjo/the-prioritising-scheme-how-to-eat-the-frog-with-super-productivity-mlk">Eat the frog prioritizing scheme</a></li>
+  <li><a href="https://dev.to/johannesjo/getting-started-with-super-productivity-2791">入门指南</a>（文章）</li>
+  <li><a href="https://www.youtube.com/watch?v=VoF2_RSdNXA">视频教程</a>（YouTube）</li>
+  <li><a href="https://dev.to/johannesjo/the-prioritising-scheme-how-to-eat-the-frog-with-super-productivity-mlk">“吃掉那只青蛙”：优先处理重要任务的方法</a></li>
 </ul>
-<p><strong>Starting Point in Wiki:</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/wiki/1.01-First-Steps">First steps</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.00-Reference">Reference</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/2.00-How_To">How-To</a>
+<p><strong>Wiki 阅读入口：</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/wiki/1.01-First-Steps">初次使用</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.00-Reference">参考手册</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/2.00-How_To">操作指南</a>
 </p>
-<p><strong>Productivity Tips:</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.03-Keyboard-Shortcuts">Keyboard Shortcuts</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.04-Short-Syntax">Short Syntax</a>
+<p><strong>效率技巧：</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.03-Keyboard-Shortcuts">键盘快捷键</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.04-Short-Syntax">快捷语法</a>
 </p>
-<p><strong>Need Help?</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/discussions">Visit the discussions page</a>
+<p><strong>需要帮助？</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/discussions">访问讨论区</a>
 </p>
-<p>See the bottom of the README for more information on the documentation.</p>
+<p>关于文档的更多说明，请参阅本 README 的末尾部分。</p>
 
-<!-- Advanced Topics -->
-<h3>Advanced Topics</h3>
-<p>Here are some other topics covered in the
-  <a href="https://github.com/super-productivity/super-productivity/wiki">official wiki</a>:
+<!-- 进阶主题 -->
+<h3>进阶主题</h3>
+<p><a href="https://github.com/super-productivity/super-productivity/wiki">官方 Wiki</a> 还涵盖以下主题：
 </p>
-<p><strong>Development:</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/wiki/2.11-Run-the-Development-Server">Run dev server</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/2.12-Package-the-App">Package the app</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/2.14-Build-for-Android">Build for Android</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/2.13-Run-with-Docker">Run with Docker</a>
+<p><strong>开发：</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/wiki/2.11-Run-the-Development-Server">运行开发服务器</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/2.12-Package-the-App">打包应用</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/2.14-Build-for-Android">构建 Android 版本</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/2.13-Run-with-Docker">使用 Docker 运行</a>
 </p>
-<p><strong>Data Management:</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/wiki/4.23-Managing-Your-Data">User Data</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.07-Issue-Integration-Comparison">Issue Providers</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.08-Sync-Integration-Comparison">Sync Providers</a>
+<p><strong>数据管理：</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/wiki/4.23-Managing-Your-Data">用户数据</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.07-Issue-Integration-Comparison">议题来源</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.08-Sync-Integration-Comparison">同步服务</a>
 </p>
-<p><strong>Customization:</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/wiki/2.15-Develop-a-Plugin">Plugins</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.09-Theming">Themes</a>
+<p><strong>个性化设置：</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/wiki/2.15-Develop-a-Plugin">插件</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.09-Theming">主题</a>
 </p>
-<p><strong>APIs:</strong><br>
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.01-API#1-sync-server-rest-api">Sync Server</a> •
-  <a href="https://github.com/super-productivity/super-productivity/wiki/3.01-API#2-plugin-api">Plugins</a> •
+<p><strong>API 接口：</strong><br>
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.01-API#1-sync-server-rest-api">同步服务器</a> •
+  <a href="https://github.com/super-productivity/super-productivity/wiki/3.01-API#2-plugin-api">插件</a> •
   <a href="https://github.com/super-productivity/super-productivity/wiki/3.01-API#3-local-rest-api">REST</a>
 </p>
 
-## Community
+## 社区
 
-The development of Super Productivity is driven by a wonderful community of users and contributors. Thank you all so much for your support!
+Super Productivity 的发展离不开用户与贡献者组成的优秀社区。衷心感谢大家的支持！
 
 <p>
   :eyes:
   <a href='https://github.com/super-productivity/awesome-super-productivity'>
-    Check out our awesome curated list of community-created resources about Super Productivity
+    查看我们精选的 Super Productivity 社区资源清单
   </a>
 </p>
 
-### :hearts: Contributing
+### :hearts: 参与贡献
 
-You don't have to be a programmer to help: spread the word, [answer questions](https://github.com/super-productivity/super-productivity/discussions), [report bugs](https://github.com/super-productivity/super-productivity/issues/new), [contribute translations](https://github.com/super-productivity/super-productivity/wiki/2.18-Contribute-Translations), build [plugins](https://github.com/super-productivity/super-productivity/wiki/2.15-Develop-a-Plugin) or [themes](https://github.com/super-productivity/super-productivity/wiki/3.09-Theming), or [sponsor the project](https://github.com/sponsors/johannesjo).
+即使不会编程，你也可以提供帮助：向他人推荐项目、[回答问题](https://github.com/super-productivity/super-productivity/discussions)、[反馈问题](https://github.com/super-productivity/super-productivity/issues/new)、[贡献翻译](https://github.com/super-productivity/super-productivity/wiki/2.18-Contribute-Translations)、开发[插件](https://github.com/super-productivity/super-productivity/wiki/2.15-Develop-a-Plugin)或[主题](https://github.com/super-productivity/super-productivity/wiki/3.09-Theming)，或[赞助项目](https://github.com/sponsors/johannesjo)。
 
-Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md) and follow the [commit message format](.github/CONTRIBUTING.md#commit-message-format).
+提交拉取请求前，请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，并遵循[提交信息格式](.github/CONTRIBUTING.md#commit-message-format)。
 
 [//]: # '[![inlang status badge](https://badge.inlang.com/?url=github.com/super-productivity/super-productivity)](https://fink.inlang.com/github.com/super-productivity/super-productivity?ref=badge)'
 [//]: #
-[//]: # 'You can use the Fink Localization Editor to edit, lint, and add translations for different languages. [Contribute via fink Guide](https://inlang.com/g/6ddyhpoi).'
+[//]: # '你可以使用 Fink 本地化编辑器编辑、检查并添加不同语言的翻译。[通过 Fink 贡献翻译的指南](https://inlang.com/g/6ddyhpoi).'
 
-### Special Thanks to our Sponsors
+### 特别感谢赞助者
 
-A big thank you to all our sponsors!
+衷心感谢所有赞助者！
 
-- **[SignPath.io](https://signpath.io?utm_source=foundation&utm_medium=github&utm_campaign=super-productivity)**: free code signing for our Windows binaries, with a certificate by [SignPath Foundation](https://signpath.org?utm_source=foundation&utm_medium=github&utm_campaign=super-productivity).
+- **[SignPath.io](https://signpath.io?utm_source=foundation&utm_medium=github&utm_campaign=super-productivity)**：为 Windows 二进制程序提供免费的代码签名服务，证书由 [SignPath Foundation](https://signpath.org?utm_source=foundation&utm_medium=github&utm_campaign=super-productivity) 提供。
 
-_(If you are, intend to or have been a sponsor and want to be shown here, [please let me know](mailto:contact@super-productivity.com)!)_
+_（如果你正在、计划或曾经赞助本项目，并希望出现在这里，[请联系我们](mailto:contact@super-productivity.com)！）_
 
-## Documentation: Manual versus Automated
+## 文档：人工维护与自动生成
 
-There are two wikis: the official one hosted by GitHub and the autonomously generated variant using [DeepWiki.com](https://deepwiki.com/super-productivity/super-productivity). The manually curated version is a more stable and approachable resource designed to help you understand the app from a more human-focused perspective whereas DeepWiki is optimized for explaining the code itself with little regard for context beyond that.
+项目提供两种 Wiki：托管在 GitHub 上的官方 Wiki，以及由 [DeepWiki.com](https://deepwiki.com/super-productivity/super-productivity) 自动生成的版本。人工维护的文档更加稳定、易读，侧重从用户角度帮助你理解应用；DeepWiki 则主要解释代码本身，对代码之外的背景涉及较少。
 
-<!-- Official Wiki -->
-<h3>Official Wiki</h3>
+<!-- 官方 Wiki -->
+<h3>官方 Wiki</h3>
 <p>
-  It is preferable to maintain local documentation rather than rely on an external service.
-  It is also preferable that the documentation is updated in tandem with the code changes as
-  demonstrated in
-  <a href="https://github.com/super-productivity/super-productivity/commit/7a51d4b06e414fdcc48e4999197a93eee9cd09da">this commit</a>.
+  项目更倾向于在仓库内维护文档，减少对外部服务的依赖。
+  文档也应与代码变更同步更新，具体示例见
+  <a href="https://github.com/super-productivity/super-productivity/commit/7a51d4b06e414fdcc48e4999197a93eee9cd09da">这次提交</a>。
 </p>
 <p>
-  Changes to files within <code>./docs/wiki</code> are linted in CI before being automatically
-  sync'd to the repository's official Wiki hosted by GitHub.
+  <code>./docs/wiki</code> 中的文件变更会先通过 CI 检查，
+  然后自动同步到托管在 GitHub 上的仓库官方 Wiki。
 </p>
 <p>
-  Migrating to Docusaurus is a long-term goal once the content and structure of the wiki has matured
-  and the remaining "legacy docs" have either been reworked or removed. There are some automations in development to help reduce the difference between the published docs and the state of the code while retaining a human-in-the-loop.
+  迁移到 Docusaurus 是一个长期目标，前提是 Wiki 的内容和结构已经成熟，
+  剩余的“旧版文档”也已完成重写或移除。项目正在开发一些自动化工具，
+  在保留人工审核的同时，缩小已发布文档与实际代码之间的差异。
 </p>
 
 <!-- DeepWiki -->
 <h3>DeepWiki.com</h3>
 <p>
-  If you have very specific questions about how the code works or why a bug might be producing
-  a particular message it might be useful to
+  如果你想深入了解某段代码如何工作，或某个错误为何会产生特定提示，可以尝试
   <a href="https://deepwiki.com/super-productivity/super-productivity">
-    <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
-  </a>. It can help "cite your sources" when discussing functionality and code that you don't fully
-  understand as part of feature requests or bug reports.
+    <img src="https://deepwiki.com/badge.svg" alt="向 DeepWiki 提问">
+  </a>。在提出功能请求或反馈问题时，如果你对相关功能和代码尚不完全了解，
+  它可以帮助你找到讨论所需的参考依据。
 </p>
 <p>
-  This automated
-  <a href="https://diataxis.fr/reference/#reference">reference</a>
-  does come with some significant drawbacks:
+  这类自动生成的
+  <a href="https://diataxis.fr/reference/#reference">参考文档</a>
+  也存在一些明显不足：
 </p>
 <ol>
-  <li><strong>Intent:</strong> Describes what code does, not why decisions or tradeoffs were made.</li>
-  <li><strong>Staleness:</strong> Will *always* lag behind the code.</li>
-  <li><strong>Code-Focused:</strong> Does not provide guides or conceptual explanations.</li>
-  <li><strong>Cost:</strong> Potential future cost and higher resource usage than static docs.</li>
+  <li><strong>设计意图：</strong>描述代码做了什么，但不解释相关决策与取舍的原因。</li>
+  <li><strong>时效性：</strong>始终滞后于代码。</li>
+  <li><strong>侧重代码：</strong>不提供操作指南或概念解释。</li>
+  <li><strong>成本：</strong>未来可能产生费用，资源消耗也高于静态文档。</li>
 </ol>

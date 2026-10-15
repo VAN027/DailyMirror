@@ -11,7 +11,7 @@ import {
   selectUndoneTodayTaskIds,
 } from './work-context.selectors';
 import { WorkContext, WorkContextType } from '../work-context.model';
-import { TaskCopy } from '../../tasks/task.model';
+import { DEFAULT_TASK, TaskCopy } from '../../tasks/task.model';
 import { getDbDateStr } from '../../../util/get-db-date-str';
 /**
  * Tests for work-context selectors.
@@ -449,6 +449,38 @@ describe('workContext selectors', () => {
   });
 
   describe('selectTodayTaskIds (virtual tag pattern - uses dueDay)', () => {
+    it('keeps overdue dated and timed tasks outside Today until explicitly added', () => {
+      const tasks: TaskCopy[] = [
+        { ...DEFAULT_TASK, projectId: 'p1', id: 'today', dueDay: '2026-10-14' },
+        { ...DEFAULT_TASK, projectId: 'p1', id: 'overdue-day', dueDay: '2026-10-13' },
+        {
+          ...DEFAULT_TASK,
+          id: 'overdue-time',
+          projectId: 'p1',
+          dueWithTime: new Date(2026, 9, 13, 12).getTime(),
+        },
+      ];
+      const result = selectTodayTaskIds.projector(
+        fakeEntityStateFromArray([{ ...TODAY_TAG, taskIds: tasks.map((t) => t.id) }]),
+        Object.fromEntries(
+          tasks.map((task) => [
+            task.id,
+            {
+              ...task,
+              dueDay: task.dueDay ?? null,
+              dueWithTime: task.dueWithTime ?? null,
+              deadlineDay: task.deadlineDay ?? null,
+              deadlineWithTime: task.deadlineWithTime ?? null,
+              parentId: task.parentId ?? null,
+            },
+          ]),
+        ),
+        '2026-10-14',
+        0,
+      );
+      expect(result).toEqual(['today']);
+    });
+
     it('should return empty array when no tasks have dueDay === today', () => {
       const tagState = fakeEntityStateFromArray([TODAY_TAG]);
       const taskState = fakeEntityStateFromArray([]) as any;
@@ -978,7 +1010,7 @@ describe('workContext selectors', () => {
         expect(result).toEqual([]);
       });
 
-      it('should carry unfinished tasks from the previous logical day with a 4h offset', () => {
+      it('keeps previous logical-day tasks in Overdue with a 4h offset', () => {
         // 11 PM on Feb 14 local time
         const feb14_11pm = new Date(2026, 1, 14, 23, 0, 0, 0).getTime();
 
@@ -1000,7 +1032,7 @@ describe('workContext selectors', () => {
           offsetTodayStr,
           FOUR_HOURS_MS,
         );
-        expect(result).toEqual(['task1']);
+        expect(result).toEqual([]);
       });
 
       it('should NOT include task with dueWithTime at exactly 4:00 AM Feb 16 when offset is 4h (4 AM - 4h = midnight Feb 16 != Feb 15)', () => {

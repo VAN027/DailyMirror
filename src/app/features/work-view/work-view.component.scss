@@ -261,13 +261,8 @@ finish-day-btn,
   margin-top: var(--s2);
 }
 
-.overdue-btn-wrapper {
-  display: flex;
-  gap: var(--s2);
-  justify-content: center;
-  align-items: center;
-  padding-bottom: var(--s);
-  padding-top: var(--s);
+.overdue-task-list {
+  padding-top: var(--s2);
 }
 
 .repeat-cfg-list {

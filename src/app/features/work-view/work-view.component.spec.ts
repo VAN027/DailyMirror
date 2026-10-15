@@ -680,7 +680,7 @@ describe('WorkViewComponent', () => {
       expect(cmp.isDoneHidden()).toBe(false);
     });
 
-    it('does not expand an obsolete overdue panel for tasks now in the main list', () => {
+    it('expands the overdue panel when navigating to an overdue task', () => {
       const { cmp } = setup({
         focusItem: 'overdue-1',
         overdueTasks: [buildTask('overdue-1')],
@@ -690,7 +690,7 @@ describe('WorkViewComponent', () => {
 
       retriggerFocusAttempt(cmp);
 
-      expect(cmp.isOverdueHidden()).toBe(true);
+      expect(cmp.isOverdueHidden()).toBe(false);
     });
 
     it('does not expand the events panel for a timed task now in the main list', () => {

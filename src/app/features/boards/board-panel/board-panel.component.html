@@ -45,6 +45,7 @@
       [cdkDragStartDelay]="dragDelayForTouch()"
       [task]="task"
       [focusable]="true"
+      [openDetailsOnClick]="true"
       [cdkDragDisabled]="isMoving() || multiSelect.isTouchSelectionMode()"
       [tagsToHide]="panelCfg().includedTagIds || []"
     >

@@ -126,6 +126,7 @@ export class PlannerTaskComponent implements OnInit, OnDestroy, AfterViewInit {
   readonly tagsToHide = input<string[]>();
   // Containers opt in explicitly; TASK_CARD_LIST supplies board-specific movement.
   readonly focusable = input<boolean>(false);
+  readonly openDetailsOnClick = input(false);
   readonly isMultiSelected = computed(() =>
     this.focusable() ? this._multiSelect.selectedIds().has(this.task().id) : false,
   );
@@ -203,7 +204,7 @@ export class PlannerTaskComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.focusable()) {
       if (!this._isInteractiveClickTarget(target)) {
         (this._elementRef.nativeElement as HTMLElement).focus();
-        if (!this._cardList || isTouchActive()) {
+        if (this.openDetailsOnClick() || !this._cardList || isTouchActive()) {
           this._taskService.setSelectedId(this.task().id);
         }
       }

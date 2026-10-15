@@ -272,33 +272,25 @@
                 [isIconBefore]="true"
                 [isGroup]="true"
               >
-                <div class="overdue-btn-wrapper">
-                  <button
-                    mat-stroked-button
-                    color="primary"
-                    tabindex="1"
-                    (click)="addAllOverdueToMyDay()"
-                  >
-                    <mat-icon>wb_sunny</mat-icon>
-                    {{ T.F.TASK.CMP.ADD_TO_MY_DAY | translate }}
-                  </button>
-                  <!--                <button-->
-                  <!--                  mat-stroked-button-->
-                  <!--                  color="primary"-->
-                  <!--                  tabindex="1"-->
-                  <!--                >-->
-                  <!--                  <mat-icon>edit_calendar</mat-icon>-->
-                  <!--                  {{ T.F.PLANNER.D.ADD_PLANNED.RE_PLAN_ALL | translate }}-->
-                  <!--                </button>-->
-                </div>
-
-                <div>
+                <div class="overdue-task-list">
                   <task-list
                     [tasks]="overdueTasks()"
                     [isSortingDisabled]="true"
                     listId="PARENT"
                     listModelId="OVERDUE"
                   ></task-list>
+                </div>
+                <div class="finish-day-button-wrapper">
+                  <button
+                    mat-flat-button
+                    color="primary"
+                    tabindex="1"
+                    class="e2e-add-all-overdue-to-today"
+                    (click)="addAllOverdueToMyDay()"
+                  >
+                    <mat-icon>add</mat-icon>
+                    {{ T.F.TASK.B.ADD_ALL_TO_TODAY | translate }}
+                  </button>
                 </div>
               </collapsible>
             </section>

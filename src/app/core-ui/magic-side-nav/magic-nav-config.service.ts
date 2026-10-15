@@ -400,8 +400,6 @@ export class MagicNavConfigService {
       items: [
         ...today,
         ...pinned.filter((item) => this._coreItems.some((core) => core.id === item.id)),
-        { type: 'separator', id: 'dm-bottom', mtAuto: true },
-        ...pinned.filter((item) => !this._coreItems.some((core) => core.id === item.id)),
         {
           type: 'action',
           id: 'dm-more',
@@ -410,6 +408,8 @@ export class MagicNavConfigService {
           action: () => this.isMoreExpanded.update((value) => !value),
         },
         ...(this.isMoreExpanded() ? hidden : []),
+        ...pinned.filter((item) => !this._coreItems.some((core) => core.id === item.id)),
+        { type: 'separator', id: 'dm-bottom', mtAuto: true },
         {
           type: 'route',
           id: 'search',

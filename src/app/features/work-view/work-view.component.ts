@@ -348,7 +348,9 @@ export class WorkViewComponent implements OnInit, OnDestroy {
     return { dict, noSection };
   });
 
-  isShowOverduePanel = computed(() => false);
+  isShowOverduePanel = computed(
+    () => this.isOnTodayList() && this.overdueTasks().length > 0,
+  );
 
   isShowTimeWorkedWithoutBreak: boolean = true;
   splitInputPos: number = 100;
@@ -588,6 +590,7 @@ export class WorkViewComponent implements OnInit, OnDestroy {
       TaskSharedActions.planTasksForToday({
         taskIds: overdueTasks.map((t) => t.id),
         today: this._dateService.todayStr(),
+        isAddToBottom: true,
         startOfNextDayDiffMs: this._dateService.getStartOfNextDayDiffMs(),
       }),
     );

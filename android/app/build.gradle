@@ -27,8 +27,8 @@ android {
         minSdkVersion 24
         targetSdkVersion 36
         compileSdk 36
-        versionCode 19_01_00_9001
-        versionName "19.1.0"
+        versionCode 19_01_01_9000
+        versionName "19.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 hostName       : "app.super-productivity.com",

@@ -256,6 +256,31 @@ describe('taskSharedSchedulingMetaReducer', () => {
   });
 
   describe('planTasksForToday action', () => {
+    it('appends overdue tasks in order and remains idempotent on a second click', () => {
+      const state = createStateWithExistingTasks([], [], [], ['existing-task']);
+      for (const id of ['overdue-1', 'overdue-2']) {
+        state[TASK_FEATURE_NAME].entities[id] = createMockTask({
+          id,
+          dueDay: '2024-06-14',
+        });
+        (state[TASK_FEATURE_NAME].ids as string[]).push(id);
+      }
+      const action = TaskSharedActions.planTasksForToday({
+        taskIds: ['overdue-1', 'overdue-2'],
+        today: '2024-06-15',
+        startOfNextDayDiffMs: 0,
+        isAddToBottom: true,
+      });
+      const updated: RootState = metaReducer(state, action);
+      expect(updated[TAG_FEATURE_NAME].entities['TODAY']?.taskIds).toEqual([
+        'existing-task',
+        'overdue-1',
+        'overdue-2',
+      ]);
+      expect(updated[TASK_FEATURE_NAME].entities['overdue-1']?.dueDay).toBe('2024-06-15');
+      expect(metaReducer(updated, action)).toBe(updated);
+    });
+
     it('should add new tasks to the top of Today tag', () => {
       const testState = createStateWithExistingTasks([], [], [], ['existing-task']);
       // Add task entities that will be planned for today

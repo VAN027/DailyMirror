@@ -126,6 +126,20 @@
   }
 }
 
+// The panel spans the header row, so it owns the window-controls space when
+// open. Reserve it outside the scrolling content so titles cannot scroll
+// underneath the native buttons. Reuse the existing Electron overlay height.
+:host-context(.isElectron.isNoMac.isObsidianStyleHeader:not(.isFullScreen)) {
+  .right-panel {
+    box-sizing: border-box;
+    padding-top: env(titlebar-area-height, var(--wco-height));
+  }
+
+  .side-inner {
+    min-height: 0;
+  }
+}
+
 // Resize handle (matching magic-nav style)
 .resize-handle {
   touch-action: none; // allow pointer events to control without scrolling
