@@ -2833,7 +2833,11 @@
       "WALLPAPER": "壁纸",
       "WALLPAPER_BUTTON": "设置壁纸…",
       "WALLPAPER_DIALOG_TITLE": "全局壁纸",
-      "WALLPAPER_HINT": "显示在没有自定义背景的页面上（规划器、日程、看板、设置等）。拥有自定义图片的标签和项目会覆盖此壁纸。"
+      "WALLPAPER_HINT": "显示在没有自定义背景的页面上（规划器、日程、看板、设置等）。拥有自定义图片的标签和项目会覆盖此壁纸。",
+      "WINDOWS_STARTUP": "开机自动启动",
+      "WINDOWS_STARTUP_HINT": "仅对本机生效，开关立即保存。便携版请保持 exe 文件位置不变；移动后请重新开启此选项。",
+      "WINDOWS_STARTUP_UNAVAILABLE": "仅打包后的 Windows 桌面版可用。",
+      "WINDOWS_STARTUP_ERROR": "无法读取或修改 Windows 自启动设置，请重新打开设置后重试。"
     },
     "POMODORO": {
       "BREAK_DURATION": "短休息持续时间",
@@ -3461,8 +3465,8 @@
     "THEME_VELVET": "天鹅绒"
   },
   "DM": {
-    "NAV": "导航与显示",
-    "NAV_HINT": "选择常驻侧栏的入口；隐藏的入口仍可在“更多”中访问。",
+    "NAV": "侧栏导航",
+    "NAV_HINT": "今天固定显示；关闭的入口仍可在“更多”中访问。",
     "MORE": "更多",
     "RESET_NAV": "恢复默认导航",
     "QUADRANTS": "四象限",

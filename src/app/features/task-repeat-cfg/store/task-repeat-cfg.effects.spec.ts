@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { firstValueFrom, Observable, of, throwError } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { TaskRepeatCfgEffects } from './task-repeat-cfg.effects';
 import { TaskService } from '../../tasks/task.service';
@@ -96,6 +96,8 @@ describe('TaskRepeatCfgEffects - Repeatable Subtasks', () => {
       'getTaskRepeatCfgById$',
       'getTaskRepeatCfgByIdAllowUndefined$',
       '_getActionsForTaskRepeatCfg',
+      'createRepeatableTask',
+      'getAllUnprocessedRepeatableTasks$',
     ]);
     // Default: config exists. Individual tests override; the "deleted config"
     // tests set this to of(undefined) to exercise the #8715 crash-guard.
@@ -140,6 +142,27 @@ describe('TaskRepeatCfgEffects - Repeatable Subtasks', () => {
     testScheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
     });
+  });
+
+  it('rechecks only this parent’s unpaused series when reopened', async () => {
+    taskRepeatCfgService.getAllUnprocessedRepeatableTasks$.and.returnValue(
+      of([
+        { ...mockRepeatCfg, id: 'child-series', parentId: mockTask.id },
+        { ...mockRepeatCfg, id: 'paused-series', parentId: mockTask.id, isPaused: true },
+        { ...mockRepeatCfg, id: 'other-series', parentId: 'another-parent' },
+      ]),
+    );
+    taskRepeatCfgService.createRepeatableTask.and.resolveTo();
+    actions$ = of(
+      TaskSharedActions.updateTask({
+        task: { id: mockTask.id, changes: { isDone: false } },
+      }),
+    );
+    await firstValueFrom(effects.resumeSubtaskSeries$);
+    expect(taskRepeatCfgService.createRepeatableTask).toHaveBeenCalledTimes(1);
+    expect(taskRepeatCfgService.createRepeatableTask.calls.argsFor(0)[0].id).toBe(
+      'child-series',
+    );
   });
 
   describe('Helper Methods', () => {

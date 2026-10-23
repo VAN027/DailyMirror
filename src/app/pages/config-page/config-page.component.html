@@ -1,7 +1,6 @@
 <div class="page-settings page-wrapper">
   @if (globalCfg) {
     <div class="settings-container">
-      <dm-navigation-settings />
       <!-- Shared by every tab's `mat-tab-label`: an icon + translated title. -->
       <ng-template
         #tabLabel
@@ -92,6 +91,11 @@
             </h2>
             <section class="config-section appearance-section">
               <theme-selector></theme-selector>
+            </section>
+            <section class="config-section sidebar-navigation-section">
+              <dm-navigation-settings
+                [isExpanded]="expandedSection === 'sidebar-navigation'"
+              />
             </section>
             @for (section of generalFormCfg; track section.key) {
               <section class="config-section section-{{ section.key }}">

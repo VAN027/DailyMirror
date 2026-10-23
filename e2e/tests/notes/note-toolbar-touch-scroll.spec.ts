@@ -29,10 +29,11 @@ test.describe('Fullscreen note editor toolbar on a phone', () => {
   }) => {
     await workViewPage.waitForTaskList();
 
-    // The notes page object drives the desktop side panel; on the phone layout
-    // Project Notes is only reachable through the side panel menu.
-    await page.locator('button[aria-label="Side Panel Menu"]').first().tap();
-    await page.locator('.mat-mdc-menu-item', { hasText: 'Project Notes' }).first().tap();
+    // Open the notes panel at desktop width, then test the editor at phone
+    // width. The mobile bottom bar now links directly to the schedule.
+    await page.setViewportSize({ width: 1280, height: 851 });
+    await page.locator('.e2e-toggle-notes-btn').tap();
+    await page.setViewportSize({ width: 393, height: 851 });
 
     const noteText = `${testPrefix}-toolbar-note`;
     await page.locator('#add-note-btn, button:has-text("Add new Note")').first().tap();

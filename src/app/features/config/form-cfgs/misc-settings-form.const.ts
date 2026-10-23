@@ -14,6 +14,9 @@ export const MISC_SETTINGS_FORM_CFG: ConfigFormSection<MiscConfig> = {
   key: 'misc',
   help: T.GCF.MISC.HELP,
   items: [
+    ...((IS_ELECTRON && !window.ea.isMacOS() && !window.ea.isLinux()
+      ? [{ type: 'windows-startup' }]
+      : []) as LimitedFormlyFieldConfig<MiscConfig>[]),
     ...((IS_ELECTRON
       ? [
           {

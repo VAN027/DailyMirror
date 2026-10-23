@@ -1,3 +1,5 @@
+import { addSubTask } from '../tasks/store/task.actions';
+import { taskReducer, initialTaskState } from '../tasks/store/task.reducer';
 import { TestBed } from '@angular/core/testing';
 import { TaskRepeatCfgService } from './task-repeat-cfg.service';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -79,6 +81,7 @@ describe('TaskRepeatCfgService', () => {
       'getTasksWithSubTasksByRepeatCfgId$',
       'getTasksByRepeatCfgId$',
       'getArchiveTasksForRepeatCfgId',
+      'getByIdOnce$',
     ]);
     const workContextServiceSpy = jasmine.createSpyObj('WorkContextService', [], {
       activeWorkContextType: WorkContextType.PROJECT,
@@ -116,6 +119,65 @@ describe('TaskRepeatCfgService', () => {
     taskService = TestBed.inject(TaskService) as jasmine.SpyObj<TaskService>;
 
     dispatchSpy = spyOn(store, 'dispatch');
+  });
+
+  describe('independently recurring subtasks', () => {
+    const parent: Task = {
+      ...DEFAULT_TASK,
+      id: 'parent',
+      title: 'Parent',
+      projectId: 'p',
+    };
+    beforeEach(() => {
+      taskService.getByIdOnce$.and.returnValue(of(parent));
+      taskService.getTasksByRepeatCfgId$.and.returnValue(of([]));
+      taskService.getTasksWithSubTasksByRepeatCfgId$.and.returnValue(of([]));
+      taskService.createNewTaskWithDefaults.and.callFake((args) => ({
+        ...DEFAULT_TASK,
+        ...args.additional,
+        id: args.id!,
+        title: args.title || '',
+        projectId: args.additional?.projectId || parent.projectId,
+      }));
+    });
+    it('uses the native subtask action and replays without duplicate parent links', async () => {
+      const actions = await service._getActionsForTaskRepeatCfg({
+        ...mockTaskRepeatCfg,
+        parentId: parent.id,
+      });
+      const action = actions.find((a) => a.type === addSubTask.type)!;
+      expect(action).toBeDefined();
+      expect(actions.some((a) => a.type === TaskSharedActions.addTask.type)).toBeFalse();
+      const state = {
+        ...initialTaskState,
+        ids: [parent.id],
+        entities: { [parent.id]: parent },
+      };
+      const once = taskReducer(state, action);
+      const twice = taskReducer(once, action);
+      const childId = twice.entities[parent.id]!.subTaskIds[0];
+      expect(twice.entities[parent.id]!.subTaskIds).toEqual([childId]);
+      expect(twice.entities[childId]!.parentId).toBe(parent.id);
+      expect(twice.entities[childId]!.projectId).toBe(parent.projectId);
+      expect(twice.entities[childId]!.repeatCfgId).toBe(mockTaskRepeatCfg.id);
+      taskService.getTasksByRepeatCfgId$.and.returnValue(of([twice.entities[childId]!]));
+      const repeated = await service._getActionsForTaskRepeatCfg({
+        ...mockTaskRepeatCfg,
+        parentId: parent.id,
+      });
+      expect(repeated.some((a) => a.type === addSubTask.type)).toBeFalse();
+    });
+    it('stops for completed or absent parents and resumes after reopening', async () => {
+      const cfg = { ...mockTaskRepeatCfg, parentId: parent.id };
+      taskService.getByIdOnce$.and.returnValue(of({ ...parent, isDone: true }));
+      expect(await service._getActionsForTaskRepeatCfg(cfg)).toEqual([]);
+      taskService.getByIdOnce$.and.returnValue(of(undefined as unknown as Task));
+      expect(await service._getActionsForTaskRepeatCfg(cfg)).toEqual([]);
+      taskService.getByIdOnce$.and.returnValue(of(parent));
+      expect((await service._getActionsForTaskRepeatCfg(cfg))[0].type).toBe(
+        addSubTask.type,
+      );
+    });
   });
 
   describe('taskRepeatCfgs$', () => {

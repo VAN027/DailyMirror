@@ -98,6 +98,13 @@ describe('searchSettings', () => {
     expect(hit.tabIndex).toBe(0);
   });
 
+  it('finds sidebar navigation and expands it on arrival', () => {
+    const [hit] = searchSettings(TABS, 'nav', translate);
+    expect(hit.scrollSelector).toBe('.sidebar-navigation-section');
+    expect(hit.sectionKey).toBe('sidebar-navigation');
+    expect(hit.tabIndex).toBe(0);
+  });
+
   it('should return an empty array when nothing matches', () => {
     expect(searchSettings(TABS, 'zzz', translate)).toEqual([]);
   });

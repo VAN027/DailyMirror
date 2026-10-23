@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +17,7 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
       <mat-slide-toggle
         color="primary"
         [checked]="formControl.value"
+        [disabled]="!!props.disabled"
         (change)="onChange($event)"
       >
         {{ props.label }}
@@ -52,8 +53,11 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlySlideToggleComponent extends FieldType<FormlyFieldConfig> {
+  readonly changed = output<MatSlideToggleChange>();
+
   onChange(event: MatSlideToggleChange): void {
     const { checked } = event;
     this.formControl.setValue(checked);
+    this.changed.emit(event);
   }
 }

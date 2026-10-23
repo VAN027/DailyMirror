@@ -112,14 +112,10 @@ export class DialogScheduleTaskComponent implements AfterViewInit {
   remindAvailableOptions: TaskReminderOption[] = TASK_REMINDER_OPTIONS;
   task: TaskCopy | undefined = this.data.task;
 
-  // Recurrence only applies to top-level, non-issue tasks (mirrors the panel's
-  // Repeat row gating). Hidden in select-due-only mode, since that mode IS the
+  // Recurrence supports tasks and subtasks. Hidden in select-due-only mode, which is the
   // repeat dialog's own start-date picker and a repeat button there is circular.
   readonly canRepeat =
-    !this.data.isSelectDueOnly &&
-    !!this.data.task &&
-    !this.data.task.parentId &&
-    !this.data.task.issueId;
+    !this.data.isSelectDueOnly && !!this.data.task && !this.data.task.issueId;
 
   // Reactive label for the repeat button. Tracks the live task in the store so it
   // flips from "does not repeat" to e.g. "Daily" the moment the repeat sub-dialog

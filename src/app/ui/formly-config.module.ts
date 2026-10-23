@@ -27,6 +27,7 @@ import { FormlySliderComponent } from './formly-slider/formly-slider.component';
 import { FormlyTagSelectionComponent } from './formly-tag-selection/formly-tag-selection.component';
 import { FormlyBtnComponent } from './formly-button/formly-btn.component';
 import { FormlyLocalRestApiTokenComponent } from './formly-local-rest-api-token/formly-local-rest-api-token.component';
+import { FormlyWindowsStartupComponent } from './formly-windows-startup/formly-windows-startup.component';
 import { FormlyImageInputComponent } from './formly-image-input/formly-image-input.component';
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports -- grandfathered layer-boundary debt
 import { ColorInputComponent } from '../features/config/color-input/color-input.component';
@@ -79,6 +80,11 @@ import { FormlyDatePickerComponent } from './formly-date-picker/formly-date-pick
         {
           name: 'local-rest-api-token',
           component: FormlyLocalRestApiTokenComponent,
+          wrappers: [],
+        },
+        {
+          name: 'windows-startup',
+          component: FormlyWindowsStartupComponent,
           wrappers: [],
         },
         {

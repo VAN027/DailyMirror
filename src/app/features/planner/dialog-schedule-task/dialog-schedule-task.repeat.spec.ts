@@ -136,9 +136,9 @@ describe('DialogScheduleTaskComponent — repeat button', () => {
       expect(c.canRepeat).toBe(true);
     });
 
-    it('is false for a subtask', async () => {
+    it('is true for a subtask', async () => {
       const c = await setup({ task: baseTask({ parentId: 'parent-1' }) });
-      expect(c.canRepeat).toBe(false);
+      expect(c.canRepeat).toBe(true);
     });
 
     it('is false for an issue task', async () => {

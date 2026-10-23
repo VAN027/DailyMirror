@@ -6,6 +6,7 @@
 // create-task-placeholder's `NodeJS.Timeout`),
 // so re-expose them explicitly instead of by accident.
 /// <reference types="node" />
+import { WindowsStartupState } from './shared-with-frontend/windows-startup.model';
 import {
   GlobalConfigState,
   TakeABreakConfig,
@@ -282,5 +283,7 @@ export interface ElectronAPI {
   onLocalRestApiRequest(listener: (payload: LocalRestApiRequestPayload) => void): void;
   sendLocalRestApiResponse(payload: LocalRestApiResponsePayload): void;
   getLocalRestApiToken(): Promise<string>;
+  getWindowsStartup(): Promise<WindowsStartupState>;
+  setWindowsStartup(enabled: boolean): Promise<WindowsStartupState>;
   regenerateLocalRestApiToken(): Promise<string>;
 }

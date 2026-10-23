@@ -98,7 +98,7 @@ test.describe('App Features', () => {
     });
   });
 
-  test('Issues panel app feature hides the mobile bottom-nav panel option', async ({
+  test('Issues panel app feature does not hide mobile schedule navigation', async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
@@ -110,17 +110,13 @@ test.describe('App Features', () => {
       name: 'Issues panel',
       exact: true,
     });
-    const issuePanelButton = page.locator('.e2e-toggle-issue-provider-panel');
-    const notesButton = page.locator('.e2e-toggle-notes-btn');
-    const sidePanelMenuButton = page.getByRole('button', {
-      name: 'Side Panel Menu',
-    });
+    const scheduleButton = page
+      .locator('mobile-bottom-nav')
+      .getByRole('button', { name: /^(Schedule|日程)$/ });
 
     await goToMainView(page);
     await expect(page.locator('mobile-bottom-nav')).toBeVisible();
-    await sidePanelMenuButton.click();
-    await expect(issuePanelButton).toBeVisible();
-    await page.keyboard.press('Escape');
+    await expect(scheduleButton).toBeVisible();
 
     await goToConfig(page);
     await appFeaturesSection.click();
@@ -131,8 +127,8 @@ test.describe('App Features', () => {
 
     await goToMainView(page);
     await expect(page.locator('mobile-bottom-nav')).toBeVisible();
-    await sidePanelMenuButton.click();
-    await expect(notesButton).toBeVisible();
-    await expect(issuePanelButton).not.toBeAttached();
+    await scheduleButton.click();
+    await expect(page).toHaveURL(/\/#\/schedule/);
+    await expect(page.locator('schedule')).toBeVisible();
   });
 });

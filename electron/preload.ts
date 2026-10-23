@@ -1,5 +1,6 @@
 import { ipcRenderer, webFrame, contextBridge, webUtils } from 'electron';
 import { ElectronAPI } from './electronAPI.d';
+import { WindowsStartupState } from './shared-with-frontend/windows-startup.model';
 import { IS_GNOME_DESKTOP, IS_GNOME_WAYLAND } from './common.const';
 import { IPC, IPCEventValue } from './shared-with-frontend/ipc-events.const';
 import {
@@ -43,6 +44,10 @@ const ea: ElectronAPI = {
   // INVOKE
   // ------
   getUserDataPath: () => _invoke('GET_PATH', 'userData') as Promise<string>,
+  getWindowsStartup: () =>
+    _invoke(IPC.GET_WINDOWS_STARTUP) as Promise<WindowsStartupState>,
+  setWindowsStartup: (enabled) =>
+    _invoke(IPC.SET_WINDOWS_STARTUP, enabled) as Promise<WindowsStartupState>,
   getBackupPath: () => _invoke('GET_BACKUP_PATH') as Promise<string>,
   checkBackupAvailable: () =>
     _invoke('BACKUP_IS_AVAILABLE') as Promise<false | LocalBackupMeta>,

@@ -29,6 +29,13 @@ export interface SettingsSearchTab {
  */
 const CUSTOM_TARGETS: readonly SettingsSearchTarget[] = [
   {
+    labelKey: T.DM.NAV,
+    tabLabelKey: T.PS.TABS.GENERAL,
+    tabIndex: 0,
+    scrollSelector: '.sidebar-navigation-section',
+    sectionKey: 'sidebar-navigation',
+  },
+  {
     labelKey: T.GCF.MISC.APPEARANCE,
     tabLabelKey: T.PS.TABS.GENERAL,
     tabIndex: 0,

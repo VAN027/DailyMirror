@@ -1,3 +1,4 @@
+import { firstValueFrom } from 'rxjs';
 import { inject, Injectable } from '@angular/core';
 import { createEffect, ofType } from '@ngrx/effects';
 import { LOCAL_ACTIONS } from '../../../util/local-actions.token';
@@ -58,6 +59,7 @@ import { clampPastTimedOccurrence } from './clamp-past-timed-occurrence.util';
 const SCHEDULE_AFFECTING_BY_FIELD: Record<keyof TaskRepeatCfgCopy, boolean> = {
   id: false,
   projectId: false,
+  parentId: false,
   lastTaskCreation: false,
   lastTaskCreationDay: false,
   title: false,
@@ -163,6 +165,32 @@ export class TaskRepeatCfgEffects {
   // NOTE: Archive cleanup for deleteTaskRepeatCfg is now handled by
   // ArchiveOperationHandler._handleDeleteTaskRepeatCfg, which is the single
   // source of truth for archive operations.
+
+  // Only local reopen/restore actions create occurrences; remote replay must not
+  // emit new operations. The normal startup/day-change pipeline handles sync.
+  resumeSubtaskSeries$ = createEffect(
+    () =>
+      this._localActions$.pipe(
+        ofType(TaskSharedActions.updateTask, TaskSharedActions.restoreTask),
+        filter(
+          (action) =>
+            action.type === TaskSharedActions.restoreTask.type ||
+            action.task.changes.isDone === false,
+        ),
+        concatMap(async (action) => {
+          const parentId = action.task.id;
+          const today = this._dateService.getLogicalTodayDate().getTime();
+          const cfgs = await firstValueFrom(
+            this._taskRepeatCfgService.getAllUnprocessedRepeatableTasks$(today),
+          );
+          for (const cfg of cfgs.filter((c) => c.parentId === parentId && !c.isPaused)) {
+            await this._taskRepeatCfgService.createRepeatableTask(cfg, today);
+          }
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }),
+      ),
+    { dispatch: false },
+  );
 
   updateTaskAfterMakingItRepeatable$ = createEffect(() =>
     this._localActions$.pipe(

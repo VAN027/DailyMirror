@@ -1,6 +1,8 @@
+import { selectTaskEntities } from '../../tasks/store/task.selectors';
+import { Task } from '../../tasks/task.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TaskRepeatCfg, TaskRepeatCfgState } from '../task-repeat-cfg.model';
-import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, Dictionary, EntityAdapter } from '@ngrx/entity';
 import { isSameDay } from '../../../util/is-same-day';
 import { getNewestPossibleDueDate } from './get-newest-possible-due-date.util';
 import { getDbDateStr } from '../../../util/get-db-date-str';
@@ -20,10 +22,17 @@ export const selectAllTaskRepeatCfgs = createSelector(
 export const selectActiveTaskRepeatCfgs = createSelector(
   selectAllTaskRepeatCfgs,
   selectArchivedProjectIds,
-  (cfgs: TaskRepeatCfg[], archivedIds: Set<string>): TaskRepeatCfg[] =>
-    archivedIds.size === 0
-      ? cfgs
-      : cfgs.filter((c) => !c.projectId || !archivedIds.has(c.projectId)),
+  selectTaskEntities,
+  (
+    cfgs: TaskRepeatCfg[],
+    archivedIds: Set<string>,
+    tasks: Dictionary<Task> = {},
+  ): TaskRepeatCfg[] =>
+    cfgs.filter(
+      (c) =>
+        (!c.projectId || !archivedIds.has(c.projectId)) &&
+        (!c.parentId || (!!tasks[c.parentId] && !tasks[c.parentId]!.isDone)),
+    ),
 );
 export const selectTaskRepeatCfgById = createSelector(
   selectTaskRepeatCfgFeatureState,

@@ -180,6 +180,19 @@ describe('DialogEditTaskRepeatCfgComponent', () => {
     TestBed.resetTestingModule();
   });
 
+  it('preserves the parent identity when configuring a recurring subtask', async () => {
+    const fixture = await setupTestBed({
+      task: { ...mockTask, parentId: 'parent-task' },
+    });
+    expect(fixture.componentInstance.repeatCfg().parentId).toBe('parent-task');
+    fixture.componentInstance.save();
+    expect(mockTaskRepeatCfgService.addTaskRepeatCfgToTask).toHaveBeenCalledWith(
+      mockTask.id,
+      mockTask.projectId,
+      jasmine.objectContaining({ parentId: 'parent-task' }),
+    );
+  });
+
   it('keeps Day of month selected after switching from an Nth weekday (#8886)', async () => {
     const monthlyNthWeekdayCfg: TaskRepeatCfg = {
       ...DEFAULT_TASK_REPEAT_CFG,

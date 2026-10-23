@@ -23,6 +23,18 @@ import { isValidSplitTime } from '../../../util/is-valid-split-time';
 import { normalizeStartOfNextDayConfig } from '../normalize-start-of-next-day-config';
 import { withLocalOnlySyncSettings } from '../local-only-sync-settings.util';
 
+const LEGACY_TASK_NOTES_TEMPLATE = `**How can I best achieve it now?**
+
+**What do I want?**
+
+**Why do I want it?**`;
+
+const migrateTaskNotesTemplate = (template: string | undefined): string =>
+  template === undefined ||
+  template.replace(/\r\n/g, '\n').trim() === LEGACY_TASK_NOTES_TEMPLATE
+    ? DEFAULT_GLOBAL_CONFIG.tasks.notesTemplate
+    : template;
+
 const stripRemovedUserProfilesSetting = <T extends object>(config: T): T => {
   const result = { ...config };
   delete (result as Record<string, unknown>)['isEnableUserProfiles'];
@@ -205,6 +217,10 @@ export const globalConfigReducer = createReducer<GlobalConfigState>(
       tasks: {
         ...DEFAULT_GLOBAL_CONFIG.tasks,
         ...appDataComplete.globalConfig.tasks,
+        // Replace only the untouched upstream template; preserve custom/empty notes.
+        notesTemplate: migrateTaskNotesTemplate(
+          appDataComplete.globalConfig.tasks?.notesTemplate,
+        ),
         // Legacy configs stored `null`/`''` (the old "None" default) which no longer
         // has a matching dropdown option; coerce to the Inbox default so the select
         // shows a value. Behavior is unchanged — an unset default already routed new

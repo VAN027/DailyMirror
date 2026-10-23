@@ -182,10 +182,21 @@ export class TaskRepeatCfgService {
       | ReturnType<typeof addSubTask>
     )[]
   > {
+    // Archived/deleted parents are absent from live tasks. Never detach a series
+    // or reopen a completed parent merely because an occurrence is due.
+    if (taskRepeatCfg.parentId) {
+      const parent = await this._taskService
+        .getByIdOnce$(taskRepeatCfg.parentId)
+        .toPromise();
+      if (!parent || parent.isDone) return [];
+    }
     // NOTE: there might be multiple configs in case something went wrong
     // we want to move all of them to the archive
-    const existingTaskInstances: Task[] = await this._taskService
-      .getTasksWithSubTasksByRepeatCfgId$(taskRepeatCfg.id as string)
+    const existingTaskInstances: Task[] = await (
+      taskRepeatCfg.parentId
+        ? this._taskService.getTasksByRepeatCfgId$(taskRepeatCfg.id)
+        : this._taskService.getTasksWithSubTasksByRepeatCfgId$(taskRepeatCfg.id)
+    )
       .pipe(take(1))
       .toPromise();
 
@@ -300,26 +311,28 @@ export class TaskRepeatCfgService {
       | ReturnType<typeof TaskSharedActions.scheduleTaskWithTime>
       | ReturnType<typeof addSubTask>
     )[] = [
-      TaskSharedActions.addTask({
-        task: taskWithTargetDates,
-        // Use the repeat config's projectId when available to ensure the task
-        // is associated with the correct project regardless of which project is
-        // currently active on this device. Falls back to active context for
-        // tag-based repeat configs without a project.
-        workContextType: taskRepeatCfg.projectId
-          ? WorkContextType.PROJECT
-          : (this._workContextService.activeWorkContextType as WorkContextType),
-        workContextId: taskRepeatCfg.projectId
-          ? taskRepeatCfg.projectId
-          : (this._workContextService.activeWorkContextId as string),
-        isAddToBacklog: false,
-        isAddToBottom,
-        ...getDeadlineAutoPlanFields(
-          this._dateService,
-          taskWithTargetDates.deadlineDay,
-          taskWithTargetDates.deadlineWithTime,
-        ),
-      }),
+      taskRepeatCfg.parentId
+        ? addSubTask({ task: taskWithTargetDates, parentId: taskRepeatCfg.parentId })
+        : TaskSharedActions.addTask({
+            task: taskWithTargetDates,
+            // Use the repeat config's projectId when available to ensure the task
+            // is associated with the correct project regardless of which project is
+            // currently active on this device. Falls back to active context for
+            // tag-based repeat configs without a project.
+            workContextType: taskRepeatCfg.projectId
+              ? WorkContextType.PROJECT
+              : (this._workContextService.activeWorkContextType as WorkContextType),
+            workContextId: taskRepeatCfg.projectId
+              ? taskRepeatCfg.projectId
+              : (this._workContextService.activeWorkContextId as string),
+            isAddToBacklog: false,
+            isAddToBottom,
+            ...getDeadlineAutoPlanFields(
+              this._dateService,
+              taskWithTargetDates.deadlineDay,
+              taskWithTargetDates.deadlineWithTime,
+            ),
+          }),
       updateTaskRepeatCfg({
         taskRepeatCfg: {
           id: taskRepeatCfg.id,
@@ -395,6 +408,7 @@ export class TaskRepeatCfgService {
         title: taskRepeatCfg.title,
         id: taskId,
         additional: {
+          parentId: taskRepeatCfg.parentId,
           repeatCfgId: taskRepeatCfg.id,
           timeEstimate: taskRepeatCfg.defaultEstimate || 0,
           projectId: taskRepeatCfg.projectId || undefined,

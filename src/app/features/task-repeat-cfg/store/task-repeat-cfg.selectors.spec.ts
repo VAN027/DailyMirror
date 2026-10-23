@@ -1,5 +1,5 @@
 import { DEFAULT_TASK_REPEAT_CFG, TaskRepeatCfg } from '../task-repeat-cfg.model';
-import { TaskReminderOptionId } from '../../tasks/task.model';
+import { DEFAULT_TASK, TaskReminderOptionId } from '../../tasks/task.model';
 import { dateStrToUtcDate } from '../../../util/date-str-to-utc-date';
 import { getDbDateStr } from '../../../util/get-db-date-str';
 import {
@@ -1008,6 +1008,7 @@ describe('selectActiveTaskRepeatCfgs', () => {
     const result = selectActiveTaskRepeatCfgs.projector(
       [cfg1, cfg2, cfg3],
       new Set<string>(['archivedProj']),
+      {},
     );
 
     expect(result).not.toContain(cfg2);
@@ -1019,7 +1020,11 @@ describe('selectActiveTaskRepeatCfgs', () => {
     const cfg1 = dummyRepeatable('R1', { projectId: 'proj1' });
     const cfg2 = dummyRepeatable('R2', { projectId: 'proj2' });
 
-    const result = selectActiveTaskRepeatCfgs.projector([cfg1, cfg2], new Set<string>());
+    const result = selectActiveTaskRepeatCfgs.projector(
+      [cfg1, cfg2],
+      new Set<string>(),
+      {},
+    );
     expect(result).toEqual([cfg1, cfg2]);
   });
 });
@@ -1341,6 +1346,7 @@ describe('archived projects filter for selectActiveTaskRepeatCfgs', () => {
         }),
       ],
       new Set<string>(['ARCHIVED_PROJECT']),
+      {},
     );
     expect(result.map((item) => item.id)).toEqual([]);
   });
@@ -1355,6 +1361,7 @@ describe('archived projects filter for selectActiveTaskRepeatCfgs', () => {
         }),
       ],
       new Set<string>(['ARCHIVED_PROJECT']),
+      {},
     );
     expect(result.map((item) => item.id)).toEqual(['R1']);
   });
@@ -1369,6 +1376,7 @@ describe('archived projects filter for selectActiveTaskRepeatCfgs', () => {
         }),
       ],
       new Set<string>(['ARCHIVED_PROJECT']),
+      {},
     );
     expect(result.map((item) => item.id)).toEqual(['R1']);
   });
@@ -1393,7 +1401,26 @@ describe('archived projects filter for selectActiveTaskRepeatCfgs', () => {
         }),
       ],
       new Set<string>(['ARCHIVED']),
+      {},
     );
     expect(result.map((item) => item.id)).toEqual(['R1', 'R3']);
+  });
+});
+
+describe('subtask repeat parent lifecycle', () => {
+  it('excludes completed/archived parents and includes reopened parents', () => {
+    const cfg = dummyRepeatable('child-series', { parentId: 'parent' });
+    const parent = { ...DEFAULT_TASK, id: 'parent', title: 'Parent', projectId: 'p' };
+    expect(selectActiveTaskRepeatCfgs.projector([cfg], new Set<string>(), {})).toEqual(
+      [],
+    );
+    expect(
+      selectActiveTaskRepeatCfgs.projector([cfg], new Set<string>(), {
+        parent: { ...parent, isDone: true },
+      }),
+    ).toEqual([]);
+    expect(
+      selectActiveTaskRepeatCfgs.projector([cfg], new Set<string>(), { parent }),
+    ).toEqual([cfg]);
   });
 });

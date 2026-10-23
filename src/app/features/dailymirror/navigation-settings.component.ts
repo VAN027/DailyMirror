@@ -1,52 +1,57 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
-import { MatButton } from '@angular/material/button';
+import { CollapsibleComponent } from '../../ui/collapsible/collapsible.component';
+import { FormlySlideToggleComponent } from '../../ui/formly-slide-toggle/formly-slide-toggle.component';
 import { MagicNavConfigService } from '../../core-ui/magic-side-nav/magic-nav-config.service';
 import { DisplayPreferencesService } from './display-preferences.service';
 import { T } from '../../t.const';
 
 @Component({
   selector: 'dm-navigation-settings',
-  imports: [TranslatePipe, MatButton],
+  imports: [TranslatePipe, CollapsibleComponent, FormlySlideToggleComponent],
+  // Share the original settings section layout, including its accordion spacing.
+  styleUrls: ['../config/config-section/config-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section>
-      <h2>{{ T.DM.NAV | translate }}</h2>
-      <p>{{ T.DM.NAV_HINT | translate }}</p>
-      @for (item of nav.configurableItems(); track item.id) {
-        <label>
-          <input
-            #pinToggle
-            type="checkbox"
-            [checked]="preferences.isPinned(item.id)"
-            (change)="preferences.pin(item.id, pinToggle.checked)"
+    <collapsible
+      [title]="T.DM.NAV | translate"
+      [isIconBefore]="true"
+      [isExpanded]="isExpanded()"
+    >
+      <div class="form-wrapper">
+        <p>{{ T.DM.NAV_HINT | translate }}</p>
+        @for (row of rows(); track row.item.id) {
+          <formly-field-mat-slide-toggle
+            [field]="{
+              formControl: row.control,
+              props: {
+                label: row.item.label || '' | translate,
+                icon: row.item.icon,
+              },
+            }"
+            (changed)="preferences.pin(row.item.id, $event.checked)"
           />
-          {{ item.label || '' | translate }}
-        </label>
-      }
-      <button
-        mat-button
-        (click)="preferences.resetNavigation()"
-      >
-        {{ T.DM.RESET_NAV | translate }}
-      </button>
-    </section>
-  `,
-  styles: `
-    section {
-      padding: var(--s2);
-      margin-bottom: var(--s2);
-    }
-    label {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--s);
-      margin: var(--s);
-    }
+        }
+      </div>
+    </collapsible>
   `,
 })
 export class NavigationSettingsComponent {
   readonly T = T;
+  readonly isExpanded = input(false);
   readonly nav = inject(MagicNavConfigService);
   readonly preferences = inject(DisplayPreferencesService);
+  readonly rows = computed(() =>
+    this.nav.configurableItems().map((item) => ({
+      item,
+      control: new FormControl(this.preferences.isPinned(item.id), { nonNullable: true }),
+    })),
+  );
 }

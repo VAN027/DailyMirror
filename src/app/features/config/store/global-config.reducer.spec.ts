@@ -29,6 +29,50 @@ import { INBOX_PROJECT } from '../../project/project.const';
 
 describe('GlobalConfigReducer', () => {
   describe('loadAllData action', () => {
+    const legacyNotes =
+      '**How can I best achieve it now?**\n\n**What do I want?**\n\n**Why do I want it?**\n';
+
+    for (const template of [legacyNotes, legacyNotes.replace(/\n/g, '\r\n')]) {
+      it('should translate the unchanged legacy notes template on load', () => {
+        const incomingConfig = {
+          ...initialGlobalConfigState,
+          tasks: { ...initialGlobalConfigState.tasks, notesTemplate: template },
+        };
+        const result = globalConfigReducer(
+          initialGlobalConfigState,
+          loadAllData({
+            appDataComplete: { globalConfig: incomingConfig } as AppDataComplete,
+          }),
+        );
+        expect(result.tasks.notesTemplate).toBe(
+          DEFAULT_GLOBAL_CONFIG.tasks.notesTemplate,
+        );
+        expect(incomingConfig.tasks.notesTemplate).toBe(template);
+      });
+    }
+
+    for (const template of [
+      '',
+      'My custom template',
+      legacyNotes + 'My answer',
+      DEFAULT_GLOBAL_CONFIG.tasks.notesTemplate,
+    ]) {
+      it('should preserve empty, customized and already Chinese templates on load', () => {
+        const result = globalConfigReducer(
+          initialGlobalConfigState,
+          loadAllData({
+            appDataComplete: {
+              globalConfig: {
+                ...initialGlobalConfigState,
+                tasks: { ...initialGlobalConfigState.tasks, notesTemplate: template },
+              },
+            } as AppDataComplete,
+          }),
+        );
+        expect(result.tasks.notesTemplate).toBe(template);
+      });
+    }
+
     it('should return oldState when appDataComplete.globalConfig is falsy', () => {
       const result = globalConfigReducer(
         initialGlobalConfigState,

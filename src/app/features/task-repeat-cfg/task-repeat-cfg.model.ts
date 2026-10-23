@@ -35,6 +35,8 @@ export type MonthlyWeekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export interface TaskRepeatCfgCopy {
   id: string;
   projectId: string | null;
+  /** Repeated subtasks stay under this parent; absent means a top-level series. */
+  parentId?: string;
   // TODO remove at some point
   lastTaskCreation?: number;
   lastTaskCreationDay?: string;

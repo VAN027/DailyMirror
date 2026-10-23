@@ -9,6 +9,7 @@ import {
 } from './ipc-handlers';
 import { initClipboardImageHandlers } from './clipboard-image-handler';
 import { initLocalRestApi } from './local-rest-api';
+import { initWindowsStartupIpc } from './windows-startup';
 
 export const initIpcInterfaces = (): void => {
   // Initialize plugin node executor (registers IPC handlers)
@@ -21,6 +22,7 @@ export const initIpcInterfaces = (): void => {
 
   initAppDataIpc();
   initAppControlIpc();
+  initWindowsStartupIpc();
   initSystemIpc();
   initJiraIpc();
   initGlobalShortcutsIpc();

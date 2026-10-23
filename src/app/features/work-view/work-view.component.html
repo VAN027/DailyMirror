@@ -272,7 +272,7 @@
                 [isIconBefore]="true"
                 [isGroup]="true"
               >
-                <div class="overdue-task-list">
+                <div class="task-section-list">
                   <task-list
                     [tasks]="overdueTasks()"
                     [isSortingDisabled]="true"
@@ -360,16 +360,18 @@
                 [isIconBefore]="true"
                 [isGroup]="true"
               >
-                <task-list
-                  class="tour-doneList"
-                  [noTasksMsg]="
-                    (nrOfDoneArchived ? T.WW.DONE_TASKS_IN_ARCHIVE : T.WW.NO_DONE_TASKS)
-                      | translate
-                  "
-                  [tasks]="doneTasks()"
-                  listId="PARENT"
-                  listModelId="DONE"
-                ></task-list>
+                <div class="task-section-list">
+                  <task-list
+                    class="tour-doneList"
+                    [noTasksMsg]="
+                      (nrOfDoneArchived ? T.WW.DONE_TASKS_IN_ARCHIVE : T.WW.NO_DONE_TASKS)
+                        | translate
+                    "
+                    [tasks]="doneTasks()"
+                    listId="PARENT"
+                    listModelId="DONE"
+                  ></task-list>
+                </div>
                 <div class="finish-day-button-wrapper">
                   @if (hasDoneTasks() && (!isOnTodayList() || !isFinishDayEnabled())) {
                     <button

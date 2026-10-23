@@ -2833,7 +2833,11 @@
       "WALLPAPER": "Wallpaper",
       "WALLPAPER_BUTTON": "Set wallpaper",
       "WALLPAPER_DIALOG_TITLE": "Global wallpaper",
-      "WALLPAPER_HINT": "Shown on pages without their own background (Planner, Schedule, Boards, Settings…). Tags and projects with their own image override it."
+      "WALLPAPER_HINT": "Shown on pages without their own background (Planner, Schedule, Boards, Settings…). Tags and projects with their own image override it.",
+      "WINDOWS_STARTUP": "Start DailyMirror when I sign in to Windows",
+      "WINDOWS_STARTUP_HINT": "Applies only to this PC and takes effect immediately. For the portable app, keep the EXE at its current location; after moving it, enable this setting again.",
+      "WINDOWS_STARTUP_UNAVAILABLE": "Available in packaged Windows desktop apps.",
+      "WINDOWS_STARTUP_ERROR": "Could not read or update Windows startup settings. Reopen Settings and try again."
     },
     "POMODORO": {
       "BREAK_DURATION": "Short break duration",
@@ -3461,8 +3465,8 @@
     "THEME_VELVET": "Velvet"
   },
   "DM": {
-    "NAV": "Navigation and display",
-    "NAV_HINT": "Choose which entries stay in the sidebar. Hidden entries remain under More.",
+    "NAV": "Sidebar navigation",
+    "NAV_HINT": "Today is always shown. Hidden entries remain accessible under More.",
     "MORE": "More",
     "RESET_NAV": "Restore default navigation",
     "QUADRANTS": "Four quadrants",
