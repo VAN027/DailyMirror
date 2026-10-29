@@ -17,6 +17,7 @@
     (done)="layoutService.hideAddTaskBar()"
     (afterTaskAdd)="onTaskAdded($event)"
     [isGlobalBarVariant]="true"
+    [planForDay]="mobileScheduleContext?.selectedDay()"
     class="global"
   ></add-task-bar>
 }

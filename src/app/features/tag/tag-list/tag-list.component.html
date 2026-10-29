@@ -1,4 +1,25 @@
-@if (tags()?.length > 0 || indicatorChips().length > 0) {
+@if (isCompactTask()) {
+  @if (repeatChip(); as repeat) {
+    <span class="native-repeat">
+      <mat-icon>repeat</mat-icon><span>{{ repeat.title }}</span>
+    </span>
+  }
+  @if (priorityTags().length) {
+    <span class="native-priority-icons">
+      @for (tag of priorityTags(); track tag.id) {
+        <span
+          role="img"
+          [attr.aria-label]="tag.title"
+          [matTooltip]="tag.title"
+        >
+          <mat-icon [style.color]="tag.color || tag.theme.primary">{{
+            tag.icon
+          }}</mat-icon>
+        </span>
+      }
+    </span>
+  }
+} @else if (tags()?.length > 0 || indicatorChips().length > 0) {
   <div class="tags-container">
     <div class="tags">
       @for (chip of indicatorChips(); track $index) {

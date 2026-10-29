@@ -1,0 +1,77 @@
+@if (missingTagIds().length) {
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="createTags()"
+  >
+    {{ T.F.BOARDS.V.CREATE_NEW_TAGS_BTN | translate }}
+  </button>
+} @else if (!panels().length) {
+  <p>{{ T.F.BOARDS.V.NO_PANELS_MSG | translate }}</p>
+  <button
+    mat-button
+    (click)="editBoard()"
+  >
+    {{ T.F.BOARDS.V.NO_PANELS_BTN | translate }}
+  </button>
+} @else {
+  <div
+    class="quadrant-overview"
+    role="group"
+    [attr.aria-label]="T.DM.QUADRANTS | translate"
+  >
+    @for (item of panels(); track item.panel.id) {
+      <button
+        type="button"
+        class="quadrant-tile"
+        cdkDropList
+        [cdkDropListData]="[]"
+        [cdkDropListSortingDisabled]="true"
+        [cdkDropListDisabled]="
+          isDropping() || selectedPanel()?.panel.id === item.panel.id
+        "
+        (cdkDropListDropped)="dropOnQuadrant($event, item.panel.id)"
+        [disabled]="isDropping()"
+        [attr.data-quadrant]="item.panel.id"
+        [class.selected]="selectedPanel()?.panel.id === item.panel.id"
+        [attr.aria-pressed]="selectedPanel()?.panel.id === item.panel.id"
+        aria-controls="mobile-quadrant-tasks"
+        (click)="selectPanel(item.panel.id)"
+      >
+        <span class="tile-top">
+          <span class="tile-title">{{ item.panel.title | translate }}</span>
+          @if (selectedPanel()?.panel.id === item.panel.id) {
+            <mat-icon
+              class="selected-icon"
+              aria-hidden="true"
+              >check_circle</mat-icon
+            >
+          }
+        </span>
+        <span class="tile-count">{{ item.count }}</span>
+      </button>
+    }
+  </div>
+
+  @if (selectedPanel(); as selected) {
+    <section
+      id="mobile-quadrant-tasks"
+      [attr.aria-label]="selected.panel.title | translate"
+    >
+      <!-- Keep destinations mounted to reuse the existing move validation and task actions. -->
+      @for (item of panels(); track item.panel.id) {
+        <board-panel
+          class="selected-panel"
+          [hidden]="item.panel.id !== selected.panel.id"
+          [class.empty-panel]="item.count === 0"
+          [panelCfg]="item.panel"
+          [hideCompleted]="hideCompleted()"
+          (editBoard)="editBoard()"
+        />
+      }
+      @if (!selected.count) {
+        <p class="empty-message">{{ T.DM.EMPTY | translate }}</p>
+      }
+    </section>
+  }
+}

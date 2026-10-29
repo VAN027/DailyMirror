@@ -121,6 +121,58 @@
   }
 }
 
+// Native uses plain buttons so the capsule does not override Material internals.
+.mobile-bottom-nav.capsule {
+  bottom: calc(var(--bottom-nav-extra-offset) + var(--bottom-nav-safe-area));
+  left: var(--s2);
+  right: var(--s2);
+  height: var(--bottom-nav-height);
+  display: grid;
+  grid-template-columns: 1fr 1fr 48px 1fr 1fr;
+  gap: var(--s-half);
+  padding: var(--s-half);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--bg-darker);
+  box-shadow: var(--bottom-nav-shadow);
+
+  .nav-button {
+    height: 48px;
+    padding: 0 var(--s-quarter);
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-color);
+    font: inherit;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--state-hover);
+    }
+
+    &.active {
+      background: var(--card-bg);
+      color: var(--c-primary);
+      box-shadow: var(--whiteframe-shadow-1dp);
+    }
+  }
+
+  .add-task-button {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--c-primary);
+    color: var(--c-contrast);
+    box-shadow: none;
+    cursor: pointer;
+  }
+}
+
 // The multi-select bar takes the FAB's place while tasks are being selected
 // (class set on .app-container by the app shell; CSS only, so this core-ui
 // component stays independent of the tasks feature).

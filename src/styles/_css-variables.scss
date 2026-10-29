@@ -836,3 +836,10 @@ body.isDarkTheme {
   //--md-sys-level4:   0 12px 24px rgba(0,0,0,0.16), 0 16px 8px rgba(0,0,0,0.12);
   //--md-sys-level5:   0 20px 40px rgba(0,0,0,0.18), 0 28px 12px rgba(0,0,0,0.14);
 }
+
+// Reserve the floating native capsule and the complete system gesture inset.
+body.isNativeMobile.hasMobileBottomNav {
+  --bottom-nav-height: 60px;
+  --bottom-nav-extra-offset: var(--s2);
+  --bottom-nav-safe-area: var(--safe-area-bottom);
+}

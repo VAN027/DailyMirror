@@ -198,6 +198,28 @@ const overrideDefaultSelectors = (store: MockStore): void => {
 };
 
 describe('WorkViewComponent', () => {
+  it('hides idle sub-minute summaries only on native phones and keeps running time visible', () => {
+    const currentTaskId = signal<string | null>(null);
+    const isXs = signal(true);
+    configureWorkViewTestBed({ taskService: { currentTaskId } });
+    const fixture = TestBed.createComponent(WorkViewComponent);
+    const view = fixture.componentInstance;
+    Object.defineProperty(view, 'isNative', { value: true });
+    Object.defineProperty(view.layoutService, 'isXs', { value: isXs });
+    const remaining = signal(0);
+    const worked = signal(500);
+    view.estimateRemainingToday = remaining;
+    view.workingToday = worked;
+    expect(view.showTimeSummary()).toBeFalse();
+    remaining.set(60_000);
+    expect(view.showTimeSummary()).toBeTrue();
+    remaining.set(0);
+    currentTaskId.set('running-task');
+    expect(view.showTimeSummary()).toBeTrue();
+    currentTaskId.set(null);
+    isXs.set(false);
+    expect(view.showTimeSummary()).toBeTrue();
+  });
   let store: MockStore;
 
   // overrideSelector() calls setResult() on the GLOBAL selector singletons, and

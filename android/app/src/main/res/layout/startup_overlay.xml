@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <!-- FAB button shown initially -->
+    <!-- Task entry is available from the main UI after loading. -->
     <ImageButton
         android:id="@+id/startup_fab"
         android:layout_width="56dp"
@@ -15,6 +15,7 @@
         android:src="@drawable/ic_add_thin"
         android:scaleType="center"
         android:contentDescription="@string/startup_overlay_add_task"
+        android:visibility="gone"
         android:elevation="2dp" />
 
     <!-- Input bar, hidden initially -->

@@ -1,5 +1,19 @@
 # Release and publishing runbook
 
+## DailyMirror packaging
+
+DailyMirror's maintained version history is [CHANGELOG.zh-CN.md](../CHANGELOG.zh-CN.md).
+Before each version is packaged, add its Chinese changes, date, platform scope
+and build/release status there. Run `npm run changelog:check`; the dedicated
+`tools/package-dailymirror.ps1` and `tools/package-dailymirror-ios.sh` entry points
+also run this check before building. Include the changelog in the release source
+commit and copy the relevant user changes into the GitHub Release description.
+After publishing, update the recorded release status. See the changelog's
+maintenance rules for the complete sequence and historical evidence limits.
+
+The remaining runbook describes the inherited upstream release automation;
+DailyMirror's dedicated scripts and workflow define its current packaging path.
+
 > **Status:** Maintained
 >
 > **Last verified against workflows:** 2026-09-12

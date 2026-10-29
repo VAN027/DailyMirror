@@ -35,6 +35,7 @@ import { WorkContextThemeCfg } from '../../features/work-context/work-context.mo
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports -- grandfathered layer-boundary debt
 import {
   DEFAULT_BACKGROUND_OVERLAY_OPACITY,
+  DEFAULT_TODAY_TAG_COLOR,
   isBackgroundImageSet,
   normalizeBackgroundImageBlur,
 } from '../../features/work-context/work-context.const';
@@ -348,7 +349,12 @@ export class GlobalThemeService {
       this._materialCssVarsService.setContrastColorThresholdWarn(theme.hueWarn!);
     }
 
-    this._materialCssVarsService.setPrimaryColor(theme.primary!);
+    // Render the former default blue with the new brand color without rewriting stored themes.
+    this._materialCssVarsService.setPrimaryColor(
+      theme.primary?.trim().toLowerCase() === '#6495ed'
+        ? DEFAULT_TODAY_TAG_COLOR
+        : theme.primary!,
+    );
     this._materialCssVarsService.setAccentColor(theme.accent!);
     this._materialCssVarsService.setWarnColor(theme.warn!);
   }

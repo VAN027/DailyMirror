@@ -19,6 +19,7 @@ module.exports = {
   // Keep the existing copyright field independent of the publisher/company name.
   copyright: base.copyright ?? `Copyright © ${new Date().getFullYear()} Johannes Millan`,
   win: {
+    electronLanguages: ['zh-CN', 'zh-TW', 'en-US'],
     executableName: 'DailyMirror',
     icon: 'build/dailymirror.ico',
     target: [

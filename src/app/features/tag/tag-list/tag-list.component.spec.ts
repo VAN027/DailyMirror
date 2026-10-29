@@ -12,7 +12,11 @@ import { selectTagFeatureState } from '../store/tag.reducer';
 import { selectProjectFeatureState } from '../../project/store/project.selectors';
 import { selectTaskRepeatCfgFeatureState } from '../../task-repeat-cfg/store/task-repeat-cfg.selectors';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { DEFAULT_TAG } from '../tag.const';
+import { DEFAULT_TAG, IMPORTANT_TAG, URGENT_TAG } from '../tag.const';
+import {
+  DEFAULT_TASK_REPEAT_CFG,
+  TaskRepeatCfgState,
+} from '../../task-repeat-cfg/task-repeat-cfg.model';
 import { DEFAULT_PROJECT } from '../../project/project.const';
 import { TranslateService } from '@ngx-translate/core';
 import { DateTimeFormatService } from '../../../core/date-time-format/date-time-format.service';
@@ -23,6 +27,7 @@ describe('TagListComponent', () => {
   let fixture: ComponentFixture<TagListComponent>;
   let tagState$: BehaviorSubject<TagState>;
   let projectState$: BehaviorSubject<ProjectState>;
+  let repeatState$: BehaviorSubject<TaskRepeatCfgState>;
   let workContext$: BehaviorSubject<{
     activeId: string;
     activeType: WorkContextType;
@@ -64,6 +69,7 @@ describe('TagListComponent', () => {
   beforeEach(async () => {
     tagState$ = new BehaviorSubject<TagState>({ ids: [], entities: {} });
     projectState$ = new BehaviorSubject<ProjectState>({ ids: [], entities: {} });
+    repeatState$ = new BehaviorSubject<TaskRepeatCfgState>({ ids: [], entities: {} });
     workContext$ = new BehaviorSubject<{
       activeId: string;
       activeType: WorkContextType;
@@ -76,7 +82,7 @@ describe('TagListComponent', () => {
         } else if (selector === selectProjectFeatureState) {
           return projectState$.asObservable();
         } else if (selector === selectTaskRepeatCfgFeatureState) {
-          return of({ ids: [], entities: {} });
+          return repeatState$.asObservable();
         }
         return of(null);
       },
@@ -118,6 +124,70 @@ describe('TagListComponent', () => {
 
     fixture = TestBed.createComponent(TagListComponent);
     component = fixture.componentInstance;
+  });
+
+  describe('compact native task cards', () => {
+    it('hides categories and keeps both priority icons even in the active tag context', () => {
+      const category = createMockTag('category', 'Work');
+      tagState$.next({ ids: [category.id], entities: { [category.id]: category } });
+      projectState$.next({
+        ids: ['inbox'],
+        entities: { inbox: createMockProject('inbox', 'Inbox') },
+      });
+      workContext$.next({ activeId: IMPORTANT_TAG.id, activeType: WorkContextType.TAG });
+      fixture.componentRef.setInput(
+        'task',
+        createMockTask({
+          projectId: 'inbox',
+          tagIds: [URGENT_TAG.id, category.id, IMPORTANT_TAG.id],
+        }),
+      );
+      fixture.componentRef.setInput('isCompactTask', true);
+      fixture.detectChanges();
+      const element: HTMLElement = fixture.nativeElement;
+      expect(element.querySelector('tag')).toBeNull();
+      expect(element.textContent).not.toContain('Inbox');
+      expect(element.textContent).not.toContain('Work');
+      expect(element.textContent).not.toContain('important');
+      expect(element.textContent).not.toContain('urgent');
+      expect(
+        Array.from(element.querySelectorAll('.native-priority-icons > span')).map((el) =>
+          el.getAttribute('aria-label'),
+        ),
+      ).toEqual(['important', 'urgent']);
+      expect(component.priorityTags().map((tag) => tag.icon)).toEqual([
+        'priority_high',
+        'emergency',
+      ]);
+    });
+
+    it('retains the real repeat description without category chips', () => {
+      repeatState$.next({
+        ids: ['daily'],
+        entities: {
+          daily: {
+            ...DEFAULT_TASK_REPEAT_CFG,
+            id: 'daily',
+            repeatCycle: 'DAILY',
+            repeatEvery: 1,
+          },
+        },
+      });
+      fixture.componentRef.setInput('task', createMockTask({ repeatCfgId: 'daily' }));
+      fixture.componentRef.setInput('isCompactTask', true);
+      fixture.detectChanges();
+      const element: HTMLElement = fixture.nativeElement;
+      expect(element.querySelector('.native-repeat')?.textContent).toContain('DAILY');
+      expect(element.querySelector('tag')).toBeNull();
+      expect(element.querySelector('.native-priority-icons')).toBeNull();
+    });
+
+    it('renders no metadata for an uncategorized nonrepeating task', () => {
+      fixture.componentRef.setInput('task', createMockTask());
+      fixture.componentRef.setInput('isCompactTask', true);
+      fixture.detectChanges();
+      expect((fixture.nativeElement as HTMLElement).textContent?.trim()).toBe('');
+    });
   });
 
   describe('initial state handling', () => {

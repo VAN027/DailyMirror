@@ -1,57 +1,109 @@
 <nav
   class="mobile-bottom-nav"
+  [class.capsule]="isNative"
   [class.entrance]="isEntrance()"
   (animationend)="onEntranceAnimationEnd($event)"
 >
-  <button
-    mat-button
-    class="nav-button"
-    [routerLink]="todayRoute"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: false }"
-    [attr.aria-label]="T.G.TODAY_TAG_TITLE | translate"
-  >
-    <mat-icon>wb_sunny</mat-icon>
-  </button>
+  @if (isNative) {
+    <button
+      type="button"
+      class="nav-button"
+      [routerLink]="todayRoute"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }"
+      ariaCurrentWhenActive="page"
+      [attr.aria-label]="T.G.TODAY_TAG_TITLE | translate"
+    >
+      <mat-icon aria-hidden="true">wb_sunny</mat-icon>
+    </button>
+    <button
+      type="button"
+      class="nav-button"
+      routerLink="/quadrants"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      [attr.aria-label]="T.DM.QUADRANTS | translate"
+    >
+      <mat-icon aria-hidden="true">grid_view</mat-icon>
+    </button>
+    <button
+      type="button"
+      class="add-task-button"
+      [class.hide-for-native]="isEntranceAnimating()"
+      (click)="showAddTaskBar()"
+      [attr.aria-label]="T.GCF.KEYBOARD.GLOBAL_ADD_TASK | translate"
+    >
+      <mat-icon aria-hidden="true">add</mat-icon>
+    </button>
+    <button
+      type="button"
+      class="nav-button"
+      routerLink="/schedule"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      [attr.aria-label]="T.DM.CALENDAR | translate"
+    >
+      <mat-icon aria-hidden="true">calendar_month</mat-icon>
+    </button>
+    <button
+      type="button"
+      class="nav-button"
+      (click)="toggleMobileNav()"
+      [attr.aria-label]="T.DM.MORE | translate"
+    >
+      <mat-icon aria-hidden="true">more_horiz</mat-icon>
+    </button>
+  } @else {
+    <button
+      mat-button
+      class="nav-button"
+      [routerLink]="todayRoute"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }"
+      [attr.aria-label]="T.G.TODAY_TAG_TITLE | translate"
+    >
+      <mat-icon>wb_sunny</mat-icon>
+    </button>
 
-  <button
-    mat-button
-    class="nav-button"
-    routerLink="/quadrants"
-    routerLinkActive="active"
-    [attr.aria-label]="T.DM.QUADRANTS | translate"
-  >
-    <mat-icon>grid_view</mat-icon>
-  </button>
+    <button
+      mat-button
+      class="nav-button"
+      routerLink="/quadrants"
+      routerLinkActive="active"
+      [attr.aria-label]="T.DM.QUADRANTS | translate"
+    >
+      <mat-icon>grid_view</mat-icon>
+    </button>
 
-  <button
-    mat-fab
-    class="add-task-button"
-    [class.smaller]="hasProjectBacklog()"
-    [class.hide-for-native]="isEntranceAnimating()"
-    color="primary"
-    (click)="showAddTaskBar()"
-    [attr.aria-label]="T.GCF.KEYBOARD.GLOBAL_ADD_TASK | translate"
-  >
-    <mat-icon>add</mat-icon>
-  </button>
+    <button
+      mat-fab
+      class="add-task-button"
+      [class.smaller]="hasProjectBacklog()"
+      [class.hide-for-native]="isEntranceAnimating()"
+      color="primary"
+      (click)="showAddTaskBar()"
+      [attr.aria-label]="T.GCF.KEYBOARD.GLOBAL_ADD_TASK | translate"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
 
-  <button
-    mat-button
-    class="nav-button"
-    routerLink="/schedule"
-    routerLinkActive="active"
-    [attr.aria-label]="T.DM.CALENDAR | translate"
-  >
-    <mat-icon>calendar_month</mat-icon>
-  </button>
+    <button
+      mat-button
+      class="nav-button"
+      routerLink="/schedule"
+      routerLinkActive="active"
+      [attr.aria-label]="T.DM.CALENDAR | translate"
+    >
+      <mat-icon>calendar_month</mat-icon>
+    </button>
 
-  <button
-    mat-button
-    class="nav-button"
-    (click)="toggleMobileNav()"
-    [attr.aria-label]="T.MH.PROJECT_MENU | translate"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+    <button
+      mat-button
+      class="nav-button"
+      (click)="toggleMobileNav()"
+      [attr.aria-label]="T.MH.PROJECT_MENU | translate"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  }
 </nav>

@@ -10,6 +10,7 @@ import {
 } from './app.guard';
 
 import { TagTaskPageComponent } from './pages/tag-task-page/tag-task-page.component';
+import { IS_NATIVE_PLATFORM } from './util/is-native-platform';
 
 export const APP_ROUTES: Routes = [
   // Eagerly loaded — this is the main view
@@ -39,9 +40,13 @@ export const APP_ROUTES: Routes = [
   {
     path: 'quadrants',
     loadComponent: () =>
-      import('./features/dailymirror/quadrants.component').then(
-        (m) => m.QuadrantsComponent,
-      ),
+      IS_NATIVE_PLATFORM
+        ? import('./features/mobile/quadrants/mobile-quadrants.component').then(
+            (m) => m.MobileQuadrantsComponent,
+          )
+        : import('./features/dailymirror/quadrants.component').then(
+            (m) => m.QuadrantsComponent,
+          ),
     data: { page: 'quadrants' },
     canActivate: [FocusOverlayOpenGuard],
   },
@@ -80,7 +85,12 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'schedule',
-    loadComponent: () => import('./routes/pages.routes').then((m) => m.ScheduleComponent),
+    loadComponent: () =>
+      IS_NATIVE_PLATFORM
+        ? import('./features/mobile/schedule/mobile-schedule.component').then(
+            (m) => m.MobileScheduleComponent,
+          )
+        : import('./routes/pages.routes').then((m) => m.ScheduleComponent),
     data: { page: 'schedule' },
     canActivate: [FocusOverlayOpenGuard],
   },

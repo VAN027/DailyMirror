@@ -1,3 +1,5 @@
+[DailyMirror 中文版本更新日志](CHANGELOG.zh-CN.md)
+
 <a href="https://super-productivity.com/"><img alt="项目横幅" src="docs/screens/banner.png"/></a>
 
 <p align="center">

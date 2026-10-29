@@ -1,0 +1,61 @@
+<div
+  class="month-grid"
+  role="group"
+  [attr.aria-label]="T.F.SCHEDULE.VIEW_MONTH | translate"
+>
+  @for (header of weekdayHeaders(); track $index) {
+    <div class="weekday">{{ header }}</div>
+  }
+  @for (day of days(); track day.day) {
+    <button
+      type="button"
+      class="day-cell"
+      [attr.data-day]="day.day"
+      [class.other-month]="day.otherMonth"
+      [class.selected]="selectedDay() === day.day"
+      [class.today]="today() === day.day"
+      [attr.aria-label]="day.label"
+      [attr.aria-pressed]="selectedDay() === day.day"
+      [attr.aria-current]="today() === day.day ? 'date' : null"
+      aria-controls="mobile-month-agenda"
+      (click)="selectDay(day.day)"
+    >
+      <span class="day-number">{{ day.number }}</span>
+      <span
+        class="day-indicator"
+        [class.has-events]="day.items.length > 0"
+      >
+        @if (selectedDay() === day.day && day.items.length) {
+          {{ day.items.length }}
+        }
+      </span>
+    </button>
+  }
+</div>
+<section
+  id="mobile-month-agenda"
+  [attr.aria-label]="selectedDateTitle()"
+>
+  <header class="agenda-heading">
+    <h2>{{ selectedDateTitle() }}</h2>
+    <span class="agenda-count">{{ selectedItems().length }}</span>
+  </header>
+  <div class="agenda-list">
+    @for (item of selectedItems(); track item.event.id) {
+      @if (item.task; as task) {
+        <planner-task
+          [task]="task"
+          [openDetailsOnClick]="true"
+        />
+      } @else {
+        <schedule-event
+          [event]="item.event"
+          [isMonthView]="true"
+          [cdkDragDisabled]="true"
+        />
+      }
+    } @empty {
+      <p class="empty-message">{{ T.F.SCHEDULE.NO_TASKS | translate }}</p>
+    }
+  </div>
+</section>

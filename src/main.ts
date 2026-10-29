@@ -57,6 +57,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { ReminderModule } from './app/features/reminder/reminder.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
+  NoPreloading,
   PreloadAllModules,
   provideRouter,
   withHashLocation,
@@ -275,7 +276,11 @@ bootstrapApplication(AppComponent, {
         },
       }),
     },
-    provideRouter(APP_ROUTES, withHashLocation(), withPreloading(PreloadAllModules)),
+    provideRouter(
+      APP_ROUTES,
+      withHashLocation(),
+      withPreloading(IS_ELECTRON ? NoPreloading : PreloadAllModules),
+    ),
     PLUGIN_INITIALIZER_PROVIDER,
     provideZonelessChangeDetection(),
     // Initialize operation capture service for synchronous state change capture

@@ -7,6 +7,7 @@ import { GlobalConfigService } from '../../features/config/global-config.service
 import { getDefaultClipboardImagesPath } from '../../util/get-default-clipboard-images-path';
 import { MIME_TYPE_EXTENSIONS } from '../../../../electron/shared-with-frontend/mime-type-mapping.const';
 import { Log } from '../log';
+import { formatFileSize } from '../../util/format-file-size';
 
 // Windows paths (e.g. C:/...) have no leading slash, so file:// + C:/... yields
 // file://C:/... which fails the canonical file:/// check. Always emit file:///<path>.
@@ -436,8 +437,8 @@ export class ClipboardImageService {
         type: 'ERROR',
         msg: T.F.CLIPBOARD_IMAGE.SIZE_EXCEEDED,
         translateParams: {
-          maxSize: this._formatSize(MAX_IMAGE_SIZE_BYTES),
-          actualSize: this._formatSize(blob.size),
+          maxSize: formatFileSize(MAX_IMAGE_SIZE_BYTES),
+          actualSize: formatFileSize(blob.size),
         },
       });
       return null;
@@ -668,12 +669,6 @@ export class ClipboardImageService {
   // ===========================================================================
   // Utility methods
   // ===========================================================================
-
-  private _formatSize(bytes: number): string {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  }
 
   private _getExtensionFromMimeType(mimeType: string): string {
     return MIME_TYPE_EXTENSIONS[mimeType as keyof typeof MIME_TYPE_EXTENSIONS] || '.png';

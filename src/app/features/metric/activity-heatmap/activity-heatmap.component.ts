@@ -449,7 +449,7 @@ export class ActivityHeatmapComponent {
     // Get primary color from CSS variable or use default
     const primaryColor =
       getComputedStyle(document.documentElement).getPropertyValue('--c-primary').trim() ||
-      '#3f51b5';
+      '#5968f9';
 
     // Draw heatmap cells
     data.weeks.forEach((week, weekIndex) => {

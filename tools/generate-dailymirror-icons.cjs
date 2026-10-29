@@ -16,6 +16,7 @@ const pngBuffer = (source, size) =>
 
 const root = path.resolve(__dirname, '..');
 const icon = path.join(root, 'build/dailymirror-icon.png');
+const desktopIcon = path.join(root, 'build/dailymirror-desktop-icon.png');
 const tray = path.join(root, 'build/dailymirror-tray-icon.png');
 const writePng = async (source, target, size) => {
   await fs.mkdir(path.dirname(target), { recursive: true });
@@ -23,7 +24,7 @@ const writePng = async (source, target, size) => {
 };
 
 async function run() {
-  const png = pngBuffer(icon, 256);
+  const png = pngBuffer(desktopIcon, 256);
   const header = Buffer.alloc(22);
   header.writeUInt16LE(1, 2);
   header.writeUInt16LE(1, 4);
@@ -35,8 +36,18 @@ async function run() {
     path.join(root, 'build/dailymirror.ico'),
     Buffer.concat([header, png]),
   );
-  await fs.writeFile(path.join(root, 'src/favicon.ico'), Buffer.concat([header, png]));
-  await writePng(icon, path.join(root, 'electron/assets/icons/icon_256x256.png'), 256);
+  await writePng(
+    desktopIcon,
+    path.join(root, 'electron/assets/icons/icon_256x256.png'),
+    256,
+  );
+  if (process.argv.includes('--desktop-only')) {
+    console.log('DailyMirror Windows icons generated.');
+    return;
+  }
+  const webPng = pngBuffer(icon, 256);
+  header.writeUInt32LE(webPng.length, 14);
+  await fs.writeFile(path.join(root, 'src/favicon.ico'), Buffer.concat([header, webPng]));
   for (const theme of ['d', 'l']) {
     for (const [suffix, size] of [
       ['', 22],

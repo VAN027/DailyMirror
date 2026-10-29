@@ -23,3 +23,40 @@
   flex-wrap: wrap;
   gap: var(--s-half);
 }
+
+:host.compact-task {
+  display: contents;
+  line-height: normal;
+}
+
+.native-repeat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-half);
+  color: var(--text-color-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+
+  mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+}
+
+.native-priority-icons {
+  position: absolute;
+  inset-inline-end: var(--s);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--s-half);
+  pointer-events: auto;
+
+  > span {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -160,6 +160,83 @@
   }
 }
 
+.wrapper.native-phone {
+  --header-nav-button-gap: var(--s);
+  padding: var(--s2);
+  gap: var(--s2);
+
+  .pill-slot {
+    display: none;
+  }
+
+  .action-nav-right {
+    flex: 0 0 auto;
+    gap: var(--s);
+  }
+
+  .action-nav-scroll {
+    gap: var(--s);
+  }
+
+  .primary-action-group {
+    margin-inline-end: 0;
+  }
+}
+
+.mobile-dropdown.native-tools {
+  transition: none;
+  left: auto;
+  inset-inline-end: 0;
+  transform: none;
+  width: 260px;
+  max-width: calc(100vw - var(--s2) * 2);
+  gap: var(--s-half);
+  padding: var(--s);
+  display: none;
+
+  &.isVisible {
+    display: flex;
+  }
+
+  simple-counter-button {
+    margin: 0;
+    transform: none;
+  }
+}
+
+.native-tool-action,
+.native-tool-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s);
+  min-height: 48px;
+  padding: var(--s-half) var(--s);
+  color: var(--text-color);
+}
+
+.native-tool-action {
+  border: 0;
+  border-radius: var(--card-border-radius);
+  background: transparent;
+  text-align: start;
+  font: inherit;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--state-focus);
+  }
+}
+
+.native-tool-row {
+  justify-content: space-between;
+}
+
+.native-tool-plugins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s);
+}
+
 // Below a row that cannot seat both, identity yields entirely.
 //
 // The title's floor plus its two never-shrinking buttons cost about 164px, so

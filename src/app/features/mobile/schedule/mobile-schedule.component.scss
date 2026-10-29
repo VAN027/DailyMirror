@@ -1,0 +1,35 @@
+:host {
+  min-height: 0;
+  height: 100%;
+}
+.schedule-nav-controls {
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  padding: 0;
+  gap: 0;
+  .today-btn {
+    margin-left: auto;
+    margin-right: var(--s);
+  }
+  .date-nav-group {
+    flex: 0 0 100%;
+    min-width: 0;
+    border-top: 1px solid var(--separator-color);
+  }
+  .title {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: var(--s-half);
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+.scroll-wrapper {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}

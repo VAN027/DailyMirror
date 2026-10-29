@@ -48,6 +48,8 @@ let _lastTrayMsg: string | undefined;
 let _lastIsRunning: boolean | undefined;
 let _lastCurrentTaskId: string | null | undefined;
 let _lastTodayTasksStr: string | undefined;
+let _todayTasksStr = '[]';
+let _contextMenu: Menu | undefined;
 
 let _lastCurrentTask: any;
 let _lastIsPomodoroEnabled: boolean;
@@ -173,8 +175,6 @@ const createTray = (): Tray => {
   } else {
     nextTray = new Tray(trayIcon);
   }
-  nextTray.setContextMenu(createContextMenu());
-
   nextTray.on('click', () => {
     indicatorConfig?.showApp();
   });
@@ -244,23 +244,7 @@ function initListeners(): void {
         _lastFocusModeMode,
       );
 
-      const todayTasksStr = JSON.stringify(
-        (_todayTasks || []).map((t) => ({ id: t.id, title: t.title })),
-      );
-
-      const isMenuChanged =
-        menuMsg !== _lastMsg ||
-        _isRunning !== _lastIsRunning ||
-        _currentTaskId !== _lastCurrentTaskId ||
-        todayTasksStr !== _lastTodayTasksStr;
-
-      if (isMenuChanged) {
-        tray.setContextMenu(createContextMenu(menuMsg));
-        _lastMsg = menuMsg;
-        _lastIsRunning = _isRunning;
-        _lastCurrentTaskId = _currentTaskId;
-        _lastTodayTasksStr = todayTasksStr;
-      }
+      updateContextMenu(tray, menuMsg);
 
       if (_lastTrayMsg !== trayMsg) {
         if (isTrayShowCurrentTask) {
@@ -333,23 +317,7 @@ function initListeners(): void {
         : '';
 
       if (tray) {
-        // tray handling
-        const todayTasksStr = JSON.stringify(
-          (_todayTasks || []).map((t) => ({ id: t.id, title: t.title })),
-        );
-        const isMenuChanged =
-          menuMsg !== _lastMsg ||
-          _isRunning !== _lastIsRunning ||
-          _currentTaskId !== _lastCurrentTaskId ||
-          todayTasksStr !== _lastTodayTasksStr;
-
-        if (isMenuChanged) {
-          tray.setContextMenu(createContextMenu(menuMsg));
-          _lastMsg = menuMsg;
-          _lastIsRunning = _isRunning;
-          _lastCurrentTaskId = _currentTaskId;
-          _lastTodayTasksStr = todayTasksStr;
-        }
+        updateContextMenu(tray, menuMsg);
 
         if (_lastTrayMsg !== trayMsg) {
           if (currentTask && currentTask.title) {
@@ -389,14 +357,11 @@ function initListeners(): void {
 
   ipcMain.on(IPC.TODAY_TASKS_UPDATED, (ev: IpcMainEvent, tasks: any[]) => {
     _todayTasks = tasks;
+    _todayTasksStr = JSON.stringify(
+      (_todayTasks || []).map((t) => ({ id: t.id, title: t.title })),
+    );
     if (tray) {
-      const todayTasksStr = JSON.stringify(
-        (_todayTasks || []).map((t) => ({ id: t.id, title: t.title })),
-      );
-      if (todayTasksStr !== _lastTodayTasksStr) {
-        tray.setContextMenu(createContextMenu(_lastMsg));
-        _lastTodayTasksStr = todayTasksStr;
-      }
+      updateContextMenu(tray, _lastMsg);
     }
   });
 
@@ -423,7 +388,7 @@ const syncTray = (tr: Tray): void => {
       )
     : _lastMsg;
 
-  tr.setContextMenu(createContextMenu(menuMsg));
+  updateContextMenu(tr, menuMsg);
 
   const isTrayShowCurrentTask = getIsTrayShowCurrentTask();
   const isTrayShowCurrentCountdown = getIsTrayShowCurrentCountdown();
@@ -466,7 +431,31 @@ const syncTray = (tr: Tray): void => {
 const destroyTray = (): void => {
   tray?.destroy();
   tray = undefined;
+  _contextMenu = undefined;
   curIco = undefined;
+};
+
+const updateContextMenu = (tr: Tray, msg?: string): void => {
+  const isStructureChanged =
+    !_contextMenu ||
+    !!msg !== !!_lastMsg ||
+    _isRunning !== _lastIsRunning ||
+    _currentTaskId !== _lastCurrentTaskId ||
+    _todayTasksStr !== _lastTodayTasksStr;
+
+  if (isStructureChanged) {
+    _contextMenu = createContextMenu(msg);
+    tr.setContextMenu(_contextMenu);
+    _lastIsRunning = _isRunning;
+    _lastCurrentTaskId = _currentTaskId;
+    _lastTodayTasksStr = _todayTasksStr;
+  } else if (msg !== _lastMsg && msg && _contextMenu) {
+    const timerItem = _contextMenu.getMenuItemById('current-task-time');
+    if (timerItem) timerItem.label = msg;
+    // Linux needs the existing menu reattached after a MenuItem changes.
+    if (IS_LINUX) tr.setContextMenu(_contextMenu);
+  }
+  _lastMsg = msg;
 };
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -529,7 +518,7 @@ function createContextMenu(msg?: string): Menu {
 
   // Either show the time string (if task is running) or "Super Productivity"
   if (msg) {
-    template.push({ label: msg, enabled: false });
+    template.push({ id: 'current-task-time', label: msg, enabled: false });
     template.push({ type: 'separator' });
   }
 

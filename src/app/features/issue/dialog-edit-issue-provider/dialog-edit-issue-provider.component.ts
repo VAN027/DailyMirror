@@ -75,6 +75,7 @@ import { TagService } from '../../tag/tag.service';
 import { ChipListInputComponent } from '../../../ui/chip-list-input/chip-list-input.component';
 import { unique } from '../../../util/unique';
 import { getErrorTxt } from '../../../util/get-error-text';
+import { getSafeErrorMeta } from '../../../../../electron/shared-with-frontend/get-safe-error-meta';
 import { mergeIssueProviderModelUpdates } from './issue-provider-model-merge.util';
 import {
   PLUGIN_OAUTH_TOKEN_KEY_CFG_KEY,
@@ -218,17 +219,14 @@ export class DialogEditIssueProviderComponent {
 
   constructor() {
     this._initOAuthAndOptions().catch((err) => {
-      IssueLog.err(
-        '[DialogEditIssueProvider] OAuth init failed',
-        getSafeErrorLogMeta(err),
-      );
+      IssueLog.err('[DialogEditIssueProvider] OAuth init failed', getSafeErrorMeta(err));
     });
     const onClose = (): void => {
       this._isClosedOrDestroyed = true;
       this._cleanupUnsavedOAuthToken().catch((err) => {
         IssueLog.err(
           '[DialogEditIssueProvider] OAuth cleanup failed',
-          getSafeErrorLogMeta(err),
+          getSafeErrorMeta(err),
         );
       });
     };
@@ -418,7 +416,7 @@ export class DialogEditIssueProviderComponent {
       const detail = (e instanceof Error ? e.message : String(e))
         .replace(/\s+/g, ' ')
         .slice(0, 200);
-      IssueLog.err('OAuth connect failed', getSafeErrorLogMeta(e));
+      IssueLog.err('OAuth connect failed', getSafeErrorMeta(e));
       this._snackService.open({
         type: 'ERROR',
         msg: detail ? T.F.ISSUE.S.OAUTH_FAILED_WITH_DETAIL : T.F.ISSUE.S.OAUTH_FAILED,
@@ -515,7 +513,7 @@ export class DialogEditIssueProviderComponent {
         IssueLog.err('[DialogEditIssueProvider] loadOptions failed', {
           issueProviderKey: this.issueProviderKey,
           hasFieldKey: !!field.key,
-          ...getSafeErrorLogMeta(e),
+          ...getSafeErrorMeta(e),
         });
         this._snackService.open({
           type: 'ERROR',
@@ -976,27 +974,4 @@ const hasCredentialLikeCfgKey = (value: unknown, seen: WeakSet<object>): boolean
     ([key, nestedValue]) =>
       CREDENTIAL_LIKE_CFG_KEY_RE.test(key) || hasCredentialLikeCfgKey(nestedValue, seen),
   );
-};
-
-const getSafeErrorLogMeta = (
-  e: unknown,
-): {
-  errorName: string;
-  errorCode?: string | number;
-} => {
-  const errorName =
-    e instanceof Error
-      ? e.name
-      : typeof e === 'object' && e !== null && 'name' in e && typeof e.name === 'string'
-        ? e.name
-        : 'UnknownError';
-  const errorCode =
-    typeof e === 'object' &&
-    e !== null &&
-    'code' in e &&
-    (typeof e.code === 'string' || typeof e.code === 'number')
-      ? e.code
-      : undefined;
-
-  return errorCode === undefined ? { errorName } : { errorName, errorCode };
 };

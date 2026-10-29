@@ -1,7 +1,7 @@
 {
   "name": "DailyMirror",
   "short_name": "DailyMirror",
-  "theme_color": "#6495ED",
+  "theme_color": "#5968F9",
   "background_color": "#fff",
   "start_url": "./index.html",
   "display": "standalone",

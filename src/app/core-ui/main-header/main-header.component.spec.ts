@@ -600,9 +600,14 @@ describe('MainHeaderComponent action placement', () => {
   // #9480 went through was that injected number disagreeing with the CSS.
   let box: HTMLElement | undefined;
 
-  const mountAtWidth = async (width: number): Promise<HTMLElement> => {
+  const mountAtWidth = async (width: number, native = false): Promise<HTMLElement> => {
     configureTestBed();
     fixture = TestBed.createComponent(MainHeaderComponent);
+    if (native) {
+      Object.defineProperty(fixture.componentInstance, 'isNativePhone', {
+        value: signal(true),
+      });
+    }
     const host = fixture.nativeElement as HTMLElement;
     box = document.createElement('div');
     box.style.width = `${width}px`;
@@ -830,6 +835,34 @@ describe('MainHeaderComponent action placement', () => {
     countOnDay: {},
     isOn: false,
     ...over,
+  });
+
+  it('keeps native tools and counters mounted and returns focus after closing', async () => {
+    isXs = signal(true);
+    enabledSimpleCounters = [counter('native-counter')];
+    const host = await mountAtWidth(360, true);
+    const header = fixture!.componentInstance;
+    const trigger = host.querySelector('.native-tools-trigger') as HTMLButtonElement;
+    const panel = host.querySelector('#native-header-tools') as HTMLElement;
+    const mountedCounter = panel.querySelector('simple-counter-button');
+    expect(mountedCounter).toBeTruthy();
+    expect(host.querySelectorAll('.counters-action-group focus-button').length).toBe(0);
+    expect(host.querySelectorAll('.sync-btn').length).toBe(1);
+    expect(panel.hasAttribute('inert')).toBeTrue();
+    trigger.click();
+    await settle();
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    expect(panel.hasAttribute('inert')).toBeFalse();
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+    );
+    await settle();
+    expect(panel.hasAttribute('inert')).toBeTrue();
+    expect(panel.querySelector('simple-counter-button')).toBe(mountedCounter);
+    expect(document.activeElement).toBe(trigger);
+    const sync = spyOn(header, 'onSyncButtonClick');
+    (host.querySelector('.sync-btn') as HTMLButtonElement).click();
+    expect(sync).toHaveBeenCalledTimes(1);
   });
 
   it('collapses the counters behind one trigger below 600px', async () => {

@@ -6,6 +6,7 @@ import {
   DestroyRef,
   effect,
   ElementRef,
+  HostListener,
   inject,
   OnDestroy,
   signal,
@@ -48,6 +49,10 @@ import { DesktopPanelButtonsComponent } from './desktop-panel-buttons/desktop-pa
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FocusButtonComponent } from './focus-button/focus-button.component';
 import { EmlDropDirective } from '../../core/drop-paste-input/eml-drop.directive';
+import { CdkTrapFocus } from '@angular/cdk/a11y';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { TaskViewCustomizerPanelComponent } from '../../features/task-view-customizer/task-view-customizer-panel/task-view-customizer-panel.component';
+import { IS_NATIVE_PLATFORM } from '../../util/is-native-platform';
 
 /** One `DOM_DELTA_LINE` notch, in CSS pixels. Matches the row's icon metrics. */
 const WHEEL_LINE_HEIGHT_PX = 16;
@@ -83,6 +88,9 @@ const ACTION_ROW_REVEAL_PIN_MS = 400;
     RemoteTrackingPillComponent,
     DesktopPanelButtonsComponent,
     FocusButtonComponent,
+    CdkTrapFocus,
+    MatMenuTrigger,
+    TaskViewCustomizerPanelComponent,
   ],
 })
 export class MainHeaderComponent implements OnDestroy {
@@ -109,6 +117,38 @@ export class MainHeaderComponent implements OnDestroy {
   T: typeof T = T;
 
   isXs = this.layoutService.isXs;
+  readonly isNative = IS_NATIVE_PLATFORM;
+  readonly isNativePhone = computed(() => this.isNative && this.isXs());
+  readonly pageTitle = viewChild(PageTitleComponent);
+  readonly isNativeToolsOpen = signal(false);
+  private readonly _nativeToolsTrigger = viewChild<
+    unknown,
+    ElementRef<HTMLButtonElement>
+  >('nativeToolsTrigger', { read: ElementRef });
+  readonly pendingTaskCount = toSignal(
+    this.workContextService.undoneTasks$.pipe(map((tasks) => tasks.length)),
+    { initialValue: 0 },
+  );
+
+  @HostListener('document:keydown.escape')
+  closeNativeTools(): void {
+    if (!this.isNativeToolsOpen()) return;
+    this.isNativeToolsOpen.set(false);
+    this._nativeToolsTrigger()?.nativeElement.focus();
+  }
+
+  @HostListener('document:pointerdown', ['$event'])
+  onNativeToolsPointerDown(event: PointerEvent): void {
+    if (!this.isNativeToolsOpen()) return;
+    const target = event.target;
+    if (
+      target instanceof Element &&
+      !this._elRef.nativeElement.contains(target) &&
+      !target.closest('.cdk-overlay-container')
+    ) {
+      this.isNativeToolsOpen.set(false);
+    }
+  }
 
   private _currentTaskContext$ = this.taskService.currentTaskParentOrCurrent$.pipe(
     filter((ct) => !!ct),
@@ -472,6 +512,9 @@ export class MainHeaderComponent implements OnDestroy {
     effect(() => {
       if (!this.hasCounterDropdown()) {
         this.isShowSimpleCounterBtnsDropdown.set(false);
+      }
+      if (!this.isNativePhone()) {
+        this.isNativeToolsOpen.set(false);
       }
     });
 

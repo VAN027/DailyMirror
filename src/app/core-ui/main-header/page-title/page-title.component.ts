@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  viewChild,
+} from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { MatRipple } from '@angular/material/core';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -45,10 +52,11 @@ import { KeyboardConfig } from '@sp/keyboard-config';
       <div
         [matTooltip]="T.MH.GO_TO_TASK_LIST | translate"
         class="page-title"
+        [class.compact]="compact()"
         mat-ripple
         routerLink="/active/tasks"
       >
-        @if (!isSpecialSection() && activeWorkContext()) {
+        @if (!compact() && !isSpecialSection() && activeWorkContext()) {
           <mat-icon
             class="page-title-icon"
             [class.page-title-icon--emoji]="isContextEmojiIcon()"
@@ -57,8 +65,14 @@ import { KeyboardConfig } from '@sp/keyboard-config';
           >
         }
         <span class="page-title-text">{{ displayTitle() }}</span>
+        @if (compact() && isWorkViewPage()) {
+          <span class="pending-task-count">{{
+            T.GCF.AUTO_BACKUPS.D_LIST.TASK_COUNT
+              | translate: { tasks: pendingTaskCount() }
+          }}</span>
+        }
       </div>
-      @if (!isXxxs() && !isSpecialSection()) {
+      @if (!compact() && !isXxxs() && !isSpecialSection()) {
         <div class="page-title-actions">
           @if (isSharedOnPlainspace()) {
             <button
@@ -255,6 +269,27 @@ import { KeyboardConfig } from '@sp/keyboard-config';
         margin-right: var(--header-title-actions-gutter, var(--s2));
       }
 
+      .page-title.compact {
+        flex: 1 1 auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        font-size: var(--font-size-3xl);
+
+        .page-title-text {
+          white-space: normal;
+          overflow-wrap: anywhere;
+          overflow: visible;
+          text-overflow: clip;
+        }
+      }
+
+      .pending-task-count {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--text-color-muted);
+      }
+
       .project-settings-btn {
         opacity: 1;
         color: var(--text-color-muted);
@@ -319,6 +354,9 @@ import { KeyboardConfig } from '@sp/keyboard-config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageTitleComponent {
+  readonly compact = input(false);
+  readonly pendingTaskCount = input(0);
+  readonly contextMenu = viewChild<MatMenu>('activeWorkContextMenu');
   private _breakpointObserver = inject(BreakpointObserver);
   private _router = inject(Router);
   private _workContextService = inject(WorkContextService);

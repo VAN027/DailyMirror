@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Super Productivity</string>
+	<string>DailyMirror</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Super Productivity</string>
+	<string>DailyMirror</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -48,9 +48,9 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 	<key>NSUserNotificationsUsageDescription</key>
-	<string>Super Productivity uses notifications to remind you about tasks and scheduled events.</string>
+	<string>DailyMirror 使用通知提醒你处理任务和日程。</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Super Productivity uses your local network to sync with sync servers you host yourself, such as a WebDAV or Super Sync server on your network.</string>
+	<string>DailyMirror 使用本地网络连接你自行配置的同步服务，例如局域网内的 WebDAV 或 SuperSync 服务器。</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -72,7 +72,7 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemType</key>
-			<string>com.super-productivity.app.quick-action.add-task</string>
+			<string>com.dailymirror.app.quick-action.add-task</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>新建任务</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
@@ -80,12 +80,12 @@
 			<key>UIApplicationShortcutItemUserInfo</key>
 			<dict>
 				<key>url</key>
-				<string>com.super-productivity.app://add-task</string>
+				<string>com.dailymirror.app://add-task</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemType</key>
-			<string>com.super-productivity.app.quick-action.today</string>
+			<string>com.dailymirror.app.quick-action.today</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>今天</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
@@ -93,12 +93,12 @@
 			<key>UIApplicationShortcutItemUserInfo</key>
 			<dict>
 				<key>url</key>
-				<string>com.super-productivity.app://today</string>
+				<string>com.dailymirror.app://today</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemType</key>
-			<string>com.super-productivity.app.quick-action.inbox</string>
+			<string>com.dailymirror.app.quick-action.inbox</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>收件箱</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
@@ -106,7 +106,7 @@
 			<key>UIApplicationShortcutItemUserInfo</key>
 			<dict>
 				<key>url</key>
-				<string>com.super-productivity.app://inbox</string>
+				<string>com.dailymirror.app://inbox</string>
 			</dict>
 		</dict>
 	</array>
@@ -115,6 +115,8 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>com.dailymirror.app</string>
+				<!-- Retained for existing provider OAuth redirect registrations. -->
 				<string>com.super-productivity.app</string>
 			</array>
 			<key>CFBundleURLName</key>

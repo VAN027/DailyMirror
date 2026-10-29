@@ -19,7 +19,7 @@ import { LayoutService } from '../layout/layout.service';
 import { TODAY_TAG } from '../../features/tag/tag.const';
 import { T } from '../../t.const';
 import { WorkContextService } from '../../features/work-context/work-context.service';
-import { IS_ANDROID_NATIVE } from '../../util/is-native-platform';
+import { IS_ANDROID_NATIVE, IS_NATIVE_PLATFORM } from '../../util/is-native-platform';
 
 // Latches true after the first cold-start entrance fires in this JS session,
 // so resume/back/remount paths never re-hide the FAB.
@@ -39,6 +39,7 @@ export class MobileBottomNavComponent {
 
   isEntrance = input(false);
   readonly isAndroid = IS_ANDROID_NATIVE;
+  readonly isNative = IS_NATIVE_PLATFORM;
 
   // Tracks whether the slide-up entrance animation is actively running.
   // On Android, the web FAB is hidden only during this animation, and only on

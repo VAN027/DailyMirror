@@ -90,6 +90,8 @@ import { OnboardingHintComponent } from './features/onboarding/onboarding-hint.c
 import { OnboardingHintService } from './features/onboarding/onboarding-hint.service';
 import { MaterialIconsLoaderService } from './ui/material-icons-loader.service';
 import { BrowserTitleService } from './core/browser-title/browser-title.service';
+import { IS_NATIVE_PLATFORM } from './util/is-native-platform';
+import { MobileScheduleContextService } from './features/mobile/schedule/mobile-schedule-context.service';
 
 const ENTRANCE_ANIMATION_DURATION = 1500;
 
@@ -130,6 +132,9 @@ interface BeforeInstallPromptEvent extends Event {
   ],
 })
 export class AppComponent implements OnDestroy, AfterViewInit {
+  readonly mobileScheduleContext = IS_NATIVE_PLATFORM
+    ? inject(MobileScheduleContextService)
+    : null;
   private _globalConfigService = inject(GlobalConfigService);
   private _shortcutService = inject(ShortcutService);
   private _bannerService = inject(BannerService);

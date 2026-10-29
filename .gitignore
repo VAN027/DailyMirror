@@ -135,3 +135,9 @@ data/
 # Private local Android release identity
 /android/dailymirror-signing.properties
 /android/dailymirror-release.p12
+
+# Private DailyMirror iOS signing material
+/.ios-signing/
+*.mobileprovision
+*.p12
+*.p8

@@ -8,6 +8,39 @@ import {
   resolveSystemSurfaceColor,
 } from './global-theme.service';
 import { CustomThemeRef } from './custom-theme.service';
+import { MaterialCssVarsService } from 'angular-material-css-vars';
+
+describe('DailyMirror primary color', () => {
+  for (const [stored, expected] of [
+    ['#6495ED', '#5968F9'],
+    [' #6495ed ', '#5968F9'],
+    ['#5968F9', '#5968F9'],
+    ['#e11826', '#e11826'],
+    ['#29a1aa', '#29a1aa'],
+  ]) {
+    it(`renders ${stored} as ${expected} without changing the stored theme`, () => {
+      const material = jasmine.createSpyObj<MaterialCssVarsService>('material', [
+        'setAutoContrastEnabled',
+        'setPrimaryColor',
+        'setAccentColor',
+        'setWarnColor',
+      ]);
+      const service = Object.create(GlobalThemeService.prototype) as {
+        _materialCssVarsService: MaterialCssVarsService;
+        _setBackgroundTint(value: boolean): void;
+        _setColorTheme(theme: WorkContextThemeCfg): void;
+      };
+      service._materialCssVarsService = material;
+      service._setBackgroundTint = jasmine.createSpy('setBackgroundTint');
+      const theme = Object.freeze({ primary: stored, isAutoContrast: true });
+
+      service._setColorTheme(theme);
+
+      expect(material.setPrimaryColor).toHaveBeenCalledOnceWith(expected);
+      expect(theme.primary).toBe(stored);
+    });
+  }
+});
 
 interface GlobalThemeInitHarness {
   init(): void;

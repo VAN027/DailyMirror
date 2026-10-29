@@ -109,7 +109,7 @@ import { TagToggleMenuListComponent } from '../../tag/tag-toggle-menu-list/tag-t
 import { Store } from '@ngrx/store';
 import { TaskSharedActions } from '../../../root-store/meta/task-shared.actions';
 import { environment } from '../../../../environments/environment';
-import { TODAY_TAG } from '../../tag/tag.const';
+import { IMPORTANT_TAG, TODAY_TAG, URGENT_TAG } from '../../tag/tag.const';
 import { GlobalTrackingIntervalService } from '../../../core/global-tracking-interval/global-tracking-interval.service';
 import { LayoutService } from '../../../core-ui/layout/layout.service';
 import { TaskFocusService } from '../task-focus.service';
@@ -124,6 +124,7 @@ import {
 } from '../add-subtask-input/add-subtask-input.component';
 import { AddSubtaskInputService } from '../add-subtask-input/add-subtask-input.service';
 import { getSubTaskTimeLeftForDisplay } from '../util/get-sub-task-time-left-for-display';
+import { IS_NATIVE_PLATFORM } from '../../../util/is-native-platform';
 
 const isInteractiveTarget = (target: EventTarget | null): boolean =>
   target instanceof Element &&
@@ -205,9 +206,16 @@ export class TaskComponent implements OnDestroy, AfterViewInit {
 
   readonly workContextService = inject(WorkContextService);
   readonly layoutService = inject(LayoutService);
+  readonly isNative = IS_NATIVE_PLATFORM;
+  readonly isNativePhone = computed(() => this.isNative && this.layoutService.isXs());
   readonly globalTrackingIntervalService = inject(GlobalTrackingIntervalService);
 
   task = input.required<TaskWithSubTasks>();
+  readonly hasNativePriority = computed(
+    () =>
+      this.task().tagIds.includes(IMPORTANT_TAG.id) ||
+      this.task().tagIds.includes(URGENT_TAG.id),
+  );
   isBacklog = input<boolean>(false);
   isInSubTaskList = input<boolean>(false);
   showDoneAnimation = signal(false);

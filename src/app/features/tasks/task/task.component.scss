@@ -3,6 +3,59 @@
 @use './task-base';
 @use './task-controls';
 
+.first-line.native-phone {
+  .title-and-left-btns-wrapper {
+    flex-basis: 100%;
+  }
+
+  .title-and-tags-wrapper {
+    min-width: 0;
+    padding-inline-end: var(--s);
+  }
+
+  &.has-native-priority .title-and-tags-wrapper {
+    padding-inline-end: calc(var(--s6) + var(--s3));
+  }
+
+  .native-task-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s-half) var(--s);
+    margin-inline-start: var(--s);
+    pointer-events: auto;
+  }
+
+  .all-controls-wrapper {
+    flex-basis: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.native-meta-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-half);
+  padding: var(--s-half) 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-color-muted);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+}
+
 :host.isDragReady:not(.cdk-drag-placeholder) {
   background: var(--bg-lighter);
   box-shadow: var(--whiteframe-shadow-8dp);

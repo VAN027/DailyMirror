@@ -1,7 +1,6 @@
 import { TASK_REPEAT_WEEKDAY_MAP, TaskRepeatCfg } from '../task-repeat-cfg.model';
 import { getDiffInDays } from '../../../util/get-diff-in-days';
 import { getDiffInMonth } from '../../../util/get-diff-in-month';
-import { getDiffInYears } from '../../../util/get-diff-in-years';
 import { getDiffInWeeks } from '../../../util/get-diff-in-weeks';
 import { dateStrToUtcDate } from '../../../util/date-str-to-utc-date';
 import { getEffectiveLastTaskCreationDay } from './get-effective-last-task-creation-day.util';
@@ -11,6 +10,7 @@ import {
   hasNthWeekdayAnchor,
 } from './get-nth-weekday-of-month.util';
 import { Log } from '../../../core/log';
+import { setDateSafely } from './set-date-safely.util';
 
 export const getNewestPossibleDueDate = (
   taskRepeatCfg: TaskRepeatCfg,
@@ -113,17 +113,6 @@ export const getNewestPossibleDueDate = (
         ? 31
         : startDateDate.getDate();
 
-      // Handle month-end dates properly
-      const setDateSafely = (date: Date, day: number): void => {
-        date.setDate(1); // First set to 1st to avoid overflow
-        const lastDayOfMonth = new Date(
-          date.getFullYear(),
-          date.getMonth() + 1,
-          0,
-        ).getDate();
-        date.setDate(Math.min(day, lastDayOfMonth));
-      };
-
       // Start by checking if the repeat day has passed this month
       const lastDayOfCurrentMonth = new Date(
         checkDate.getFullYear(),
@@ -160,19 +149,26 @@ export const getNewestPossibleDueDate = (
       const nrOfYearsToCheck = taskRepeatCfg.repeatEvery;
       const dayOfMonthRepeat = startDateDate.getDate();
       const monthOfMonthRepeat = startDateDate.getMonth();
-      checkDate.setDate(1);
-      checkDate.setMonth(monthOfMonthRepeat);
-      checkDate.setDate(dayOfMonthRepeat);
+      const todayAtNoon = new Date(checkDate);
+      const setYearlyDate = (date: Date): void => {
+        date.setDate(1);
+        date.setMonth(monthOfMonthRepeat);
+        const lastDayOfMonth = new Date(
+          date.getFullYear(),
+          monthOfMonthRepeat + 1,
+          0,
+        ).getDate();
+        date.setDate(Math.min(dayOfMonthRepeat, lastDayOfMonth));
+      };
 
-      if (today.getMonth() < monthOfMonthRepeat) {
+      setYearlyDate(checkDate);
+      if (checkDate > todayAtNoon) {
         checkDate.setFullYear(checkDate.getFullYear() - 1);
-      }
-      if (today.getMonth() === monthOfMonthRepeat && today.getDate() < dayOfMonthRepeat) {
-        checkDate.setFullYear(checkDate.getFullYear() - 1);
+        setYearlyDate(checkDate);
       }
 
       for (let i = 0; i < nrOfYearsToCheck; i++) {
-        const diffInYears = getDiffInYears(startDateDate, checkDate);
+        const diffInYears = checkDate.getFullYear() - startDateDate.getFullYear();
 
         if (checkDate <= lastTaskCreation || diffInYears < 0) {
           break;
@@ -181,6 +177,7 @@ export const getNewestPossibleDueDate = (
           return checkDate;
         }
         checkDate.setFullYear(checkDate.getFullYear() - 1);
+        setYearlyDate(checkDate);
       }
       return null;
     }

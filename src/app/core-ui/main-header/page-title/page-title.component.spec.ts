@@ -321,6 +321,27 @@ describe('PageTitleComponent', () => {
   };
 
   describe('the title actions', () => {
+    it('shows a compact title and task count without the old icon and action buttons', async () => {
+      await configureRender();
+      routerStub.url = '/tag/TODAY/tasks';
+      const translate = TestBed.inject(TranslateService);
+      translate.setTranslation('en', {
+        GCF: { AUTO_BACKUPS: { D_LIST: { TASK_COUNT: '{{tasks}} tasks' } } },
+      });
+      translate.use('en');
+      const fixture = TestBed.createComponent(PageTitleComponent);
+      fixture.componentRef.setInput('compact', true);
+      fixture.componentRef.setInput('pendingTaskCount', 6);
+      fixture.detectChanges();
+      const host = fixture.nativeElement as HTMLElement;
+      expect(host.querySelector('.page-title.compact')).toBeTruthy();
+      expect(host.querySelector('.pending-task-count')?.textContent?.trim()).toBe(
+        '6 tasks',
+      );
+      expect(host.querySelectorAll('.page-title-icon, .page-title-actions').length).toBe(
+        0,
+      );
+    });
     const renderAt = async (url: string): Promise<HTMLElement> => {
       await configureRender();
       routerStub.url = url;

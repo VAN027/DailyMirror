@@ -16,6 +16,9 @@ let createdFromPath = [];
 let traySetImageCalls = [];
 let traySetTitleCalls = [];
 let traySetToolTipCalls = [];
+let trayContextMenus = [];
+let builtMenus = [];
+let mockMainWindow;
 let ipcHandlers = new Map();
 let nextNativeImageIsEmpty = false;
 let templateImages = [];
@@ -64,7 +67,9 @@ const installMocks = () => {
           createdTrayArgs.push([image, guid]);
         }
 
-        setContextMenu() {}
+        setContextMenu(menu) {
+          trayContextMenus.push(menu);
+        }
 
         on(eventName, handler) {
           if (eventName === 'click') {
@@ -90,7 +95,14 @@ const installMocks = () => {
       return {
         Tray: FakeTray,
         Menu: {
-          buildFromTemplate: (template) => ({ template }),
+          buildFromTemplate: (template) => {
+            const menu = {
+              items: template,
+              getMenuItemById: (id) => template.find((item) => item.id === id),
+            };
+            builtMenus.push(menu);
+            return menu;
+          },
         },
         ipcMain: {
           on: (eventName, handler) => {
@@ -147,7 +159,7 @@ const installMocks = () => {
 
     if (request === './main-window') {
       return {
-        getWin: () => undefined,
+        getWin: () => mockMainWindow,
       };
     }
 
@@ -173,6 +185,9 @@ test.beforeEach(() => {
   traySetImageCalls = [];
   traySetTitleCalls = [];
   traySetToolTipCalls = [];
+  trayContextMenus = [];
+  builtMenus = [];
+  mockMainWindow = undefined;
   ipcHandlers = new Map();
   nextNativeImageIsEmpty = false;
   templateImages = [];
@@ -503,4 +518,128 @@ test('tray icon follows SET_PROGRESS_BAR while the focus overlay is shown', () =
     traySetImageCalls.at(-1).iconPath,
     /\/icons\/indicator\/running-anim-l\/8\.png$/,
   );
+});
+
+test('Windows timer ticks reuse the menu without traversing the today task list', () => {
+  initIndicatorOnWindows();
+  let titleReads = 0;
+  const tasks = Array.from({ length: 500 }, (_, index) => ({
+    id: `T${index}`,
+    get title() {
+      titleReads++;
+      return `Task ${index}`;
+    },
+  }));
+  ipcHandlers.get('TODAY_TASKS_UPDATED')({}, tasks);
+  const currentTaskUpdated = ipcHandlers.get('CURRENT_TASK_UPDATED');
+  const task = { id: 'T0', title: 'Task 0', timeSpent: 60000, timeEstimate: 600000 };
+  currentTaskUpdated({}, task, false, 0, false, 0, undefined);
+  const menu = builtMenus.at(-1);
+  const initialLabel = menu.items[0].label;
+  const readsBeforeTicks = titleReads;
+  const buildsBeforeTicks = builtMenus.length;
+  const attachmentsBeforeTicks = trayContextMenus.length;
+
+  for (let second = 1; second <= 120; second++) {
+    currentTaskUpdated(
+      {},
+      { ...task, timeSpent: task.timeSpent + second * 1000 },
+      false,
+      0,
+      false,
+      0,
+      undefined,
+    );
+    ipcHandlers.get('SET_PROGRESS_BAR')({}, { progress: second / 200 });
+  }
+
+  assert.equal(titleReads, readsBeforeTicks, 'ticks must not re-read task titles');
+  assert.equal(builtMenus.length, buildsBeforeTicks, 'ticks must not rebuild menus');
+  assert.equal(trayContextMenus.length, attachmentsBeforeTicks);
+  assert.notEqual(menu.items[0].label, initialLabel, 'timer text must keep updating');
+});
+
+test('today menu changes only when task titles, IDs or order change', () => {
+  initIndicatorOnWindows();
+  const updateToday = ipcHandlers.get('TODAY_TASKS_UPDATED');
+  updateToday({}, [{ id: 'T1', title: 'First', timeSpent: 0 }]);
+  const initialBuilds = builtMenus.length;
+  updateToday({}, [{ id: 'T1', title: 'First', timeSpent: 1000 }]);
+  assert.equal(builtMenus.length, initialBuilds);
+  updateToday({}, [{ id: 'T1', title: 'Renamed' }]);
+  assert.equal(builtMenus.length, initialBuilds + 1);
+  assert.equal(builtMenus.at(-1).items[0].label, 'Renamed');
+  updateToday({}, [
+    { id: 'T2', title: 'Second' },
+    { id: 'T1', title: 'Renamed' },
+  ]);
+  updateToday({}, [
+    { id: 'T1', title: 'Renamed' },
+    { id: 'T2', title: 'Second' },
+  ]);
+  assert.deepEqual(
+    builtMenus
+      .at(-1)
+      .items.filter((item) => item.type === 'radio')
+      .map((item) => item.label),
+    ['Renamed', 'Second'],
+  );
+  updateToday({}, []);
+  assert.equal(builtMenus.at(-1).items.filter((item) => item.type === 'radio').length, 0);
+});
+
+test('switching and pausing update menu selection and keep task actions working', () => {
+  initIndicatorOnWindows();
+  const sent = [];
+  mockMainWindow = { webContents: { send: (...args) => sent.push(args) } };
+  const tasks = [
+    { id: 'T1', title: 'First' },
+    { id: 'T2', title: 'Second' },
+  ];
+  ipcHandlers.get('TODAY_TASKS_UPDATED')({}, tasks);
+  const updateCurrent = ipcHandlers.get('CURRENT_TASK_UPDATED');
+  updateCurrent({}, { ...tasks[0], timeSpent: 1000 }, false, 0, false, 0, undefined);
+  let items = builtMenus.at(-1).items.filter((item) => item.type === 'radio');
+  assert.deepEqual(
+    items.map((item) => item.checked),
+    [true, false],
+  );
+  items[0].click();
+  items[1].click();
+  assert.deepEqual(sent, [['TASK_TOGGLE_START'], ['SWITCH_TASK', 'T2']]);
+
+  updateCurrent({}, { ...tasks[1], timeSpent: 1000 }, false, 0, false, 0, undefined);
+  items = builtMenus.at(-1).items.filter((item) => item.type === 'radio');
+  assert.deepEqual(
+    items.map((item) => item.checked),
+    [false, true],
+  );
+  updateCurrent({}, null, false, 0, false, 0, undefined);
+  items = builtMenus.at(-1).items.filter((item) => item.type === 'radio');
+  assert.deepEqual(
+    items.map((item) => item.checked),
+    [false, false],
+  );
+  assert.equal(builtMenus.at(-1).getMenuItemById('current-task-time'), undefined);
+});
+
+test('Linux refreshes the same menu instance when only timer text changes', () => {
+  const { initIndicator } = loadIndicatorModule();
+  initIndicator({
+    showApp: () => {},
+    quitApp: () => {},
+    ICONS_FOLDER: '/icons/',
+    forceDarkTray: false,
+    app: { on: () => {} },
+  });
+  const updateCurrent = ipcHandlers.get('CURRENT_TASK_UPDATED');
+  const task = { id: 'T1', title: 'First', timeSpent: 60000 };
+  updateCurrent({}, task, false, 0, false, 0, undefined);
+  const menu = builtMenus.at(-1);
+  const builds = builtMenus.length;
+  const attachments = trayContextMenus.length;
+  updateCurrent({}, { ...task, timeSpent: 120000 }, false, 0, false, 0, undefined);
+  assert.equal(builtMenus.length, builds);
+  assert.equal(trayContextMenus.length, attachments + 1);
+  assert.equal(trayContextMenus.at(-1), menu);
 });

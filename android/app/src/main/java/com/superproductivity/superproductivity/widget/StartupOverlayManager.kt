@@ -197,8 +197,8 @@ class StartupOverlayManager(private val activity: android.app.Activity) {
         val density = activity.resources.displayMetrics.density
         val cornerPx = 4 * density // match web --card-border-radius: 4px
 
-        // Style the FAB — match loading animation color (#6495ed)
-        val fabColor = Color.parseColor("#6495ED")
+        // Use the same brand color as the app's native controls.
+        val fabColor = activity.getColor(R.color.primary)
         val fabBg = GradientDrawable().apply {
             shape = GradientDrawable.OVAL
             setColor(fabColor)

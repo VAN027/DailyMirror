@@ -1,6 +1,12 @@
-<div class="wrapper">
+<div
+  class="wrapper"
+  [class.native-phone]="isNativePhone()"
+>
   @if (isDataLoaded()) {
-    <page-title></page-title>
+    <page-title
+      [compact]="isNativePhone()"
+      [pendingTaskCount]="pendingTaskCount()"
+    ></page-title>
   }
 
   <!-- The slack between the title and the actions, and the tracked task's
@@ -97,7 +103,7 @@
         <div class="header-action-group secondary-action-group counters-action-group">
           <!-- Focus button: keep the entry point discoverable on desktop and
                mobile (#8157). -->
-          @if (isFocusModeEnabled()) {
+          @if (isFocusModeEnabled() && !isNativePhone()) {
             <focus-button></focus-button>
           }
           <!-- Inline while there is room for their readouts -- an elapsed time,
@@ -120,7 +126,7 @@
           }
         </div>
 
-        @if (isSyncIconEnabled()) {
+        @if (isSyncIconEnabled() || isNativePhone()) {
           <button
             class="sync-btn secondary-header-action"
             [class.is-error]="syncIsEnabledAndReady() && syncState() === 'ERROR'"
@@ -151,15 +157,17 @@
                 <mat-icon>wifi_off</mat-icon>
               }
             } @else {
-              <mat-icon>sync_disabled</mat-icon>
+              <mat-icon>{{ isNativePhone() ? 'sync' : 'sync_disabled' }}</mat-icon>
             }
           </button>
         }
 
-        <plugin-work-context-header-btns
-          class="secondary-header-action"
-        ></plugin-work-context-header-btns>
-        <plugin-header-btns class="secondary-header-action"></plugin-header-btns>
+        @if (!isNativePhone()) {
+          <plugin-work-context-header-btns
+            class="secondary-header-action"
+          ></plugin-work-context-header-btns>
+          <plugin-header-btns class="secondary-header-action"></plugin-header-btns>
+        }
 
         <!-- One action, one home: below 600px the bottom nav's panels menu
              lists these, so the header must not render them as well. Rendering
@@ -199,7 +207,7 @@
       the tray was open would stop firing repeated-countdown reminders.
       `inert` holds the closed tray out of the tab order and the a11y tree.
     -->
-    @if (isDataLoaded() && hasCounterDropdown()) {
+    @if (isDataLoaded() && !isNativePhone() && hasCounterDropdown()) {
       <div class="header-action-group secondary-action-group mobile-dropdown-wrapper">
         <button
           (click)="
@@ -231,6 +239,95 @@
               ></simple-counter-button>
             }
           }
+        </div>
+      </div>
+    }
+    @if (isDataLoaded() && isNativePhone()) {
+      <div class="header-action-group mobile-dropdown-wrapper">
+        <button
+          #nativeToolsTrigger
+          mat-icon-button
+          type="button"
+          class="native-tools-trigger"
+          [color]="
+            isAnyCounterRunning() ||
+            pageTitle()?.taskViewCustomizerService?.isCustomized()
+              ? 'accent'
+              : ''
+          "
+          [attr.aria-label]="T.DM.MORE | translate"
+          aria-controls="native-header-tools"
+          [attr.aria-expanded]="isNativeToolsOpen()"
+          (click)="isNativeToolsOpen() ? closeNativeTools() : isNativeToolsOpen.set(true)"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <!-- Keep real counters mounted while closed: they own countdown reminders. -->
+        <div
+          id="native-header-tools"
+          class="mobile-dropdown native-tools"
+          [class.isVisible]="isNativeToolsOpen()"
+          role="dialog"
+          [attr.aria-label]="T.DM.MORE | translate"
+          [attr.aria-hidden]="!isNativeToolsOpen()"
+          [attr.inert]="isNativeToolsOpen() ? null : ''"
+          [cdkTrapFocus]="isNativeToolsOpen()"
+          [cdkTrapFocusAutoCapture]="isNativeToolsOpen()"
+        >
+          @if (pageTitle(); as title) {
+            @if (title.isWorkViewPage()) {
+              <button
+                type="button"
+                class="native-tool-action"
+                [matMenuTriggerFor]="nativeCustomizer.menu"
+                [matMenuTriggerRestoreFocus]="false"
+                (menuClosed)="closeNativeTools()"
+              >
+                <mat-icon>filter_list</mat-icon>
+                {{ T.GCF.KEYBOARD.TOGGLE_TASK_VIEW_CUSTOMIZER_PANEL | translate }}
+              </button>
+              <task-view-customizer-panel #nativeCustomizer></task-view-customizer-panel>
+            }
+            @if (!title.isSpecialSection() && title.contextMenu()) {
+              <button
+                type="button"
+                class="native-tool-action"
+                [matMenuTriggerFor]="title.contextMenu() || null"
+                [matMenuTriggerRestoreFocus]="false"
+                (menuClosed)="closeNativeTools()"
+              >
+                <mat-icon>settings</mat-icon>{{ T.MH.PROJECT_MENU | translate }}
+              </button>
+            }
+            @if (title.isSharedOnPlainspace()) {
+              <button
+                type="button"
+                class="native-tool-action"
+                (click)="title.openInPlainspace(); closeNativeTools()"
+              >
+                <mat-icon svgIcon="plainspace"></mat-icon
+                >{{ T.PLAINSPACE.OPEN_IN_PLAINSPACE | translate }}
+              </button>
+            }
+          }
+          @if (isFocusModeEnabled()) {
+            <div class="native-tool-row">
+              <span>{{ T.MH.ENTER_FOCUS_MODE | translate }}</span
+              ><focus-button></focus-button>
+            </div>
+          }
+          @for (counter of enabledSimpleCounters(); track counter.id) {
+            @if (!counter.isHideButton) {
+              <div class="native-tool-row">
+                <span>{{ counter.title }}</span>
+                <simple-counter-button [simpleCounter]="counter"></simple-counter-button>
+              </div>
+            }
+          }
+          <div class="native-tool-plugins">
+            <plugin-work-context-header-btns></plugin-work-context-header-btns>
+            <plugin-header-btns></plugin-header-btns>
+          </div>
         </div>
       </div>
     }

@@ -23,6 +23,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { Log } from '../../../../core/log';
+import { formatFileSize } from '../../../../util/format-file-size';
 
 type SortOrder = 'newest' | 'oldest' | 'largest' | 'smallest';
 
@@ -169,11 +170,7 @@ export class DialogClipboardImagesManagerComponent implements OnInit {
     }
   }
 
-  formatSize(bytes: number): string {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  }
+  readonly formatSize = formatFileSize;
 
   getTotalSize(): string {
     const total = this.images().reduce((sum, img) => sum + img.size, 0);

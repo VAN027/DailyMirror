@@ -1,0 +1,107 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s2);
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.quadrant-overview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s);
+  flex: 0 0 auto;
+}
+
+.quadrant-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s);
+  min-height: 88px;
+  padding: var(--s2);
+  border: 1px solid var(--separator-color);
+  border-radius: var(--card-border-radius);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+
+  &.selected {
+    border-color: var(--c-primary);
+    background: var(--sidenav-item-active-bg);
+    color: var(--sidenav-active-text);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  &.cdk-drop-list-dragging {
+    border-color: var(--c-primary);
+    background: var(--sidenav-item-active-bg);
+    outline: var(--focus-ring-width) solid var(--c-primary);
+  }
+}
+
+// CDK moves the source placeholder into the tile; it must not resize the overview.
+:host ::ng-deep .quadrant-tile > .cdk-drag-placeholder {
+  display: none;
+}
+
+.tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-half);
+}
+
+.selected-icon {
+  color: var(--c-primary);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.tile-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  overflow-wrap: anywhere;
+}
+
+.tile-count {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 160px;
+}
+
+.selected-panel {
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  background: var(--card-bg);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.empty-panel {
+  flex: 0 0 auto;
+}
+
+.empty-message {
+  margin: var(--s2) 0;
+  color: var(--text-color-muted);
+  text-align: center;
+}

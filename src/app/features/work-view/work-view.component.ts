@@ -23,6 +23,7 @@ import { DialogConfirmComponent } from '../../ui/dialog-confirm/dialog-confirm.c
 import { DialogPromptComponent } from '../../ui/dialog-prompt/dialog-prompt.component';
 import { expandAnimation, expandFadeAnimation } from '../../ui/animations/expand.ani';
 import { LayoutService } from '../../core-ui/layout/layout.service';
+import { IS_NATIVE_PLATFORM } from '../../util/is-native-platform';
 import { TakeABreakService } from '../take-a-break/take-a-break.service';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -264,6 +265,19 @@ export class WorkViewComponent implements OnInit, OnDestroy {
     initialValue: 0,
   });
   workingToday = toSignal(this.workContextService.workingToday$, { initialValue: 0 });
+  readonly isNative = IS_NATIVE_PLATFORM;
+  readonly showTimeSummary = computed(() => {
+    const remaining = this.estimateRemainingToday();
+    const worked = this.workingToday();
+    return (
+      !!(remaining || worked) &&
+      (!this.isNative ||
+        !this.layoutService.isXs() ||
+        remaining >= 60_000 ||
+        worked >= 60_000 ||
+        !!this.taskService.currentTaskId())
+    );
+  });
   breakTimeToday = toSignal(this.workContextService.breakTimeToday$, {
     initialValue: 0,
   });

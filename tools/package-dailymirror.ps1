@@ -9,6 +9,7 @@ function Invoke-Checked([scriptblock]$Action) {
     if ($LASTEXITCODE -ne 0) { throw "Build failed with exit code $LASTEXITCODE" }
 }
 
+Invoke-Checked { node tools/check-dailymirror-changelog.js }
 Invoke-Checked { node tools/generate-dailymirror-icons.cjs }
 Invoke-Checked { npm run buildFrontend:prod:es6 }
 

@@ -64,7 +64,7 @@
       name="msapplication-TileImage"
     />
     <meta
-      content="#0b77d2"
+      content="#5968f9"
       name="msapplication-TileColor"
     />
 
@@ -73,7 +73,7 @@
       rel="manifest"
     />
     <meta
-      content="#0b77d2"
+      content="#5968f9"
       name="theme-color"
     />
     <meta
@@ -188,7 +188,7 @@
         height: 140px;
         margin: -70px 0 0 -70px;
         border-radius: 50%;
-        background-color: #6495ed;
+        background-color: #5968f9;
         opacity: 0;
         animation: sp-pulse 2s ease-in-out infinite;
       }
@@ -232,6 +232,117 @@
           transform: scale(1);
         }
       }
+
+      /* Critical startup colors are available before the app stylesheet loads. */
+      .app-loading.is-dailymirror-loading {
+        --dm-startup-paper: #f8f9fb;
+        --dm-startup-ink: #202328;
+        --dm-startup-muted: #7a7f89;
+        --dm-startup-purple: #5968f9;
+        position: fixed;
+        inset: 0;
+        transform: none;
+        background: var(--dm-startup-paper);
+        color: var(--dm-startup-ink);
+        font-family: var(--font-primary-stack, 'Segoe UI', 'Microsoft YaHei', sans-serif);
+      }
+
+      .dm-startup-identity {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -64px);
+        text-align: center;
+      }
+
+      .dm-startup-icon,
+      .dm-startup-halo {
+        width: 128px;
+        height: 128px;
+      }
+
+      .dm-startup-icon {
+        display: block;
+        position: relative;
+        margin: 0 auto var(--s3, 24px);
+        filter: url(#dm-startup-sun-artwork);
+        animation: dm-startup-appear 400ms ease-out 100ms both;
+      }
+
+      .dm-startup-halo {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -64px;
+        border-radius: 50%;
+        background: var(--dm-startup-purple);
+        opacity: 0;
+        animation: dm-startup-pulse 1900ms ease-in-out 700ms infinite both;
+      }
+
+      .dm-startup-brand {
+        margin: 0;
+        font-size: var(--font-size-3xl, 28px);
+        font-weight: var(--font-weight-semibold, 600);
+        line-height: var(--line-height-snug, 1.3);
+        letter-spacing: var(--letter-spacing-tight, -0.02em);
+        animation: dm-startup-appear 650ms ease-out 1400ms both;
+      }
+
+      .dm-startup-tagline {
+        margin: var(--s2, 16px) 0 0;
+        font-size: var(--font-size-md, 14px);
+        color: var(--dm-startup-muted);
+        animation: dm-startup-appear 650ms ease-out 1600ms both;
+      }
+
+      @keyframes dm-startup-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes dm-startup-pulse {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        35% {
+          opacity: 0.15;
+          transform: scale(0.85);
+        }
+        75% {
+          opacity: 0.12;
+          transform: scale(1.6);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.9);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .app-loading.is-dailymirror-loading {
+          --dm-startup-paper: #131314;
+          --dm-startup-ink: #e6e6e6;
+          --dm-startup-muted: #a3a7b0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dm-startup-halo {
+          display: none;
+        }
+        .dm-startup-icon,
+        .dm-startup-brand,
+        .dm-startup-tagline {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body class="mat-typography">
@@ -270,6 +381,48 @@
         </div>
       </div>
     </app-root>
+    <template id="dm-native-startup">
+      <svg
+        width="0"
+        height="0"
+        aria-hidden="true"
+      >
+        <defs>
+          <filter
+            id="dm-startup-sun-artwork"
+            color-interpolation-filters="sRGB"
+          >
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 .34902 0 0 0 0 .40784 0 0 0 0 .97647 3 3 3 0 -7"
+            />
+            <feComposite
+              in2="SourceAlpha"
+              operator="in"
+            />
+          </filter>
+        </defs>
+      </svg>
+      <div
+        class="dm-startup-identity"
+        role="status"
+        aria-label="DailyMirror 正在加载"
+      >
+        <div
+          class="dm-startup-halo"
+          aria-hidden="true"
+        ></div>
+        <img
+          class="dm-startup-icon"
+          src="assets/icons/icon-512x512.png"
+          width="128"
+          height="128"
+          alt=""
+        />
+        <h1 class="dm-startup-brand">DailyMirror</h1>
+        <p class="dm-startup-tagline">把今天，过成想要的样子。</p>
+      </div>
+    </template>
     <noscript>请启用 JavaScript 以使用此应用。</noscript>
     <script>
       // Browser compatibility check — must use ES5 syntax only.
@@ -277,6 +430,19 @@
       // compiled JS will fail to parse, leaving the user stuck on the splash screen.
       // This detects unsupported browsers early and shows a helpful message.
       (function () {
+        var capacitor = window.Capacitor;
+        var isNative =
+          !!window.SUPAndroid ||
+          !!(
+            capacitor &&
+            typeof capacitor.isNativePlatform === 'function' &&
+            capacitor.isNativePlatform()
+          );
+        if (isNative) {
+          var loading = document.querySelector('.app-loading');
+          loading.innerHTML = document.getElementById('dm-native-startup').innerHTML;
+          loading.classList.add('is-dailymirror-loading');
+        }
         var unsupported = false;
         if (typeof structuredClone !== 'function') {
           unsupported = true;

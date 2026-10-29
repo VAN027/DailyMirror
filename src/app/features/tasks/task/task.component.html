@@ -14,6 +14,8 @@
       (mouseenter)="isFirstLineHover = true"
       (mouseleave)="isFirstLineHover = false"
       class="first-line"
+      [class.native-phone]="isNativePhone()"
+      [class.has-native-priority]="isNativePhone() && hasNativePriority()"
     >
       <div
         class="title-and-left-btns-wrapper"
@@ -55,7 +57,59 @@
             class="task-title"
           ></task-title>
 
-          @if (t.tagIds?.length || t.projectId || t.repeatCfgId || t.issueId) {
+          @if (isNativePhone()) {
+            <div class="native-task-meta">
+              @if (t.dueWithTime || isShowDueDayBtn()) {
+                <button
+                  type="button"
+                  class="native-meta-action"
+                  (click)="$event.stopPropagation(); scheduleTask()"
+                  [attr.aria-label]="
+                    hasTimeConflict()
+                      ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
+                      : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
+                  "
+                >
+                  <mat-icon>{{ t.remindAt ? 'alarm' : 'schedule' }}</mat-icon>
+                  @if (t.dueWithTime) {
+                    <span [innerHTML]="t.dueWithTime | shortPlannedAt"></span>
+                  } @else {
+                    <span>{{
+                      t.dueDay
+                        | localDateStr: globalTrackingIntervalService.todayDateStr()
+                    }}</span>
+                  }
+                </button>
+              }
+              @let spent =
+                t.subTasks?.length ? (t.subTasks | subTaskTotalTimeSpent) : t.timeSpent;
+              @let estimate = t.subTasks?.length ? subTaskTimeLeft() : t.timeEstimate;
+              @if (spent || estimate) {
+                <button
+                  type="button"
+                  class="native-meta-action"
+                  [disabled]="!!t.subTasks?.length"
+                  (click)="$event.stopPropagation(); onTimeWrapperClick($event)"
+                  [attr.aria-label]="T.F.TASK.CMP.ESTIMATE | translate"
+                >
+                  <mat-icon>schedule</mat-icon>
+                  @if (spent) {
+                    <span>{{ spent | msToString }}</span>
+                  }
+                  @if (spent && estimate) {
+                    <span>/</span>
+                  }
+                  @if (estimate) {
+                    <span>{{ estimate | msToString }}</span>
+                  }
+                </button>
+              }
+              <tag-list
+                [task]="t"
+                [isCompactTask]="true"
+              ></tag-list>
+            </div>
+          } @else if (t.tagIds?.length || t.projectId || t.repeatCfgId || t.issueId) {
             <tag-list
               [task]="t"
               [isShowProjectTagNever]="isInSubTaskList()"
@@ -65,54 +119,56 @@
       </div>
 
       <div class="all-controls-wrapper">
-        <div
-          (click)="onTimeWrapperClick($event)"
-          (keydown.enter)="estimateTime()"
-          (keydown.space)="$event.preventDefault(); estimateTime()"
-          [attr.role]="!t.subTasks?.length ? 'button' : null"
-          [attr.tabindex]="!t.subTasks?.length ? 0 : null"
-          [attr.aria-label]="
-            !t.subTasks?.length ? (T.F.TASK.CMP.ESTIMATE | translate) : null
-          "
-          [class.hasNoTimeSpentOrEstimate]="!t.timeSpent && !t.timeEstimate"
-          [class.isEditable]="!t.subTasks?.length"
-          class="time-wrapper"
-        >
-          @if (!t.subTasks?.length) {
-            <div class="time">
-              @if (t.timeSpent) {
-                <div class="time-val">
-                  <span [innerHTML]="t.timeSpent | msToString"></span>
-                </div>
-                <div class="separator">/</div>
-              }
-              <div
-                [innerHTML]="t.timeEstimate | msToString"
-                class="time-val"
-              ></div>
-            </div>
-          }
-          @if (t.subTasks?.length) {
-            @let subTaskTimeSpent = t.subTasks | subTaskTotalTimeSpent;
-            @if (subTaskTimeLeft() || subTaskTimeSpent) {
+        @if (!isNativePhone()) {
+          <div
+            (click)="onTimeWrapperClick($event)"
+            (keydown.enter)="estimateTime()"
+            (keydown.space)="$event.preventDefault(); estimateTime()"
+            [attr.role]="!t.subTasks?.length ? 'button' : null"
+            [attr.tabindex]="!t.subTasks?.length ? 0 : null"
+            [attr.aria-label]="
+              !t.subTasks?.length ? (T.F.TASK.CMP.ESTIMATE | translate) : null
+            "
+            [class.hasNoTimeSpentOrEstimate]="!t.timeSpent && !t.timeEstimate"
+            [class.isEditable]="!t.subTasks?.length"
+            class="time-wrapper"
+          >
+            @if (!t.subTasks?.length) {
               <div class="time">
-                <div class="time-val">
-                  <mat-icon
-                    inline="true"
-                    style="margin-top: -6px"
-                    >functions
-                  </mat-icon>
-                  <span [innerHTML]="subTaskTimeSpent | msToString"></span>
-                </div>
-                <div class="separator">/</div>
-                <div class="time-val">
-                  <mat-icon inline="true">hourglass_empty</mat-icon>
-                  {{ subTaskTimeLeft() | msToString }}
-                </div>
+                @if (t.timeSpent) {
+                  <div class="time-val">
+                    <span [innerHTML]="t.timeSpent | msToString"></span>
+                  </div>
+                  <div class="separator">/</div>
+                }
+                <div
+                  [innerHTML]="t.timeEstimate | msToString"
+                  class="time-val"
+                ></div>
               </div>
             }
-          }
-        </div>
+            @if (t.subTasks?.length) {
+              @let subTaskTimeSpent = t.subTasks | subTaskTotalTimeSpent;
+              @if (subTaskTimeLeft() || subTaskTimeSpent) {
+                <div class="time">
+                  <div class="time-val">
+                    <mat-icon
+                      inline="true"
+                      style="margin-top: -6px"
+                      >functions
+                    </mat-icon>
+                    <span [innerHTML]="subTaskTimeSpent | msToString"></span>
+                  </div>
+                  <div class="separator">/</div>
+                  <div class="time-val">
+                    <mat-icon inline="true">hourglass_empty</mat-icon>
+                    {{ subTaskTimeLeft() | msToString }}
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        }
 
         <div class="controls">
           @if (isFirstLineHover && !isTouchActive()) {
@@ -136,81 +192,83 @@
               <mat-icon>attach_file</mat-icon>
             </button>
           }
-          @if (t.remindAt) {
-            <button
-              (click)="scheduleTask()"
-              [title]="T.F.TASK.CMP.EDIT_SCHEDULED | translate"
-              [matTooltip]="
-                hasTimeConflict() ? (T.F.TASK.CMP.TIME_CONFLICT | translate) : ''
-              "
-              matTooltipPosition="above"
-              [attr.aria-label]="
-                hasTimeConflict()
-                  ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
-                  : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
-              "
-              class="ico-btn schedule-btn"
-              mat-icon-button
-            >
-              <mat-icon>alarm</mat-icon>
-              <div
-                class="time-badge"
-                [innerHTML]="t.dueWithTime | shortPlannedAt"
-              ></div>
-            </button>
-          } @else if (t.dueWithTime) {
-            <button
-              (click)="scheduleTask()"
-              [title]="T.F.TASK.CMP.EDIT_SCHEDULED | translate"
-              [matTooltip]="
-                hasTimeConflict() ? (T.F.TASK.CMP.TIME_CONFLICT | translate) : ''
-              "
-              matTooltipPosition="above"
-              [attr.aria-label]="
-                hasTimeConflict()
-                  ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
-                  : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
-              "
-              class="ico-btn schedule-btn"
-              mat-icon-button
-            >
-              @if (isScheduledToday()) {
-                <mat-icon>wb_sunny</mat-icon>
-              } @else {
-                <mat-icon>schedule</mat-icon>
-              }
-              <div
-                class="time-badge"
-                [innerHTML]="t.dueWithTime | shortPlannedAt"
-              ></div>
-            </button>
-          } @else if (isShowDueDayBtn()) {
-            <button
-              (click)="scheduleTask()"
-              [title]="T.F.TASK.CMP.EDIT_SCHEDULED | translate"
-              [matTooltip]="
-                hasTimeConflict() ? (T.F.TASK.CMP.TIME_CONFLICT | translate) : ''
-              "
-              matTooltipPosition="above"
-              [attr.aria-label]="
-                hasTimeConflict()
-                  ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
-                  : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
-              "
-              class="ico-btn schedule-btn"
-              mat-icon-button
-            >
-              @if (isScheduledToday()) {
-                <mat-icon>wb_sunny</mat-icon>
-              } @else {
-                <mat-icon>today</mat-icon>
-              }
-              <div class="time-badge">
-                {{
-                  t.dueDay | localDateStr: globalTrackingIntervalService.todayDateStr()
-                }}
-              </div>
-            </button>
+          @if (!isNativePhone()) {
+            @if (t.remindAt) {
+              <button
+                (click)="scheduleTask()"
+                [title]="T.F.TASK.CMP.EDIT_SCHEDULED | translate"
+                [matTooltip]="
+                  hasTimeConflict() ? (T.F.TASK.CMP.TIME_CONFLICT | translate) : ''
+                "
+                matTooltipPosition="above"
+                [attr.aria-label]="
+                  hasTimeConflict()
+                    ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
+                    : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
+                "
+                class="ico-btn schedule-btn"
+                mat-icon-button
+              >
+                <mat-icon>alarm</mat-icon>
+                <div
+                  class="time-badge"
+                  [innerHTML]="t.dueWithTime | shortPlannedAt"
+                ></div>
+              </button>
+            } @else if (t.dueWithTime) {
+              <button
+                (click)="scheduleTask()"
+                [title]="T.F.TASK.CMP.EDIT_SCHEDULED | translate"
+                [matTooltip]="
+                  hasTimeConflict() ? (T.F.TASK.CMP.TIME_CONFLICT | translate) : ''
+                "
+                matTooltipPosition="above"
+                [attr.aria-label]="
+                  hasTimeConflict()
+                    ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
+                    : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
+                "
+                class="ico-btn schedule-btn"
+                mat-icon-button
+              >
+                @if (isScheduledToday()) {
+                  <mat-icon>wb_sunny</mat-icon>
+                } @else {
+                  <mat-icon>schedule</mat-icon>
+                }
+                <div
+                  class="time-badge"
+                  [innerHTML]="t.dueWithTime | shortPlannedAt"
+                ></div>
+              </button>
+            } @else if (isShowDueDayBtn()) {
+              <button
+                (click)="scheduleTask()"
+                [title]="T.F.TASK.CMP.EDIT_SCHEDULED | translate"
+                [matTooltip]="
+                  hasTimeConflict() ? (T.F.TASK.CMP.TIME_CONFLICT | translate) : ''
+                "
+                matTooltipPosition="above"
+                [attr.aria-label]="
+                  hasTimeConflict()
+                    ? (T.F.TASK.CMP.TIME_CONFLICT | translate)
+                    : (T.F.TASK.CMP.EDIT_SCHEDULED | translate)
+                "
+                class="ico-btn schedule-btn"
+                mat-icon-button
+              >
+                @if (isScheduledToday()) {
+                  <mat-icon>wb_sunny</mat-icon>
+                } @else {
+                  <mat-icon>today</mat-icon>
+                }
+                <div class="time-badge">
+                  {{
+                    t.dueDay | localDateStr: globalTrackingIntervalService.todayDateStr()
+                  }}
+                </div>
+              </button>
+            }
           }
           @if (isOverdue() && !t.isDone) {
             <small>{{ T.DM.CARRYOVER | translate }}</small>

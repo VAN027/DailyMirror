@@ -30,6 +30,9 @@ import { TaskRepeatCfgState } from '../../task-repeat-cfg/task-repeat-cfg.model'
 import { getTaskRepeatInfoText } from '../../tasks/task-detail-panel/get-task-repeat-info-text.util';
 import { TranslateService } from '@ngx-translate/core';
 import { DateTimeFormatService } from '../../../core/date-time-format/date-time-format.service';
+import { IMPORTANT_TAG, URGENT_TAG } from '../tag.const';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 
 /**
  * Structural contract of what tag-list actually reads from its input. Both
@@ -47,7 +50,9 @@ export type TagListTask = Pick<
   styleUrls: ['./tag-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [standardListAnimation, expandFadeAnimation],
-  imports: [TagComponent],
+  imports: [TagComponent, MatIcon, MatTooltip],
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  host: { '[class.compact-task]': 'isCompactTask()' },
 })
 export class TagListComponent {
   private readonly _store = inject(Store);
@@ -57,6 +62,16 @@ export class TagListComponent {
   private readonly _dateTimeFormatService = inject(DateTimeFormatService);
 
   task = input.required<TagListTask>();
+  isCompactTask = input(false);
+
+  priorityTags = computed(() =>
+    [IMPORTANT_TAG, URGENT_TAG]
+      .filter((tag) => this.tagIds().includes(tag.id))
+      .map((tag) => ({ ...tag, ...this.tagState().entities[tag.id], icon: tag.icon })),
+  );
+  repeatChip = computed(() =>
+    this.indicatorChips().find((chip) => chip.icon === 'repeat'),
+  );
 
   tagsToHide = input<string[]>();
 
