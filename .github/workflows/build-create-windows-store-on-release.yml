@@ -16,7 +16,7 @@ jobs:
       UNSPLASH_KEY: ${{ secrets.UNSPLASH_KEY }}
       UNSPLASH_CLIENT_ID: ${{ secrets.UNSPLASH_CLIENT_ID }}
 
-    if: '!github.event.release.prerelease'
+    if: github.repository == 'super-productivity/super-productivity' && !github.event.release.prerelease
 
     steps:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v6
